@@ -10,7 +10,6 @@ class SuraFlatButton extends StatelessWidget {
   final Color backgroundColor;
   final BorderRadius borderRadius;
   final double elevation;
-  final Color textColor;
   final Widget icon;
   final BorderSide borderSide;
 
@@ -23,7 +22,6 @@ class SuraFlatButton extends StatelessWidget {
     this.padding = const EdgeInsets.all(8),
     this.backgroundColor = Colors.transparent,
     this.elevation = 0.0,
-    this.textColor = Colors.black,
     this.borderRadius,
     this.icon,
     this.borderSide,

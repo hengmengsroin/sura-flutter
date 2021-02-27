@@ -3,31 +3,31 @@ import 'package:flutter/material.dart';
 import 'conditional_widget.dart';
 import 'spacing.dart';
 
-/// SuraButton can be use sometime to replace RaisedButton or ElevatedButton because we provide more flexibility and wrap around
-class SuraButton extends StatelessWidget {
+/// SuraRaisedButton can be use sometime to replace RaisedButton or ElevatedButton because we provide more flexibility and wrap around
+class SuraRaisedButton extends StatelessWidget {
   ///receive a ValueNotifier to indicate a loading widget
   final ValueNotifier<bool> loadingNotifier;
+  final Widget child;
+  final Widget icon;
   final VoidCallback onPressed;
   final Function onLongPressed;
   final double elevation;
   //Button's background Color
   final Color color;
-  final Color textColor;
   //Loading indicator's color
   final Color loadingColor;
   final Widget loadingWidget;
   final EdgeInsets margin;
   final EdgeInsets padding;
   final ShapeBorder shape;
-  final Widget child;
-  final Widget icon;
   final MainAxisAlignment alignment;
 
   ///if [fullWidth] is `true`, Button will take all remaining horizontal space
   final bool fullWidth;
+  final BorderSide borderSide;
 
   ///Create a button with loading notifier
-  SuraButton({
+  SuraRaisedButton({
     @required this.onPressed,
     @required this.child,
     this.loadingNotifier,
@@ -37,12 +37,12 @@ class SuraButton extends StatelessWidget {
     this.loadingColor = Colors.white,
     this.margin = const EdgeInsets.symmetric(vertical: 16),
     this.padding = const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-    this.fullWidth = true,
+    this.fullWidth = false,
     this.shape = const StadiumBorder(),
     this.onLongPressed,
     this.elevation = 2.0,
-    this.textColor,
     this.alignment,
+    this.borderSide,
   });
   @override
   Widget build(BuildContext context) {
@@ -60,6 +60,7 @@ class SuraButton extends StatelessWidget {
               primary: color,
               padding: padding,
               elevation: elevation,
+              side: borderSide,
             ),
             onLongPress: loading ? () {} : onLongPressed,
             child: ConditionalWidget(

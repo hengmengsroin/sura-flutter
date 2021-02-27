@@ -9,6 +9,7 @@ class SuraIconButton extends StatelessWidget {
   final double borderRadius;
   final double elevation;
   final BorderSide borderSide;
+  final Widget badge;
 
   ///An IconButton with respectively small margin and shape
   const SuraIconButton({
@@ -21,12 +22,18 @@ class SuraIconButton extends StatelessWidget {
     this.backgroundColor = Colors.transparent,
     this.elevation = 0.0,
     this.borderSide,
+    this.badge,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final shape = RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(borderRadius),
       side: borderSide ?? BorderSide.none,
+    );
+    var stack = Stack(
+      children: [
+        icon,
+      ],
     );
     return Card(
       shape: shape,
@@ -36,9 +43,19 @@ class SuraIconButton extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         customBorder: shape,
-        child: Padding(
-          padding: padding,
-          child: icon,
+        child: Stack(
+          children: [
+            Padding(
+              padding: padding,
+              child: stack,
+            ),
+            if (badge != null)
+              Positioned(
+                child: badge,
+                top: 0,
+                right: 0,
+              ),
+          ],
         ),
       ),
     );

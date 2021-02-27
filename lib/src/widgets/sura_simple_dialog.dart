@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sura_flutter/src/widgets/sura_platform_checker.dart';
-import 'package:sura_flutter/src/widgets/sura_style.dart';
+import 'package:sura_flutter/src/style/sura_style.dart';
 
 class SuraSimpleDialog extends StatelessWidget {
   final String title;

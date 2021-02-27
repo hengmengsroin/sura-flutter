@@ -22,7 +22,6 @@ class ShadowInputBorder extends InputBorder {
   }) : assert(elevation != null);
 
   @override
-  // TODO: implement dimensions
   EdgeInsetsGeometry get dimensions => EdgeInsets.all(2);
 
   @override
