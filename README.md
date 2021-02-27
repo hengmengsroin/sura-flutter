@@ -1,14 +1,14 @@
 # sura_flutter
 
-A new Flutter package project.
+[![pub package](https://img.shields.io/badge/pub-0.0.1-blueviolet.svg)](https://pub.dev/packages/sura_flutter)
 
-## Getting Started
+A flutter package from AsurRaa for widgets and utility functions
 
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
+# Installation
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+Add this to pubspec.yaml
+
+```dart
+dependencies:
+  sura_flutter: ^0.0.1
+```

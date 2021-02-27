@@ -1,0 +1,50 @@
+import 'dart:io';
+import 'dart:math';
+import 'dart:typed_data';
+import 'dart:ui';
+
+import 'package:flutter/services.dart';
+
+class SuraUtils {
+  ///Convert degree to radian because most of Flutter's Widget depends on Radian
+  static double degreeToRadian(double degree) {
+    return degree * (-pi / 180);
+  }
+
+  ///A Function to check network connection
+  static Future<bool> checkConnection() async {
+    try {
+      final result = await InternetAddress.lookup('google.com');
+      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+        return true;
+      }
+      return false;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  ///get bytes from asset that mostly use for google map marker
+  static Future<Uint8List> getBytesFromAsset(String path, int width) async {
+    ByteData data = await rootBundle.load(path);
+    Codec codec = await instantiateImageCodec(data.buffer.asUint8List(),
+        targetWidth: width);
+    FrameInfo fi = await codec.getNextFrame();
+    return (await fi.image.toByteData(format: ImageByteFormat.png))
+        .buffer
+        .asUint8List();
+  }
+
+  ///get A random Image from Picsum with given dimension
+  static String picsumImage([int width = 200, int height = 200]) {
+    return "https://picsum.photos/$width/$height";
+  }
+
+  static String unsplashImage({
+    int width = 200,
+    int height = 200,
+    String category = "photo",
+  }) {
+    return "https://source.unsplash.com/${width}x$height/?$category";
+  }
+}
