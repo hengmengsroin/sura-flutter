@@ -1,3 +1,7 @@
+## [0.0.4] - 28 February 2021
+
+- Code improvement
+
 ## [0.0.3] - 28 February 2021
 
 - add **SuraPaginatedList**
