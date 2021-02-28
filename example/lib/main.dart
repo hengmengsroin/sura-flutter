@@ -13,9 +13,8 @@ class MyApp extends StatelessWidget {
       title: 'Sura Flutter Example',
       navigatorKey: SuraNavigator.navigatorKey,
       theme: ThemeData(
-        primarySwatch: SuraColor.toMaterial(0xFF4A6A2F),
+        primarySwatch: Colors.blue,
         typography: Typography.material2018(),
-        buttonColor: Colors.green,
       ),
       debugShowCheckedModeBanner: false,
       home: MyHomePage(),
@@ -59,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> with SuraFormMixin {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: examples.map((example) {
-            return SuraRaisedButton(
+            return SuraAsyncButton(
               child: Text(example.name),
               fullWidth: true,
               margin: EdgeInsets.only(top: 16),

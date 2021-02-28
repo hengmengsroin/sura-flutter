@@ -150,6 +150,8 @@ class _OtherButtonExampleState extends State<OtherButtonExample> {
                     style: TextStyle(color: Colors.red),
                   ),
                   fullWidth: true,
+                  startIcon: Icon(Icons.add, color: Colors.red),
+                  alignment: MainAxisAlignment.start,
                   color: Colors.white,
                 ),
               ],

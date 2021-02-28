@@ -99,7 +99,6 @@ class _SuraAsyncButtonState extends State<SuraAsyncButton> {
     final Widget buttonContent = Row(
       mainAxisAlignment: widget.alignment ?? MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisSize: MainAxisSize.min,
       children: [
         if (widget.startIcon != null) ...[
           widget.startIcon,
