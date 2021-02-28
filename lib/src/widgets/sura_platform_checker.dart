@@ -1,16 +1,18 @@
-import 'dart:io' as io show Platform;
+import 'dart:io';
 
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 
 ///Provide a widget child depend on the Platform, Currently support [iOS] and [Android]
 class SuraPlatformChecker extends StatelessWidget {
   final Widget androidWidget;
   final Widget iosWidget;
-
+  final Widget webWidget;
   const SuraPlatformChecker({
     Key key,
     @required this.androidWidget,
     this.iosWidget,
+    this.webWidget,
   }) : super(key: key);
 
   @override
@@ -19,10 +21,10 @@ class SuraPlatformChecker extends StatelessWidget {
   }
 
   Widget buildPlatformChecker() {
-    if (iosWidget != null) {
-      return io.Platform.isIOS || io.Platform.isMacOS
-          ? iosWidget
-          : androidWidget;
+    if (Platform.isIOS && iosWidget != null) {
+      return iosWidget;
+    } else if (kIsWeb && webWidget != null) {
+      return webWidget;
     }
     return androidWidget;
   }

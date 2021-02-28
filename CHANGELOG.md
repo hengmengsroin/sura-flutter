@@ -1,3 +1,11 @@
-## [0.0.1] - TODO: Add release date.
+## [0.0.2] - 28 February 2021
 
-* TODO: Describe initial release.
+- code improvement
+- imporve README
+- add **SuraFormValidator**
+- add **SuraActionSheet**
+- rework **SuraColor**
+
+## [0.0.1] - 27 February 2021
+
+- initial release

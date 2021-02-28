@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class SuraColor {
   ///Get color from String hex code
-  static Color getColorFromCode(String code) {
+  static Color fromCode(String code) {
     try {
       String hexAlphaPrefix = '0xFF';
       String colorCode;
