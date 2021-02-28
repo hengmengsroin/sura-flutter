@@ -1,6 +1,6 @@
 # sura_flutter
 
-[![pub package](https://img.shields.io/badge/pub-0.0.2-blueviolet.svg)](https://pub.dev/packages/sura_flutter)
+[![pub package](https://img.shields.io/badge/pub-0.0.3-blueviolet.svg)](https://pub.dev/packages/sura_flutter)
 
 A flutter package from AsurRaa for widgets and utility functions
 
@@ -10,7 +10,7 @@ Add this to pubspec.yaml
 
 ```dart
 dependencies:
-  sura_flutter: ^0.0.2
+  sura_flutter: ^0.0.3
 ```
 
 # Widgets
@@ -31,8 +31,8 @@ dependencies:
 | [SuraPlatformChecker][other]           | Provide a widget base on Android or iOS platform       |
 | [SuraSimpleDialog][sheet-dialog]       | A simple alert dialog                                  |
 | [SuraListTile][other]                  | An easy customizable ListTile                          |
-| [PaginatedListView][paginated]         | A Listview.separated with pagination support           |
-| [PaginatedGridView][paginated]         | A Gridview.builder with pagination support             |
+| [SuraPaginatedList][paginated]         | A Listview.separated with pagination support           |
+| [SuraPaginatedGridBuilder][paginated]  | A Gridview.builder with pagination support             |
 | [SuraIconButton][otherbuttonurl]       | A small alternative to Flutter's IconButton            |
 | [SuraFlatButton][otherbuttonurl]       | A small alternative to Flutter's FlatButton            |
 | [SpaceX][other]                        | SizedBox with only width                               |

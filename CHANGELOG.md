@@ -1,3 +1,8 @@
+## [0.0.3] - 28 February 2021
+
+- add **SuraPaginatedList**
+- add **SuraPaginatedGridBuilder**
+
 ## [0.0.2] - 28 February 2021
 
 - code improvement
