@@ -1,6 +1,6 @@
-import 'dart:io';
+import 'dart:io' if (dart.library.io) 'dart:io';
 
-import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 ///Provide a widget child depend on the Platform, Currently support [iOS] and [Android]

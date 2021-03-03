@@ -1,3 +1,9 @@
+## [0.0.5] - 3 March 2021
+
+- Code improvment
+- add buttonColor to SuraSimpleDialog
+- update SuraFlatButton
+
 ## [0.0.4] - 28 February 2021
 
 - Code improvement

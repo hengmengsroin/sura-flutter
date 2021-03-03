@@ -36,7 +36,7 @@ class _SuraAccordianAndExpandableState
               ),
               bottomChild: SuraListTile(
                 title: Text("To show this"),
-                leading: CircleAvatar(),
+                leading: SuraPlatformChecker(androidWidget: CircleAvatar()),
               ),
             ),
           ],
