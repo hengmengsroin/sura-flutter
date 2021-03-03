@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'conditional_widget.dart';
 import 'spacing.dart';
+import 'sura_theme.dart';
 
 /// SuraRaisedButton can be use sometime to replace RaisedButton or ElevatedButton because we provide more flexibility and wrap around
 class SuraRaisedButton extends StatelessWidget {
@@ -76,7 +77,10 @@ class SuraRaisedButton extends StatelessWidget {
                   child,
                 ],
               ),
-              onTrue: () => loadingWidget ?? _buildLoadingWidget(),
+              onTrue: () =>
+                  loadingWidget ??
+                  SuraTheme.of(context)?.buttonLoadingWidget ??
+                  _buildLoadingWidget(),
             ),
           );
         },

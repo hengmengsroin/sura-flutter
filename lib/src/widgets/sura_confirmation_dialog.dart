@@ -16,10 +16,10 @@ class SuraConfirmationDialog extends StatelessWidget {
 
   ///A dialog that provide onCancel and Confirm action
   SuraConfirmationDialog({
+    @required this.content,
     this.confirmText = "OK",
     this.cancelText = "Cancel",
     this.title = "Confirmation",
-    @required this.content,
     this.onCancel,
     this.onConfirm,
     this.swapButtonsPosition = false,

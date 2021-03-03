@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:sura_flutter/src/widgets/sura_theme.dart';
 
 import 'conditional_widget.dart';
 import 'spacing.dart';
@@ -112,7 +113,9 @@ class _SuraAsyncButtonState extends State<SuraAsyncButton> {
       ],
     );
 
-    final Widget loadingWidget = widget.loadingWidget ?? _buildLoadingWidget();
+    final Widget loadingWidget = widget.loadingWidget ??
+        SuraTheme.of(context)?.buttonLoadingWidget ??
+        _buildLoadingWidget();
 
     return Container(
       height: widget.height,

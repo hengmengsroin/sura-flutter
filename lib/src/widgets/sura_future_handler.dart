@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'sura_theme.dart';
+
 class SuraFutureHandler<T> extends StatelessWidget {
   final Future<T> future;
 
@@ -38,7 +40,8 @@ class SuraFutureHandler<T> extends StatelessWidget {
           );
         } else {
           if (loading != null) return loading;
-          return Center(child: CircularProgressIndicator());
+          return SuraTheme.of(context)?.loadingWidget ??
+              Center(child: CircularProgressIndicator());
         }
       },
     );

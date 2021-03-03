@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'sura_theme.dart';
+
 class SuraLoadingDialog {
   final bool dismissible;
   final BuildContext context;
@@ -8,11 +10,13 @@ class SuraLoadingDialog {
 
   SuraLoadingDialog(
     this.context, {
-    this.dismissible = true,
+    this.dismissible = false,
   });
 
   Future<void> show({Widget child}) async {
-    final dialogChild = child ?? CircularProgressIndicator();
+    final dialogChild = child ??
+        SuraTheme.of(context)?.loadingWidget ??
+        CircularProgressIndicator();
     showDialog(
         context: context,
         barrierDismissible: dismissible,

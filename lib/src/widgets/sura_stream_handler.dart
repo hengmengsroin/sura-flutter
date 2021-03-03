@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+import 'sura_theme.dart';
+
 class SuraStreamHandler<T> extends StatefulWidget {
   final Stream stream;
 
@@ -72,7 +74,8 @@ class _SuraStreamHandlerState<T> extends State<SuraStreamHandler<T>> {
           );
         } else {
           if (widget.loading != null) return widget.loading;
-          return Center(child: CircularProgressIndicator());
+          return SuraTheme.of(context)?.loadingWidget ??
+              Center(child: CircularProgressIndicator());
         }
       },
     );
