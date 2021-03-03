@@ -89,7 +89,16 @@ class _OtherButtonExampleState extends State<OtherButtonExample> {
                 SuraFlatButton(
                   child: Text("No Icon"),
                   margin: EdgeInsets.symmetric(vertical: 4),
-                  onPressed: () {},
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return SuraSimpleDialog(
+                          content: "You sure?",
+                        );
+                      },
+                    );
+                  },
                 ),
               ],
             ),

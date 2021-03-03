@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sura_flutter/src/widgets/sura_platform_checker.dart';
 import 'package:sura_flutter/src/style/sura_style.dart';
+import 'package:sura_flutter/src/widgets/sura_platform_checker.dart';
 
 class SuraSimpleDialog extends StatelessWidget {
   final String title;
@@ -9,6 +9,7 @@ class SuraSimpleDialog extends StatelessWidget {
   final String confirmText;
   final Function onConfirm;
   final Widget child;
+  final Color buttonColor;
 
   ///An alert dialog with title and content
   SuraSimpleDialog({
@@ -17,6 +18,7 @@ class SuraSimpleDialog extends StatelessWidget {
     this.title = "Information",
     this.confirmText = "OK",
     this.onConfirm,
+    this.buttonColor,
   });
 
   @override
@@ -54,6 +56,7 @@ class SuraSimpleDialog extends StatelessWidget {
       content: child ?? Text(content),
       actions: <Widget>[
         FlatButton(
+          color: buttonColor,
           child: Text(confirmText),
           onPressed: () {
             onConfirm?.call();
