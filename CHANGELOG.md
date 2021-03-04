@@ -1,3 +1,8 @@
+## [0.0.6] - 4 March 2021
+
+- add SuraDecoder
+- improve SuraAsyncButton
+
 ## [0.0.5] - 3 March 2021
 
 - Code improvment

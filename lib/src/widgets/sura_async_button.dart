@@ -92,7 +92,7 @@ class _SuraAsyncButtonState extends State<SuraAsyncButton> {
   }
 
   void toggleLoading() {
-    setState(() => isLoading = !isLoading);
+    if (mounted) setState(() => isLoading = !isLoading);
   }
 
   @override

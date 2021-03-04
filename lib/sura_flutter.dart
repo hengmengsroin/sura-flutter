@@ -13,6 +13,7 @@ export 'src/style/sura_style.dart';
 //utils
 export 'src/utils/sura_extension.dart';
 export 'src/utils/sura_form_validator.dart';
+export 'src/utils/sura_jwt_decoder.dart';
 export 'src/utils/sura_route_navigator.dart';
 export 'src/utils/sura_utils.dart';
 //widget

@@ -67,15 +67,17 @@ class SuraConfirmationDialog extends StatelessWidget {
 
   Widget _buildAndroidDialog(BuildContext context) {
     final List<Widget> actions = <Widget>[
-      FlatButton(
-        textColor: Colors.red,
+      TextButton(
+        style: TextButton.styleFrom(
+          primary: Colors.red,
+        ),
         child: Text(cancelText),
         onPressed: () {
           Navigator.of(context).pop(false);
           onCancel?.call();
         },
       ),
-      FlatButton(
+      TextButton(
         child: Text(confirmText),
         onPressed: () {
           Navigator.of(context).pop(true);

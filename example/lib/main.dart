@@ -4,6 +4,8 @@ import 'package:sura_flutter/sura_flutter.dart';
 import 'package:sura_flutter_example/examples/other_buttons_example.dart';
 import 'package:sura_flutter_example/examples/sura_accordian_and_sura_expandable.dart';
 
+import 'examples/util_examplate.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -35,6 +37,7 @@ class _MyHomePageState extends State<MyHomePage> with SuraFormMixin {
   final List<ExampleButton> examples = [
     ExampleButton(name: "Other Buttons example", child: OtherButtonExample()),
     ExampleButton(name: "Accordion", child: SuraAccordianAndExpandable()),
+    ExampleButton(name: "Sura Utils", child: SuraUtilExamples()),
   ];
 
   @override

@@ -73,7 +73,7 @@ class _OtherButtonExampleState extends State<OtherButtonExample> {
                       builder: (context) {
                         return SuraConfirmationDialog(
                           content: Text("You sure?"),
-                          swapButtonsPosition: true,
+                          swapButtonsPosition: false,
                           onConfirm: () {
                             print("confirm");
                           },
