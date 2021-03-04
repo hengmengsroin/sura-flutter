@@ -55,8 +55,10 @@ class SuraSimpleDialog extends StatelessWidget {
       title: Text(title),
       content: child ?? Text(content),
       actions: <Widget>[
-        FlatButton(
-          color: buttonColor,
+        TextButton(
+          style: TextButton.styleFrom(
+            primary: buttonColor,
+          ),
           child: Text(confirmText),
           onPressed: () {
             onConfirm?.call();

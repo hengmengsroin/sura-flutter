@@ -1,3 +1,7 @@
+## [0.0.7] - 4 March 2021
+
+- Improve pub score
+
 ## [0.0.6] - 4 March 2021
 
 - add SuraDecoder
