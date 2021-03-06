@@ -1,3 +1,7 @@
+## [0.0.8] - 6 March 2021
+
+- Add textColor property to SuraFlatButton,SuraRaisedButton and SuraAsyncButton
+
 ## [0.0.7] - 4 March 2021
 
 - Improve pub score

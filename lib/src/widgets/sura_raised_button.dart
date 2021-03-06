@@ -15,6 +15,7 @@ class SuraRaisedButton extends StatelessWidget {
   final double elevation;
   //Button's background Color
   final Color color;
+  final Color textColor;
   //Loading indicator's color
   final Color loadingColor;
   final Widget loadingWidget;
@@ -34,6 +35,7 @@ class SuraRaisedButton extends StatelessWidget {
     this.loadingNotifier,
     this.loadingWidget,
     this.color,
+    this.textColor,
     this.icon,
     this.loadingColor = Colors.white,
     this.margin = const EdgeInsets.symmetric(vertical: 16),
@@ -59,6 +61,7 @@ class SuraRaisedButton extends StatelessWidget {
             style: ElevatedButton.styleFrom(
               shape: shape,
               primary: color,
+              onPrimary: textColor,
               padding: padding,
               elevation: elevation,
               side: borderSide,

@@ -8,6 +8,7 @@ class SuraFlatButton extends StatelessWidget {
   final EdgeInsets margin;
   final EdgeInsets padding;
   final Color backgroundColor;
+  final Color textColor;
   final BorderRadius borderRadius;
   final double elevation;
   final Widget icon;
@@ -25,6 +26,7 @@ class SuraFlatButton extends StatelessWidget {
     this.borderRadius,
     this.icon,
     this.borderSide,
+    this.textColor,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -48,7 +50,10 @@ class SuraFlatButton extends StatelessWidget {
             children: <Widget>[
               if (icon != null) ...[icon, SpaceX(8)],
               DefaultTextStyle.merge(
-                style: Theme.of(context).textTheme.button,
+                style: Theme.of(context)
+                    .textTheme
+                    .button
+                    .copyWith(color: textColor),
                 child: child,
               ),
             ],

@@ -30,6 +30,7 @@ class SuraAsyncButton extends StatefulWidget {
 
   ///Button's background color
   final Color color;
+  final Color textColor;
 
   ///A color for default [loadingWidget]
   final Color loadingColor;
@@ -71,6 +72,7 @@ class SuraAsyncButton extends StatefulWidget {
     this.shape,
     this.alignment,
     this.borderSide,
+    this.textColor,
   }) : super(key: key);
   @override
   _SuraAsyncButtonState createState() => _SuraAsyncButtonState();
@@ -140,6 +142,7 @@ class _SuraAsyncButtonState extends State<SuraAsyncButton> {
           shape: widget.shape,
           padding: widget.padding,
           primary: widget.color,
+          onPrimary: widget.textColor,
           side: widget.borderSide,
           elevation: widget.elevation,
         ),
