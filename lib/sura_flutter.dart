@@ -1,5 +1,9 @@
 library sura_flutter;
 
+export 'src/manager/async_subject_manager.dart';
+export 'src/manager/callback.dart';
+//manager
+export 'src/manager/future_manager.dart';
 //mixin
 export 'src/mixin/after_build_mixin.dart';
 export 'src/mixin/notifier_mixin.dart';
@@ -18,6 +22,7 @@ export 'src/utils/sura_route_navigator.dart';
 export 'src/utils/sura_utils.dart';
 //widget
 export 'src/widgets/conditional_widget.dart';
+export 'src/widgets/future_manager_builder.dart';
 export 'src/widgets/spacing.dart';
 export 'src/widgets/sura_accordion.dart';
 export 'src/widgets/sura_action_sheet.dart';

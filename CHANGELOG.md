@@ -1,4 +1,4 @@
-## [0.1.0] - 15 March 2021
+## [0.1.1] - 15 March 2021
 
 - Add FutureManager
 - Add AsyncSubjectManager
