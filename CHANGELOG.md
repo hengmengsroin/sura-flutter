@@ -1,3 +1,11 @@
+## [0.1.0] - 15 March 2021
+
+- Add FutureManager
+- Add AsyncSubjectManager
+- Add FutureManagerBuilder
+- Breaking change:
+    - SuraStyle change to SuraDecoration
+
 ## [0.0.8] - 6 March 2021
 
 - Add textColor property to SuraFlatButton,SuraRaisedButton and SuraAsyncButton

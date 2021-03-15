@@ -58,6 +58,8 @@ class _SuraStreamHandlerState<T> extends State<SuraStreamHandler<T>> {
 
   @override
   Widget build(BuildContext context) {
+    final SuraTheme suraTheme = SuraTheme.of(context);
+    //
     return StreamBuilder<T>(
       stream: widget.stream,
       initialData: widget.initialData,
@@ -66,15 +68,16 @@ class _SuraStreamHandlerState<T> extends State<SuraStreamHandler<T>> {
           return widget.ready(snapshot.data);
         } else if (snapshot.hasError) {
           if (widget.error != null) return widget.error(snapshot.error);
-          return Center(
-            child: Text(
-              snapshot.error.toString(),
-              textAlign: TextAlign.center,
-            ),
-          );
+          return suraTheme?.errorWidget ??
+              Center(
+                child: Text(
+                  snapshot.error.toString(),
+                  textAlign: TextAlign.center,
+                ),
+              );
         } else {
           if (widget.loading != null) return widget.loading;
-          return SuraTheme.of(context)?.loadingWidget ??
+          return suraTheme?.loadingWidget ??
               Center(child: CircularProgressIndicator());
         }
       },

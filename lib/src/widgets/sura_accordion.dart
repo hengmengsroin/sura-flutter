@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sura_flutter/src/style/sura_style.dart';
+import 'package:sura_flutter/src/style/sura_decoration.dart';
 
 import 'spacing.dart';
 
@@ -110,8 +110,8 @@ class _SuraAccordionState extends State<SuraAccordion>
           InkWell(
             onTap: onToggle,
             customBorder: RoundedRectangleBorder(
-              borderRadius:
-                  widget.headerDecoration?.borderRadius ?? SuraStyle.radius(0),
+              borderRadius: widget.headerDecoration?.borderRadius ??
+                  SuraDecoration.radius(0),
             ),
             child: Ink(
               decoration: widget.headerDecoration,

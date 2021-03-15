@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class SuraStyle {
+class SuraDecoration {
   ///Create a RoundRectangleBorder with given radius
   static RoundedRectangleBorder roundRect([double _radius = 8]) {
     return RoundedRectangleBorder(borderRadius: radius(_radius));

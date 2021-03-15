@@ -24,6 +24,8 @@ class SuraFutureHandler<T> extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
+    final SuraTheme suraTheme = SuraTheme.of(context);
+    //
     return FutureBuilder<T>(
       future: future,
       initialData: initialData,
@@ -32,15 +34,16 @@ class SuraFutureHandler<T> extends StatelessWidget {
           return ready(snapshot.data);
         } else if (snapshot.hasError) {
           if (error != null) return error(snapshot.error);
-          return Center(
-            child: Text(
-              snapshot.error.toString(),
-              textAlign: TextAlign.center,
-            ),
-          );
+          return suraTheme?.errorWidget ??
+              Center(
+                child: Text(
+                  snapshot.error.toString(),
+                  textAlign: TextAlign.center,
+                ),
+              );
         } else {
           if (loading != null) return loading;
-          return SuraTheme.of(context)?.loadingWidget ??
+          return suraTheme?.loadingWidget ??
               Center(child: CircularProgressIndicator());
         }
       },

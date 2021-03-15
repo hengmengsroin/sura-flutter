@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sura_flutter/src/style/sura_style.dart';
+import 'package:sura_flutter/src/style/sura_decoration.dart';
 import 'package:sura_flutter/src/widgets/sura_platform_checker.dart';
 
 class SuraSimpleDialog extends StatelessWidget {
@@ -51,7 +51,7 @@ class SuraSimpleDialog extends StatelessWidget {
 
   Widget _buildAndroidDialog(BuildContext context) {
     return AlertDialog(
-      shape: SuraStyle.roundRect(16),
+      shape: SuraDecoration.roundRect(16),
       title: Text(title),
       content: child ?? Text(content),
       actions: <Widget>[
