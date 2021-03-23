@@ -8,6 +8,8 @@ import 'spacing.dart';
 
 enum LoadingType { Progress, Disable }
 
+///Create a Material Elevated Button that can contain a [loadingWiidget] whenever you
+///execute a Future function in [onPressed] callback
 class SuraAsyncButton extends StatefulWidget {
   ///A [child] to display inside the button
   final Widget child;
@@ -24,25 +26,34 @@ class SuraAsyncButton extends StatefulWidget {
   ///A widget to show when button is loading
   final Widget loadingWidget;
 
+  ///Button's widget
   final double width;
 
+  ///Button's height
   final double height;
 
   ///Button's background color
   final Color color;
+
+  ///Button's text color
   final Color textColor;
 
   ///A color for default [loadingWidget]
   final Color loadingColor;
 
+  ///Button's shape
   final ShapeBorder shape;
 
+  ///button's borderside
   final BorderSide borderSide;
 
+  ///Button's elevation
   final double elevation;
 
   ///Button's margin, default value is [vertical: 16]
   final EdgeInsets margin;
+
+  ///Button padding
   final EdgeInsets padding;
 
   ///whether button is set to stretch with available width
@@ -51,6 +62,7 @@ class SuraAsyncButton extends StatefulWidget {
   /// select a loading type of the button
   final LoadingType loadingType;
 
+  ///Alignment of the [icon] and [child]
   final MainAxisAlignment alignment;
 
   const SuraAsyncButton({
@@ -115,9 +127,7 @@ class _SuraAsyncButtonState extends State<SuraAsyncButton> {
       ],
     );
 
-    final Widget loadingWidget = widget.loadingWidget ??
-        SuraTheme.of(context)?.buttonLoadingWidget ??
-        _buildLoadingWidget();
+    final Widget loadingWidget = widget.loadingWidget ?? SuraTheme.of(context)?.buttonLoadingWidget ?? _buildLoadingWidget();
 
     return Container(
       height: widget.height,
@@ -133,9 +143,7 @@ class _SuraAsyncButtonState extends State<SuraAsyncButton> {
                 : null,
         child: ConditionalWidget(
           condition: isLoading,
-          onTrue: () => widget.loadingType == LoadingType.Disable
-              ? buttonContent
-              : loadingWidget,
+          onTrue: () => widget.loadingType == LoadingType.Disable ? buttonContent : loadingWidget,
           onFalse: () => buttonContent,
         ),
         style: ElevatedButton.styleFrom(

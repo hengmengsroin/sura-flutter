@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 enum TabAlignment { top, bottom }
 
+/// Create a circle and small tab indocator
 class DotTabIndicator extends Decoration {
   ///radius for your dot
   final double radius;
@@ -40,9 +41,7 @@ class _DotTabIndicatorPainter extends BoxPainter {
   ) : super(onChanged);
   @override
   void paint(Canvas canvas, Offset offset, ImageConfiguration configuration) {
-    final double yOffset = tabAlignment == TabAlignment.bottom
-        ? configuration.size.height - radius * 2
-        : radius * 2;
+    final double yOffset = tabAlignment == TabAlignment.bottom ? configuration.size.height - radius * 2 : radius * 2;
 
     final Offset circleOffset = offset +
         Offset(

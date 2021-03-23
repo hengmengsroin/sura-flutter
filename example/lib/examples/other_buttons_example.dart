@@ -10,6 +10,7 @@ class _OtherButtonExampleState extends State<OtherButtonExample> {
   final isLoading = ValueNotifier<bool>(false);
 
   SuraLoadingDialog loadingDialog;
+  FutureManager futureManager;
 
   @override
   void dispose() {

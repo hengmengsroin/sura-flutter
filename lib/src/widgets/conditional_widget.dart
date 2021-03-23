@@ -2,10 +2,19 @@ import 'package:flutter/material.dart';
 
 ///build a widget depend on provided [condition]
 class ConditionalWidget extends StatelessWidget {
+  ///If a [condition] is true, show [onTrue] widget lese show [OnFalse] widget
   final bool condition;
+
+  ///A function that return a widget if [condition] is true
   final Widget Function() onTrue;
+
+  ///A function that return a widget if [condition] is false
   final Widget Function() onFalse;
+
+  ///margin of the widget
   final EdgeInsets margin;
+
+  ///padding of the widget
   final EdgeInsets padding;
 
   const ConditionalWidget({

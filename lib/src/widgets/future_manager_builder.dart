@@ -2,11 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:sura_flutter/src/manager/future_manager.dart';
 import 'package:sura_flutter/src/widgets/sura_theme.dart';
 
+/// A widget that build base on the state a [FutureManager]
 class FutureManagerBuilder<T> extends StatefulWidget {
+  ///A required [FutureManager] that this widget depends on
   final FutureManager<T> futureManager;
+
+  /// A widget to show when [FutureManager] state is loading
   final Widget loading;
+
+  /// A widget to show when [FutureManager] state is error
   final Widget Function(dynamic) error;
+
+  /// A callback function that call when [FutureManager] state is error
   final void Function(dynamic) onError;
+
+  ///A widget to show when [FutureManager] state is success
   final Widget Function(BuildContext, T) ready;
   const FutureManagerBuilder({
     Key key,
@@ -58,8 +68,7 @@ class _FutureManagerBuilderState<T> extends State<FutureManagerBuilder<T>> {
           );
     } else {
       if (widget.loading != null) return widget.loading;
-      return suraTheme?.loadingWidget ??
-          Center(child: CircularProgressIndicator());
+      return suraTheme?.loadingWidget ?? Center(child: CircularProgressIndicator());
     }
   }
 }

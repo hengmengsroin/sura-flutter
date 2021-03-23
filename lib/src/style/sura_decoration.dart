@@ -22,7 +22,7 @@ class SuraDecoration {
     return RoundedRectangleBorder(borderRadius: radiusRight(_radius));
   }
 
-  ///Create a border Radius
+  ///Create a circular Radius with given radius value
   static BorderRadius radius([double _radius = 8]) {
     return BorderRadius.circular(_radius);
   }

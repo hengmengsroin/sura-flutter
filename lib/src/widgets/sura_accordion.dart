@@ -10,20 +10,49 @@ enum IconPosition {
 
 ///Custom accordion that similar to Flutter's [ExpansionTile]
 class SuraAccordion extends StatefulWidget {
+  ///Accordion title, usually a Text
   final Widget title;
+
+  ///A trailing icon that rotate on expanded or collapse
   final Widget icon;
+
+  ///A widgets that show after the widget has expended
   final List<Widget> children;
+
+  ///Animation curve when you click to expand or collapse the Accordion
   final Curve curve;
+
+  ///Duration of the animation process
   final Duration animationDuration;
-  final BoxDecoration headerDecoration;
+
+  ///Decordtion of the title
+  final BoxDecoration titleDecoration;
+
+  ///Background color of the wrapping children widgets
   final Color childrenBackgroundColor;
-  final EdgeInsets headerPadding;
+
+  ///Padding of the title, default value is [EdgeInsets.all(16)]
+  final EdgeInsets titlePadding;
+
+  ///Margin of this widget
   final EdgeInsets margin;
+
+  ///Padding of the children widgets
   final EdgeInsets childrenPadding;
+
+  ///A callback function that call on every toggle
   final Function(bool) onToggle;
+
+  ///a condtion if to expand to Accordion on initial
   final bool initiallyExpand;
+
+  ///Check if to show the trailing icon
   final bool showIcon;
+
+  ///Check if to run the toggle animation on initial
   final bool animatedOnStart;
+
+  ///Position of the traling icon
   final IconPosition iconPosition;
 
   const SuraAccordion({
@@ -36,8 +65,8 @@ class SuraAccordion extends StatefulWidget {
     this.curve = Curves.linear,
     this.animationDuration = const Duration(milliseconds: 200),
     this.onToggle,
-    this.headerPadding,
-    this.headerDecoration,
+    this.titlePadding,
+    this.titleDecoration,
     this.initiallyExpand = false,
     this.showIcon = true,
     this.iconPosition = IconPosition.end,
@@ -48,8 +77,7 @@ class SuraAccordion extends StatefulWidget {
   _SuraAccordionState createState() => _SuraAccordionState();
 }
 
-class _SuraAccordionState extends State<SuraAccordion>
-    with SingleTickerProviderStateMixin {
+class _SuraAccordionState extends State<SuraAccordion> with SingleTickerProviderStateMixin {
   AnimationController controller;
   Animation<double> size;
   Animation<double> rotation;
@@ -110,19 +138,15 @@ class _SuraAccordionState extends State<SuraAccordion>
           InkWell(
             onTap: onToggle,
             customBorder: RoundedRectangleBorder(
-              borderRadius: widget.headerDecoration?.borderRadius ??
-                  SuraDecoration.radius(0),
+              borderRadius: widget.titleDecoration?.borderRadius ?? SuraDecoration.radius(0),
             ),
             child: Ink(
-              decoration: widget.headerDecoration,
-              padding: widget.headerPadding ?? const EdgeInsets.all(16),
+              decoration: widget.titleDecoration,
+              padding: widget.titlePadding ?? const EdgeInsets.all(16),
               child: Row(
-                mainAxisAlignment: widget.iconPosition == IconPosition.start
-                    ? MainAxisAlignment.start
-                    : MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: widget.iconPosition == IconPosition.start ? MainAxisAlignment.start : MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  if (widget.iconPosition == IconPosition.start &&
-                      widget.showIcon) ...[
+                  if (widget.iconPosition == IconPosition.start && widget.showIcon) ...[
                     icon,
                     SpaceX(),
                   ],
@@ -132,8 +156,7 @@ class _SuraAccordionState extends State<SuraAccordion>
                       style: Theme.of(context).textTheme.subtitle1,
                     ),
                   ),
-                  if (widget.iconPosition == IconPosition.end &&
-                      widget.showIcon) ...[icon],
+                  if (widget.iconPosition == IconPosition.end && widget.showIcon) ...[icon],
                 ],
               ),
             ),

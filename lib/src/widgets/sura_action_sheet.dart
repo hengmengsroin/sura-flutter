@@ -1,12 +1,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+///A cupertino action sheet that use to create an option selector
 class SuraActionSheet<T> extends StatelessWidget {
   ///When you tap on [options], it will return it's index value as a result
   final List<T> options;
+
+  ///A text that show above all the options
   final String title;
+
+  ///A text that show at the bottom of options
   final String cancelText;
+
+  ///A function that call after you selected one of the options
   final void Function(T option, int index) onSelected;
+
+  ///A widget builder of option
   final Widget Function(T option, int index) builder;
   //Create a cupertino bottom sheet with list of option
   const SuraActionSheet({

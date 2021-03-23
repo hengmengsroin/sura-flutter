@@ -5,7 +5,7 @@ import 'callback.dart';
 ///This class is inspired from SWR in React
 ///[FutureManager] is a wrap around [Future] and [ChangeNotifier]
 ///
-///[FutureManager] use [AsyncFutureControllerBuilder] instead of FutureBuilder to handle data
+///[FutureManager] use [FutureManagerBuilder] instead of FutureBuilder to handle data
 ///
 ///[FutureManager] provide a method [asyncOperation] to handle or call async function
 class FutureManager<T> extends ChangeNotifier {
@@ -27,12 +27,7 @@ class FutureManager<T> extends ChangeNotifier {
   final bool reloading;
 
   ///Create a FutureManager instance, You can define a [futureFunction] here then [asyncOperation] will be call immediately
-  FutureManager(
-      {this.futureFunction,
-      this.reloading = true,
-      this.onSuccess,
-      this.onDone,
-      this.onError}) {
+  FutureManager({this.futureFunction, this.reloading = true, this.onSuccess, this.onDone, this.onError}) {
     if (futureFunction != null) {
       asyncOperation(
         futureFunction,
@@ -70,8 +65,7 @@ class FutureManager<T> extends ChangeNotifier {
     VoidCallback onDone,
     ErrorCallBack onError,
   }) refresh = ({reloading, onSuccess, onDone, onError}) async {
-    print(
-        "refresh is depend on AsyncOperation, You need to call asyncOperation once before you can call refresh");
+    print("refresh is depend on AsyncOperation, You need to call asyncOperation once before you can call refresh");
     return null;
   };
 
@@ -110,11 +104,7 @@ class FutureManager<T> extends ChangeNotifier {
         onOperationDone?.call();
       }
     };
-    return refresh(
-        reloading: reloading,
-        onSuccess: onSuccess,
-        onDone: onDone,
-        onError: onError);
+    return refresh(reloading: reloading, onSuccess: onSuccess, onDone: onDone, onError: onError);
   }
 
   void toggleLoading() {

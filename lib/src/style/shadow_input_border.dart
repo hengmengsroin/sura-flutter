@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 
 class ShadowInputBorder extends InputBorder {
+  ///border radius of the border
   final BorderRadius borderRadius;
+
+  ///shadow level of the border
   final double elevation;
+
+  ///Color of the shadow
   final Color shadowColor;
+
+  ///COlor that fill the entired TextField
   final Color fillColor;
 
   /// Creates an shadow border for an [InputDecorator]
@@ -26,11 +33,7 @@ class ShadowInputBorder extends InputBorder {
 
   @override
   Path getInnerPath(Rect rect, {TextDirection textDirection}) {
-    return Path()
-      ..addRRect(borderRadius
-          .resolve(textDirection)
-          .toRRect(rect)
-          .deflate(borderSide.width));
+    return Path()..addRRect(borderRadius.resolve(textDirection).toRRect(rect).deflate(borderSide.width));
   }
 
   @override
@@ -42,11 +45,7 @@ class ShadowInputBorder extends InputBorder {
   bool get isOutline => true;
 
   @override
-  void paint(Canvas canvas, Rect rect,
-      {double gapStart,
-      double gapExtent = 0.0,
-      double gapPercentage = 0.0,
-      TextDirection textDirection}) {
+  void paint(Canvas canvas, Rect rect, {double gapStart, double gapExtent = 0.0, double gapPercentage = 0.0, TextDirection textDirection}) {
     final paint = Paint()..color = fillColor ?? Colors.white;
     final RRect outer = borderRadius.toRRect(rect);
     canvas.drawShadow(getOuterPath(rect), shadowColor, elevation, false);

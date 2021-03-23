@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
+///Provide some field to use in a Widget that contains form
 mixin SuraFormMixin<T extends StatefulWidget> on State<T> {
   final formKey = GlobalKey<FormState>();
   final loadingNotifier = ValueNotifier<bool>(false);
