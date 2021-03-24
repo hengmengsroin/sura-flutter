@@ -27,7 +27,12 @@ class FutureManager<T> extends ChangeNotifier {
   final bool reloading;
 
   ///Create a FutureManager instance, You can define a [futureFunction] here then [asyncOperation] will be call immediately
-  FutureManager({this.futureFunction, this.reloading = true, this.onSuccess, this.onDone, this.onError}) {
+  FutureManager(
+      {this.futureFunction,
+      this.reloading = true,
+      this.onSuccess,
+      this.onDone,
+      this.onError}) {
     if (futureFunction != null) {
       asyncOperation(
         futureFunction,
@@ -64,8 +69,10 @@ class FutureManager<T> extends ChangeNotifier {
     SuccessCallBack<T> onSuccess,
     VoidCallback onDone,
     ErrorCallBack onError,
-  }) refresh = ({reloading, onSuccess, onDone, onError}) async {
-    print("refresh is depend on AsyncOperation, You need to call asyncOperation once before you can call refresh");
+    bool throwError,
+  }) refresh = ({reloading, onSuccess, onDone, onError, throwError}) async {
+    print(
+        "refresh is depend on AsyncOperation, You need to call asyncOperation once before you can call refresh");
     return null;
   };
 
@@ -75,8 +82,9 @@ class FutureManager<T> extends ChangeNotifier {
     SuccessCallBack<T> onSuccess,
     VoidCallback onDone,
     ErrorCallBack onError,
+    bool throwError = false,
   }) async {
-    refresh = ({reloading, onSuccess, onDone, onError}) async {
+    refresh = ({reloading, onSuccess, onDone, onError, throwError}) async {
       bool shouldReload = reloading ?? this.reloading;
       SuccessCallBack<T> successCallBack = onSuccess ?? this.onSuccess;
       ErrorCallBack errorCallBack = onError ?? this.onError;
@@ -98,13 +106,22 @@ class FutureManager<T> extends ChangeNotifier {
       } catch (exception) {
         if (triggerError) _error = exception;
         errorCallBack?.call(exception);
+        if (throwError) {
+          throw exception;
+        }
         return null;
       } finally {
         toggleLoading();
         onOperationDone?.call();
       }
     };
-    return refresh(reloading: reloading, onSuccess: onSuccess, onDone: onDone, onError: onError);
+    return refresh(
+      reloading: reloading,
+      onSuccess: onSuccess,
+      onDone: onDone,
+      onError: onError,
+      throwError: throwError,
+    );
   }
 
   void toggleLoading() {

@@ -1,10 +1,15 @@
+## [0.1.2] - 25 March 2021
+
+- Add documentation
+- add throwError to FutureManager
+
 ## [0.1.1] - 15 March 2021
 
 - Add FutureManager
 - Add AsyncSubjectManager
 - Add FutureManagerBuilder
 - Breaking change:
-    - SuraStyle change to SuraDecoration
+  - SuraStyle change to SuraDecoration
 
 ## [0.0.8] - 6 March 2021
 

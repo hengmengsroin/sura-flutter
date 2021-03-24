@@ -33,7 +33,11 @@ class ShadowInputBorder extends InputBorder {
 
   @override
   Path getInnerPath(Rect rect, {TextDirection textDirection}) {
-    return Path()..addRRect(borderRadius.resolve(textDirection).toRRect(rect).deflate(borderSide.width));
+    return Path()
+      ..addRRect(borderRadius
+          .resolve(textDirection)
+          .toRRect(rect)
+          .deflate(borderSide.width));
   }
 
   @override
@@ -45,7 +49,11 @@ class ShadowInputBorder extends InputBorder {
   bool get isOutline => true;
 
   @override
-  void paint(Canvas canvas, Rect rect, {double gapStart, double gapExtent = 0.0, double gapPercentage = 0.0, TextDirection textDirection}) {
+  void paint(Canvas canvas, Rect rect,
+      {double gapStart,
+      double gapExtent = 0.0,
+      double gapPercentage = 0.0,
+      TextDirection textDirection}) {
     final paint = Paint()..color = fillColor ?? Colors.white;
     final RRect outer = borderRadius.toRRect(rect);
     canvas.drawShadow(getOuterPath(rect), shadowColor, elevation, false);

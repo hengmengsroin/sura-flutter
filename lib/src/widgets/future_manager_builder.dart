@@ -68,7 +68,8 @@ class _FutureManagerBuilderState<T> extends State<FutureManagerBuilder<T>> {
           );
     } else {
       if (widget.loading != null) return widget.loading;
-      return suraTheme?.loadingWidget ?? Center(child: CircularProgressIndicator());
+      return suraTheme?.loadingWidget ??
+          Center(child: CircularProgressIndicator());
     }
   }
 }

@@ -56,7 +56,8 @@ class AsyncSubjectManager<T> {
     SuccessCallBack<T> onSuccess,
     VoidCallback onDone,
     ErrorCallBack onError,
-  }) refresh = ({reloading, onSuccess, onDone, onError}) async {
+    bool throwError,
+  }) refresh = ({reloading, onSuccess, onDone, onError, throwError}) async {
     print(
         "refresh is depend on AsyncOperation, You need to call asyncOperation once before you can call refresh");
     return null;
@@ -72,8 +73,9 @@ class AsyncSubjectManager<T> {
     SuccessCallBack<T> onSuccess,
     VoidCallback onDone,
     ErrorCallBack onError,
+    bool throwError = false,
   }) async {
-    refresh = ({reloading, onSuccess, onDone, onError}) async {
+    refresh = ({reloading, onSuccess, onDone, onError, throwError}) async {
       bool shouldReload = reloading ?? this.reloading;
       SuccessCallBack<T> successCallBack = onSuccess ?? this.onSuccess;
       ErrorCallBack errorCallBack = onError ?? this.onError;
@@ -94,16 +96,21 @@ class AsyncSubjectManager<T> {
       } catch (exception) {
         errorCallBack?.call(exception);
         if (triggerError) this.addError(exception);
+        if (throwError) {
+          throw exception;
+        }
         return null;
       } finally {
         onOperationDone?.call();
       }
     };
     return refresh(
-        reloading: reloading,
-        onSuccess: onSuccess,
-        onDone: onDone,
-        onError: onError);
+      reloading: reloading,
+      onSuccess: onSuccess,
+      onDone: onDone,
+      onError: onError,
+      throwError: throwError,
+    );
   }
 
   void addError(dynamic error) {

@@ -77,7 +77,8 @@ class SuraAccordion extends StatefulWidget {
   _SuraAccordionState createState() => _SuraAccordionState();
 }
 
-class _SuraAccordionState extends State<SuraAccordion> with SingleTickerProviderStateMixin {
+class _SuraAccordionState extends State<SuraAccordion>
+    with SingleTickerProviderStateMixin {
   AnimationController controller;
   Animation<double> size;
   Animation<double> rotation;
@@ -138,15 +139,19 @@ class _SuraAccordionState extends State<SuraAccordion> with SingleTickerProvider
           InkWell(
             onTap: onToggle,
             customBorder: RoundedRectangleBorder(
-              borderRadius: widget.titleDecoration?.borderRadius ?? SuraDecoration.radius(0),
+              borderRadius: widget.titleDecoration?.borderRadius ??
+                  SuraDecoration.radius(0),
             ),
             child: Ink(
               decoration: widget.titleDecoration,
               padding: widget.titlePadding ?? const EdgeInsets.all(16),
               child: Row(
-                mainAxisAlignment: widget.iconPosition == IconPosition.start ? MainAxisAlignment.start : MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: widget.iconPosition == IconPosition.start
+                    ? MainAxisAlignment.start
+                    : MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  if (widget.iconPosition == IconPosition.start && widget.showIcon) ...[
+                  if (widget.iconPosition == IconPosition.start &&
+                      widget.showIcon) ...[
                     icon,
                     SpaceX(),
                   ],
@@ -156,7 +161,8 @@ class _SuraAccordionState extends State<SuraAccordion> with SingleTickerProvider
                       style: Theme.of(context).textTheme.subtitle1,
                     ),
                   ),
-                  if (widget.iconPosition == IconPosition.end && widget.showIcon) ...[icon],
+                  if (widget.iconPosition == IconPosition.end &&
+                      widget.showIcon) ...[icon],
                 ],
               ),
             ),
