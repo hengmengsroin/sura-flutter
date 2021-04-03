@@ -37,8 +37,10 @@ class SuraListTile extends StatelessWidget {
     );
 
     final subTitleWidget = DefaultTextStyle(
-      style:
-          Theme.of(context).textTheme.bodyText2.copyWith(color: Colors.black54),
+      style: Theme.of(context)
+          .textTheme
+          .bodyText2
+          .copyWith(color: Theme.of(context).textTheme.caption.color),
       child: subtitle ?? const SizedBox(),
     );
 

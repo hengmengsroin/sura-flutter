@@ -1,3 +1,7 @@
+## [0.1.3] - 04 April 2021
+
+- fix SuraListTile subtitle text color
+
 ## [0.1.2] - 25 March 2021
 
 - Add documentation
