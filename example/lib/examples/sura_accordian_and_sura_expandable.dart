@@ -13,26 +13,30 @@ class _SuraAccordianAndExpandableState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('')),
+      appBar: AppBar(title: Text('SuraAccordion and Expandable')),
       body: SingleChildScrollView(
         child: Column(
           children: [
             SuraAccordion(
-              title: Text("Members"),
+              title: Text("SuraAccordion"),
               childrenPadding: EdgeInsets.zero,
+              titleDecoration: BoxDecoration(),
               children: List.generate(
-                10,
+                5,
                 (index) => SuraListTile(
-                  title: Text("Name"),
+                  title: Text("Flutter"),
                   onTap: () {},
-                  leading: CircleAvatar(),
+                  leading: CircleAvatar(child: Icon(Icons.sd_card)),
                 ),
               ),
             ),
+            SpaceY(16),
             SuraExpandable(
+              padding: EdgeInsets.zero,
               topChild: SuraListTile(
-                title: Text("Click this"),
-                leading: CircleAvatar(),
+                title: Text("SuraExpandable"),
+                subtitle: Text("Click this to show more content"),
+                trailing: Icon(Icons.arrow_circle_down),
               ),
               bottomChild: SuraListTile(
                 title: Text("To show this"),

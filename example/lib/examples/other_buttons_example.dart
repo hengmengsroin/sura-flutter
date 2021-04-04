@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sura_flutter/sura_flutter.dart';
+import 'package:toast/toast.dart';
 
 class OtherButtonExample extends StatefulWidget {
   @override
@@ -12,6 +13,17 @@ class _OtherButtonExampleState extends State<OtherButtonExample> {
   SuraLoadingDialog loadingDialog;
   FutureManager futureManager;
 
+  Future onButtonClick() async {
+    await Future.delayed(Duration(seconds: 2));
+    Toast.show("Button click", context);
+  }
+
+  Future onActionButtonClick() async {
+    isLoading.value = true;
+    await Future.delayed(Duration(seconds: 2));
+    isLoading.value = false;
+  }
+
   @override
   void dispose() {
     isLoading.dispose();
@@ -22,18 +34,15 @@ class _OtherButtonExampleState extends State<OtherButtonExample> {
   Widget build(BuildContext context) {
     loadingDialog = SuraLoadingDialog(context);
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Sura Buttons Example"),
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SuraToolbar(
-              title: "Header",
-              //icon: Icon(Icons.arrow_back_ios),
-              titleAlignment: Alignment.centerLeft,
-              backgroundColor: Colors.lightBlueAccent,
-            ),
-            SpaceY(),
+            SpaceY(24),
             buildButtonCategory(
-              name: "Sura Icon Button",
+              name: "SuraIconButton",
               buttons: [
                 SuraIconButton(
                   icon: Icon(Icons.add_a_photo_rounded, color: Colors.white),
@@ -62,61 +71,30 @@ class _OtherButtonExampleState extends State<OtherButtonExample> {
               ],
             ),
             buildButtonCategory(
-              name: "Sura Flat Button",
+              name: "SuraFlatButton",
               buttons: [
                 SuraFlatButton(
                   icon: Icon(Icons.add_a_photo_rounded, color: Colors.white),
                   child: Text("Click me").textColor(),
                   margin: EdgeInsets.symmetric(vertical: 4, horizontal: 12),
-                  onPressed: () {
-                    showDialog(
-                      context: context,
-                      builder: (context) {
-                        return SuraConfirmationDialog(
-                          content: Text("You sure?"),
-                          swapButtonsPosition: false,
-                          onConfirm: () {
-                            print("confirm");
-                          },
-                          onCancel: () {
-                            print("cancel");
-                          },
-                        );
-                      },
-                    );
-                  },
+                  onPressed: onButtonClick,
                   backgroundColor: Colors.lightGreen,
                 ),
                 SuraFlatButton(
                   child: Text("No Icon"),
                   margin: EdgeInsets.symmetric(vertical: 4),
-                  onPressed: () {
-                    showDialog(
-                      context: context,
-                      builder: (context) {
-                        return SuraSimpleDialog(
-                          content: "You sure?",
-                        );
-                      },
-                    );
-                  },
+                  onPressed: onButtonClick,
                 ),
               ],
             ),
             buildButtonCategory(
-              name: "Action Button",
+              name: "SuraRaisedButton",
               buttons: [
                 SuraRaisedButton(
                   loadingNotifier: isLoading,
                   icon: Icon(Icons.notifications, color: Colors.white),
                   margin: EdgeInsets.symmetric(vertical: 4),
-                  onPressed: () async {
-                    isLoading.value = true;
-                    loadingDialog.show();
-                    await Future.delayed(Duration(seconds: 3));
-                    loadingDialog.hide();
-                    isLoading.value = false;
-                  },
+                  onPressed: onActionButtonClick,
                   child: Text("Click me"),
                   color: Colors.red,
                   fullWidth: false,
@@ -124,45 +102,28 @@ class _OtherButtonExampleState extends State<OtherButtonExample> {
               ],
             ),
             buildButtonCategory(
-              name: "Sura Async Button",
+              name: "SuraAsyncButton",
               buttons: [
-                SuraAsyncButton(
-                  margin: EdgeInsets.symmetric(vertical: 4, horizontal: 45),
-                  onPressed: () async {
-                    isLoading.value = true;
-                    await Future.delayed(Duration(seconds: 3));
-                    isLoading.value = false;
-                  },
-                  child: Text("Click me"),
-                  fullWidth: true,
-                  loadingType: LoadingType.Disable,
-                ),
-              ],
-            ),
-            buildButtonCategory(
-              name: "Sura Async Button",
-              buttons: [
-                SuraAsyncButton(
-                  margin: EdgeInsets.symmetric(vertical: 4, horizontal: 45),
-                  elevation: 0.0,
-                  loadingColor: Colors.red,
-                  borderSide: BorderSide(
-                    width: 1.0,
-                    color: Colors.red,
-                  ),
-                  onPressed: () async {
-                    isLoading.value = true;
-                    await Future.delayed(Duration(seconds: 3));
-                    isLoading.value = false;
-                  },
-                  child: Text(
-                    "Click me",
-                    style: TextStyle(color: Colors.red),
-                  ),
-                  fullWidth: true,
-                  startIcon: Icon(Icons.add, color: Colors.red),
-                  alignment: MainAxisAlignment.start,
-                  color: Colors.white,
+                Column(
+                  children: [
+                    Text("Loading type: Disable"),
+                    SuraAsyncButton(
+                      margin: EdgeInsets.symmetric(vertical: 0, horizontal: 64),
+                      onPressed: onButtonClick,
+                      child: Text("Click me"),
+                      fullWidth: false,
+                      loadingType: LoadingType.Disable,
+                    ),
+                    SpaceY(24),
+                    Text("Loading type: Progress"),
+                    SuraAsyncButton(
+                      margin: EdgeInsets.symmetric(horizontal: 64),
+                      onPressed: onButtonClick,
+                      child: Text("Click me"),
+                      fullWidth: true,
+                      loadingType: LoadingType.Progress,
+                    ),
+                  ],
                 ),
               ],
             ),

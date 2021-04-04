@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sura_flutter/sura_flutter.dart';
+import 'package:sura_flutter_example/examples/builder_example.dart';
 import 'package:sura_flutter_example/examples/other_buttons_example.dart';
 import 'package:sura_flutter_example/examples/sura_accordian_and_sura_expandable.dart';
 
@@ -35,9 +36,12 @@ class _MyHomePageState extends State<MyHomePage> with SuraFormMixin {
   }
 
   final List<ExampleButton> examples = [
-    ExampleButton(name: "Other Buttons example", child: OtherButtonExample()),
-    ExampleButton(name: "Accordion", child: SuraAccordianAndExpandable()),
+    ExampleButton(name: "Sura Buttons example", child: OtherButtonExample()),
+    ExampleButton(
+        name: "Sura Accordion and Expandable",
+        child: SuraAccordianAndExpandable()),
     ExampleButton(name: "Sura Utils", child: SuraUtilExamples()),
+    ExampleButton(name: "Sura Builders Example", child: SuraBuilderExample()),
   ];
 
   @override

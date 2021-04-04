@@ -17,28 +17,28 @@ dependencies:
 
 | Widget                                 | Description                                            |
 | -------------------------------------- | ------------------------------------------------------ |
-| [SuraRaisedButton][otherbuttonurl]     | A Simple RaisedButton with loading notifier            |
-| [SuraBadge][otherbuttonurl]            | A small badge                                          |
-| [SuraActionSheet][sheet-dialog]        | A Cupertino bottom sheet with option                   |
-| [ConditionalWidget][other]             | Provide a widget base on condition true or false       |
+| [SuraRaisedButton][otherbuttonurl]     | A Material ElevatedButton with loading notifier        |
+| [SuraBadge][otherbuttonurl]            | A small badge like notification                        |
+| [SuraActionSheet][sheet-dialog]        | ACupertino bottom sheet with option                    |
+| [ConditionalWidget][other]             | Build a widget base on a boolean condition             |
 | [SuraToolbar][otherbuttonurl]          | A custom back button with title (header)               |
 | [SuraFutureHandler][streamfutureurl]   | A FutureBuilder with less boilerplate code             |
 | [SuraAccordian][accordin-expandable]   | A customizable ExpansionTile                           |
 | [SuraExpandable][accordin-expandable]  | A widget that can be toggle with top and bottom widget |
-| [SuraConfirmationDialog][sheet-dialog] | A dialog with cancel and confirm action                |
-| [SuraAsyncButton][jinloadingbuttonurl] | A Loading button without using ValueNotifier           |
-| [SuraLoadingDialog][sheet-dialog]      | A Class for showing dialog                             |
+| [SuraConfirmationDialog][sheet-dialog] | An Alert dialog with cancel and confirm action         |
+| [SuraAsyncButton][jinloadingbuttonurl] | A Material ElevatedButton that has a loading widget    |
+| [SuraLoadingDialog][sheet-dialog]      | A Loading dialog manager class                         |
 | [SuraPlatformChecker][other]           | Provide a widget base on Android or iOS platform       |
 | [SuraSimpleDialog][sheet-dialog]       | A simple alert dialog                                  |
-| [SuraListTile][other]                  | An easy customizable ListTile                          |
+| [SuraListTile][other]                  | An easy and customizable ListTile                      |
 | [SuraPaginatedList][paginated]         | A Listview.separated with pagination support           |
 | [SuraPaginatedGridBuilder][paginated]  | A Gridview.builder with pagination support             |
-| [SuraIconButton][otherbuttonurl]       | A small alternative to Flutter's IconButton            |
+| [SuraIconButton][otherbuttonurl]       | A customizable IconButton                              |
 | [SuraFlatButton][otherbuttonurl]       | A small alternative to Flutter's FlatButton            |
 | [SpaceX][other]                        | SizedBox with only width                               |
 | [SpaceY][other]                        | SizedBox with only height                              |
 | [SuraStreamHandler][streamfutureurl]   | A Streambuilder with less boilerplate code             |
-| [SuraNotifier][other]                  | A ValueListenableBuilder with lest boilerplate code    |
+| [SuraNotifier][other]                  | A ValueListenableBuilder with less boilerplate code    |
 
 [jinloadingbuttonurl]: https://github.com/asurraa/sura_flutter
 [otherbuttonurl]: https://github.com/asurraa/sura_flutter
