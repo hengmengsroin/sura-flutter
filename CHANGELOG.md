@@ -1,3 +1,7 @@
+## [0.1.4] - 10 April 2021
+
+- fix FutureManager error when call refresh
+
 ## [0.1.3] - 04 April 2021
 
 - fix SuraListTile subtitle text color

@@ -89,6 +89,7 @@ class FutureManager<T> extends ChangeNotifier {
       SuccessCallBack<T> successCallBack = onSuccess ?? this.onSuccess;
       ErrorCallBack errorCallBack = onError ?? this.onError;
       VoidCallback onOperationDone = onDone ?? this.onDone;
+      bool shouldThrowError = throwError ?? false;
       //
       bool triggerError = true;
       if (hasData) {
@@ -106,7 +107,7 @@ class FutureManager<T> extends ChangeNotifier {
       } catch (exception) {
         if (triggerError) _error = exception;
         errorCallBack?.call(exception);
-        if (throwError) {
+        if (shouldThrowError) {
           throw exception;
         }
         return null;

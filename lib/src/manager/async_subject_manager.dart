@@ -80,6 +80,7 @@ class AsyncSubjectManager<T> {
       SuccessCallBack<T> successCallBack = onSuccess ?? this.onSuccess;
       ErrorCallBack errorCallBack = onError ?? this.onError;
       VoidCallback onOperationDone = onDone ?? this.onDone;
+      bool shouldThrowError = throwError ?? false;
       //
       bool triggerError = true;
       if (this._controller.hasValue) {
@@ -96,7 +97,7 @@ class AsyncSubjectManager<T> {
       } catch (exception) {
         errorCallBack?.call(exception);
         if (triggerError) this.addError(exception);
-        if (throwError) {
+        if (shouldThrowError) {
           throw exception;
         }
         return null;
