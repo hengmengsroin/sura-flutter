@@ -1,6 +1,7 @@
 # sura_flutter
 
 [![pub package](https://img.shields.io/badge/pub-0.1.4-blueviolet.svg)](https://pub.dev/packages/sura_flutter)
+![Latest commit](https://badgen.net/github/last-commit/asurraa/sura_flutter)
 
 A flutter package from AsurRaa for widgets and utility functions
 
