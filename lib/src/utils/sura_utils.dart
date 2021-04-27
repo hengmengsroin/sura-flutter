@@ -27,12 +27,9 @@ class SuraUtils {
   ///get bytes from asset that mostly use for google map marker
   static Future<Uint8List> getBytesFromAsset(String path, int width) async {
     ByteData data = await rootBundle.load(path);
-    Codec codec = await instantiateImageCodec(data.buffer.asUint8List(),
-        targetWidth: width);
+    Codec codec = await instantiateImageCodec(data.buffer.asUint8List(), targetWidth: width);
     FrameInfo fi = await codec.getNextFrame();
-    return (await fi.image.toByteData(format: ImageByteFormat.png))
-        .buffer
-        .asUint8List();
+    return (await fi.image.toByteData(format: ImageByteFormat.png)).buffer.asUint8List();
   }
 
   ///get A random Image from Picsum with given dimension
@@ -40,6 +37,7 @@ class SuraUtils {
     return "https://picsum.photos/$width/$height";
   }
 
+  ///Get a random Image from Unsplash in category filter
   static String unsplashImage({
     int width = 200,
     int height = 200,

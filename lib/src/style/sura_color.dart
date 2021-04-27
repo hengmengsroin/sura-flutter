@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 class SuraColor {
   ///Get color from String hex code
-  static Color fromCode(String code) {
+  ///use defaultColor if there's an error
+  static Color fromCode(String code, {Color defaultColor = Colors.white}) {
     try {
       String hexAlphaPrefix = '0xFF';
       String colorCode;
@@ -15,7 +16,8 @@ class SuraColor {
 
       return Color(int.parse(colorCode));
     } catch (e) {
-      throw "Invalid color format";
+      print("SuraColor: => Invalid color formaat");
+      return defaultColor;
     }
   }
 
