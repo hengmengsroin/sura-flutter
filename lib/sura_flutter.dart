@@ -6,7 +6,7 @@ export 'src/manager/callback.dart';
 export 'src/manager/future_manager.dart';
 //mixin
 export 'src/mixin/after_build_mixin.dart';
-export 'src/mixin/notifier_mixin.dart';
+export 'src/mixin/bool_notifier_mixin.dart';
 export 'src/mixin/sura_form_mixin.dart';
 //style
 export 'src/style/dot_tab_indicator.dart';
