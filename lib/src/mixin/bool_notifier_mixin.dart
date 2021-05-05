@@ -4,8 +4,8 @@ import 'package:flutter/cupertino.dart';
 mixin BoolNotifierMixin<T extends StatefulWidget> on State<T> {
   ValueNotifier<bool> boolNotifier;
 
-  void toggleValue() {
-    boolNotifier.value = !boolNotifier.value;
+  void toggleValue([bool value]) {
+    boolNotifier.value = value ?? !boolNotifier.value;
   }
 
   @override
