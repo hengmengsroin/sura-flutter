@@ -1,3 +1,8 @@
+## [0.1.5] - 19 May 2021
+
+- Add default Color to SuraColor
+- Rename NotifierMixin to BoolNotifierMixin and can add value to toggle loading
+
 ## [0.1.4] - 10 April 2021
 
 - fix FutureManager error when call refresh

@@ -1,7 +1,6 @@
 # sura_flutter
 
-[![pub package](https://img.shields.io/badge/pub-0.1.4-blueviolet.svg)](https://pub.dev/packages/sura_flutter)
-![Latest commit](https://badgen.net/github/last-commit/asurraa/sura_flutter)
+[![pub package](https://img.shields.io/badge/pub-0.1.5-blueviolet.svg)](https://pub.dev/packages/sura_flutter) ![Latest commit](https://badgen.net/github/last-commit/asurraa/sura_flutter)
 
 A flutter package from AsurRaa for widgets and utility functions
 
@@ -11,7 +10,7 @@ Add this to pubspec.yaml
 
 ```dart
 dependencies:
-  sura_flutter: ^0.1.4
+  sura_flutter: ^0.1.5
 ```
 
 # Widgets
@@ -94,13 +93,13 @@ class _HomePageState extends State<NewPage> with SuraFormMixin {
 }
 ```
 
-### NotifierMixin
+### BoolNotifierMixin
 
-- **loadingNotifier**: a bool ValueNotifier
+- **boolNotifier**: a bool ValueNotifier
 
 #### method
 
-- **toggleLoading**: toggle _loadingNotifier_
+- **toggleValue**: toggle _loadingNotifier_
 
 ```dart
 class _HomePageState extends State<NewPage> with SuraFormMixin {
@@ -290,9 +289,9 @@ SuraNavigator.pushAndRemove(RootPage());
 var result = await SuraNavigator.dialog(MyDialog());
 ```
 
-### SuraStyle
+### SuraDecoration
 
 ```dart
-RoundedRectangleBorder roundRectangle = SuraStyle.roundRect(12);//default value is 8
-BorderRadius radius = SuraStyle.radius(12); //default value is 8
+RoundedRectangleBorder roundRectangle = SuraDecoration.roundRect(12);//default value is 8
+BorderRadius radius = SuraDecoration.radius(12); //default value is 8
 ```
