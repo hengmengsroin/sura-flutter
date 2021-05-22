@@ -14,7 +14,7 @@ mixin SuraFormMixin<T extends StatefulWidget> on State<T> {
     passwordObsecureNotifier.value = !passwordObsecureNotifier.value;
   }
 
-  bool get isFormValidated => formKey.currentState.validate();
+  bool get isFormValidated => formKey.currentState?.validate() ?? true;
 
   @override
   void dispose() {
@@ -24,7 +24,7 @@ mixin SuraFormMixin<T extends StatefulWidget> on State<T> {
   }
 
   // ignore: non_constant_identifier_names
-  Widget PasswordTextFieldBuilder({@required Widget Function(bool) builder}) {
+  Widget PasswordTextFieldBuilder({required Widget Function(bool) builder}) {
     return ValueListenableBuilder<bool>(
       valueListenable: passwordObsecureNotifier,
       builder: (context, isObsecure, child) {

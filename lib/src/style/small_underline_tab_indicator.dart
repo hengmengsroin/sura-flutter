@@ -23,17 +23,18 @@ class SmallUnderLineTabIndicator extends Decoration {
   final TabAlignment tabAlignment;
 
   SmallUnderLineTabIndicator({
-    @required this.color,
+    required this.color,
     this.width = 16,
     this.height = 8,
     this.radius = 8,
     this.paddingLeft = 0,
     this.tabAlignment = TabAlignment.bottom,
-  }) : assert(color != null);
+  });
+
   @override
-  BoxPainter createBoxPainter([void Function() onChanged]) {
+  BoxPainter createBoxPainter([void Function()? onChanged]) {
     return _SmallUnderLineTabIndicatorPainter(
-      onChanged,
+      onChanged!,
       color,
       width,
       height,
@@ -62,8 +63,7 @@ class _SmallUnderLineTabIndicatorPainter extends BoxPainter {
   ) : super(onChanged);
   @override
   void paint(Canvas canvas, Offset offset, ImageConfiguration configuration) {
-    final double yOffset =
-        tabAlignment == TabAlignment.bottom ? configuration.size.height - 8 : 0;
+    final double yOffset = tabAlignment == TabAlignment.bottom ? configuration.size!.height - 8 : 0;
     final Offset indicatorOffset = offset + Offset(paddingLeft, yOffset);
 
     final paint = Paint()
@@ -75,7 +75,7 @@ class _SmallUnderLineTabIndicatorPainter extends BoxPainter {
           Rect.fromLTWH(
             indicatorOffset.dx,
             indicatorOffset.dy,
-            width.clamp(4.0, configuration.size.width),
+            width.clamp(4.0, configuration.size!.width),
             height,
           ),
           Radius.circular(radius),

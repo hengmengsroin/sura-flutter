@@ -7,24 +7,24 @@ class SuraFutureHandler<T> extends StatelessWidget {
   final Future<T> future;
 
   ///A callback when Future's snapshot hasData
-  final Widget Function(T) ready;
-  final Widget loading;
-  final T initialData;
+  final Widget Function(T?) ready;
+  final Widget? loading;
+  final T? initialData;
 
   ///On snapshot error callback
-  final Widget Function(dynamic) error;
+  final Widget Function(dynamic)? error;
 
   ///Create a futurebuilder with less boilerplate code
   const SuraFutureHandler({
-    @required this.future,
-    @required this.ready,
+    required this.future,
+    required this.ready,
     this.error,
     this.loading,
     this.initialData,
   });
   @override
   Widget build(BuildContext context) {
-    final SuraTheme suraTheme = SuraTheme.of(context);
+    final SuraTheme? suraTheme = SuraTheme.of(context);
     //
     return FutureBuilder<T>(
       future: future,
@@ -33,8 +33,8 @@ class SuraFutureHandler<T> extends StatelessWidget {
         if (snapshot.hasData) {
           return ready(snapshot.data);
         } else if (snapshot.hasError) {
-          if (error != null) return error(snapshot.error);
-          return suraTheme?.errorWidget ??
+          if (error != null) return error!(snapshot.error);
+          return suraTheme?.errorWidget?.call(snapshot.error) ??
               Center(
                 child: Text(
                   snapshot.error.toString(),
@@ -42,9 +42,8 @@ class SuraFutureHandler<T> extends StatelessWidget {
                 ),
               );
         } else {
-          if (loading != null) return loading;
-          return suraTheme?.loadingWidget ??
-              Center(child: CircularProgressIndicator());
+          if (loading != null) return loading!;
+          return suraTheme?.loadingWidget ?? Center(child: CircularProgressIndicator());
         }
       },
     );

@@ -6,9 +6,9 @@ class SuraNotifier<T> extends StatelessWidget {
 
   //A ValueListenableBuilder with cleaner look code
   const SuraNotifier({
-    Key key,
-    @required this.valueNotifier,
-    @required this.builder,
+    Key? key,
+    required this.valueNotifier,
+    required this.builder,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {

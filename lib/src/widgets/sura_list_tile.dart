@@ -2,21 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:sura_flutter/src/widgets/spacing.dart';
 
 class SuraListTile extends StatelessWidget {
-  final Widget leading;
-  final Widget title;
-  final Widget subtitle;
-  final Widget trailing;
-  final Function onTap;
+  final Widget? leading;
+  final Widget? title;
+  final Widget? subtitle;
+  final Widget? trailing;
+  final VoidCallback? onTap;
   final EdgeInsets padding;
   final EdgeInsets margin;
-  final BoxDecoration decoration;
-  final CrossAxisAlignment aligment;
-  final Widget separator;
+  final BoxDecoration? decoration;
+  final CrossAxisAlignment? aligment;
+  final Widget? separator;
   final double titleSpace;
 
   ///A custom listtile for simple customization
   const SuraListTile({
-    Key key,
+    Key? key,
     this.leading,
     this.title,
     this.subtitle,
@@ -32,20 +32,17 @@ class SuraListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final titleWidget = DefaultTextStyle(
-      style: Theme.of(context).textTheme.subtitle1,
+      style: Theme.of(context).textTheme.subtitle1!,
       child: title ?? const SizedBox(),
     );
 
     final subTitleWidget = DefaultTextStyle(
-      style: Theme.of(context)
-          .textTheme
-          .bodyText2
-          .copyWith(color: Theme.of(context).textTheme.caption.color),
+      style: Theme.of(context).textTheme.bodyText2!.copyWith(color: Theme.of(context).textTheme.caption?.color),
       child: subtitle ?? const SizedBox(),
     );
 
     final trailingWidget = DefaultTextStyle(
-      style: Theme.of(context).textTheme.bodyText2,
+      style: Theme.of(context).textTheme.bodyText2!,
       child: trailing ?? const SizedBox(),
     );
 
@@ -55,7 +52,7 @@ class SuraListTile extends StatelessWidget {
       child: Column(
         children: [
           InkWell(
-            onTap: onTap ?? null,
+            onTap: onTap,
             customBorder: RoundedRectangleBorder(
               borderRadius: decoration?.borderRadius ?? BorderRadius.zero,
             ),
@@ -65,7 +62,7 @@ class SuraListTile extends StatelessWidget {
                 crossAxisAlignment: aligment ?? CrossAxisAlignment.center,
                 children: <Widget>[
                   if (leading != null) ...[
-                    leading,
+                    leading!,
                     SpaceX(titleSpace),
                   ],
                   Expanded(
@@ -89,7 +86,7 @@ class SuraListTile extends StatelessWidget {
               ),
             ),
           ),
-          if (separator != null) separator,
+          if (separator != null) separator!,
         ],
       ),
     );

@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 ///Custom AppBar or ToolBar that often use if you're only need a [BackButton] for pop navigator or
 ///define a custom toolbar
 class SuraToolbar extends StatelessWidget {
-  final Icon icon;
-  final Color iconColor;
+  final Icon? icon;
+  final Color? iconColor;
 
   ///A String similar to AppBar's title
-  final String title;
-  final TextStyle titleStyle;
+  final String? title;
+  final TextStyle? titleStyle;
 
   ///A callback when BackButton is Pressed, Default action is to Pop the context
-  final Function onTap;
-  final Color backgroundColor;
+  final void Function()? onTap;
+  final Color? backgroundColor;
 
   ///Alignment of the header
   final Alignment titleAlignment;
@@ -54,7 +54,7 @@ class SuraToolbar extends StatelessWidget {
                   alignment: Alignment.centerLeft,
                   child: icon != null
                       ? IconButton(
-                          icon: icon,
+                          icon: icon!,
                           onPressed: onTap ?? () => Navigator.of(context).pop(),
                         )
                       : BackButton(
@@ -66,14 +66,10 @@ class SuraToolbar extends StatelessWidget {
                 Align(
                   alignment: titleAlignment,
                   child: Container(
-                    margin: EdgeInsets.only(
-                        left: titleAlignment == Alignment.centerLeft
-                            ? titleMargin + 16
-                            : 0),
+                    margin: EdgeInsets.only(left: titleAlignment == Alignment.centerLeft ? titleMargin + 16 : 0),
                     child: Text(
-                      title,
-                      style:
-                          titleStyle ?? Theme.of(context).textTheme.headline6,
+                      title!,
+                      style: titleStyle ?? Theme.of(context).textTheme.headline6,
                     ),
                   ),
                 )

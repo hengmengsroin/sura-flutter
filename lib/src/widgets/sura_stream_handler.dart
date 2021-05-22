@@ -5,27 +5,27 @@ import 'package:flutter/material.dart';
 import 'sura_theme.dart';
 
 class SuraStreamHandler<T> extends StatefulWidget {
-  final Stream stream;
+  final Stream<T> stream;
 
   ///A callback when Stream's snapshot hasData
-  final Widget Function(T) ready;
+  final Widget Function(T?) ready;
 
   ///A widgeting showing when stream's has no data
-  final Widget loading;
+  final Widget? loading;
 
   ///stream initial data
-  final T initialData;
+  final T? initialData;
 
   ///On snapshot error callback
-  final Widget Function(dynamic) error;
+  final Widget Function(dynamic)? error;
 
   ///A function call when stream has an error
-  final void Function(dynamic) onError;
+  final void Function(dynamic)? onError;
 
   ///create a streambuilder with less boilerplate code
   const SuraStreamHandler({
-    @required this.stream,
-    @required this.ready,
+    required this.stream,
+    required this.ready,
     this.error,
     this.onError,
     this.loading,
@@ -37,12 +37,12 @@ class SuraStreamHandler<T> extends StatefulWidget {
 }
 
 class _SuraStreamHandlerState<T> extends State<SuraStreamHandler<T>> {
-  StreamSubscription<T> subscription;
+  StreamSubscription<T>? subscription;
   @override
   void initState() {
     if (widget.onError != null) {
       subscription = widget.stream.asBroadcastStream().listen((data) {});
-      subscription.onError((error) => widget.onError(error));
+      subscription?.onError((error) => widget.onError?.call(error));
     }
     super.initState();
   }
@@ -50,7 +50,7 @@ class _SuraStreamHandlerState<T> extends State<SuraStreamHandler<T>> {
   @override
   void dispose() {
     if (subscription != null) {
-      subscription.cancel();
+      subscription!.cancel();
       subscription = null;
     }
     super.dispose();
@@ -58,7 +58,7 @@ class _SuraStreamHandlerState<T> extends State<SuraStreamHandler<T>> {
 
   @override
   Widget build(BuildContext context) {
-    final SuraTheme suraTheme = SuraTheme.of(context);
+    final SuraTheme? suraTheme = SuraTheme.of(context);
     //
     return StreamBuilder<T>(
       stream: widget.stream,
@@ -67,8 +67,10 @@ class _SuraStreamHandlerState<T> extends State<SuraStreamHandler<T>> {
         if (snapshot.hasData) {
           return widget.ready(snapshot.data);
         } else if (snapshot.hasError) {
-          if (widget.error != null) return widget.error(snapshot.error);
-          return suraTheme?.errorWidget ??
+          if (widget.error != null) {
+            return widget.error!(snapshot.error);
+          }
+          return suraTheme?.errorWidget?.call(snapshot.error) ??
               Center(
                 child: Text(
                   snapshot.error.toString(),
@@ -76,9 +78,10 @@ class _SuraStreamHandlerState<T> extends State<SuraStreamHandler<T>> {
                 ),
               );
         } else {
-          if (widget.loading != null) return widget.loading;
-          return suraTheme?.loadingWidget ??
-              Center(child: CircularProgressIndicator());
+          if (widget.loading != null) {
+            return widget.loading!;
+          }
+          return suraTheme?.loadingWidget ?? Center(child: CircularProgressIndicator());
         }
       },
     );

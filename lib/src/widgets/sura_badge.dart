@@ -5,7 +5,7 @@ class SuraBadge extends StatelessWidget {
   final String text;
   final Color color;
   const SuraBadge({
-    Key key,
+    Key? key,
     this.radius = 6.0,
     this.text = "",
     this.color = Colors.red,

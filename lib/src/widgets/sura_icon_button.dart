@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 
 class SuraIconButton extends StatelessWidget {
-  final Function onTap;
+  final VoidCallback onTap;
   final Widget icon;
   final EdgeInsets margin;
   final EdgeInsets padding;
   final Color backgroundColor;
   final double borderRadius;
   final double elevation;
-  final BorderSide borderSide;
-  final Widget badge;
+  final BorderSide? borderSide;
+  final Widget? badge;
 
   ///An IconButton with respectively small margin and shape
   const SuraIconButton({
-    Key key,
-    @required this.onTap,
-    @required this.icon,
+    Key? key,
+    required this.onTap,
+    required this.icon,
     this.margin = const EdgeInsets.all(0),
     this.padding = const EdgeInsets.all(8),
     this.borderRadius = 8,
@@ -51,7 +51,7 @@ class SuraIconButton extends StatelessWidget {
             ),
             if (badge != null)
               Positioned(
-                child: badge,
+                child: badge!,
                 top: 0,
                 right: 0,
               ),

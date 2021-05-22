@@ -26,13 +26,13 @@ class SuraAccordion extends StatefulWidget {
   final Duration animationDuration;
 
   ///Decordtion of the title
-  final BoxDecoration titleDecoration;
+  final BoxDecoration? titleDecoration;
 
   ///Background color of the wrapping children widgets
-  final Color childrenBackgroundColor;
+  final Color? childrenBackgroundColor;
 
   ///Padding of the title, default value is [EdgeInsets.all(16)]
-  final EdgeInsets titlePadding;
+  final EdgeInsets? titlePadding;
 
   ///Margin of this widget
   final EdgeInsets margin;
@@ -41,7 +41,7 @@ class SuraAccordion extends StatefulWidget {
   final EdgeInsets childrenPadding;
 
   ///A callback function that call on every toggle
-  final Function(bool) onToggle;
+  final Function(bool)? onToggle;
 
   ///a condtion if to expand to Accordion on initial
   final bool initiallyExpand;
@@ -56,9 +56,9 @@ class SuraAccordion extends StatefulWidget {
   final IconPosition iconPosition;
 
   const SuraAccordion({
-    Key key,
-    @required this.title,
-    @required this.children,
+    Key? key,
+    required this.title,
+    required this.children,
     this.margin = const EdgeInsets.all(0.0),
     this.childrenPadding = const EdgeInsets.all(12.0),
     this.icon = const Icon(Icons.keyboard_arrow_down),
@@ -77,11 +77,10 @@ class SuraAccordion extends StatefulWidget {
   _SuraAccordionState createState() => _SuraAccordionState();
 }
 
-class _SuraAccordionState extends State<SuraAccordion>
-    with SingleTickerProviderStateMixin {
-  AnimationController controller;
-  Animation<double> size;
-  Animation<double> rotation;
+class _SuraAccordionState extends State<SuraAccordion> with SingleTickerProviderStateMixin {
+  late AnimationController controller;
+  late Animation<double> size;
+  late Animation<double> rotation;
 
   void onToggle() {
     bool isExpand;
@@ -94,7 +93,7 @@ class _SuraAccordionState extends State<SuraAccordion>
       controller.forward();
       isExpand = true;
     }
-    if (widget.onToggle != null) widget.onToggle(isExpand);
+    if (widget.onToggle != null) widget.onToggle!(isExpand);
   }
 
   @override
@@ -139,19 +138,15 @@ class _SuraAccordionState extends State<SuraAccordion>
           InkWell(
             onTap: onToggle,
             customBorder: RoundedRectangleBorder(
-              borderRadius: widget.titleDecoration?.borderRadius ??
-                  SuraDecoration.radius(0),
+              borderRadius: widget.titleDecoration?.borderRadius ?? SuraDecoration.radius(0),
             ),
             child: Ink(
               decoration: widget.titleDecoration,
               padding: widget.titlePadding ?? const EdgeInsets.all(16),
               child: Row(
-                mainAxisAlignment: widget.iconPosition == IconPosition.start
-                    ? MainAxisAlignment.start
-                    : MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: widget.iconPosition == IconPosition.start ? MainAxisAlignment.start : MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  if (widget.iconPosition == IconPosition.start &&
-                      widget.showIcon) ...[
+                  if (widget.iconPosition == IconPosition.start && widget.showIcon) ...[
                     icon,
                     SpaceX(),
                   ],
@@ -161,8 +156,7 @@ class _SuraAccordionState extends State<SuraAccordion>
                       style: Theme.of(context).textTheme.subtitle1,
                     ),
                   ),
-                  if (widget.iconPosition == IconPosition.end &&
-                      widget.showIcon) ...[icon],
+                  if (widget.iconPosition == IconPosition.end && widget.showIcon) ...[icon],
                 ],
               ),
             ),

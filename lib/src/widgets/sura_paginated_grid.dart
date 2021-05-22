@@ -10,21 +10,21 @@ class SuraPaginatedGridBuilder extends StatefulWidget {
 
   ///If [PaginatedListView] is user inside another scroll view,
   ///you must provide a [scrollController] that also use in your parent [scrollController] scroll view
-  final ScrollController scrollController;
+  final ScrollController? scrollController;
 
   ///Scroll physic of grid view
   final ScrollPhysics physics;
   final bool shrinkWrap;
-  final Widget loadingWidget;
-  final Widget onEmpty;
+  final Widget? loadingWidget;
+  final Widget? onEmpty;
 
   final Widget Function(BuildContext context, int index) itemBuilder;
   SuraPaginatedGridBuilder({
-    Key key,
-    @required this.gridDelegate,
-    @required this.dataLoader,
-    @required this.itemCount,
-    @required this.itemBuilder,
+    Key? key,
+    required this.gridDelegate,
+    required this.dataLoader,
+    required this.itemCount,
+    required this.itemBuilder,
     this.onEmpty,
     this.hasMoreData = false,
     this.shrinkWrap = false,
@@ -34,20 +34,21 @@ class SuraPaginatedGridBuilder extends StatefulWidget {
     this.scrollController,
   }) : super(key: key);
   @override
-  _SuraPaginatedGridBuilderState createState() =>
-      _SuraPaginatedGridBuilderState();
+  _SuraPaginatedGridBuilderState createState() => _SuraPaginatedGridBuilderState();
 }
 
 class _SuraPaginatedGridBuilderState extends State<SuraPaginatedGridBuilder> {
-  ScrollController scrollController;
+  ScrollController? scrollController;
   int loadingState = 0;
 
   bool get _isPrimaryScrollView => widget.scrollController == null;
 
-  void scrollListener(ScrollController controller) {
-    if (controller.offset == controller.position.maxScrollExtent) {
-      loadingState += 1;
-      onLoadingMoreData();
+  void scrollListener(ScrollController? controller) {
+    if (controller != null) {
+      if (controller.offset == controller.position.maxScrollExtent) {
+        loadingState += 1;
+        onLoadingMoreData();
+      }
     }
   }
 
@@ -61,11 +62,10 @@ class _SuraPaginatedGridBuilderState extends State<SuraPaginatedGridBuilder> {
 
   void initController() {
     if (widget.scrollController != null) {
-      widget.scrollController
-          .addListener(() => scrollListener(widget.scrollController));
+      widget.scrollController?.addListener(() => scrollListener(widget.scrollController));
     } else {
       scrollController = ScrollController();
-      scrollController.addListener(() => scrollListener(scrollController));
+      scrollController?.addListener(() => scrollListener(scrollController));
     }
   }
 
@@ -78,7 +78,7 @@ class _SuraPaginatedGridBuilderState extends State<SuraPaginatedGridBuilder> {
   @override
   void dispose() {
     if (scrollController != null) {
-      scrollController.dispose();
+      scrollController?.dispose();
     }
     super.dispose();
   }
@@ -86,7 +86,7 @@ class _SuraPaginatedGridBuilderState extends State<SuraPaginatedGridBuilder> {
   @override
   Widget build(BuildContext context) {
     if (widget.onEmpty != null && widget.itemCount == 0) {
-      return widget.onEmpty;
+      return widget.onEmpty!;
     }
     return Column(
       children: [

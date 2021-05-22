@@ -38,19 +38,15 @@ class SuraJwtDecoder {
 }
 
 class TokenPayload {
-  final DateTime createdDate;
+  final DateTime? createdDate;
   final DateTime expiredDate;
-  final Map<String, dynamic> data;
-  TokenPayload({this.createdDate, this.expiredDate, this.data});
+  final Map<String, dynamic>? data;
+  TokenPayload({this.createdDate, required this.expiredDate, this.data});
 
   factory TokenPayload.fromMap(Map<String, dynamic> payloadMap) {
     return TokenPayload(
-      createdDate: payloadMap["iat"] == null
-          ? null
-          : DateTime.fromMillisecondsSinceEpoch(payloadMap["iat"] * 1000),
-      expiredDate: payloadMap["exp"] == null
-          ? null
-          : DateTime.fromMillisecondsSinceEpoch(payloadMap["exp"] * 1000),
+      createdDate: payloadMap["iat"] == null ? null : DateTime.fromMillisecondsSinceEpoch(payloadMap["iat"] * 1000),
+      expiredDate: DateTime.fromMillisecondsSinceEpoch(payloadMap["exp"] * 1000),
       data: payloadMap,
     );
   }

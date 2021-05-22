@@ -6,17 +6,15 @@ import 'sura_theme.dart';
 class SuraLoadingDialog {
   final bool dismissible;
   final BuildContext context;
-  BuildContext _dialogContext;
+  BuildContext? _dialogContext;
 
   SuraLoadingDialog(
     this.context, {
     this.dismissible = false,
   });
 
-  Future<void> show({Widget child}) async {
-    final dialogChild = child ??
-        SuraTheme.of(context)?.loadingWidget ??
-        CircularProgressIndicator();
+  Future<void> show({Widget? child}) async {
+    final dialogChild = child ?? SuraTheme.of(context)?.loadingWidget ?? CircularProgressIndicator();
     showDialog(
         context: context,
         barrierDismissible: dismissible,
@@ -43,6 +41,6 @@ class SuraLoadingDialog {
   }
 
   void hide() async {
-    if (_dialogContext != null) Navigator.of(_dialogContext).pop();
+    if (_dialogContext != null) Navigator.of(_dialogContext!).pop();
   }
 }

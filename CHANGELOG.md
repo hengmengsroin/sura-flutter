@@ -1,3 +1,7 @@
+## [0.2.0] - 22 May 2021
+
+- UPGRADE TO NULL SAFETY
+
 ## [0.1.5] - 19 May 2021
 
 - Add default Color to SuraColor

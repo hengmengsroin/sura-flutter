@@ -5,7 +5,7 @@ class SuraPaginatedList extends StatefulWidget {
   final int itemCount;
 
   ///Normal Listview physics
-  final ScrollPhysics physics;
+  final ScrollPhysics? physics;
 
   ///Normal Listview scrollDirection
   final Axis scrollDirection;
@@ -14,7 +14,7 @@ class SuraPaginatedList extends StatefulWidget {
   final bool shrinkWrap;
 
   ///[SuraPaginatedList] use ListView.separated, so you can provide divider widget
-  final Widget separator;
+  final Widget? separator;
 
   ///Normal Listview itemBuilder
   final Widget Function(BuildContext, int) itemBuilder;
@@ -23,26 +23,26 @@ class SuraPaginatedList extends StatefulWidget {
   final EdgeInsets padding;
 
   ///Provider a widget if there's no item
-  final Widget onEmpty;
+  final Widget? onEmpty;
 
   ///If [SuraPaginatedList] is user inside another scroll view,
   ///you must provide a [scrollController] that also use in your parent [scrollController] scroll view
-  final ScrollController scrollController;
+  final ScrollController? scrollController;
 
   ///callback for getting more data when ScrollController reach mex scrolExtends
-  final Future<void> Function() dataLoader;
+  final Future<void> Function()? dataLoader;
 
   ///condition to check if we still have more data to fetch
   ///Example: currentItems == totalItems or currentPage == totalPages
   final bool hasMoreData;
 
   ///widget to show when we're fetching more data
-  final Widget loadingWidget;
+  final Widget? loadingWidget;
   const SuraPaginatedList({
-    Key key,
-    @required this.itemCount,
-    @required this.itemBuilder,
-    @required this.dataLoader,
+    Key? key,
+    required this.itemCount,
+    required this.itemBuilder,
+    required this.dataLoader,
     this.hasMoreData = false,
     this.physics = const ClampingScrollPhysics(),
     this.shrinkWrap = false,
@@ -58,30 +58,31 @@ class SuraPaginatedList extends StatefulWidget {
 }
 
 class _SuraPaginatedListState extends State<SuraPaginatedList> {
-  ScrollController scrollController;
+  late ScrollController scrollController;
   int loadingState = 0;
 
   bool get _isPrimaryScrollView => widget.scrollController == null;
 
-  void scrollListener(ScrollController controller) {
-    if (controller.offset == controller.position.maxScrollExtent) {
-      loadingState += 1;
-      onLoadingMoreData();
+  void scrollListener(ScrollController? controller) {
+    if (controller != null) {
+      if (controller.offset == controller.position.maxScrollExtent) {
+        loadingState += 1;
+        onLoadingMoreData();
+      }
     }
   }
 
   void onLoadingMoreData() async {
     if (loadingState > 1) return;
     if (widget.hasMoreData) {
-      await widget.dataLoader();
+      await widget.dataLoader?.call();
       loadingState = 0;
     }
   }
 
   void initController() {
     if (widget.scrollController != null) {
-      widget.scrollController
-          .addListener(() => scrollListener(widget.scrollController));
+      widget.scrollController?.addListener(() => scrollListener(widget.scrollController));
     } else {
       scrollController = ScrollController();
       scrollController.addListener(() => scrollListener(scrollController));
@@ -105,7 +106,7 @@ class _SuraPaginatedListState extends State<SuraPaginatedList> {
   @override
   Widget build(BuildContext context) {
     if (widget.onEmpty != null && widget.itemCount == 0) {
-      return widget.onEmpty;
+      return widget.onEmpty!;
     }
     return ListView.separated(
       separatorBuilder: (context, index) => widget.separator ?? SizedBox(),

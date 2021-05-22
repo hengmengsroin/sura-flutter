@@ -7,31 +7,31 @@ import 'sura_theme.dart';
 /// SuraRaisedButton can be use sometime to replace RaisedButton or ElevatedButton because we provide more flexibility and wrap around
 class SuraRaisedButton extends StatelessWidget {
   ///receive a ValueNotifier to indicate a loading widget
-  final ValueNotifier<bool> loadingNotifier;
+  final ValueNotifier<bool>? loadingNotifier;
   final Widget child;
-  final Widget icon;
+  final Widget? icon;
   final VoidCallback onPressed;
-  final Function onLongPressed;
-  final double elevation;
+  final Function? onLongPressed;
+  final double? elevation;
   //Button's background Color
-  final Color color;
-  final Color textColor;
+  final Color? color;
+  final Color? textColor;
   //Loading indicator's color
   final Color loadingColor;
-  final Widget loadingWidget;
+  final Widget? loadingWidget;
   final EdgeInsets margin;
   final EdgeInsets padding;
-  final ShapeBorder shape;
-  final MainAxisAlignment alignment;
+  final OutlinedBorder? shape;
+  final MainAxisAlignment? alignment;
 
   ///if [fullWidth] is `true`, Button will take all remaining horizontal space
   final bool fullWidth;
-  final BorderSide borderSide;
+  final BorderSide? borderSide;
 
   ///Create a button with loading notifier
   SuraRaisedButton({
-    @required this.onPressed,
-    @required this.child,
+    required this.onPressed,
+    required this.child,
     this.loadingNotifier,
     this.loadingWidget,
     this.color,
@@ -41,7 +41,7 @@ class SuraRaisedButton extends StatelessWidget {
     this.margin = const EdgeInsets.symmetric(vertical: 16),
     this.padding = const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
     this.fullWidth = false,
-    this.shape = const StadiumBorder(),
+    this.shape,
     this.onLongPressed,
     this.elevation = 2.0,
     this.alignment,
@@ -59,14 +59,14 @@ class SuraRaisedButton extends StatelessWidget {
           return ElevatedButton(
             onPressed: loading ? () {} : onPressed,
             style: ElevatedButton.styleFrom(
-              shape: shape,
+              shape: shape ?? StadiumBorder(),
               primary: color,
               onPrimary: textColor,
               padding: padding,
               elevation: elevation,
               side: borderSide,
             ),
-            onLongPress: loading ? () {} : onLongPressed,
+            onLongPress: loading ? () {} : () => onLongPressed?.call(),
             child: ConditionalWidget(
               condition: loading,
               onFalse: () => Row(
@@ -74,16 +74,13 @@ class SuraRaisedButton extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   if (icon != null) ...[
-                    icon,
+                    icon ?? SizedBox(),
                     SpaceX(8),
                   ],
                   child,
                 ],
               ),
-              onTrue: () =>
-                  loadingWidget ??
-                  SuraTheme.of(context)?.buttonLoadingWidget ??
-                  _buildLoadingWidget(),
+              onTrue: () => loadingWidget ?? SuraTheme.of(context)?.buttonLoadingWidget ?? _buildLoadingWidget(),
             ),
           );
         },

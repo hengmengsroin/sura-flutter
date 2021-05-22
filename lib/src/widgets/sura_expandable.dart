@@ -9,12 +9,12 @@ class SuraExpandable extends StatefulWidget {
   final EdgeInsets margin;
   final Curve curve;
   final bool initiallyExpand;
-  final Function(bool) onToggle;
+  final Function(bool)? onToggle;
   final bool animatedOnStart;
   const SuraExpandable({
-    Key key,
-    @required this.topChild,
-    @required this.bottomChild,
+    Key? key,
+    required this.topChild,
+    required this.bottomChild,
     this.initiallyExpand = false,
     this.duration = const Duration(milliseconds: 200),
     this.padding = const EdgeInsets.all(16),
@@ -27,10 +27,9 @@ class SuraExpandable extends StatefulWidget {
   _SuraExpandableState createState() => _SuraExpandableState();
 }
 
-class _SuraExpandableState extends State<SuraExpandable>
-    with SingleTickerProviderStateMixin {
-  AnimationController controller;
-  Animation<double> size;
+class _SuraExpandableState extends State<SuraExpandable> with SingleTickerProviderStateMixin {
+  late AnimationController controller;
+  late Animation<double> size;
 
   void toggle() {
     if (controller.isAnimating) {

@@ -3,8 +3,8 @@ import 'package:intl/intl.dart';
 import 'package:sura_flutter/src/utils/sura_utils.dart';
 
 extension DateUtils on DateTime {
-  String formatDate([String format = "dd MMM yyyy", Locale locale]) {
-    String localeCode;
+  String formatDate({String format = "dd MMM yyyy", Locale? locale}) {
+    String? localeCode;
     if (locale != null) {
       localeCode = locale.languageCode;
     }
@@ -13,16 +13,14 @@ extension DateUtils on DateTime {
   }
 
   bool isTheSameDay(DateTime dateTime) {
-    if (dateTime.day == this.day &&
-        dateTime.month == this.month &&
-        dateTime.year == this.year) {
+    if (dateTime.day == this.day && dateTime.month == this.month && dateTime.year == this.year) {
       return true;
     }
     return false;
   }
 
-  String formatToLocalDate([String format = "dd MMM yyyy", Locale locale]) {
-    String localeCode;
+  String formatToLocalDate({String format = "dd MMM yyyy", Locale? locale}) {
+    String? localeCode;
     if (locale != null) {
       localeCode = locale.languageCode;
     }
@@ -47,9 +45,9 @@ extension WidgetExtension on Widget {
 
   ///add padding all to a widget
   Widget paddingValue({
-    double all,
-    double vertical,
-    double horizontal,
+    double? all,
+    double? vertical,
+    double? horizontal,
   }) {
     if (all != null && (vertical != null || horizontal != null)) {
       throw FlutterError(
@@ -80,9 +78,9 @@ extension WidgetExtension on Widget {
   }
 
   Widget marginValue({
-    double all,
-    double vertical,
-    double horizontal,
+    double? all,
+    double? vertical,
+    double? horizontal,
   }) {
     if (all != null && (vertical != null || horizontal != null)) {
       throw FlutterError(
@@ -118,23 +116,16 @@ extension WidgetExtension on Widget {
           defineMargin = EdgeInsets.all(margin.elementAt(0));
           break;
         case 2:
-          defineMargin = EdgeInsets.symmetric(
-              vertical: margin.elementAt(0), horizontal: margin.elementAt(1));
+          defineMargin = EdgeInsets.symmetric(vertical: margin.elementAt(0), horizontal: margin.elementAt(1));
           break;
 
         case 3:
-          defineMargin = EdgeInsets.only(
-              top: margin.elementAt(0),
-              right: margin.elementAt(1),
-              bottom: margin.elementAt(2));
+          defineMargin = EdgeInsets.only(top: margin.elementAt(0), right: margin.elementAt(1), bottom: margin.elementAt(2));
           break;
 
         default:
-          defineMargin = EdgeInsets.only(
-              top: margin.elementAt(0),
-              right: margin.elementAt(1),
-              bottom: margin.elementAt(2),
-              left: margin.elementAt(3));
+          defineMargin =
+              EdgeInsets.only(top: margin.elementAt(0), right: margin.elementAt(1), bottom: margin.elementAt(2), left: margin.elementAt(3));
           break;
       }
 
@@ -144,23 +135,16 @@ extension WidgetExtension on Widget {
           definePadding = EdgeInsets.all(padding.elementAt(0));
           break;
         case 2:
-          definePadding = EdgeInsets.symmetric(
-              vertical: padding.elementAt(0), horizontal: padding.elementAt(1));
+          definePadding = EdgeInsets.symmetric(vertical: padding.elementAt(0), horizontal: padding.elementAt(1));
           break;
 
         case 3:
-          definePadding = EdgeInsets.only(
-              top: padding.elementAt(0),
-              right: padding.elementAt(1),
-              bottom: padding.elementAt(2));
+          definePadding = EdgeInsets.only(top: padding.elementAt(0), right: padding.elementAt(1), bottom: padding.elementAt(2));
           break;
 
         default:
-          definePadding = EdgeInsets.only(
-              top: padding.elementAt(0),
-              right: padding.elementAt(1),
-              bottom: padding.elementAt(2),
-              left: padding.elementAt(3));
+          definePadding =
+              EdgeInsets.only(top: padding.elementAt(0), right: padding.elementAt(1), bottom: padding.elementAt(2), left: padding.elementAt(3));
           break;
       }
 

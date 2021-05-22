@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 
 ///Create a bool type [ValueNotifier] to indicate or define loading state
 mixin BoolNotifierMixin<T extends StatefulWidget> on State<T> {
-  ValueNotifier<bool> boolNotifier;
+  late ValueNotifier<bool> boolNotifier;
 
-  void toggleValue([bool value]) {
+  void toggleValue([bool? value]) {
     boolNotifier.value = value ?? !boolNotifier.value;
   }
 

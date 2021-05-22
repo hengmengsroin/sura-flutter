@@ -22,26 +22,22 @@ class ShadowInputBorder extends InputBorder {
   /// and right corners have a circular radius of 8.0. The [borderRadius]
   /// parameter must not be null.
   ShadowInputBorder({
-    @required this.elevation,
-    @required this.fillColor,
+    required this.elevation,
+    required this.fillColor,
     this.borderRadius = const BorderRadius.all(Radius.circular(8.0)),
     this.shadowColor = Colors.black87,
-  }) : assert(elevation != null);
+  });
 
   @override
   EdgeInsetsGeometry get dimensions => EdgeInsets.all(2);
 
   @override
-  Path getInnerPath(Rect rect, {TextDirection textDirection}) {
-    return Path()
-      ..addRRect(borderRadius
-          .resolve(textDirection)
-          .toRRect(rect)
-          .deflate(borderSide.width));
+  Path getInnerPath(Rect rect, {TextDirection? textDirection}) {
+    return Path()..addRRect(borderRadius.resolve(textDirection).toRRect(rect).deflate(borderSide.width));
   }
 
   @override
-  Path getOuterPath(Rect rect, {TextDirection textDirection}) {
+  Path getOuterPath(Rect rect, {TextDirection? textDirection}) {
     return Path()..addRRect(borderRadius.resolve(textDirection).toRRect(rect));
   }
 
@@ -49,12 +45,8 @@ class ShadowInputBorder extends InputBorder {
   bool get isOutline => true;
 
   @override
-  void paint(Canvas canvas, Rect rect,
-      {double gapStart,
-      double gapExtent = 0.0,
-      double gapPercentage = 0.0,
-      TextDirection textDirection}) {
-    final paint = Paint()..color = fillColor ?? Colors.white;
+  void paint(Canvas canvas, Rect rect, {double? gapStart, double gapExtent = 0.0, double gapPercentage = 0.0, TextDirection? textDirection}) {
+    final paint = Paint()..color = fillColor;
     final RRect outer = borderRadius.toRRect(rect);
     canvas.drawShadow(getOuterPath(rect), shadowColor, elevation, false);
     canvas.drawRRect(outer, paint);
@@ -66,7 +58,7 @@ class ShadowInputBorder extends InputBorder {
   }
 
   @override
-  InputBorder copyWith({BorderSide borderSide}) {
+  InputBorder copyWith({BorderSide? borderSide}) {
     return ShadowInputBorder(elevation: elevation, fillColor: fillColor);
   }
 }

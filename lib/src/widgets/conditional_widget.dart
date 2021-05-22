@@ -9,18 +9,18 @@ class ConditionalWidget extends StatelessWidget {
   final Widget Function() onTrue;
 
   ///A function that return a widget if [condition] is false
-  final Widget Function() onFalse;
+  final Widget Function()? onFalse;
 
   ///margin of the widget
-  final EdgeInsets margin;
+  final EdgeInsets? margin;
 
   ///padding of the widget
-  final EdgeInsets padding;
+  final EdgeInsets? padding;
 
   const ConditionalWidget({
-    Key key,
-    @required this.condition,
-    @required this.onTrue,
+    Key? key,
+    required this.condition,
+    required this.onTrue,
     this.onFalse,
     this.margin,
     this.padding,
@@ -30,7 +30,7 @@ class ConditionalWidget extends StatelessWidget {
     return Container(
       padding: padding ?? EdgeInsets.zero,
       margin: margin ?? EdgeInsets.zero,
-      child: condition ? onTrue() : onFalse() ?? const SizedBox(),
+      child: condition ? onTrue() : onFalse?.call() ?? const SizedBox(),
     );
   }
 }

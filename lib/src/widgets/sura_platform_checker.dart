@@ -6,11 +6,11 @@ import 'package:flutter/material.dart';
 ///Provide a widget child depend on the Platform, Currently support [iOS] and [Android]
 class SuraPlatformChecker extends StatelessWidget {
   final Widget androidWidget;
-  final Widget iosWidget;
-  final Widget webWidget;
+  final Widget? iosWidget;
+  final Widget? webWidget;
   const SuraPlatformChecker({
-    Key key,
-    @required this.androidWidget,
+    Key? key,
+    required this.androidWidget,
     this.iosWidget,
     this.webWidget,
   }) : super(key: key);
@@ -22,9 +22,9 @@ class SuraPlatformChecker extends StatelessWidget {
 
   Widget buildPlatformChecker() {
     if (Platform.isIOS && iosWidget != null) {
-      return iosWidget;
+      return iosWidget ?? SizedBox();
     } else if (kIsWeb && webWidget != null) {
-      return webWidget;
+      return webWidget ?? SizedBox();
     }
     return androidWidget;
   }

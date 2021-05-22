@@ -3,22 +3,22 @@ import 'package:flutter/material.dart';
 import 'spacing.dart';
 
 class SuraFlatButton extends StatelessWidget {
-  final Function onPressed;
+  final VoidCallback onPressed;
   final Widget child;
   final EdgeInsets margin;
   final EdgeInsets padding;
   final Color backgroundColor;
-  final Color textColor;
-  final BorderRadius borderRadius;
   final double elevation;
-  final Widget icon;
-  final BorderSide borderSide;
+  final Color? textColor;
+  final BorderRadius? borderRadius;
+  final Widget? icon;
+  final BorderSide? borderSide;
 
   ///A FlatButton with respectively small margin and shape
   const SuraFlatButton({
-    Key key,
-    @required this.onPressed,
-    @required this.child,
+    Key? key,
+    required this.onPressed,
+    required this.child,
     this.margin = const EdgeInsets.all(0),
     this.padding = const EdgeInsets.all(8),
     this.backgroundColor = Colors.transparent,
@@ -48,12 +48,9 @@ class SuraFlatButton extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              if (icon != null) ...[icon, SpaceX(8)],
+              if (icon != null) ...[icon!, SpaceX(8)],
               DefaultTextStyle.merge(
-                style: Theme.of(context)
-                    .textTheme
-                    .button
-                    .copyWith(color: textColor),
+                style: Theme.of(context).textTheme.button?.copyWith(color: textColor),
                 child: child,
               ),
             ],

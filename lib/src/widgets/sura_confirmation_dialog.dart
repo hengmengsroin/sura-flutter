@@ -4,19 +4,19 @@ import 'package:flutter/material.dart';
 import '../../sura_flutter.dart';
 
 class SuraConfirmationDialog extends StatelessWidget {
-  final String confirmText;
-  final String cancelText;
   final Widget content;
   final String title;
-  final VoidCallback onCancel;
-  final VoidCallback onConfirm;
+  final String cancelText;
+  final String confirmText;
+  final VoidCallback? onCancel;
+  final VoidCallback? onConfirm;
 
   ///Swap position of confirm button and cancel button
   final bool swapButtonsPosition;
 
   ///A dialog that provide onCancel and Confirm action
   SuraConfirmationDialog({
-    @required this.content,
+    required this.content,
     this.confirmText = "OK",
     this.cancelText = "Cancel",
     this.title = "Confirmation",

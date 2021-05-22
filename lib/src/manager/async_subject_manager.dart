@@ -10,33 +10,28 @@ import 'callback.dart';
 ///[AsyncSubjectManager] provide a method [asyncOperation] to handle or call async function associated with rxdart's [BehaviorSubject]
 ///
 class AsyncSubjectManager<T> {
-  BehaviorSubject<T> _controller;
+  late final BehaviorSubject<T?> _controller;
 
   ///A future function that return the type of T
-  final FutureFunction<T> futureFunction;
+  final FutureFunction<T>? futureFunction;
 
   /// A function that call after [asyncOperation] is success
-  final SuccessCallBack<T> onSuccess;
+  final SuccessCallBack<T>? onSuccess;
 
   /// A function that call after everything is done
-  final VoidCallback onDone;
+  final VoidCallback? onDone;
 
   /// A function that call after there is an error
-  final ErrorCallBack onError;
+  final ErrorCallBack? onError;
 
   /// if [reloading] is true, reload the controller to initial state
   final bool reloading;
 
-  AsyncSubjectManager(
-      {this.futureFunction,
-      this.reloading = true,
-      this.onSuccess,
-      this.onDone,
-      this.onError}) {
+  AsyncSubjectManager({this.futureFunction, this.reloading = true, this.onSuccess, this.onDone, this.onError}) {
     _controller = BehaviorSubject<T>();
     if (futureFunction != null) {
       asyncOperation(
-        futureFunction,
+        futureFunction!,
         reloading: reloading,
         onSuccess: onSuccess,
         onDone: onDone,
@@ -45,41 +40,40 @@ class AsyncSubjectManager<T> {
     }
   }
 
-  BehaviorSubject<T> get stream => _controller.stream;
+  ValueStream<T?> get stream => _controller.stream;
 
   bool get hasData => _controller.hasValue && _controller.value != null;
 
-  T get value => _controller.value;
+  T? get value => _controller.value;
 
-  Future<T> Function({
-    bool reloading,
-    SuccessCallBack<T> onSuccess,
-    VoidCallback onDone,
-    ErrorCallBack onError,
-    bool throwError,
+  Future<T?> Function({
+    bool? reloading,
+    SuccessCallBack<T>? onSuccess,
+    VoidCallback? onDone,
+    ErrorCallBack? onError,
+    bool? throwError,
   }) refresh = ({reloading, onSuccess, onDone, onError, throwError}) async {
-    print(
-        "refresh is depend on AsyncOperation, You need to call asyncOperation once before you can call refresh");
+    print("refresh is depend on AsyncOperation, You need to call asyncOperation once before you can call refresh");
     return null;
   };
 
-  void addData(T data) {
+  void addData(T? data) {
     if (!_controller.isClosed) _controller.add(data);
   }
 
-  Future<T> asyncOperation(
+  Future<T?>? asyncOperation(
     FutureFunction<T> futureFunction, {
-    bool reloading,
-    SuccessCallBack<T> onSuccess,
-    VoidCallback onDone,
-    ErrorCallBack onError,
+    bool? reloading,
+    SuccessCallBack<T>? onSuccess,
+    VoidCallback? onDone,
+    ErrorCallBack? onError,
     bool throwError = false,
   }) async {
     refresh = ({reloading, onSuccess, onDone, onError, throwError}) async {
       bool shouldReload = reloading ?? this.reloading;
-      SuccessCallBack<T> successCallBack = onSuccess ?? this.onSuccess;
-      ErrorCallBack errorCallBack = onError ?? this.onError;
-      VoidCallback onOperationDone = onDone ?? this.onDone;
+      SuccessCallBack<T>? successCallBack = onSuccess ?? this.onSuccess;
+      ErrorCallBack? errorCallBack = onError ?? this.onError;
+      VoidCallback? onOperationDone = onDone ?? this.onDone;
       bool shouldThrowError = throwError ?? false;
       //
       bool triggerError = true;
@@ -88,9 +82,9 @@ class AsyncSubjectManager<T> {
       }
       try {
         if (shouldReload) this.addData(null);
-        T data = await futureFunction?.call();
+        T data = await futureFunction.call();
         if (onSuccess != null) {
-          data = successCallBack?.call(data);
+          data = successCallBack!.call(data);
         }
         this.addData(data);
         return data;

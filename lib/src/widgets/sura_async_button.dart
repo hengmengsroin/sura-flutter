@@ -15,37 +15,37 @@ class SuraAsyncButton extends StatefulWidget {
   final Widget child;
 
   ///onPressed callback
-  final FutureOr<void> Function() onPressed;
+  final FutureOr<void> Function()? onPressed;
 
   ///[startIcon] will show on the left side of the button
-  final Widget startIcon;
+  final Widget? startIcon;
 
   ///[endIcon] will show on the left side of the button
-  final Widget endIcon;
+  final Widget? endIcon;
 
   ///A widget to show when button is loading
-  final Widget loadingWidget;
+  final Widget? loadingWidget;
 
   ///Button's widget
-  final double width;
+  final double? width;
 
   ///Button's height
-  final double height;
+  final double? height;
 
   ///Button's background color
-  final Color color;
+  final Color? color;
 
   ///Button's text color
-  final Color textColor;
+  final Color? textColor;
 
   ///A color for default [loadingWidget]
   final Color loadingColor;
 
   ///Button's shape
-  final ShapeBorder shape;
+  final OutlinedBorder? shape;
 
   ///button's borderside
-  final BorderSide borderSide;
+  final BorderSide? borderSide;
 
   ///Button's elevation
   final double elevation;
@@ -63,12 +63,12 @@ class SuraAsyncButton extends StatefulWidget {
   final LoadingType loadingType;
 
   ///Alignment of the [icon] and [child]
-  final MainAxisAlignment alignment;
+  final MainAxisAlignment? alignment;
 
   const SuraAsyncButton({
-    Key key,
-    @required this.onPressed,
-    @required this.child,
+    Key? key,
+    required this.onPressed,
+    required this.child,
     this.fullWidth = true,
     this.loadingColor = Colors.white,
     this.elevation = 2,
@@ -116,20 +116,18 @@ class _SuraAsyncButtonState extends State<SuraAsyncButton> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         if (widget.startIcon != null) ...[
-          widget.startIcon,
+          widget.startIcon!,
           SpaceX(),
         ],
         widget.child,
         if (widget.endIcon != null) ...[
           SpaceX(),
-          widget.endIcon,
+          widget.endIcon!,
         ],
       ],
     );
 
-    final Widget loadingWidget = widget.loadingWidget ??
-        SuraTheme.of(context)?.buttonLoadingWidget ??
-        _buildLoadingWidget();
+    final Widget loadingWidget = widget.loadingWidget ?? SuraTheme.of(context)?.buttonLoadingWidget ?? _buildLoadingWidget();
 
     return Container(
       height: widget.height,
@@ -145,9 +143,7 @@ class _SuraAsyncButtonState extends State<SuraAsyncButton> {
                 : null,
         child: ConditionalWidget(
           condition: isLoading,
-          onTrue: () => widget.loadingType == LoadingType.Disable
-              ? buttonContent
-              : loadingWidget,
+          onTrue: () => widget.loadingType == LoadingType.Disable ? buttonContent : loadingWidget,
           onFalse: () => buttonContent,
         ),
         style: ElevatedButton.styleFrom(

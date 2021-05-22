@@ -14,14 +14,14 @@ class DotTabIndicator extends Decoration {
   final TabAlignment tabAlignment;
 
   DotTabIndicator({
-    @required this.color,
+    required this.color,
     this.radius = 4,
     this.tabAlignment = TabAlignment.bottom,
-  }) : assert(color != null);
+  });
   @override
-  BoxPainter createBoxPainter([void Function() onChanged]) {
+  BoxPainter createBoxPainter([void Function()? onChanged]) {
     return _DotTabIndicatorPainter(
-      onChanged,
+      onChanged!,
       radius,
       color,
       tabAlignment,
@@ -41,13 +41,11 @@ class _DotTabIndicatorPainter extends BoxPainter {
   ) : super(onChanged);
   @override
   void paint(Canvas canvas, Offset offset, ImageConfiguration configuration) {
-    final double yOffset = tabAlignment == TabAlignment.bottom
-        ? configuration.size.height - radius * 2
-        : radius * 2;
+    final double yOffset = tabAlignment == TabAlignment.bottom ? configuration.size!.height - radius * 2 : radius * 2;
 
     final Offset circleOffset = offset +
         Offset(
-          configuration.size.width / 2,
+          configuration.size!.width / 2,
           yOffset,
         );
 
