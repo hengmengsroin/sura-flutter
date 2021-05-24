@@ -94,7 +94,7 @@ class FutureManager<T> extends ChangeNotifier {
         future = futureFunction.call();
         T result = await future!;
         if (successCallBack != null) {
-          result = successCallBack.call(result);
+          result = await successCallBack.call(result);
         }
         _data = result;
         return result;

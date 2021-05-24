@@ -84,7 +84,7 @@ class AsyncSubjectManager<T> {
         if (shouldReload) this.addData(null);
         T data = await futureFunction.call();
         if (onSuccess != null) {
-          data = successCallBack!.call(data);
+          data = await successCallBack!.call(data);
         }
         this.addData(data);
         return data;
