@@ -27,13 +27,8 @@ class AsyncSubjectManager<T> {
   /// if [reloading] is true, reload the controller to initial state
   final bool reloading;
 
-  AsyncSubjectManager(
-      {this.futureFunction,
-      this.reloading = true,
-      this.onSuccess,
-      this.onDone,
-      this.onError}) {
-    _controller = BehaviorSubject<T>();
+  AsyncSubjectManager({this.futureFunction, this.reloading = true, this.onSuccess, this.onDone, this.onError}) {
+    _controller = BehaviorSubject<T?>();
     if (futureFunction != null) {
       asyncOperation(
         futureFunction!,
@@ -58,8 +53,7 @@ class AsyncSubjectManager<T> {
     ErrorCallBack? onError,
     bool? throwError,
   }) refresh = ({reloading, onSuccess, onDone, onError, throwError}) async {
-    print(
-        "refresh is depend on AsyncOperation, You need to call asyncOperation once before you can call refresh");
+    print("refresh is depend on AsyncOperation, You need to call asyncOperation once before you can call refresh");
     return null;
   };
 
@@ -89,8 +83,8 @@ class AsyncSubjectManager<T> {
       try {
         if (shouldReload) this.addData(null);
         T data = await futureFunction.call();
-        if (onSuccess != null) {
-          data = await successCallBack!.call(data);
+        if (successCallBack != null) {
+          data = await successCallBack.call(data);
         }
         this.addData(data);
         return data;

@@ -1,3 +1,7 @@
+## [0.2.2] - 25 May 2021
+
+- Fix subject manager bug
+
 ## [0.2.1] - 25 May 2021
 
 - update type to FutureOr<T> of successCallBack in Manager
