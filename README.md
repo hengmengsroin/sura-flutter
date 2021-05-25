@@ -17,24 +17,24 @@ dependencies:
 
 | Widget | Description |
 | --- | --- |
-| [SuraRaisedButton][buttons] | Material ElevatedButton with loading notifier |
-| [SuraBadge][buttons] | A small badge like notification |
-| [SuraActionSheet][other] | Customize CupertinoActionSheet |
+| [SuraRaisedButton][buttons] | Custom ElevatedButton with loading notifier |
+| [SuraBadge][buttons] | Small badge like notification |
+| [SuraActionSheet][other] | Custom CupertinoActionSheet for option selector |
 | [ConditionalWidget][other] | Build a widget base on a boolean condition |
-| [SuraToolbar][other] | A custom back button with title (header) |
-| [SuraFutureHandler][builder_example] | A FutureBuilder with less boilerplate code |
-| [SuraAccordian][accordion_expandable] | A customizable ExpansionTile |
-| [SuraExpandable][accordion_expandable] | A widget that can be toggle with top and bottom widget |
+| [SuraToolbar][other] | Custom ToolBar or AppBar |
+| [SuraFutureHandler][builder_example] | FutureBuilder with less boilerplate code |
+| [SuraAccordian][accordion_expandable] | Custom ExpansionTile |
+| [SuraExpandable][accordion_expandable] | Similar to SuraAccordion but with different use case |
 | [SuraConfirmationDialog][other] | Platform adaptive AlertDialog with cancel and confirm action |
 | [SuraAsyncButton][buttons] | Fully customize Material ElevatedButton for asynchronus onPressed callback |
-| [SuraLoadingDialog][other] | A Loading dialog manager class |
-| [SuraPlatformChecker][other] | Provide a widget base on Android or iOS platform |
-| [SuraSimpleDialog][other] | A simple platform adaptive AlertDialog |
-| [SuraListTile][other] | An easy and customizable ListTile |
-| [SuraPaginatedList][other] | A ListView with pagination support |
-| [SuraPaginatedGridBuilder][other] | A Gridview with pagination support |
-| [SuraIconButton][buttons] | A customizable IconButton |
-| [SuraFlatButton][buttons] | A cusztomizaable TextButton or FlatButton |
+| [SuraLoadingDialog][other] | Create and manage Loading Dialog |
+| [SuraPlatformChecker][other] | Platform adaptive widget |
+| [SuraSimpleDialog][other] | Simple platform adaptive AlertDialog |
+| [SuraListTile][other] | Custom ListTile |
+| [SuraPaginatedList][other] | ListView with pagination support |
+| [SuraPaginatedGridBuilder][other] | Gridview with pagination support |
+| [SuraIconButton][buttons] | Custom IconButton |
+| [SuraFlatButton][buttons] | Cusztom TextButton or FlatButton |
 | [SpaceX][other] | SizedBox with only width |
 | [SpaceY][other] | SizedBox with only height |
 | [SuraStreamHandler][builder_example] | A Streambuilder with less boilerplate code |
