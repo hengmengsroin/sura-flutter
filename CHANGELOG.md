@@ -1,3 +1,7 @@
+## [0.2.3] - 25 May 2021
+
+- Update Manager null safety
+
 ## [0.2.2] - 25 May 2021
 
 - Fix subject manager bug

@@ -61,7 +61,7 @@ class AsyncSubjectManager<T> {
     if (!_controller.isClosed) _controller.add(data);
   }
 
-  Future<T?>? asyncOperation(
+  Future<T?> asyncOperation(
     FutureFunction<T> futureFunction, {
     bool? reloading,
     SuccessCallBack<T>? onSuccess,

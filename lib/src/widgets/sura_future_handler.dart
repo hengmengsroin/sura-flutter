@@ -7,7 +7,7 @@ class SuraFutureHandler<T> extends StatelessWidget {
   final Future<T> future;
 
   ///A callback when Future's snapshot hasData
-  final Widget Function(T?) ready;
+  final Widget Function(T) ready;
   final Widget? loading;
   final T? initialData;
 
@@ -31,7 +31,7 @@ class SuraFutureHandler<T> extends StatelessWidget {
       initialData: initialData,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          return ready(snapshot.data);
+          return ready(snapshot.data!);
         } else if (snapshot.hasError) {
           if (error != null) return error!(snapshot.error);
           return suraTheme?.errorWidget?.call(snapshot.error) ??
@@ -43,8 +43,7 @@ class SuraFutureHandler<T> extends StatelessWidget {
               );
         } else {
           if (loading != null) return loading!;
-          return suraTheme?.loadingWidget ??
-              Center(child: CircularProgressIndicator());
+          return suraTheme?.loadingWidget ?? Center(child: CircularProgressIndicator());
         }
       },
     );

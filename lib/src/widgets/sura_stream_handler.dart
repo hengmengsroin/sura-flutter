@@ -8,7 +8,7 @@ class SuraStreamHandler<T> extends StatefulWidget {
   final Stream<T> stream;
 
   ///A callback when Stream's snapshot hasData
-  final Widget Function(T?) ready;
+  final Widget Function(T) ready;
 
   ///A widgeting showing when stream's has no data
   final Widget? loading;
@@ -65,7 +65,7 @@ class _SuraStreamHandlerState<T> extends State<SuraStreamHandler<T>> {
       initialData: widget.initialData,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          return widget.ready(snapshot.data);
+          return widget.ready(snapshot.data!);
         } else if (snapshot.hasError) {
           if (widget.error != null) {
             return widget.error!(snapshot.error);
@@ -81,8 +81,7 @@ class _SuraStreamHandlerState<T> extends State<SuraStreamHandler<T>> {
           if (widget.loading != null) {
             return widget.loading!;
           }
-          return suraTheme?.loadingWidget ??
-              Center(child: CircularProgressIndicator());
+          return suraTheme?.loadingWidget ?? Center(child: CircularProgressIndicator());
         }
       },
     );
