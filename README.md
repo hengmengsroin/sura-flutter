@@ -15,30 +15,30 @@ dependencies:
 
 # Widgets
 
-| Widget                                 | Description                                            |
-| -------------------------------------- | ------------------------------------------------------ |
-| [SuraRaisedButton][buttons]            | A Material ElevatedButton with loading notifier        |
-| [SuraBadge][buttons]                   | A small badge like notification                        |
-| [SuraActionSheet][other]               | ACupertino bottom sheet with option                    |
-| [ConditionalWidget][other]             | Build a widget base on a boolean condition             |
-| [SuraToolbar][other]                   | A custom back button with title (header)               |
-| [SuraFutureHandler][builder_example]   | A FutureBuilder with less boilerplate code             |
-| [SuraAccordian][accordion_expandable]  | A customizable ExpansionTile                           |
+| Widget | Description |
+| --- | --- |
+| [SuraRaisedButton][buttons] | Material ElevatedButton with loading notifier |
+| [SuraBadge][buttons] | A small badge like notification |
+| [SuraActionSheet][other] | Customize CupertinoActionSheet |
+| [ConditionalWidget][other] | Build a widget base on a boolean condition |
+| [SuraToolbar][other] | A custom back button with title (header) |
+| [SuraFutureHandler][builder_example] | A FutureBuilder with less boilerplate code |
+| [SuraAccordian][accordion_expandable] | A customizable ExpansionTile |
 | [SuraExpandable][accordion_expandable] | A widget that can be toggle with top and bottom widget |
-| [SuraConfirmationDialog][other]        | An Alert dialog with cancel and confirm action         |
-| [SuraAsyncButton][buttons]             | A Material ElevatedButton that has a loading widget    |
-| [SuraLoadingDialog][other]             | A Loading dialog manager class                         |
-| [SuraPlatformChecker][other]           | Provide a widget base on Android or iOS platform       |
-| [SuraSimpleDialog][other]              | A simple alert dialog                                  |
-| [SuraListTile][other]                  | An easy and customizable ListTile                      |
-| [SuraPaginatedList][other]             | A Listview.separated with pagination support           |
-| [SuraPaginatedGridBuilder][other]      | A Gridview.builder with pagination support             |
-| [SuraIconButton][buttons]              | A customizable IconButton                              |
-| [SuraFlatButton][buttons]              | A small alternative to Flutter's FlatButton            |
-| [SpaceX][other]                        | SizedBox with only width                               |
-| [SpaceY][other]                        | SizedBox with only height                              |
-| [SuraStreamHandler][builder_example]   | A Streambuilder with less boilerplate code             |
-| [SuraNotifier][builder_example]        | A ValueListenableBuilder with less boilerplate code    |
+| [SuraConfirmationDialog][other] | Platform adaptive AlertDialog with cancel and confirm action |
+| [SuraAsyncButton][buttons] | Fully customize Material ElevatedButton for asynchronus onPressed callback |
+| [SuraLoadingDialog][other] | A Loading dialog manager class |
+| [SuraPlatformChecker][other] | Provide a widget base on Android or iOS platform |
+| [SuraSimpleDialog][other] | A simple platform adaptive AlertDialog |
+| [SuraListTile][other] | An easy and customizable ListTile |
+| [SuraPaginatedList][other] | A ListView with pagination support |
+| [SuraPaginatedGridBuilder][other] | A Gridview with pagination support |
+| [SuraIconButton][buttons] | A customizable IconButton |
+| [SuraFlatButton][buttons] | A cusztomizaable TextButton or FlatButton |
+| [SpaceX][other] | SizedBox with only width |
+| [SpaceY][other] | SizedBox with only height |
+| [SuraStreamHandler][builder_example] | A Streambuilder with less boilerplate code |
+| [SuraNotifier][builder_example] | A ValueListenableBuilder with less boilerplate code |
 
 [buttons]: https://github.com/asurraa/sura-flutter/tree/master/example/lib/examples/other_buttons_example.dart
 [builder_example]: https://github.com/asurraa/sura-flutter/tree/master/example/lib/examples/builder_example.dart
