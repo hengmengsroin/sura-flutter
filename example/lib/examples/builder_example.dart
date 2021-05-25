@@ -11,7 +11,7 @@ class SuraBuilderExample extends StatefulWidget {
 class _SuraBuilderExampleState extends State<SuraBuilderExample> {
   FutureManager<int> counterManager = FutureManager();
   AsyncSubjectManager<int> counterSubject = AsyncSubjectManager();
-  Future<int> counterFuture;
+  late Future<int> counterFuture;
   ValueNotifier<int> counterNotifier = ValueNotifier(0);
 
   Future<int> fetchNumber([int data = 10]) async {
@@ -66,7 +66,7 @@ class _SuraBuilderExampleState extends State<SuraBuilderExample> {
               title: "SuraStreamHandler",
               child: SuraStreamHandler(
                 stream: counterSubject.stream,
-                ready: (count) => buildResult(count),
+                ready: (dynamic count) => buildResult(count),
               ),
             ),
             BuilderSection(
@@ -92,16 +92,16 @@ class _SuraBuilderExampleState extends State<SuraBuilderExample> {
     );
   }
 
-  Widget buildResult(int data) {
+  Widget buildResult(int? data) {
     return Text("Number is: $data");
   }
 }
 
 class BuilderSection extends StatelessWidget {
-  final String title;
-  final Widget child;
+  final String? title;
+  final Widget? child;
 
-  const BuilderSection({Key key, this.title, this.child}) : super(key: key);
+  const BuilderSection({Key? key, this.title, this.child}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -113,9 +113,9 @@ class BuilderSection extends StatelessWidget {
       margin: EdgeInsets.only(bottom: 16),
       child: Column(
         children: [
-          Text(title),
+          Text(title!),
           SpaceY(16),
-          child,
+          child!,
         ],
       ),
     );

@@ -82,7 +82,8 @@ class _SuraPaginatedListState extends State<SuraPaginatedList> {
 
   void initController() {
     if (widget.scrollController != null) {
-      widget.scrollController?.addListener(() => scrollListener(widget.scrollController));
+      widget.scrollController
+          ?.addListener(() => scrollListener(widget.scrollController));
     } else {
       scrollController = ScrollController();
       scrollController.addListener(() => scrollListener(scrollController));

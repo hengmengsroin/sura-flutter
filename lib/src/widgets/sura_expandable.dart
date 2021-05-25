@@ -27,7 +27,8 @@ class SuraExpandable extends StatefulWidget {
   _SuraExpandableState createState() => _SuraExpandableState();
 }
 
-class _SuraExpandableState extends State<SuraExpandable> with SingleTickerProviderStateMixin {
+class _SuraExpandableState extends State<SuraExpandable>
+    with SingleTickerProviderStateMixin {
   late AnimationController controller;
   late Animation<double> size;
 

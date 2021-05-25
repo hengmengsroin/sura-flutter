@@ -4,6 +4,7 @@ import 'package:sura_flutter/sura_flutter.dart';
 import 'package:sura_flutter_example/examples/builder_example.dart';
 import 'package:sura_flutter_example/examples/other_buttons_example.dart';
 import 'package:sura_flutter_example/examples/sura_accordian_and_sura_expandable.dart';
+import 'package:sura_flutter_example/examples/tab_indicator_decoration.dart';
 
 import 'examples/util_examplate.dart';
 
@@ -36,12 +37,26 @@ class _MyHomePageState extends State<MyHomePage> with SuraFormMixin {
   }
 
   final List<ExampleButton> examples = [
-    ExampleButton(name: "Sura Buttons example", child: OtherButtonExample()),
     ExampleButton(
-        name: "Sura Accordion and Expandable",
-        child: SuraAccordianAndExpandable()),
-    ExampleButton(name: "Sura Utils", child: SuraUtilExamples()),
-    ExampleButton(name: "Sura Builders Example", child: SuraBuilderExample()),
+      name: "Sura Buttons example",
+      child: OtherButtonExample(),
+    ),
+    ExampleButton(
+      name: "Sura Accordion and Expandable",
+      child: SuraAccordianAndExpandable(),
+    ),
+    ExampleButton(
+      name: "Sura Utils",
+      child: SuraUtilExamples(),
+    ),
+    ExampleButton(
+      name: "Sura Builders Example",
+      child: SuraBuilderExample(),
+    ),
+    ExampleButton(
+      name: "Tab Indicator and Decoration",
+      child: TabIndicatorAndDecorationExample(),
+    ),
   ];
 
   @override
@@ -58,7 +73,7 @@ class _MyHomePageState extends State<MyHomePage> with SuraFormMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Jin Widget Helper Example"),
+        title: Text("Sura Flutter Example"),
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: 32),
@@ -82,5 +97,5 @@ class ExampleButton {
   String name;
   Widget child;
 
-  ExampleButton({this.name, this.child});
+  ExampleButton({required this.name, required this.child});
 }

@@ -17,6 +17,7 @@ class ConditionalWidget extends StatelessWidget {
   ///padding of the widget
   final EdgeInsets? padding;
 
+  ///build a widget depend on provided [condition]
   const ConditionalWidget({
     Key? key,
     required this.condition,

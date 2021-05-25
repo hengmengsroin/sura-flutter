@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:sura_flutter/sura_flutter.dart';
 
 class SuraUtilExamples extends StatefulWidget {
-  SuraUtilExamples({Key key}) : super(key: key);
+  SuraUtilExamples({Key? key}) : super(key: key);
   @override
   _SuraUtilExamplesState createState() => _SuraUtilExamplesState();
 }
 
 class _SuraUtilExamplesState extends State<SuraUtilExamples> {
-  TokenPayload tokenPayload;
+  TokenPayload? tokenPayload;
   @override
   Widget build(BuildContext context) {
     return Scaffold(

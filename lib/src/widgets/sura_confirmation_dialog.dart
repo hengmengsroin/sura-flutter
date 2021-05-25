@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../sura_flutter.dart';
 
+///A dialog that provide onCancel and Confirm action
 class SuraConfirmationDialog extends StatelessWidget {
   final Widget content;
   final String title;

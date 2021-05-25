@@ -17,41 +17,89 @@ dependencies:
 
 | Widget                                 | Description                                            |
 | -------------------------------------- | ------------------------------------------------------ |
-| [SuraRaisedButton][otherbuttonurl]     | A Material ElevatedButton with loading notifier        |
-| [SuraBadge][otherbuttonurl]            | A small badge like notification                        |
-| [SuraActionSheet][sheet-dialog]        | ACupertino bottom sheet with option                    |
+| [SuraRaisedButton][buttons]            | A Material ElevatedButton with loading notifier        |
+| [SuraBadge][buttons]                   | A small badge like notification                        |
+| [SuraActionSheet][other]               | ACupertino bottom sheet with option                    |
 | [ConditionalWidget][other]             | Build a widget base on a boolean condition             |
-| [SuraToolbar][otherbuttonurl]          | A custom back button with title (header)               |
-| [SuraFutureHandler][streamfutureurl]   | A FutureBuilder with less boilerplate code             |
-| [SuraAccordian][accordin-expandable]   | A customizable ExpansionTile                           |
-| [SuraExpandable][accordin-expandable]  | A widget that can be toggle with top and bottom widget |
-| [SuraConfirmationDialog][sheet-dialog] | An Alert dialog with cancel and confirm action         |
-| [SuraAsyncButton][jinloadingbuttonurl] | A Material ElevatedButton that has a loading widget    |
-| [SuraLoadingDialog][sheet-dialog]      | A Loading dialog manager class                         |
+| [SuraToolbar][other]                   | A custom back button with title (header)               |
+| [SuraFutureHandler][builder_example]   | A FutureBuilder with less boilerplate code             |
+| [SuraAccordian][accordion_expandable]  | A customizable ExpansionTile                           |
+| [SuraExpandable][accordion_expandable] | A widget that can be toggle with top and bottom widget |
+| [SuraConfirmationDialog][other]        | An Alert dialog with cancel and confirm action         |
+| [SuraAsyncButton][buttons]             | A Material ElevatedButton that has a loading widget    |
+| [SuraLoadingDialog][other]             | A Loading dialog manager class                         |
 | [SuraPlatformChecker][other]           | Provide a widget base on Android or iOS platform       |
-| [SuraSimpleDialog][sheet-dialog]       | A simple alert dialog                                  |
+| [SuraSimpleDialog][other]              | A simple alert dialog                                  |
 | [SuraListTile][other]                  | An easy and customizable ListTile                      |
-| [SuraPaginatedList][paginated]         | A Listview.separated with pagination support           |
-| [SuraPaginatedGridBuilder][paginated]  | A Gridview.builder with pagination support             |
-| [SuraIconButton][otherbuttonurl]       | A customizable IconButton                              |
-| [SuraFlatButton][otherbuttonurl]       | A small alternative to Flutter's FlatButton            |
+| [SuraPaginatedList][other]             | A Listview.separated with pagination support           |
+| [SuraPaginatedGridBuilder][other]      | A Gridview.builder with pagination support             |
+| [SuraIconButton][buttons]              | A customizable IconButton                              |
+| [SuraFlatButton][buttons]              | A small alternative to Flutter's FlatButton            |
 | [SpaceX][other]                        | SizedBox with only width                               |
 | [SpaceY][other]                        | SizedBox with only height                              |
-| [SuraStreamHandler][streamfutureurl]   | A Streambuilder with less boilerplate code             |
-| [SuraNotifier][other]                  | A ValueListenableBuilder with less boilerplate code    |
+| [SuraStreamHandler][builder_example]   | A Streambuilder with less boilerplate code             |
+| [SuraNotifier][builder_example]        | A ValueListenableBuilder with less boilerplate code    |
 
-[jinloadingbuttonurl]: https://github.com/asurraa/sura_flutter
-[otherbuttonurl]: https://github.com/asurraa/sura_flutter
-[jinmediacardurl]: https://github.com/asurraa/sura_flutter
-[streamfutureurl]: https://github.com/asurraa/sura_flutter
-[accordin-expandable]: https://github.com/asurraa/sura_flutter
-[sheet-dialog]: https://github.com/asurraa/sura_flutter
-[paginated]: https://github.com/asurraa/sura_flutter
-[other]: https://github.com/asurraa/sura_flutter
+[buttons]: https://github.com/asurraa/sura-flutter/tree/master/example/lib/examples/other_buttons_example.dart
+[builder_example]: https://github.com/asurraa/sura-flutter/tree/master/example/lib/examples/builder_example.dart
+[accordion_expandable]: https://github.com/asurraa/sura-flutter/tree/master/example/lib/examples/sura_accordion_and_sura_expandable.dart
+[other]: https://github.com/asurraa/sura_flutter/tree/master/example
+
+# Manager
+
+### FutureManager
+
+Handle async value with change notifier
+
+```dart
+class _HomePageState extends State<NewPage> {
+
+  FutureManager<int> dataManager = FutureManager();
+  @override
+  void initState() {
+    dataManager.asyncOperation(()async{
+      await Future.delayed(Duration(seconds: 2));
+      //Add 10 into our dataManager
+      return 10;
+    })
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    //Use with FutureManagerBuilder
+    return Scaffold(
+      appBar: AppBar(
+        actions: [
+          IconButton(
+            icon:Icon(Icons.refresh),
+            onPressed:(){
+              //call our asyncOperation again
+              dataManager.refresh();
+            },
+          )
+        ]
+      ),
+      body: FutureManagerBuilder<int>(
+        futureManager: dataManager,
+        error: (error) => YourErrorWidget(),
+        loading: YourLoadingWidget(),
+        ready: (context, data){
+          //result: My data: 10
+          return Text("My data: ${data}"),
+        }
+      ),
+    ),
+  }
+}
+```
+
+check out more at: [Sura Flutter Documentation](https://pub.dev/documentation/sura_flutter/latest/sura_flutter/sura_flutter-library.html)
 
 # Mixin
 
 ### AfterBuildMixin
+
+Create an override method that will call after the build method has been called
 
 ```dart
 class _HomePageState extends State<NewPage> with AfterBuildMixin {
@@ -72,6 +120,8 @@ class _HomePageState extends State<NewPage> with AfterBuildMixin {
 
 ### SuraFormMixin
 
+Provide some property and method when working with **Form**
+
 #### field and attribute
 
 - **formKey**: a key for form
@@ -88,12 +138,16 @@ class _HomePageState extends State<NewPage> with AfterBuildMixin {
 class _HomePageState extends State<NewPage> with SuraFormMixin {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      body: Form(key: formKey, child: child)
+    );
   }
 }
 ```
 
 ### BoolNotifierMixin
+
+Provider a ValueNotifier<bool> and a value toggle function
 
 - **boolNotifier**: a bool ValueNotifier
 
@@ -102,7 +156,7 @@ class _HomePageState extends State<NewPage> with SuraFormMixin {
 - **toggleValue**: toggle _loadingNotifier_
 
 ```dart
-class _HomePageState extends State<NewPage> with SuraFormMixin {
+class _HomePageState extends State<NewPage> with BoolNotifierMixin {
   @override
   Widget build(BuildContext context) {
     return Container();
@@ -170,9 +224,9 @@ Text("Hello Flutter", style: TextStyle().applFontSize(24))
 ### DateTime extension
 
 ```dart
-DateTime.now().format("dd mmm yyyy")
+DateTime.now().format(format: "dd mmm yyyy", locale: context.locale)
 DateTime.now().isTheSameDay(DateTime.now())
-DateTime.now().formatToLocalDate("dd mmm yyyy")
+DateTime.now().formatToLocalDate(format: "dd mmm yyyy", locale: context.locale)
 ```
 
 ### String extension
@@ -184,6 +238,8 @@ String name = "chunlee".capitalize() // => Chunlee
 # Utility and Style
 
 ## DotTabIndicator
+
+![alt text](screenshots/tab-indicator-2.png "DotTabIndicator")
 
 ```dart
   TabBar(
@@ -198,14 +254,14 @@ String name = "chunlee".capitalize() // => Chunlee
 
 ## SmallUnderlineTabIndicator
 
+![alt text](screenshots/tab-indicator-1.png "SmallUnderlineIndicator")
+
 ```dart
   TabBar(
       ...
+      isScrollable: true, //This indicator work best with scrollable tab bar
       indicator: SmallUnderlineTabIndicator(
         color: Colors.blue,
-        width: 16,
-        height: 8,
-        radius: 8,
         paddingLeft: 16,
         alignment: TabAlignment.bottom,
       )
@@ -214,6 +270,10 @@ String name = "chunlee".capitalize() // => Chunlee
 ```
 
 ## ShadowInputBorder
+
+This input border solve a problem thath TextField doesn't have a default elevation.
+
+![alt text](screenshots/shadow-input-border.png "SmallUnderlineIndicator")
 
 ```dart
   TextFormField(
@@ -234,25 +294,38 @@ String name = "chunlee".capitalize() // => Chunlee
 ### SuraColor
 
 ```dart
+
+//Get Color from hex string
 Color green = SuraColor.fromCode("42f545")
+
+//Get Color from RGB without Alpha or Opacity
 Color newColor = SuraColor.fromRGB(8, 182, 155)
+
+//Convert color to MaterialColor
 MaterilColor newMaterialColor = SuraColor.toMaterial(0xFF869CF4)
 ```
 
 ### SuraUtils
 
 ```dart
+
+//Get byte from asset bundle
 Future<Uint8List> imageByte = await SuraUtils.getBytesFromAsset("image asset path", 200); //200 is imagewidth
-String carUrlImage =  SuraUtils.unsplashImage(dimension: 200, category: "car"); //get image url from unsplash with given dimension and category
-String randomUrlImage = SuraUtils.picsumImage(200); //get random image url from picsum with given dimension
+
+//Get random image from unsplash
+String carUrlImage =  SuraUtils.unsplashImage(width: 200, height: 200, category: "car");
+
+//Get random from picsum with provided: width and height
+String randomUrlImage = SuraUtils.picsumImage(200,300);
 ```
 
 ### SuraFormValidator
 
+Provide some field validation
+
 ```dart
 TextFormField(
 validator: (value) => SuraFormValidator.validateField(value, field:"username"),
-// check JinValidator class for more field validator
 )
 ```
 

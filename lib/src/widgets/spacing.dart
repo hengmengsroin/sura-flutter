@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+///Create a horizontal blank space
 class SpaceX extends StatelessWidget {
   final double width;
 
@@ -13,6 +14,7 @@ class SpaceX extends StatelessWidget {
   }
 }
 
+///Create a vertical blank space
 class SpaceY extends StatelessWidget {
   final double height;
 

@@ -43,7 +43,8 @@ class SuraFutureHandler<T> extends StatelessWidget {
               );
         } else {
           if (loading != null) return loading!;
-          return suraTheme?.loadingWidget ?? Center(child: CircularProgressIndicator());
+          return suraTheme?.loadingWidget ??
+              Center(child: CircularProgressIndicator());
         }
       },
     );

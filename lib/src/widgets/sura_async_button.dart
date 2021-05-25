@@ -65,6 +65,8 @@ class SuraAsyncButton extends StatefulWidget {
   ///Alignment of the [icon] and [child]
   final MainAxisAlignment? alignment;
 
+  ///Create a Material Elevated Button that can contain a [loadingWiidget] whenever you
+  ///execute a Future function in [onPressed] callback
   const SuraAsyncButton({
     Key? key,
     required this.onPressed,
@@ -127,7 +129,9 @@ class _SuraAsyncButtonState extends State<SuraAsyncButton> {
       ],
     );
 
-    final Widget loadingWidget = widget.loadingWidget ?? SuraTheme.of(context)?.buttonLoadingWidget ?? _buildLoadingWidget();
+    final Widget loadingWidget = widget.loadingWidget ??
+        SuraTheme.of(context)?.buttonLoadingWidget ??
+        _buildLoadingWidget();
 
     return Container(
       height: widget.height,
@@ -143,7 +147,9 @@ class _SuraAsyncButtonState extends State<SuraAsyncButton> {
                 : null,
         child: ConditionalWidget(
           condition: isLoading,
-          onTrue: () => widget.loadingType == LoadingType.Disable ? buttonContent : loadingWidget,
+          onTrue: () => widget.loadingType == LoadingType.Disable
+              ? buttonContent
+              : loadingWidget,
           onFalse: () => buttonContent,
         ),
         style: ElevatedButton.styleFrom(

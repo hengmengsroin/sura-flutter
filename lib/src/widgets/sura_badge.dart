@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
+///A badge that often us in fpr notification
 class SuraBadge extends StatelessWidget {
   final double radius;
   final String text;
   final Color color;
+
+  ///A badge that often us in fpr notification
   const SuraBadge({
     Key? key,
     this.radius = 6.0,

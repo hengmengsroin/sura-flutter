@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sura_flutter/sura_flutter.dart';
 
 class SuraAccordianAndExpandable extends StatefulWidget {
-  SuraAccordianAndExpandable({Key key}) : super(key: key);
+  SuraAccordianAndExpandable({Key? key}) : super(key: key);
   @override
   _SuraAccordianAndExpandableState createState() =>
       _SuraAccordianAndExpandableState();

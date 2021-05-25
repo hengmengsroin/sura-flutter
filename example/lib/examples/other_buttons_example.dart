@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sura_flutter/sura_flutter.dart';
-import 'package:toast/toast.dart';
 
 class OtherButtonExample extends StatefulWidget {
   @override
@@ -10,12 +9,11 @@ class OtherButtonExample extends StatefulWidget {
 class _OtherButtonExampleState extends State<OtherButtonExample> {
   final isLoading = ValueNotifier<bool>(false);
 
-  SuraLoadingDialog loadingDialog;
-  FutureManager futureManager;
+  SuraLoadingDialog? loadingDialog;
+  FutureManager? futureManager;
 
   Future onButtonClick() async {
     await Future.delayed(Duration(seconds: 2));
-    Toast.show("Button click", context);
   }
 
   Future onActionButtonClick() async {
@@ -133,7 +131,8 @@ class _OtherButtonExampleState extends State<OtherButtonExample> {
     );
   }
 
-  Widget buildButtonCategory({String name, List<Widget> buttons}) {
+  Widget buildButtonCategory(
+      {required String name, required List<Widget> buttons}) {
     return Column(
       children: [
         Text(name, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),

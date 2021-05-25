@@ -17,7 +17,8 @@ class SuraActionSheet<T> extends StatelessWidget {
 
   ///A widget builder of option
   final Widget Function(T option, int index) builder;
-  //Create a cupertino bottom sheet with list of option
+
+  ///A cupertino action sheet that use to create an option selector
   const SuraActionSheet({
     Key? key,
     required this.builder,

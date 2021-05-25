@@ -45,8 +45,11 @@ class TokenPayload {
 
   factory TokenPayload.fromMap(Map<String, dynamic> payloadMap) {
     return TokenPayload(
-      createdDate: payloadMap["iat"] == null ? null : DateTime.fromMillisecondsSinceEpoch(payloadMap["iat"] * 1000),
-      expiredDate: DateTime.fromMillisecondsSinceEpoch(payloadMap["exp"] * 1000),
+      createdDate: payloadMap["iat"] == null
+          ? null
+          : DateTime.fromMillisecondsSinceEpoch(payloadMap["iat"] * 1000),
+      expiredDate:
+          DateTime.fromMillisecondsSinceEpoch(payloadMap["exp"] * 1000),
       data: payloadMap,
     );
   }

@@ -18,6 +18,8 @@ class FutureManagerBuilder<T> extends StatefulWidget {
 
   ///A widget to show when [FutureManager] state is success
   final Widget Function(BuildContext, T) ready;
+
+  /// A widget that build base on the state a [FutureManager]
   const FutureManagerBuilder({
     Key? key,
     required this.futureManager,
@@ -58,7 +60,8 @@ class _FutureManagerBuilderState<T> extends State<FutureManagerBuilder<T>> {
     if (widget.futureManager.hasData) {
       return widget.ready(context, widget.futureManager.data!);
     } else if (widget.futureManager.hasError) {
-      if (widget.error != null) return widget.error!(widget.futureManager.error);
+      if (widget.error != null)
+        return widget.error!(widget.futureManager.error);
       return suraTheme?.errorWidget?.call(widget.futureManager.error) ??
           Center(
             child: Text(
@@ -68,7 +71,8 @@ class _FutureManagerBuilderState<T> extends State<FutureManagerBuilder<T>> {
           );
     } else {
       if (widget.loading != null) return widget.loading!;
-      return suraTheme?.loadingWidget ?? Center(child: CircularProgressIndicator());
+      return suraTheme?.loadingWidget ??
+          Center(child: CircularProgressIndicator());
     }
   }
 }
