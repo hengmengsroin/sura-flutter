@@ -1,3 +1,8 @@
+## [0.2.1] - 25 May 2021
+
+- update type to FutureOr<T> of successCallBack in Manager
+- Improve example and Documentaion
+
 ## [0.2.0] - 22 May 2021
 
 - UPGRADE TO NULL SAFETY
