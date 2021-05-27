@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class SuraIconButton extends StatelessWidget {
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
   final Widget icon;
   final EdgeInsets margin;
   final EdgeInsets padding;

@@ -10,7 +10,7 @@ class SuraRaisedButton extends StatelessWidget {
   final ValueNotifier<bool>? loadingNotifier;
   final Widget child;
   final Widget? icon;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final Function? onLongPressed;
   final double? elevation;
   //Button's background Color

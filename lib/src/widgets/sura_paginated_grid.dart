@@ -25,8 +25,8 @@ class SuraPaginatedGridBuilder extends StatefulWidget {
     required this.dataLoader,
     required this.itemCount,
     required this.itemBuilder,
+    required this.hasMoreData,
     this.onEmpty,
-    this.hasMoreData = false,
     this.shrinkWrap = false,
     this.loadingWidget = const CircularProgressIndicator(),
     this.padding = const EdgeInsets.symmetric(vertical: 16, horizontal: 12),
@@ -39,17 +39,15 @@ class SuraPaginatedGridBuilder extends StatefulWidget {
 }
 
 class _SuraPaginatedGridBuilderState extends State<SuraPaginatedGridBuilder> {
-  ScrollController? scrollController;
+  late ScrollController scrollController;
   int loadingState = 0;
 
   bool get _isPrimaryScrollView => widget.scrollController == null;
 
-  void scrollListener(ScrollController? controller) {
-    if (controller != null) {
-      if (controller.offset == controller.position.maxScrollExtent) {
-        loadingState += 1;
-        onLoadingMoreData();
-      }
+  void scrollListener(ScrollController controller) {
+    if (controller.offset == controller.position.maxScrollExtent) {
+      loadingState += 1;
+      onLoadingMoreData();
     }
   }
 
@@ -63,11 +61,11 @@ class _SuraPaginatedGridBuilderState extends State<SuraPaginatedGridBuilder> {
 
   void initController() {
     if (widget.scrollController != null) {
-      widget.scrollController
-          ?.addListener(() => scrollListener(widget.scrollController));
+      widget.scrollController!
+          .addListener(() => scrollListener(widget.scrollController!));
     } else {
       scrollController = ScrollController();
-      scrollController?.addListener(() => scrollListener(scrollController));
+      scrollController.addListener(() => scrollListener(scrollController));
     }
   }
 
@@ -79,9 +77,7 @@ class _SuraPaginatedGridBuilderState extends State<SuraPaginatedGridBuilder> {
 
   @override
   void dispose() {
-    if (scrollController != null) {
-      scrollController?.dispose();
-    }
+    scrollController.dispose();
     super.dispose();
   }
 

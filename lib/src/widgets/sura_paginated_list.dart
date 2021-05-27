@@ -30,7 +30,7 @@ class SuraPaginatedList extends StatefulWidget {
   final ScrollController? scrollController;
 
   ///callback for getting more data when ScrollController reach mex scrolExtends
-  final Future<void> Function()? dataLoader;
+  final Future<void> Function() dataLoader;
 
   ///condition to check if we still have more data to fetch
   ///Example: currentItems == totalItems or currentPage == totalPages
@@ -43,7 +43,7 @@ class SuraPaginatedList extends StatefulWidget {
     required this.itemCount,
     required this.itemBuilder,
     required this.dataLoader,
-    this.hasMoreData = false,
+    required this.hasMoreData,
     this.physics = const ClampingScrollPhysics(),
     this.shrinkWrap = false,
     this.loadingWidget = const CircularProgressIndicator(),
@@ -63,19 +63,17 @@ class _SuraPaginatedListState extends State<SuraPaginatedList> {
 
   bool get _isPrimaryScrollView => widget.scrollController == null;
 
-  void scrollListener(ScrollController? controller) {
-    if (controller != null) {
-      if (controller.offset == controller.position.maxScrollExtent) {
-        loadingState += 1;
-        onLoadingMoreData();
-      }
+  void scrollListener(ScrollController controller) {
+    if (controller.offset == controller.position.maxScrollExtent) {
+      loadingState += 1;
+      onLoadingMoreData();
     }
   }
 
   void onLoadingMoreData() async {
     if (loadingState > 1) return;
     if (widget.hasMoreData) {
-      await widget.dataLoader?.call();
+      await widget.dataLoader.call();
       loadingState = 0;
     }
   }
@@ -83,7 +81,7 @@ class _SuraPaginatedListState extends State<SuraPaginatedList> {
   void initController() {
     if (widget.scrollController != null) {
       widget.scrollController
-          ?.addListener(() => scrollListener(widget.scrollController));
+          ?.addListener(() => scrollListener(widget.scrollController!));
     } else {
       scrollController = ScrollController();
       scrollController.addListener(() => scrollListener(scrollController));
@@ -98,9 +96,7 @@ class _SuraPaginatedListState extends State<SuraPaginatedList> {
 
   @override
   void dispose() {
-    if (scrollController != null) {
-      scrollController.dispose();
-    }
+    scrollController.dispose();
     super.dispose();
   }
 

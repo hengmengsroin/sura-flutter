@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'spacing.dart';
 
 class SuraFlatButton extends StatelessWidget {
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final Widget child;
   final EdgeInsets margin;
   final EdgeInsets padding;

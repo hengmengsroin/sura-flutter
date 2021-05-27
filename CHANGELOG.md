@@ -1,5 +1,10 @@
 ## [0.2.3] - 25 May 2021
 
+- Most button's onPressed or OnTap are nullable
+- Add FutureFunction to SuraFutureHandler
+
+## [0.2.3] - 25 May 2021
+
 - Update Manager null safety
 
 ## [0.2.2] - 25 May 2021

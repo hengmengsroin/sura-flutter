@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:sura_flutter/src/manager/callback.dart';
 
 import 'sura_theme.dart';
 
-class SuraFutureHandler<T> extends StatelessWidget {
-  final Future<T> future;
+class SuraFutureHandler<T> extends StatefulWidget {
+  ///Future to check on
+  final Future<T>? future;
+  final FutureFunction<T>? futureFunction;
 
   ///A callback when Future's snapshot hasData
   final Widget Function(T) ready;
@@ -19,21 +22,45 @@ class SuraFutureHandler<T> extends StatelessWidget {
     required this.future,
     required this.ready,
     this.error,
+    this.futureFunction,
     this.loading,
     this.initialData,
   });
+
+  const SuraFutureHandler.function({
+    required this.ready,
+    required this.futureFunction,
+    this.future,
+    this.error,
+    this.loading,
+    this.initialData,
+  });
+
+  @override
+  _SuraFutureHandlerState<T> createState() => _SuraFutureHandlerState<T>();
+}
+
+class _SuraFutureHandlerState<T> extends State<SuraFutureHandler<T>> {
+  Future<T>? future;
+
+  @override
+  void initState() {
+    future = widget.future ?? widget.futureFunction?.call();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final SuraTheme? suraTheme = SuraTheme.of(context);
     //
     return FutureBuilder<T>(
-      future: future,
-      initialData: initialData,
+      future: widget.future,
+      initialData: widget.initialData,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          return ready(snapshot.data!);
+          return widget.ready(snapshot.data!);
         } else if (snapshot.hasError) {
-          if (error != null) return error!(snapshot.error);
+          if (widget.error != null) return widget.error!(snapshot.error);
           return suraTheme?.errorWidget?.call(snapshot.error) ??
               Center(
                 child: Text(
@@ -42,8 +69,9 @@ class SuraFutureHandler<T> extends StatelessWidget {
                 ),
               );
         } else {
-          if (loading != null) return loading!;
-          return suraTheme?.loadingWidget ?? Center(child: CircularProgressIndicator());
+          if (widget.loading != null) return widget.loading!;
+          return suraTheme?.loadingWidget ??
+              Center(child: CircularProgressIndicator());
         }
       },
     );
