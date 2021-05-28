@@ -1,7 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:sura_flutter/src/widgets/sura_stream_handler.dart';
 
 import 'callback.dart';
 
@@ -50,6 +52,18 @@ class AsyncSubjectManager<T> {
   bool get hasData => _controller.hasValue && _controller.value != null;
 
   T? get value => _controller.value;
+
+  Widget when(
+      {required Widget Function(T) ready,
+      Widget? loading,
+      Widget Function(dynamic)? error}) {
+    return SuraStreamHandler<T?>(
+      stream: stream,
+      ready: (data) => ready(data!),
+      loading: loading,
+      error: error,
+    );
+  }
 
   Future<T?> Function({
     bool? reloading,

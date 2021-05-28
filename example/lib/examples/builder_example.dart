@@ -56,6 +56,12 @@ class _SuraBuilderExampleState extends State<SuraBuilderExample> {
               ),
             ),
             BuilderSection(
+              title: "FutureManagerBuilder With When",
+              child: counterManager.when(
+                ready: (count) => buildResult(count),
+              ),
+            ),
+            BuilderSection(
               title: "SuraFutureHandler",
               child: SuraFutureHandler<int>(
                 future: counterFuture,
@@ -64,9 +70,9 @@ class _SuraBuilderExampleState extends State<SuraBuilderExample> {
             ),
             BuilderSection(
               title: "SuraStreamHandler",
-              child: SuraStreamHandler(
+              child: SuraStreamHandler<int?>(
                 stream: counterSubject.stream,
-                ready: (dynamic count) => buildResult(count),
+                ready: (int? count) => buildResult(count!),
               ),
             ),
             BuilderSection(

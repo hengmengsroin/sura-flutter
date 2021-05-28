@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sura_flutter/src/widgets/future_manager_builder.dart';
 
 import 'callback.dart';
 
@@ -44,6 +45,10 @@ class FutureManager<T> extends ChangeNotifier {
     }
   }
 
+  ///The Future that this class is doing in [asyncOperation]
+  ///Sometime you want to use [FutureManager] class with FutureBuilder, so you can use this field
+  Future<T>? future;
+
   ///
   bool _isLoading = true;
   T? _data;
@@ -58,9 +63,19 @@ class FutureManager<T> extends ChangeNotifier {
 
   bool get hasError => _error != null;
 
-  ///The Future that this class is doing in [asyncOperation]
-  ///Sometime you want to use [FutureManager] class with FutureBuilder, so you can use this field
-  Future<T>? future;
+  bool get isLoading => _isLoading;
+
+  Widget when(
+      {required Widget Function(T) ready,
+      Widget? loading,
+      Widget Function(dynamic)? error}) {
+    return FutureManagerBuilder<T>(
+      futureManager: this,
+      ready: (context, data) => ready(data),
+      loading: loading,
+      error: error,
+    );
+  }
 
   ///refresh is a function that call [asyncOperation] again,
   ///return null if [futureFunction] hasn't been initialize
@@ -125,8 +140,8 @@ class FutureManager<T> extends ChangeNotifier {
     );
   }
 
-  void toggleLoading() {
-    _isLoading = false;
+  void toggleLoading([bool value = false]) {
+    _isLoading = value;
     notifyListeners();
   }
 

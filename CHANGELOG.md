@@ -1,4 +1,8 @@
-## [0.2.4] - 25 May 2021
+## [0.2.6] - 28 May 2021
+
+- Add when function to FutureManagerBuilder and AsyncSubjectManager
+
+## [0.2.4] - 27 May 2021
 
 - Most button's onPressed or OnTap are nullable
 - Add FutureFunction to SuraFutureHandler

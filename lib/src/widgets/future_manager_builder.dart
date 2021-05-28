@@ -35,9 +35,11 @@ class FutureManagerBuilder<T> extends StatefulWidget {
 class _FutureManagerBuilderState<T> extends State<FutureManagerBuilder<T>> {
   //
   void listener() {
-    setState(() {});
-    if (widget.futureManager.hasError) {
-      widget.onError?.call(widget.futureManager.error);
+    if (mounted) {
+      setState(() {});
+      if (widget.futureManager.hasError) {
+        widget.onError?.call(widget.futureManager.error);
+      }
     }
   }
 

@@ -17,6 +17,9 @@ class SuraAsyncButton extends StatefulWidget {
   ///onPressed callback
   final FutureOr<void> Function()? onPressed;
 
+  ///Button's margin, default value is [vertical: 16]
+  final EdgeInsets margin;
+
   ///[startIcon] will show on the left side of the button
   final Widget? startIcon;
 
@@ -48,10 +51,7 @@ class SuraAsyncButton extends StatefulWidget {
   final BorderSide? borderSide;
 
   ///Button's elevation
-  final double elevation;
-
-  ///Button's margin, default value is [vertical: 16]
-  final EdgeInsets margin;
+  final double? elevation;
 
   ///Button padding
   final EdgeInsets padding;
@@ -73,7 +73,6 @@ class SuraAsyncButton extends StatefulWidget {
     required this.child,
     this.fullWidth = true,
     this.loadingColor = Colors.white,
-    this.elevation = 2,
     this.margin = const EdgeInsets.symmetric(vertical: 16),
     this.padding = const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
     this.loadingType = LoadingType.Progress,
@@ -87,6 +86,7 @@ class SuraAsyncButton extends StatefulWidget {
     this.alignment,
     this.borderSide,
     this.textColor,
+    this.elevation,
   }) : super(key: key);
   @override
   _SuraAsyncButtonState createState() => _SuraAsyncButtonState();
