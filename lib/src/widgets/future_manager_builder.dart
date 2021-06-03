@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sura_flutter/src/manager/future_manager.dart';
-import 'package:sura_flutter/src/widgets/sura_theme.dart';
+import 'package:sura_flutter/src/widgets/sura_provider.dart';
 
 /// A widget that build base on the state a [FutureManager]
 class FutureManagerBuilder<T> extends StatefulWidget {
@@ -34,10 +34,14 @@ class FutureManagerBuilder<T> extends StatefulWidget {
 
 class _FutureManagerBuilderState<T> extends State<FutureManagerBuilder<T>> {
   //
+  SuraProvider? suraProvider;
   void listener() {
     if (mounted) {
       setState(() {});
       if (widget.futureManager.hasError) {
+        if (suraProvider?.onManagerError != null) {
+          suraProvider?.onManagerError?.call(widget.futureManager.error, context);
+        }
         widget.onError?.call(widget.futureManager.error);
       }
     }
@@ -57,14 +61,13 @@ class _FutureManagerBuilderState<T> extends State<FutureManagerBuilder<T>> {
 
   @override
   Widget build(BuildContext context) {
-    final SuraTheme? suraTheme = SuraTheme.of(context);
+    suraProvider = SuraProvider.of(context);
     //
     if (widget.futureManager.hasData) {
       return widget.ready(context, widget.futureManager.data!);
     } else if (widget.futureManager.hasError) {
-      if (widget.error != null)
-        return widget.error!(widget.futureManager.error);
-      return suraTheme?.errorWidget?.call(widget.futureManager.error) ??
+      if (widget.error != null) return widget.error!(widget.futureManager.error);
+      return suraProvider?.errorWidget?.call(widget.futureManager.error) ??
           Center(
             child: Text(
               widget.futureManager.error.toString(),
@@ -73,8 +76,7 @@ class _FutureManagerBuilderState<T> extends State<FutureManagerBuilder<T>> {
           );
     } else {
       if (widget.loading != null) return widget.loading!;
-      return suraTheme?.loadingWidget ??
-          Center(child: CircularProgressIndicator());
+      return suraProvider?.loadingWidget ?? Center(child: CircularProgressIndicator());
     }
   }
 }

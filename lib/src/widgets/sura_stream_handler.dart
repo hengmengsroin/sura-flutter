@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import 'sura_theme.dart';
+import 'sura_provider.dart';
 
 class SuraStreamHandler<T> extends StatefulWidget {
   final Stream<T> stream;
@@ -38,11 +38,17 @@ class SuraStreamHandler<T> extends StatefulWidget {
 
 class _SuraStreamHandlerState<T> extends State<SuraStreamHandler<T>> {
   StreamSubscription<T>? subscription;
+  SuraProvider? suraProvider;
   @override
   void initState() {
     if (widget.onError != null) {
       subscription = widget.stream.asBroadcastStream().listen((data) {});
-      subscription?.onError((error) => widget.onError?.call(error));
+      subscription?.onError((error) {
+        if (suraProvider?.onManagerError != null) {
+          suraProvider?.onManagerError?.call(error, context);
+        }
+        widget.onError?.call(error);
+      });
     }
     super.initState();
   }
@@ -58,7 +64,7 @@ class _SuraStreamHandlerState<T> extends State<SuraStreamHandler<T>> {
 
   @override
   Widget build(BuildContext context) {
-    final SuraTheme? suraTheme = SuraTheme.of(context);
+    suraProvider = SuraProvider.of(context);
     //
     return StreamBuilder<T>(
       stream: widget.stream,
@@ -70,7 +76,7 @@ class _SuraStreamHandlerState<T> extends State<SuraStreamHandler<T>> {
           if (widget.error != null) {
             return widget.error!(snapshot.error);
           }
-          return suraTheme?.errorWidget?.call(snapshot.error) ??
+          return suraProvider?.errorWidget?.call(snapshot.error) ??
               Center(
                 child: Text(
                   snapshot.error.toString(),
@@ -81,8 +87,7 @@ class _SuraStreamHandlerState<T> extends State<SuraStreamHandler<T>> {
           if (widget.loading != null) {
             return widget.loading!;
           }
-          return suraTheme?.loadingWidget ??
-              Center(child: CircularProgressIndicator());
+          return suraProvider?.loadingWidget ?? Center(child: CircularProgressIndicator());
         }
       },
     );

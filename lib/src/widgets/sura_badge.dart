@@ -5,6 +5,7 @@ class SuraBadge extends StatelessWidget {
   final double radius;
   final String text;
   final Color color;
+  final bool enable;
 
   ///A badge that often us in fpr notification
   const SuraBadge({
@@ -12,9 +13,11 @@ class SuraBadge extends StatelessWidget {
     this.radius = 6.0,
     this.text = "",
     this.color = Colors.red,
+    this.enable = true,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    if (!enable) return const SizedBox();
     return Container(
       width: radius * 2,
       height: radius * 2,

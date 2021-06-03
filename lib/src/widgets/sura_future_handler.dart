@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sura_flutter/src/manager/callback.dart';
 
-import 'sura_theme.dart';
+import 'sura_provider.dart';
 
 class SuraFutureHandler<T> extends StatefulWidget {
   ///Future to check on
@@ -51,7 +51,7 @@ class _SuraFutureHandlerState<T> extends State<SuraFutureHandler<T>> {
 
   @override
   Widget build(BuildContext context) {
-    final SuraTheme? suraTheme = SuraTheme.of(context);
+    final SuraProvider? suraTheme = SuraProvider.of(context);
     //
     return FutureBuilder<T>(
       future: widget.future,
@@ -70,8 +70,7 @@ class _SuraFutureHandlerState<T> extends State<SuraFutureHandler<T>> {
               );
         } else {
           if (widget.loading != null) return widget.loading!;
-          return suraTheme?.loadingWidget ??
-              Center(child: CircularProgressIndicator());
+          return suraTheme?.loadingWidget ?? Center(child: CircularProgressIndicator());
         }
       },
     );
