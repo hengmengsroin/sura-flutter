@@ -1,6 +1,7 @@
-## [0.2.6] - 28 May 2021
+## [0.2.5] - 05 June 2021
 
 - Add when function to FutureManagerBuilder and AsyncSubjectManager
+- fix PlatformChecker
 - BREAKING CHANGE
   - rename SuraTheme to SuraProvider
 

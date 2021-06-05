@@ -1,7 +1,5 @@
-import 'dart:io' if (dart.library.html) 'package:flutter/foundation.dart';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:universal_platform/universal_platform.dart';
 
 ///Provide a widget child depend on the Platform, Currently support [iOS] and [Android]
 class SuraPlatformChecker extends StatelessWidget {
@@ -21,9 +19,9 @@ class SuraPlatformChecker extends StatelessWidget {
   }
 
   Widget buildPlatformChecker() {
-    if (Platform.isIOS && iosWidget != null) {
+    if (UniversalPlatform.isIOS && iosWidget != null) {
       return iosWidget ?? SizedBox();
-    } else if (kIsWeb && webWidget != null) {
+    } else if (UniversalPlatform.isWeb && webWidget != null) {
       return webWidget ?? SizedBox();
     }
     return androidWidget;
