@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'sura_provider.dart';
 
 class SuraStreamHandler<T> extends StatefulWidget {
-  final Stream<T> stream;
+  final Stream<T?> stream;
 
   ///A callback when Stream's snapshot hasData
   final Widget Function(T) ready;
@@ -37,7 +37,7 @@ class SuraStreamHandler<T> extends StatefulWidget {
 }
 
 class _SuraStreamHandlerState<T> extends State<SuraStreamHandler<T>> {
-  StreamSubscription<T>? subscription;
+  late StreamSubscription<T?>? subscription;
   SuraProvider? suraProvider;
   @override
   void initState() {
@@ -66,11 +66,11 @@ class _SuraStreamHandlerState<T> extends State<SuraStreamHandler<T>> {
   Widget build(BuildContext context) {
     suraProvider = SuraProvider.of(context);
     //
-    return StreamBuilder<T>(
+    return StreamBuilder<T?>(
       stream: widget.stream,
       initialData: widget.initialData,
       builder: (context, snapshot) {
-        if (snapshot.hasData) {
+        if (snapshot.hasData && snapshot.data != null) {
           return widget.ready(snapshot.data!);
         } else if (snapshot.hasError) {
           if (widget.error != null) {

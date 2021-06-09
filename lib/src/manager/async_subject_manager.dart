@@ -29,12 +29,7 @@ class AsyncSubjectManager<T> {
   /// if [reloading] is true, reload the controller to initial state
   final bool reloading;
 
-  AsyncSubjectManager(
-      {this.futureFunction,
-      this.reloading = true,
-      this.onSuccess,
-      this.onDone,
-      this.onError}) {
+  AsyncSubjectManager({this.futureFunction, this.reloading = true, this.onSuccess, this.onDone, this.onError}) {
     _controller = BehaviorSubject<T?>();
     if (futureFunction != null) {
       asyncOperation(
@@ -53,10 +48,7 @@ class AsyncSubjectManager<T> {
 
   T? get value => _controller.value;
 
-  Widget when(
-      {required Widget Function(T) ready,
-      Widget? loading,
-      Widget Function(dynamic)? error}) {
+  Widget when({required Widget Function(T) ready, Widget? loading, Widget Function(dynamic)? error}) {
     return SuraStreamHandler<T?>(
       stream: stream,
       ready: (data) => ready(data!),
@@ -72,8 +64,7 @@ class AsyncSubjectManager<T> {
     ErrorCallBack? onError,
     bool? throwError,
   }) refresh = ({reloading, onSuccess, onDone, onError, throwError}) async {
-    print(
-        "refresh is depend on AsyncOperation, You need to call asyncOperation once before you can call refresh");
+    print("refresh is depend on AsyncOperation, You need to call asyncOperation once before you can call refresh");
     return null;
   };
 

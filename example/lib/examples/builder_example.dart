@@ -70,9 +70,9 @@ class _SuraBuilderExampleState extends State<SuraBuilderExample> {
             ),
             BuilderSection(
               title: "SuraStreamHandler",
-              child: SuraStreamHandler<int?>(
+              child: SuraStreamHandler<int>(
                 stream: counterSubject.stream,
-                ready: (int? count) => buildResult(count!),
+                ready: (int count) => buildResult(count),
               ),
             ),
             BuilderSection(
