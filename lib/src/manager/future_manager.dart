@@ -28,12 +28,7 @@ class FutureManager<T> extends ChangeNotifier {
   final bool reloading;
 
   ///Create a FutureManager instance, You can define a [futureFunction] here then [asyncOperation] will be call immediately
-  FutureManager(
-      {this.futureFunction,
-      this.reloading = true,
-      this.onSuccess,
-      this.onDone,
-      this.onError}) {
+  FutureManager({this.futureFunction, this.reloading = true, this.onSuccess, this.onDone, this.onError}) {
     if (futureFunction != null) {
       asyncOperation(
         futureFunction!,
@@ -65,10 +60,11 @@ class FutureManager<T> extends ChangeNotifier {
 
   bool get isLoading => _isLoading;
 
-  Widget when(
-      {required Widget Function(T) ready,
-      Widget? loading,
-      Widget Function(dynamic)? error}) {
+  Widget when({
+    required Widget Function(T) ready,
+    Widget? loading,
+    Widget Function(dynamic)? error,
+  }) {
     return FutureManagerBuilder<T>(
       futureManager: this,
       ready: (context, data) => ready(data),
@@ -86,8 +82,7 @@ class FutureManager<T> extends ChangeNotifier {
     ErrorCallBack? onError,
     bool? throwError,
   }) refresh = ({reloading, onSuccess, onDone, onError, throwError}) async {
-    print(
-        "refresh is depend on AsyncOperation, You need to call asyncOperation once before you can call refresh");
+    print("refresh is depend on asyncOperation, You need to call asyncOperation once before you can call refresh");
     return null;
   };
 

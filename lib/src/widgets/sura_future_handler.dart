@@ -60,7 +60,9 @@ class _SuraFutureHandlerState<T> extends State<SuraFutureHandler<T>> {
         if (snapshot.hasData) {
           return widget.ready(snapshot.data!);
         } else if (snapshot.hasError) {
-          if (widget.error != null) return widget.error!(snapshot.error);
+          if (widget.error != null) {
+            return widget.error!(snapshot.error);
+          }
           return suraTheme?.errorWidget?.call(snapshot.error) ??
               Center(
                 child: Text(
@@ -69,7 +71,9 @@ class _SuraFutureHandlerState<T> extends State<SuraFutureHandler<T>> {
                 ),
               );
         } else {
-          if (widget.loading != null) return widget.loading!;
+          if (widget.loading != null) {
+            return widget.loading!;
+          }
           return suraTheme?.loadingWidget ?? Center(child: CircularProgressIndicator());
         }
       },

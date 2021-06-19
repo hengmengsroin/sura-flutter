@@ -66,7 +66,9 @@ class _FutureManagerBuilderState<T> extends State<FutureManagerBuilder<T>> {
     if (widget.futureManager.hasData) {
       return widget.ready(context, widget.futureManager.data!);
     } else if (widget.futureManager.hasError) {
-      if (widget.error != null) return widget.error!(widget.futureManager.error);
+      if (widget.error != null) {
+        return widget.error!(widget.futureManager.error);
+      }
       return suraProvider?.errorWidget?.call(widget.futureManager.error) ??
           Center(
             child: Text(
@@ -75,7 +77,9 @@ class _FutureManagerBuilderState<T> extends State<FutureManagerBuilder<T>> {
             ),
           );
     } else {
-      if (widget.loading != null) return widget.loading!;
+      if (widget.loading != null) {
+        return widget.loading!;
+      }
       return suraProvider?.loadingWidget ?? Center(child: CircularProgressIndicator());
     }
   }

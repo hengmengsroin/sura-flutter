@@ -48,7 +48,11 @@ class AsyncSubjectManager<T> {
 
   T? get value => _controller.value;
 
-  Widget when({required Widget Function(T) ready, Widget? loading, Widget Function(dynamic)? error}) {
+  Widget when({
+    required Widget Function(T) ready,
+    Widget? loading,
+    Widget Function(dynamic)? error,
+  }) {
     return SuraStreamHandler<T?>(
       stream: stream,
       ready: (data) => ready(data!),
@@ -64,7 +68,7 @@ class AsyncSubjectManager<T> {
     ErrorCallBack? onError,
     bool? throwError,
   }) refresh = ({reloading, onSuccess, onDone, onError, throwError}) async {
-    print("refresh is depend on AsyncOperation, You need to call asyncOperation once before you can call refresh");
+    print("refresh is depend on asyncOperation, You need to call asyncOperation once before you can call refresh");
     return null;
   };
 

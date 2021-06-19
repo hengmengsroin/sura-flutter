@@ -1,3 +1,7 @@
+## [0.2.6] - -- -- 2021
+
+- SuraStreamHandler now can have a type of non-nullable type
+
 ## [0.2.5] - 05 June 2021
 
 - Add when function to FutureManagerBuilder and AsyncSubjectManager

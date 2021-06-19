@@ -30,11 +30,7 @@ class SuraIconButton extends StatelessWidget {
       borderRadius: BorderRadius.circular(borderRadius),
       side: borderSide ?? BorderSide.none,
     );
-    var stack = Stack(
-      children: [
-        icon,
-      ],
-    );
+
     return Card(
       shape: shape,
       color: backgroundColor,
@@ -47,7 +43,7 @@ class SuraIconButton extends StatelessWidget {
           children: [
             Padding(
               padding: padding,
-              child: stack,
+              child: icon,
             ),
             if (badge != null)
               Positioned(
