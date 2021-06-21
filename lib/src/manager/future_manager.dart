@@ -154,9 +154,15 @@ class FutureManager<T> extends ChangeNotifier {
     notifyListeners();
   }
 
+  void addError(dynamic error) {
+    this._error = error;
+    notifyListeners();
+  }
+
   @override
   void dispose() {
     _data = null;
+    _error = null;
     super.dispose();
   }
 }
