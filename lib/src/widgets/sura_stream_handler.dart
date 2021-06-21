@@ -87,7 +87,8 @@ class _SuraStreamHandlerState<T> extends State<SuraStreamHandler<T>> {
           if (widget.loading != null) {
             return widget.loading!;
           }
-          return suraProvider?.loadingWidget ?? Center(child: CircularProgressIndicator());
+          return suraProvider?.loadingWidget ??
+              Center(child: CircularProgressIndicator());
         }
       },
     );

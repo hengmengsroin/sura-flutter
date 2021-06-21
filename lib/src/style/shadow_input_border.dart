@@ -34,7 +34,11 @@ class ShadowInputBorder extends InputBorder {
 
   @override
   Path getInnerPath(Rect rect, {TextDirection? textDirection}) {
-    return Path()..addRRect(borderRadius.resolve(textDirection).toRRect(rect).deflate(borderSide.width));
+    return Path()
+      ..addRRect(borderRadius
+          .resolve(textDirection)
+          .toRRect(rect)
+          .deflate(borderSide.width));
   }
 
   @override

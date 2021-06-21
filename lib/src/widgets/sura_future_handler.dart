@@ -74,7 +74,8 @@ class _SuraFutureHandlerState<T> extends State<SuraFutureHandler<T>> {
           if (widget.loading != null) {
             return widget.loading!;
           }
-          return suraTheme?.loadingWidget ?? Center(child: CircularProgressIndicator());
+          return suraTheme?.loadingWidget ??
+              Center(child: CircularProgressIndicator());
         }
       },
     );

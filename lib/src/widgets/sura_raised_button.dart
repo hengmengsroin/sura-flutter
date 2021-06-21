@@ -80,7 +80,10 @@ class SuraRaisedButton extends StatelessWidget {
                   child,
                 ],
               ),
-              onTrue: () => loadingWidget ?? SuraProvider.of(context)?.buttonLoadingWidget ?? _buildLoadingWidget(),
+              onTrue: () =>
+                  loadingWidget ??
+                  SuraProvider.of(context)?.buttonLoadingWidget ??
+                  _buildLoadingWidget(),
             ),
           );
         },

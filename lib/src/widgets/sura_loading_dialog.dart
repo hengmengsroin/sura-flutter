@@ -14,7 +14,9 @@ class SuraLoadingDialog {
   });
 
   Future<void> show({Widget? child}) async {
-    final dialogChild = child ?? SuraProvider.of(context)?.loadingWidget ?? CircularProgressIndicator();
+    final dialogChild = child ??
+        SuraProvider.of(context)?.loadingWidget ??
+        CircularProgressIndicator();
     showDialog(
         context: context,
         barrierDismissible: dismissible,
