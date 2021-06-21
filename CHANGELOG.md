@@ -1,6 +1,7 @@
-## [0.2.6] - -- -- 2021
+## [0.2.6] - 21 June 2021
 
 - SuraStreamHandler now can have a type of non-nullable type
+- expose addError method in FutureManager
 
 ## [0.2.5] - 05 June 2021
 
