@@ -22,7 +22,7 @@ Add this to pubspec.yaml
 
 ```dart
 dependencies:
-  sura_flutter: ^0.2.6+1
+  sura_flutter: ^0.3.0
 ```
 
 # Widgets
