@@ -4,6 +4,18 @@
 
 A flutter package from AsurRaa for widgets and utility functions
 
+# Migrate from 2.x to 3.x
+
+- BREAKING CHANGE:
+
+  - remove FutureManager, AsyncSubjectManager, FutureManagerBuilder
+  - All manager class now has a separate package
+
+  ```dart
+  dependencies:
+    sura_manager: any
+  ```
+
 # Installation
 
 Add this to pubspec.yaml
@@ -44,56 +56,6 @@ dependencies:
 [builder_example]: https://github.com/asurraa/sura-flutter/tree/master/example/lib/examples/builder_example.dart
 [accordion_expandable]: https://github.com/asurraa/sura-flutter/tree/master/example/lib/examples/sura_accordion_and_sura_expandable.dart
 [other]: https://github.com/asurraa/sura_flutter/tree/master/example
-
-# Manager
-
-### FutureManager
-
-Handle async value with change notifier
-
-```dart
-class _HomePageState extends State<NewPage> {
-
-  FutureManager<int> dataManager = FutureManager();
-  @override
-  void initState() {
-    dataManager.asyncOperation(()async{
-      await Future.delayed(Duration(seconds: 2));
-      //Add 10 into our dataManager
-      return 10;
-    })
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    //Use with FutureManagerBuilder
-    return Scaffold(
-      appBar: AppBar(
-        actions: [
-          IconButton(
-            icon:Icon(Icons.refresh),
-            onPressed:(){
-              //call our asyncOperation again
-              dataManager.refresh();
-            },
-          )
-        ]
-      ),
-      body: FutureManagerBuilder<int>(
-        futureManager: dataManager,
-        error: (error) => YourErrorWidget(),
-        loading: YourLoadingWidget(),
-        ready: (context, data){
-          //result: My data: 10
-          return Text("My data: ${data}"),
-        }
-      ),
-    ),
-  }
-}
-```
-
-check out more at: [Sura Flutter Documentation](https://pub.dev/documentation/sura_flutter/latest/sura_flutter/sura_flutter-library.html)
 
 # Mixin
 

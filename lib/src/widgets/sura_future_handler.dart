@@ -1,13 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sura_flutter/src/manager/callback.dart';
 
 import 'sura_provider.dart';
 
 class SuraFutureHandler<T> extends StatefulWidget {
   ///Future to check on
   final Future<T>? future;
-  final FutureFunction<T>? futureFunction;
+  final Future<T> Function()? futureFunction;
 
   ///A callback when Future's snapshot hasData
   final Widget Function(T) ready;
@@ -74,8 +73,7 @@ class _SuraFutureHandlerState<T> extends State<SuraFutureHandler<T>> {
           if (widget.loading != null) {
             return widget.loading!;
           }
-          return suraTheme?.loadingWidget ??
-              Center(child: CircularProgressIndicator());
+          return suraTheme?.loadingWidget ?? Center(child: CircularProgressIndicator());
         }
       },
     );

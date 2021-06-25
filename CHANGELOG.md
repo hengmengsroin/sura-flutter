@@ -1,3 +1,9 @@
+## [0.3.0] - 25 June 2021
+
+- BREAKING CHANGE:
+  - remove FutureManager, AsyncSubjectManager, FutureManagerBuilder
+  - All manager class now has a separate package
+
 ## [0.2.6+1] - 21 June 2021
 
 - SuraStreamHandler now can have a type of non-nullable type
