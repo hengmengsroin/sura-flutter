@@ -44,9 +44,6 @@ class _SuraStreamHandlerState<T> extends State<SuraStreamHandler<T>> {
     if (widget.onError != null) {
       subscription = widget.stream.asBroadcastStream().listen((data) {});
       subscription?.onError((error) {
-        if (suraProvider?.onManagerError != null) {
-          suraProvider?.onManagerError?.call(error, context);
-        }
         widget.onError?.call(error);
       });
     }
@@ -76,7 +73,7 @@ class _SuraStreamHandlerState<T> extends State<SuraStreamHandler<T>> {
           if (widget.error != null) {
             return widget.error!(snapshot.error);
           }
-          return suraProvider?.errorWidget?.call(snapshot.error) ??
+          return suraProvider?.errorWidget?.call(snapshot.error, null) ??
               Center(
                 child: Text(
                   snapshot.error.toString(),

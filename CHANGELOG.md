@@ -1,3 +1,7 @@
+## [0.3.1] - 27 July 2021
+
+- add refresh function to SuraProvider error widget
+
 ## [0.3.0] - 25 June 2021
 
 - BREAKING CHANGE:

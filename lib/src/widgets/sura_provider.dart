@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../utils/type.dart';
 
 class SuraProvider extends InheritedWidget {
   const SuraProvider({
@@ -6,7 +7,6 @@ class SuraProvider extends InheritedWidget {
     this.loadingWidget,
     this.errorWidget,
     this.buttonLoadingWidget,
-    this.onManagerError,
   }) : super(child: child);
 
   ///Loading widget use in [SuraAsyncButton]
@@ -16,10 +16,7 @@ class SuraProvider extends InheritedWidget {
   final Widget? loadingWidget;
 
   ///Error widget use in [Manager] class
-  final Widget Function(dynamic)? errorWidget;
-
-  ///Error function call when manager error
-  final void Function(dynamic, BuildContext)? onManagerError;
+  final CustomErrorWidget? errorWidget;
 
   static SuraProvider? of(BuildContext context) {
     return context.dependOnInheritedWidgetOfExactType<SuraProvider>();
