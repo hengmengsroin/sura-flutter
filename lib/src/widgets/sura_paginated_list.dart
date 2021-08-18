@@ -58,7 +58,7 @@ class SuraPaginatedList extends StatefulWidget {
 }
 
 class _SuraPaginatedListState extends State<SuraPaginatedList> {
-  late ScrollController scrollController;
+  ScrollController? scrollController;
   int loadingState = 0;
 
   bool get _isPrimaryScrollView => widget.scrollController == null;
@@ -74,17 +74,19 @@ class _SuraPaginatedListState extends State<SuraPaginatedList> {
     if (loadingState > 1) return;
     if (widget.hasMoreData) {
       await widget.dataLoader.call();
-      loadingState = 0;
+      if(mounted){
+        loadingState = 0;      
+      }
     }
   }
 
   void initController() {
-    if (widget.scrollController != null) {
-      widget.scrollController
-          ?.addListener(() => scrollListener(widget.scrollController!));
-    } else {
+    if (_isPrimaryScrollView) {
       scrollController = ScrollController();
       scrollController.addListener(() => scrollListener(scrollController));
+    } else {
+      widget.scrollController
+          ?.addListener(() => scrollListener(widget.scrollController!));
     }
   }
 
@@ -96,7 +98,7 @@ class _SuraPaginatedListState extends State<SuraPaginatedList> {
 
   @override
   void dispose() {
-    scrollController.dispose();
+    scrollController?.dispose();
     super.dispose();
   }
 

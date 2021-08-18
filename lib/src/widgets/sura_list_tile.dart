@@ -14,7 +14,7 @@ class SuraListTile extends StatelessWidget {
   final Widget? separator;
   final double titleSpace;
 
-  ///A custom listtile for simple customization
+  ///A custom ListTile for simple customization
   const SuraListTile({
     Key? key,
     this.leading,
