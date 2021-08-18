@@ -16,7 +16,7 @@ class SuraColor {
 
       return Color(int.parse(colorCode));
     } catch (e) {
-      print("SuraColor: => Invalid color formaat");
+      print("SuraColor: => Invalid color format");
       return defaultColor;
     }
   }

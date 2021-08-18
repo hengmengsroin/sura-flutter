@@ -1,17 +1,18 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 ///Provide some field to use in a Widget that contains form
 mixin SuraFormMixin<T extends StatefulWidget> on State<T> {
   final formKey = GlobalKey<FormState>();
   final loadingNotifier = ValueNotifier<bool>(false);
-  final passwordObsecureNotifier = ValueNotifier<bool>(true);
+  final passwordObscureNotifier = ValueNotifier<bool>(true);
 
   void toggleLoading() {
     loadingNotifier.value = !loadingNotifier.value;
   }
 
-  void togglePasswordObsecure() {
-    passwordObsecureNotifier.value = !passwordObsecureNotifier.value;
+  void togglePasswordObscure() {
+    passwordObscureNotifier.value = !passwordObscureNotifier.value;
   }
 
   bool get isFormValidated => formKey.currentState?.validate() ?? true;
@@ -19,16 +20,16 @@ mixin SuraFormMixin<T extends StatefulWidget> on State<T> {
   @override
   void dispose() {
     loadingNotifier.dispose();
-    passwordObsecureNotifier.dispose();
+    passwordObscureNotifier.dispose();
     super.dispose();
   }
 
   // ignore: non_constant_identifier_names
   Widget PasswordTextFieldBuilder({required Widget Function(bool) builder}) {
     return ValueListenableBuilder<bool>(
-      valueListenable: passwordObsecureNotifier,
-      builder: (context, isObsecure, child) {
-        return builder(isObsecure);
+      valueListenable: passwordObscureNotifier,
+      builder: (context, isObscure, child) {
+        return builder(isObscure);
       },
     );
   }

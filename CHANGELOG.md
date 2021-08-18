@@ -1,3 +1,9 @@
+## [0.4.0] - 18 August 2021
+
+- add Listenable extension
+- Fix Paginated Widget bug
+- Major code improvement, MIGHT HAVE SOME BREAKING CHANGE
+
 ## [0.3.1] - 27 July 2021
 
 - add refresh function to SuraProvider error widget

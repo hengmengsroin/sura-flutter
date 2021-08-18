@@ -25,7 +25,7 @@ class SuraAccordion extends StatefulWidget {
   ///Duration of the animation process
   final Duration animationDuration;
 
-  ///Decordtion of the title
+  ///Decoration of the title
   final BoxDecoration? titleDecoration;
 
   ///Background color of the wrapping children widgets
@@ -43,7 +43,7 @@ class SuraAccordion extends StatefulWidget {
   ///A callback function that call on every toggle
   final Function(bool)? onToggle;
 
-  ///a condtion if to expand to Accordion on initial
+  ///a condition if to expand to Accordion on initial
   final bool initiallyExpand;
 
   ///Check if to show the trailing icon
@@ -52,7 +52,7 @@ class SuraAccordion extends StatefulWidget {
   ///Check if to run the toggle animation on initial
   final bool animatedOnStart;
 
-  ///Position of the traling icon
+  ///Position of the trailing icon
   final IconPosition iconPosition;
 
   ///Custom accordion that similar to Flutter's [ExpansionTile]
@@ -78,8 +78,7 @@ class SuraAccordion extends StatefulWidget {
   _SuraAccordionState createState() => _SuraAccordionState();
 }
 
-class _SuraAccordionState extends State<SuraAccordion>
-    with SingleTickerProviderStateMixin {
+class _SuraAccordionState extends State<SuraAccordion> with SingleTickerProviderStateMixin {
   late AnimationController controller;
   late Animation<double> size;
   late Animation<double> rotation;
@@ -140,8 +139,7 @@ class _SuraAccordionState extends State<SuraAccordion>
           InkWell(
             onTap: onToggle,
             customBorder: RoundedRectangleBorder(
-              borderRadius: widget.titleDecoration?.borderRadius ??
-                  SuraDecoration.radius(0),
+              borderRadius: widget.titleDecoration?.borderRadius ?? SuraDecoration.radius(0),
             ),
             child: Ink(
               decoration: widget.titleDecoration,
@@ -151,8 +149,7 @@ class _SuraAccordionState extends State<SuraAccordion>
                     ? MainAxisAlignment.start
                     : MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  if (widget.iconPosition == IconPosition.start &&
-                      widget.showIcon) ...[
+                  if (widget.iconPosition == IconPosition.start && widget.showIcon) ...[
                     icon,
                     SpaceX(),
                   ],
@@ -162,8 +159,7 @@ class _SuraAccordionState extends State<SuraAccordion>
                       style: Theme.of(context).textTheme.subtitle1,
                     ),
                   ),
-                  if (widget.iconPosition == IconPosition.end &&
-                      widget.showIcon) ...[icon],
+                  if (widget.iconPosition == IconPosition.end && widget.showIcon) ...[icon],
                 ],
               ),
             ),

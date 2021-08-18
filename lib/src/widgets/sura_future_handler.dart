@@ -16,7 +16,7 @@ class SuraFutureHandler<T> extends StatefulWidget {
   ///On snapshot error callback
   final Widget Function(dynamic)? error;
 
-  ///Create a futurebuilder with less boilerplate code
+  ///Create a FutureBuilder with less boilerplate code
   const SuraFutureHandler({
     required this.future,
     required this.ready,
@@ -73,8 +73,7 @@ class _SuraFutureHandlerState<T> extends State<SuraFutureHandler<T>> {
           if (widget.loading != null) {
             return widget.loading!;
           }
-          return suraTheme?.loadingWidget ??
-              Center(child: CircularProgressIndicator());
+          return suraTheme?.loadingWidget ?? Center(child: CircularProgressIndicator());
         }
       },
     );

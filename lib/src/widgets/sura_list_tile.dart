@@ -10,7 +10,7 @@ class SuraListTile extends StatelessWidget {
   final EdgeInsets padding;
   final EdgeInsets margin;
   final BoxDecoration? decoration;
-  final CrossAxisAlignment? aligment;
+  final CrossAxisAlignment? alignment;
   final Widget? separator;
   final double titleSpace;
 
@@ -25,7 +25,7 @@ class SuraListTile extends StatelessWidget {
     this.trailing,
     this.padding = const EdgeInsets.all(16.0),
     this.margin = const EdgeInsets.all(0.0),
-    this.aligment,
+    this.alignment,
     this.separator,
     this.titleSpace = 32,
   }) : super(key: key);
@@ -37,10 +37,7 @@ class SuraListTile extends StatelessWidget {
     );
 
     final subTitleWidget = DefaultTextStyle(
-      style: Theme.of(context)
-          .textTheme
-          .bodyText2!
-          .copyWith(color: Theme.of(context).textTheme.caption?.color),
+      style: Theme.of(context).textTheme.bodyText2!.copyWith(color: Theme.of(context).textTheme.caption?.color),
       child: subtitle ?? const SizedBox(),
     );
 
@@ -62,7 +59,7 @@ class SuraListTile extends StatelessWidget {
             child: Padding(
               padding: padding,
               child: Row(
-                crossAxisAlignment: aligment ?? CrossAxisAlignment.center,
+                crossAxisAlignment: alignment ?? CrossAxisAlignment.center,
                 children: <Widget>[
                   if (leading != null) ...[
                     leading!,

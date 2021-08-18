@@ -34,8 +34,7 @@ class SuraPaginatedGridBuilder extends StatefulWidget {
     this.scrollController,
   }) : super(key: key);
   @override
-  _SuraPaginatedGridBuilderState createState() =>
-      _SuraPaginatedGridBuilderState();
+  _SuraPaginatedGridBuilderState createState() => _SuraPaginatedGridBuilderState();
 }
 
 class _SuraPaginatedGridBuilderState extends State<SuraPaginatedGridBuilder> {
@@ -55,8 +54,8 @@ class _SuraPaginatedGridBuilderState extends State<SuraPaginatedGridBuilder> {
     if (loadingState > 1) return;
     if (widget.hasMoreData) {
       await widget.dataLoader();
-      if(mounted){
-        loadingState = 0;      
+      if (mounted) {
+        loadingState = 0;
       }
     }
   }
@@ -64,10 +63,9 @@ class _SuraPaginatedGridBuilderState extends State<SuraPaginatedGridBuilder> {
   void initController() {
     if (_isPrimaryScrollView) {
       scrollController = ScrollController();
-      scrollController.addListener(() => scrollListener(scrollController));
+      scrollController!.addListener(() => scrollListener(scrollController!));
     } else {
-      widget.scrollController
-          ?.addListener(() => scrollListener(widget.scrollController!));
+      widget.scrollController?.addListener(() => scrollListener(widget.scrollController!));
     }
   }
 

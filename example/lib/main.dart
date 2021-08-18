@@ -1,12 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sura_flutter/sura_flutter.dart';
-import 'package:sura_flutter_example/examples/builder_example.dart';
 import 'package:sura_flutter_example/examples/other_buttons_example.dart';
 import 'package:sura_flutter_example/examples/sura_accordian_and_sura_expandable.dart';
 import 'package:sura_flutter_example/examples/tab_indicator_decoration.dart';
 
-import 'examples/util_examplate.dart';
+import 'examples/util_example.dart';
 
 void main() => runApp(MyApp());
 
@@ -48,10 +47,6 @@ class _MyHomePageState extends State<MyHomePage> with SuraFormMixin {
     ExampleButton(
       name: "Sura Utils",
       child: SuraUtilExamples(),
-    ),
-    ExampleButton(
-      name: "Sura Builders Example",
-      child: SuraBuilderExample(),
     ),
     ExampleButton(
       name: "Tab Indicator and Decoration",
