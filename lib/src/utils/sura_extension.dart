@@ -37,6 +37,25 @@ extension StringExtension on String {
   }
 }
 
+extension ListenableExtension on Listenable {
+  Widget build({required Widget child}) {
+    return AnimatedBuilder(
+      animation: this,
+      builder: (context, _) {
+        return child;
+      },
+    );
+  }
+
+  Widget builder({required TransitionBuilder builder, Widget? child}) {
+    return AnimatedBuilder(
+      animation: this,
+      child: child,
+      builder: builder,
+    );
+  }
+}
+
 extension WidgetExtension on Widget {
   Widget padding([EdgeInsets padding = const EdgeInsets.all(8)]) {
     return Padding(
