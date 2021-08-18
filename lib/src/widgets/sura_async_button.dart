@@ -129,8 +129,9 @@ class _SuraAsyncButtonState extends State<SuraAsyncButton> {
       ],
     );
 
-    final Widget loadingWidget =
-        widget.loadingWidget ?? SuraProvider.of(context)?.buttonLoadingWidget ?? _buildLoadingWidget();
+    final Widget loadingWidget = widget.loadingWidget ??
+        SuraProvider.of(context)?.buttonLoadingWidget ??
+        _buildLoadingWidget();
 
     return Container(
       height: widget.height,
@@ -146,7 +147,9 @@ class _SuraAsyncButtonState extends State<SuraAsyncButton> {
                 : null,
         child: ConditionalWidget(
           condition: isLoading,
-          onTrue: () => widget.loadingType == LoadingType.Disable ? buttonContent : loadingWidget,
+          onTrue: () => widget.loadingType == LoadingType.Disable
+              ? buttonContent
+              : loadingWidget,
           onFalse: () => buttonContent,
         ),
         style: ElevatedButton.styleFrom(

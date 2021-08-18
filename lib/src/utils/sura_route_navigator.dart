@@ -4,12 +4,14 @@ import 'package:flutter/material.dart';
 class PageNavigator {
   ///short handed push navigator
   static Future push<T>(BuildContext context, Widget page) async {
-    return await Navigator.of(context).push<T>(MaterialPageRoute(builder: (context) => page));
+    return await Navigator.of(context)
+        .push<T>(MaterialPageRoute(builder: (context) => page));
   }
 
   ///short handed push replacement navigator
   static Future pushReplacement(BuildContext context, Widget page) async {
-    return await Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => page));
+    return await Navigator.of(context)
+        .pushReplacement(MaterialPageRoute(builder: (context) => page));
   }
 
   ///short handed push and remove navigator
@@ -43,11 +45,13 @@ class SuraNavigator {
   }
 
   static Future pushNamed<T>(String name, {Object? argument}) async {
-    return await Navigator.of(getContext).pushNamed<T>(name, arguments: argument);
+    return await Navigator.of(getContext)
+        .pushNamed<T>(name, arguments: argument);
   }
 
   ///short handed push replacement navigator
-  static Future pushReplacement(Widget page, {bool fullScreenDialog = false}) async {
+  static Future pushReplacement(Widget page,
+      {bool fullScreenDialog = false}) async {
     return await Navigator.of(getContext).pushReplacement(MaterialPageRoute(
       builder: (context) => page,
       fullscreenDialog: fullScreenDialog,
@@ -63,7 +67,8 @@ class SuraNavigator {
   }
 
   ///show a dialog
-  static Future<T?> dialog<T>(Widget dialog, {bool barrierDismissible = true}) async {
+  static Future<T?> dialog<T>(Widget dialog,
+      {bool barrierDismissible = true}) async {
     return await showDialog<T>(
       context: getContext,
       barrierDismissible: barrierDismissible,

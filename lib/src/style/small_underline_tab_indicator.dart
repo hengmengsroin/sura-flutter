@@ -63,7 +63,9 @@ class _SmallUnderLineTabIndicatorPainter extends BoxPainter {
   ) : super(onChanged);
   @override
   void paint(Canvas canvas, Offset offset, ImageConfiguration configuration) {
-    final double yOffset = tabAlignment == TabAlignment.bottom ? configuration.size!.height - 8 : 0;
+    final double yOffset = tabAlignment == TabAlignment.bottom
+        ? configuration.size!.height - 8
+        : 0;
     final Offset indicatorOffset = offset + Offset(paddingLeft, yOffset);
 
     final paint = Paint()

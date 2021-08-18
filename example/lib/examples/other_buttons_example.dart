@@ -130,7 +130,8 @@ class _OtherButtonExampleState extends State<OtherButtonExample> {
     );
   }
 
-  Widget buildButtonCategory({required String name, required List<Widget> buttons}) {
+  Widget buildButtonCategory(
+      {required String name, required List<Widget> buttons}) {
     return Column(
       children: [
         Text(name, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
