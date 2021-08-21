@@ -38,11 +38,11 @@ extension StringExtension on String {
 }
 
 extension ListenableExtension on Listenable {
-  Widget build({required Widget child}) {
+  Widget build({required Widget Function() child}) {
     return AnimatedBuilder(
       animation: this,
       builder: (context, _) {
-        return child;
+        return child();
       },
     );
   }

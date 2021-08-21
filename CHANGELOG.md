@@ -1,3 +1,7 @@
+## [0.4.1] - 21 August 2021
+
+- fix listenable extension build method
+
 ## [0.4.0] - 18 August 2021
 
 - add Listenable extension
