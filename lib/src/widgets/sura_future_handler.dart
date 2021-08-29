@@ -53,7 +53,7 @@ class _SuraFutureHandlerState<T> extends State<SuraFutureHandler<T>> {
     final SuraProvider? suraTheme = SuraProvider.of(context);
     //
     return FutureBuilder<T>(
-      future: widget.future,
+      future: future,
       initialData: widget.initialData,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
@@ -73,8 +73,7 @@ class _SuraFutureHandlerState<T> extends State<SuraFutureHandler<T>> {
           if (widget.loading != null) {
             return widget.loading!;
           }
-          return suraTheme?.loadingWidget ??
-              Center(child: CircularProgressIndicator());
+          return suraTheme?.loadingWidget ?? Center(child: CircularProgressIndicator());
         }
       },
     );
