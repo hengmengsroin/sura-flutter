@@ -29,7 +29,7 @@ class SuraPaginatedList extends StatefulWidget {
   ///you must provide a [scrollController] that also use in your parent [scrollController] scroll view
   final ScrollController? scrollController;
 
-  ///callback for getting more data when ScrollController reach mex scrolExtends
+  ///callback for getting more data when ScrollController reach max scrolExtends
   final Future<void> Function() dataLoader;
 
   ///condition to check if we still have more data to fetch
@@ -38,6 +38,12 @@ class SuraPaginatedList extends StatefulWidget {
 
   ///widget to show when we're fetching more data
   final Widget? loadingWidget;
+
+  ///Add provided scrollController to our paginated Listview
+  ///Sometime we provided a scroll controller, but that scroll controller isn't attach to any Listview yet
+
+  final bool attachProvidedScrollControllerToListview;
+
   const SuraPaginatedList({
     Key? key,
     required this.itemCount,
@@ -52,6 +58,7 @@ class SuraPaginatedList extends StatefulWidget {
     this.separator,
     this.onEmpty,
     this.scrollController,
+    this.attachProvidedScrollControllerToListview = false,
   }) : super(key: key);
   @override
   _SuraPaginatedListState createState() => _SuraPaginatedListState();

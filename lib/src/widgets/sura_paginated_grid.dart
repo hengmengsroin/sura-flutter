@@ -18,6 +18,11 @@ class SuraPaginatedGridBuilder extends StatefulWidget {
   final Widget? loadingWidget;
   final Widget? onEmpty;
 
+  ///Add provided scrollController to our paginated Listview
+  ///Sometime we provided a scroll controller, but that scroll controller isn't attach to any Listview yet
+  final bool attachProvidedScrollControllerToListview;
+  
+
   final Widget Function(BuildContext context, int index) itemBuilder;
   SuraPaginatedGridBuilder({
     Key? key,
@@ -32,6 +37,7 @@ class SuraPaginatedGridBuilder extends StatefulWidget {
     this.padding = const EdgeInsets.symmetric(vertical: 16, horizontal: 12),
     this.physics = const ClampingScrollPhysics(),
     this.scrollController,
+    this.attachProvidedScrollControllerToListview = false,
   }) : super(key: key);
   @override
   _SuraPaginatedGridBuilderState createState() =>
