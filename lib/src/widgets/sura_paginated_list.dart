@@ -92,8 +92,7 @@ class _SuraPaginatedListState extends State<SuraPaginatedList> {
       scrollController = ScrollController();
       scrollController!.addListener(() => scrollListener(scrollController!));
     } else {
-      widget.scrollController
-          ?.addListener(() => scrollListener(widget.scrollController!));
+      widget.scrollController?.addListener(() => scrollListener(widget.scrollController!));
     }
   }
 
@@ -117,7 +116,11 @@ class _SuraPaginatedListState extends State<SuraPaginatedList> {
     return ListView.separated(
       separatorBuilder: (context, index) => widget.separator ?? SizedBox(),
       itemCount: widget.itemCount + 1,
-      controller: _isPrimaryScrollView ? scrollController : null,
+      controller: _isPrimaryScrollView
+          ? scrollController
+          : widget.attachProvidedScrollControllerToListview
+              ? widget.scrollController
+              : null,
       padding: widget.padding,
       scrollDirection: widget.scrollDirection,
       physics: widget.physics,

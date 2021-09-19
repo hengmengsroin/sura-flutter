@@ -21,7 +21,6 @@ class SuraPaginatedGridBuilder extends StatefulWidget {
   ///Add provided scrollController to our paginated Listview
   ///Sometime we provided a scroll controller, but that scroll controller isn't attach to any Listview yet
   final bool attachProvidedScrollControllerToListview;
-  
 
   final Widget Function(BuildContext context, int index) itemBuilder;
   SuraPaginatedGridBuilder({
@@ -40,8 +39,7 @@ class SuraPaginatedGridBuilder extends StatefulWidget {
     this.attachProvidedScrollControllerToListview = false,
   }) : super(key: key);
   @override
-  _SuraPaginatedGridBuilderState createState() =>
-      _SuraPaginatedGridBuilderState();
+  _SuraPaginatedGridBuilderState createState() => _SuraPaginatedGridBuilderState();
 }
 
 class _SuraPaginatedGridBuilderState extends State<SuraPaginatedGridBuilder> {
@@ -72,8 +70,7 @@ class _SuraPaginatedGridBuilderState extends State<SuraPaginatedGridBuilder> {
       scrollController = ScrollController();
       scrollController!.addListener(() => scrollListener(scrollController!));
     } else {
-      widget.scrollController
-          ?.addListener(() => scrollListener(widget.scrollController!));
+      widget.scrollController?.addListener(() => scrollListener(widget.scrollController!));
     }
   }
 
@@ -102,7 +99,11 @@ class _SuraPaginatedGridBuilderState extends State<SuraPaginatedGridBuilder> {
             gridDelegate: widget.gridDelegate,
             shrinkWrap: widget.shrinkWrap,
             padding: widget.padding,
-            controller: _isPrimaryScrollView ? scrollController : null,
+            controller: _isPrimaryScrollView
+                ? scrollController
+                : widget.attachProvidedScrollControllerToListview
+                    ? widget.scrollController
+                    : null,
             physics: widget.physics,
             itemCount: widget.itemCount,
             itemBuilder: widget.itemBuilder,

@@ -1,3 +1,7 @@
+## [0.4.2] - 19 September 2021
+
+- Add new feature on paginated widget to be abble to attach scroll controller to listview
+
 ## [0.4.1] - 21 August 2021
 
 - fix listenable extension build method
