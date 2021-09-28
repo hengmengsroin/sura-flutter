@@ -41,8 +41,13 @@ class SuraPaginatedList extends StatefulWidget {
 
   ///Add provided scrollController to our paginated Listview
   ///Sometime we provided a scroll controller, but that scroll controller isn't attach to any Listview yet
-
   final bool attachProvidedScrollControllerToListview;
+
+  ///Indicate if there is an error when getting more data
+  final bool hasError;
+
+  ///A widget that show at the bottom of listview when there is an error
+  final Widget? errorWidget;
 
   const SuraPaginatedList({
     Key? key,
@@ -59,6 +64,8 @@ class SuraPaginatedList extends StatefulWidget {
     this.onEmpty,
     this.scrollController,
     this.attachProvidedScrollControllerToListview = false,
+    this.hasError = false,
+    this.errorWidget,
   }) : super(key: key);
   @override
   _SuraPaginatedListState createState() => _SuraPaginatedListState();
@@ -71,6 +78,9 @@ class _SuraPaginatedListState extends State<SuraPaginatedList> {
   bool get _isPrimaryScrollView => widget.scrollController == null;
 
   void scrollListener(ScrollController controller) {
+    if (widget.hasError) {
+      return;
+    }
     if (controller.offset == controller.position.maxScrollExtent) {
       loadingState += 1;
       onLoadingMoreData();
@@ -130,15 +140,26 @@ class _SuraPaginatedListState extends State<SuraPaginatedList> {
         //check if we reach the end of the list
         if (index == widget.itemCount) {
           //check if we have more data to fetch
-          return widget.hasMoreData
-              ? Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Center(child: widget.loadingWidget),
-                )
-              : const SizedBox();
+          return _buildBottomLoadingWidget();
         }
         return widget.itemBuilder(context, index);
       },
     );
+  }
+
+  Widget _buildBottomLoadingWidget() {
+    if (widget.hasError) {
+      return widget.errorWidget ??
+          IconButton(
+            onPressed: () => widget.dataLoader(),
+            icon: Icon(Icons.refresh),
+          );
+    }
+    return widget.hasMoreData
+        ? Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Center(child: widget.loadingWidget),
+          )
+        : const SizedBox();
   }
 }

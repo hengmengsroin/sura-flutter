@@ -37,14 +37,12 @@ class SuraStreamHandler<T> extends StatefulWidget {
 }
 
 class _SuraStreamHandlerState<T> extends State<SuraStreamHandler<T>> {
-  late StreamSubscription<T?>? subscription;
   SuraProvider? suraProvider;
   @override
   void initState() {
     if (widget.onError != null) {
-      subscription = widget.stream.asBroadcastStream().listen((data) {});
-      subscription?.onError((error) {
-        widget.onError?.call(error);
+      widget.stream.asBroadcastStream().listen((data) {}, onError: (err) {
+        widget.onError?.call(err);
       });
     }
     super.initState();
@@ -52,10 +50,6 @@ class _SuraStreamHandlerState<T> extends State<SuraStreamHandler<T>> {
 
   @override
   void dispose() {
-    if (subscription != null) {
-      subscription!.cancel();
-      subscription = null;
-    }
     super.dispose();
   }
 

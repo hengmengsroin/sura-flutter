@@ -259,7 +259,8 @@ extension TextStyleExtension on TextStyle {
 extension ContextExtension on BuildContext {
   Size get screenSize => MediaQuery.of(this).size;
   Color get primaryColor => Theme.of(this).primaryColor;
-  Color get accentColor => Theme.of(this).accentColor;
+  Color get accentColor => Theme.of(this).colorScheme.secondary;
+  Color get accentColorDeprecated => Theme.of(this).accentColor;
   TextTheme get textTheme => Theme.of(this).textTheme;
   ThemeData get theme => Theme.of(this);
 }

@@ -1,3 +1,7 @@
+## [0.4.3] - 28 September 2021
+
+- Add error widget to Paginated Widget
+
 ## [0.4.2] - 19 September 2021
 
 - Add new feature on paginated widget to be abble to attach scroll controller to listview

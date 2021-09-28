@@ -22,6 +22,12 @@ class SuraPaginatedGridBuilder extends StatefulWidget {
   ///Sometime we provided a scroll controller, but that scroll controller isn't attach to any Listview yet
   final bool attachProvidedScrollControllerToListview;
 
+  ///Indicate if there is an error when getting more data
+  final bool hasError;
+
+  ///A widget that show at the bottom of listview when there is an error
+  final Widget? errorWidget;
+
   final Widget Function(BuildContext context, int index) itemBuilder;
   SuraPaginatedGridBuilder({
     Key? key,
@@ -37,6 +43,8 @@ class SuraPaginatedGridBuilder extends StatefulWidget {
     this.physics = const ClampingScrollPhysics(),
     this.scrollController,
     this.attachProvidedScrollControllerToListview = false,
+    this.hasError = false,
+    this.errorWidget,
   }) : super(key: key);
   @override
   _SuraPaginatedGridBuilderState createState() =>
@@ -111,14 +119,24 @@ class _SuraPaginatedGridBuilderState extends State<SuraPaginatedGridBuilder> {
             itemBuilder: widget.itemBuilder,
           ),
         ),
-        if (widget.hasMoreData)
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Center(
-              child: widget.loadingWidget,
-            ),
-          )
+        _buildBottomLoadingWidget(),
       ],
     );
+  }
+
+  Widget _buildBottomLoadingWidget() {
+    if (widget.hasError) {
+      return widget.errorWidget ??
+          IconButton(
+            onPressed: () => widget.dataLoader(),
+            icon: Icon(Icons.refresh),
+          );
+    }
+    return widget.hasMoreData
+        ? Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Center(child: widget.loadingWidget),
+          )
+        : const SizedBox();
   }
 }
