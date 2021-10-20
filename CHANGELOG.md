@@ -1,3 +1,9 @@
+## [0.5.0] - 20 October 2021
+
+- breaking change:
+  - PageNavigator has been change to SuraPageNavigator
+- Add routeSetting param to SuraPageNavigator
+
 ## [0.4.3] - 28 September 2021
 
 - Add error widget to Paginated Widget

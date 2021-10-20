@@ -74,12 +74,12 @@ class SuraListTile extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         titleWidget,
-                        if (subtitle != null) SpaceY(4),
+                        if (subtitle != null) const SpaceY(4),
                         subTitleWidget,
                       ],
                     ),
                   ),
-                  SpaceX(),
+                  const SpaceX(),
                   Flexible(
                     flex: 0,
                     child: trailingWidget,

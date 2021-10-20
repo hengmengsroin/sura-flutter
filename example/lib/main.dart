@@ -32,7 +32,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> with SuraFormMixin {
   void onViewPage(Widget page) {
-    PageNavigator.push(context, page);
+    SuraPageNavigator.push(context, page);
   }
 
   final List<ExampleButton> examples = [
