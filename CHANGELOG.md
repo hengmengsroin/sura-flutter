@@ -1,3 +1,7 @@
+## [0.5.1] - 1 December 2021
+
+- add onFutureManagerError to SuraProvider
+
 ## [0.5.0] - 20 October 2021
 
 - breaking change:

@@ -1,8 +1,8 @@
 # sura_flutter
 
-[![pub package](https://img.shields.io/badge/pub-0.5.0-blueviolet.svg)](https://pub.dev/packages/sura_flutter) ![Latest commit](https://badgen.net/github/last-commit/asurraa/sura_flutter)
+[![pub package](https://img.shields.io/badge/pub-0.5.1-blueviolet.svg)](https://pub.dev/packages/sura_flutter) ![Latest commit](https://badgen.net/github/last-commit/asurraa/sura_flutter)
 
-A flutter package from AsurRaa for widgets and utility functions
+A flutter package from AsurRaa for custom widgets and utility functions.
 
 # Migrate from 0.2.x to 0.3.x
 
@@ -13,7 +13,7 @@ A flutter package from AsurRaa for widgets and utility functions
 
   ```dart
   dependencies:
-    sura_manager: any
+    sura_manager: 0.1.2
   ```
 
 # Installation
@@ -22,7 +22,7 @@ Add this to pubspec.yaml
 
 ```dart
 dependencies:
-  sura_flutter: ^0.5.0
+  sura_flutter: ^0.5.1
 ```
 
 # Widgets
@@ -291,14 +291,14 @@ validator: (value) => SuraFormValidator.validateField(value, field:"username"),
 )
 ```
 
-### PageNavigator and SuraNavigator
+### SuraPageNavigator and SuraNavigator
 
 PageNavigator support push, pushReplacement and pushAndRemove method
 
 ```dart
-PageNavigator.push(context, DetailPage());
-PageNavigator.pushReplacement(context, HomePage());
-PageNavigator.pushAndRemove(context, RootPage());
+SuraPageNavigator.push(context, DetailPage());
+SuraPageNavigator.pushReplacement(context, HomePage());
+SuraPageNavigator.pushAndRemove(context, RootPage());
 ```
 
 SuraNavigator also support push, pushReplacement, pushAndRemove without providing a context but you need to add **SuraNavigator.navigatorKey** to MaterialApp
