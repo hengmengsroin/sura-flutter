@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+
 import '../utils/type.dart';
 
-
-typedef OnManagerError = Function(error, BuildContext context);
+typedef OnManagerError = Function(dynamic, BuildContext);
 
 class SuraProvider extends InheritedWidget {
   const SuraProvider({
