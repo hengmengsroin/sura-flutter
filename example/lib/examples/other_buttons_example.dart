@@ -109,7 +109,7 @@ class _OtherButtonExampleState extends State<OtherButtonExample> {
                       onPressed: onButtonClick,
                       child: Text("Click me"),
                       fullWidth: false,
-                      loadingType: LoadingType.Disable,
+                      loadingType: LoadingType.disable,
                     ),
                     SpaceY(24),
                     Text("Loading type: Progress"),
@@ -118,7 +118,7 @@ class _OtherButtonExampleState extends State<OtherButtonExample> {
                       onPressed: onButtonClick,
                       child: Text("Click me"),
                       fullWidth: true,
-                      loadingType: LoadingType.Progress,
+                      loadingType: LoadingType.progress,
                     ),
                   ],
                 ),
@@ -130,8 +130,7 @@ class _OtherButtonExampleState extends State<OtherButtonExample> {
     );
   }
 
-  Widget buildButtonCategory(
-      {required String name, required List<Widget> buttons}) {
+  Widget buildButtonCategory({required String name, required List<Widget> buttons}) {
     return Column(
       children: [
         Text(name, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
