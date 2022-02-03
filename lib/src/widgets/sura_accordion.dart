@@ -154,7 +154,7 @@ class _SuraAccordionState extends State<SuraAccordion>
                   if (widget.iconPosition == IconPosition.start &&
                       widget.showIcon) ...[
                     icon,
-                    SpaceX(),
+                    const SpaceX(),
                   ],
                   Flexible(
                     child: DefaultTextStyle.merge(

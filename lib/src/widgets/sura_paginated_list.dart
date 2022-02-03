@@ -125,7 +125,8 @@ class _SuraPaginatedListState extends State<SuraPaginatedList> {
       return widget.onEmpty!;
     }
     return ListView.separated(
-      separatorBuilder: (context, index) => widget.separator ?? SizedBox(),
+      separatorBuilder: (context, index) =>
+          widget.separator ?? const SizedBox(),
       itemCount: widget.itemCount + 1,
       controller: _isPrimaryScrollView
           ? scrollController
@@ -152,7 +153,7 @@ class _SuraPaginatedListState extends State<SuraPaginatedList> {
       return widget.errorWidget ??
           IconButton(
             onPressed: () => widget.dataLoader(),
-            icon: Icon(Icons.refresh),
+            icon: const Icon(Icons.refresh),
           );
     }
     return widget.hasMoreData

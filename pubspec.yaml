@@ -1,6 +1,6 @@
 name: sura_flutter
 description: A flutter package from AsurRaa for custom widgets and utility functions.
-version: 0.5.1
+version: 1.0.0
 homepage: https://github.com/asurraa/sura_flutter
 
 environment:
@@ -17,5 +17,5 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+  flutter_lints: ^1.0.0
 flutter:

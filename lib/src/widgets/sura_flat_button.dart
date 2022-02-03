@@ -48,7 +48,7 @@ class SuraFlatButton extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              if (icon != null) ...[icon!, SpaceX(8)],
+              if (icon != null) ...[icon!, const SpaceX(8)],
               DefaultTextStyle.merge(
                 style: Theme.of(context)
                     .textTheme

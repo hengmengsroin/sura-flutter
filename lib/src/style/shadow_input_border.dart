@@ -22,7 +22,7 @@ class ShadowInputBorder extends InputBorder {
   /// The [borderRadius] parameter defaults to a value where the top left
   /// and right corners have a circular radius of 8.0. The [borderRadius]
   /// parameter must not be null.
-  ShadowInputBorder({
+  const ShadowInputBorder({
     required this.elevation,
     required this.fillColor,
     this.borderRadius = const BorderRadius.all(Radius.circular(8.0)),
@@ -30,7 +30,7 @@ class ShadowInputBorder extends InputBorder {
   });
 
   @override
-  EdgeInsetsGeometry get dimensions => EdgeInsets.all(2);
+  EdgeInsetsGeometry get dimensions => const EdgeInsets.all(2);
 
   @override
   Path getInnerPath(Rect rect, {TextDirection? textDirection}) {

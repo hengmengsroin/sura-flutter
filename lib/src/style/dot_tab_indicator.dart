@@ -13,7 +13,7 @@ class DotTabIndicator extends Decoration {
   final TabAlignment tabAlignment;
 
   /// Create a circle and small tab indicator
-  DotTabIndicator({
+  const DotTabIndicator({
     required this.color,
     this.radius = 4,
     this.tabAlignment = TabAlignment.bottom,

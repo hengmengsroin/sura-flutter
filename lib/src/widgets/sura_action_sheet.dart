@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 
 ///A cupertino action sheet that use to create an option selector
 class SuraActionSheet<T> extends StatelessWidget {
@@ -32,7 +31,7 @@ class SuraActionSheet<T> extends StatelessWidget {
     return CupertinoActionSheet(
       message: Text(
         title,
-        style: TextStyle(fontSize: 16),
+        style: const TextStyle(fontSize: 16),
       ),
       actions: List.generate(options.length, (index) {
         final T option = options[index];

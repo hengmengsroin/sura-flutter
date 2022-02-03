@@ -12,14 +12,15 @@ class SuraSimpleDialog extends StatelessWidget {
   final String content;
 
   ///An alert dialog with title and content
-  SuraSimpleDialog({
+  const SuraSimpleDialog({
+    Key? key,
     required this.content,
     this.child,
     this.title = "Information",
     this.confirmText = "OK",
     this.onConfirm,
     this.buttonColor,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

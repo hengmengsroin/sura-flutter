@@ -1,3 +1,9 @@
+## [1.0.0] - 3 February 2022
+
+- Stable 1.0.0 Release
+- Fix SuraAsyncButton fullWidth is not wokring
+- Add Flutter lints
+
 ## [0.5.1] - 1 December 2021
 
 - add onFutureManagerError to SuraProvider

@@ -16,7 +16,8 @@ class SuraConfirmationDialog extends StatelessWidget {
   final bool swapButtonsPosition;
 
   ///A dialog that provide onCancel and Confirm action
-  SuraConfirmationDialog({
+  const SuraConfirmationDialog({
+    Key? key,
     required this.content,
     this.confirmText = "OK",
     this.cancelText = "Cancel",
@@ -24,7 +25,7 @@ class SuraConfirmationDialog extends StatelessWidget {
     this.onCancel,
     this.onConfirm,
     this.swapButtonsPosition = false,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +62,7 @@ class SuraConfirmationDialog extends StatelessWidget {
 
     return CupertinoAlertDialog(
       title: Text(title),
-      content: content.margin(EdgeInsets.only(top: 12)),
+      content: content.margin(const EdgeInsets.only(top: 12)),
       actions: actions,
     );
   }

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'sura_provider.dart';
@@ -16,12 +15,12 @@ class SuraLoadingDialog {
   Future<void> show({Widget? child}) async {
     final dialogChild = child ??
         SuraProvider.of(context)?.loadingWidget ??
-        CircularProgressIndicator();
+        const CircularProgressIndicator();
     showDialog(
         context: context,
         barrierDismissible: dismissible,
         builder: (dialogContext) {
-          this._dialogContext = dialogContext;
+          _dialogContext = dialogContext;
           return WillPopScope(
             onWillPop: () async {
               if (dismissible) _dialogContext = null;
@@ -39,7 +38,7 @@ class SuraLoadingDialog {
             ),
           );
         });
-    await Future.delayed(Duration(milliseconds: 500));
+    await Future.delayed(const Duration(milliseconds: 500));
   }
 
   void hide() async {

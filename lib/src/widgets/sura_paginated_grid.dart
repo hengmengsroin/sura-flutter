@@ -29,7 +29,7 @@ class SuraPaginatedGridBuilder extends StatefulWidget {
   final Widget? errorWidget;
 
   final Widget Function(BuildContext context, int index) itemBuilder;
-  SuraPaginatedGridBuilder({
+  const SuraPaginatedGridBuilder({
     Key? key,
     required this.gridDelegate,
     required this.dataLoader,
@@ -129,7 +129,7 @@ class _SuraPaginatedGridBuilderState extends State<SuraPaginatedGridBuilder> {
       return widget.errorWidget ??
           IconButton(
             onPressed: () => widget.dataLoader(),
-            icon: Icon(Icons.refresh),
+            icon: const Icon(Icons.refresh),
           );
     }
     return widget.hasMoreData

@@ -13,9 +13,9 @@ extension DateUtils on DateTime {
   }
 
   bool isTheSameDay(DateTime dateTime) {
-    if (dateTime.day == this.day &&
-        dateTime.month == this.month &&
-        dateTime.year == this.year) {
+    if (dateTime.day == day &&
+        dateTime.month == month &&
+        dateTime.year == year) {
       return true;
     }
     return false;
@@ -27,13 +27,13 @@ extension DateUtils on DateTime {
       localeCode = locale.languageCode;
     }
     var formatter = DateFormat(format, localeCode);
-    return formatter.format(this.toLocal());
+    return formatter.format(toLocal());
   }
 }
 
 extension StringExtension on String {
   String capitalize() {
-    return this[0].toUpperCase() + this.substring(1, this.length);
+    return this[0].toUpperCase() + substring(1, length);
   }
 }
 
@@ -131,7 +131,7 @@ extension WidgetExtension on Widget {
     EdgeInsets defineMargin = EdgeInsets.zero;
     EdgeInsets definePadding = EdgeInsets.zero;
 
-    if (margin.isNotEmpty)
+    if (margin.isNotEmpty) {
       switch (margin.length) {
         case 1:
           defineMargin = EdgeInsets.all(margin.elementAt(0));
@@ -156,8 +156,9 @@ extension WidgetExtension on Widget {
               left: margin.elementAt(3));
           break;
       }
+    }
 
-    if (padding.isNotEmpty)
+    if (padding.isNotEmpty) {
       switch (padding.length) {
         case 1:
           definePadding = EdgeInsets.all(padding.elementAt(0));
@@ -182,6 +183,7 @@ extension WidgetExtension on Widget {
               left: padding.elementAt(3));
           break;
       }
+    }
 
     return Container(
       padding: definePadding,
@@ -241,18 +243,18 @@ extension WidgetExtension on Widget {
 
 extension TextStyleExtension on TextStyle {
   //method
-  TextStyle get bold => this.copyWith(fontWeight: FontWeight.bold);
+  TextStyle get bold => copyWith(fontWeight: FontWeight.bold);
 
-  TextStyle get medium => this.copyWith(fontWeight: FontWeight.w500);
+  TextStyle get medium => copyWith(fontWeight: FontWeight.w500);
 
-  TextStyle get normal => this.copyWith(fontWeight: FontWeight.normal);
+  TextStyle get normal => copyWith(fontWeight: FontWeight.normal);
 
   TextStyle applyColor(Color color) {
-    return this.copyWith(color: color);
+    return copyWith(color: color);
   }
 
   TextStyle applyFontSize(double size) {
-    return this.copyWith(fontSize: size);
+    return copyWith(fontSize: size);
   }
 }
 
@@ -260,7 +262,6 @@ extension ContextExtension on BuildContext {
   Size get screenSize => MediaQuery.of(this).size;
   Color get primaryColor => Theme.of(this).primaryColor;
   Color get accentColor => Theme.of(this).colorScheme.secondary;
-  Color get accentColorDeprecated => Theme.of(this).accentColor;
   TextTheme get textTheme => Theme.of(this).textTheme;
   ThemeData get theme => Theme.of(this);
 }
@@ -273,14 +274,14 @@ extension DurationExtension on Duration {
     //if the digit is single digit, add 0 in front of it
     String twoDigits(int n) => n.toString().padLeft(2, "0");
     //
-    String twoDigitMinutes = twoDigits(this.inMinutes.remainder(60));
-    String twoDigitSeconds = twoDigits(this.inSeconds.remainder(60));
-    String twoDigitMillisecond = twoDigits(this.inMilliseconds.remainder(1000));
+    String twoDigitMinutes = twoDigits(inMinutes.remainder(60));
+    String twoDigitSeconds = twoDigits(inSeconds.remainder(60));
+    String twoDigitMillisecond = twoDigits(inMilliseconds.remainder(1000));
 
     if (hasMillisecond) {
       return "$twoDigitMinutes:$twoDigitSeconds:$twoDigitMillisecond";
     } else if (hasHour) {
-      return "${twoDigits(this.inHours)}:$twoDigitMinutes:$twoDigitSeconds";
+      return "${twoDigits(inHours)}:$twoDigitMinutes:$twoDigitSeconds";
     } else {
       return "$twoDigitMinutes:$twoDigitSeconds";
     }

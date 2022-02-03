@@ -22,7 +22,7 @@ class SmallUnderLineTabIndicator extends Decoration {
   ///[DotAlignment] whether it's bottom or top of tab's label
   final TabAlignment tabAlignment;
 
-  SmallUnderLineTabIndicator({
+  const SmallUnderLineTabIndicator({
     required this.color,
     this.width = 16,
     this.height = 8,

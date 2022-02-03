@@ -23,7 +23,8 @@ class SuraToolbar extends StatelessWidget {
   final double titleMargin = 56.0;
 
   ///Create a Custom App Bar like Back Button with Header support
-  SuraToolbar({
+  const SuraToolbar({
+    Key? key,
     this.onTap,
     this.title,
     this.titleStyle = const TextStyle(
@@ -35,7 +36,7 @@ class SuraToolbar extends StatelessWidget {
     this.backgroundColor = Colors.transparent,
     this.iconColor,
     this.elevation = 0.0,
-  });
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Material(

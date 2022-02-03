@@ -6,7 +6,7 @@ import 'package:sura_flutter/src/widgets/sura_provider.dart';
 import 'conditional_widget.dart';
 import 'spacing.dart';
 
-enum LoadingType { Progress, Disable }
+enum LoadingType { progress, disable }
 
 ///Create a Material Elevated Button that can contain a [loadingWiidget] whenever you
 ///execute a Future function in [onPressed] callback
@@ -75,7 +75,7 @@ class SuraAsyncButton extends StatefulWidget {
     this.loadingColor = Colors.white,
     this.margin = const EdgeInsets.symmetric(vertical: 16),
     this.padding = const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-    this.loadingType = LoadingType.Progress,
+    this.loadingType = LoadingType.progress,
     this.startIcon,
     this.endIcon,
     this.loadingWidget,
@@ -101,7 +101,7 @@ class _SuraAsyncButtonState extends State<SuraAsyncButton> {
       toggleLoading();
       await widget.onPressed?.call();
     } catch (exception) {
-      throw exception;
+      rethrow;
     } finally {
       toggleLoading();
     }
@@ -113,17 +113,19 @@ class _SuraAsyncButtonState extends State<SuraAsyncButton> {
 
   @override
   Widget build(BuildContext context) {
+    final bool hasIcon = widget.startIcon != null || widget.endIcon != null;
     final Widget buttonContent = Row(
       mainAxisAlignment: widget.alignment ?? MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisSize: hasIcon ? MainAxisSize.max : MainAxisSize.min,
       children: [
         if (widget.startIcon != null) ...[
           widget.startIcon!,
-          SpaceX(),
+          const SpaceX(),
         ],
         widget.child,
         if (widget.endIcon != null) ...[
-          SpaceX(),
+          const SpaceX(),
           widget.endIcon!,
         ],
       ],
@@ -139,15 +141,15 @@ class _SuraAsyncButtonState extends State<SuraAsyncButton> {
       margin: widget.margin,
       child: ElevatedButton(
         onPressed: isLoading
-            ? widget.loadingType == LoadingType.Disable
+            ? widget.loadingType == LoadingType.disable
                 ? null
                 : () {}
             : widget.onPressed != null
-                ? this.onButtonPressed
+                ? onButtonPressed
                 : null,
         child: ConditionalWidget(
           condition: isLoading,
-          onTrue: () => widget.loadingType == LoadingType.Disable
+          onTrue: () => widget.loadingType == LoadingType.disable
               ? buttonContent
               : loadingWidget,
           onFalse: () => buttonContent,

@@ -24,13 +24,14 @@ class SuraStreamHandler<T> extends StatefulWidget {
 
   ///create a StreamBuilder with less boilerplate code
   const SuraStreamHandler({
+    Key? key,
     required this.stream,
     required this.ready,
     this.error,
     this.onError,
     this.loading,
     this.initialData,
-  });
+  }) : super(key: key);
 
   @override
   _SuraStreamHandlerState<T> createState() => _SuraStreamHandlerState<T>();
@@ -79,7 +80,7 @@ class _SuraStreamHandlerState<T> extends State<SuraStreamHandler<T>> {
             return widget.loading!;
           }
           return suraProvider?.loadingWidget ??
-              Center(child: CircularProgressIndicator());
+              const Center(child: CircularProgressIndicator());
         }
       },
     );

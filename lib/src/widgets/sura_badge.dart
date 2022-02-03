@@ -29,7 +29,7 @@ class SuraBadge extends StatelessWidget {
       alignment: Alignment.center,
       child: Text(
         text,
-        style: TextStyle(fontSize: 8, color: Colors.white),
+        style: const TextStyle(fontSize: 8, color: Colors.white),
       ),
     );
   }

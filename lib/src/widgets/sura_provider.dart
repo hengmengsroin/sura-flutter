@@ -6,12 +6,13 @@ typedef OnManagerError = Function(dynamic, BuildContext);
 
 class SuraProvider extends InheritedWidget {
   const SuraProvider({
+    Key? key,
     required Widget child,
     this.loadingWidget,
     this.errorWidget,
     this.buttonLoadingWidget,
     this.onFutureManagerError,
-  }) : super(child: child);
+  }) : super(child: child, key: key);
 
   ///Loading widget use in [SuraAsyncButton]
   final Widget? buttonLoadingWidget;
@@ -30,5 +31,5 @@ class SuraProvider extends InheritedWidget {
   }
 
   @override
-  bool updateShouldNotify(SuraProvider old) => true;
+  bool updateShouldNotify(SuraProvider oldWidget) => true;
 }

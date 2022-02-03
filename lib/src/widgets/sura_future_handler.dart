@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'sura_provider.dart';
@@ -18,22 +17,24 @@ class SuraFutureHandler<T> extends StatefulWidget {
 
   ///Create a FutureBuilder with less boilerplate code
   const SuraFutureHandler({
+    Key? key,
     required this.future,
     required this.ready,
     this.error,
     this.futureFunction,
     this.loading,
     this.initialData,
-  });
+  }) : super(key: key);
 
   const SuraFutureHandler.function({
+    Key? key,
     required this.ready,
     required this.futureFunction,
     this.future,
     this.error,
     this.loading,
     this.initialData,
-  });
+  }) : super(key: key);
 
   @override
   _SuraFutureHandlerState<T> createState() => _SuraFutureHandlerState<T>();
@@ -74,7 +75,7 @@ class _SuraFutureHandlerState<T> extends State<SuraFutureHandler<T>> {
             return widget.loading!;
           }
           return suraTheme?.loadingWidget ??
-              Center(child: CircularProgressIndicator());
+              const Center(child: CircularProgressIndicator());
         }
       },
     );

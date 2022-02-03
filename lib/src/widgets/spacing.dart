@@ -5,7 +5,8 @@ class SpaceX extends StatelessWidget {
   final double width;
 
   ///Create a horizontal blank space
-  const SpaceX([this.width = 8]);
+  const SpaceX([this.width = 8, Key? key]) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -19,7 +20,7 @@ class SpaceY extends StatelessWidget {
   final double height;
 
   ///Create a vertical blank space
-  const SpaceY([this.height = 8]);
+  const SpaceY([this.height = 8, Key? key]) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return SizedBox(

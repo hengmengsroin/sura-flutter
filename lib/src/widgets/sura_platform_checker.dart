@@ -20,9 +20,9 @@ class SuraPlatformChecker extends StatelessWidget {
 
   Widget buildPlatformChecker() {
     if (UniversalPlatform.isIOS && iosWidget != null) {
-      return iosWidget ?? SizedBox();
+      return iosWidget ?? const SizedBox();
     } else if (UniversalPlatform.isWeb && webWidget != null) {
-      return webWidget ?? SizedBox();
+      return webWidget ?? const SizedBox();
     }
     return androidWidget;
   }

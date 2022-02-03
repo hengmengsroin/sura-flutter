@@ -29,7 +29,8 @@ class SuraRaisedButton extends StatelessWidget {
   final BorderSide? borderSide;
 
   ///Create a button with loading notifier
-  SuraRaisedButton({
+  const SuraRaisedButton({
+    Key? key,
     required this.onPressed,
     required this.child,
     this.loadingNotifier,
@@ -46,7 +47,7 @@ class SuraRaisedButton extends StatelessWidget {
     this.elevation = 2.0,
     this.alignment,
     this.borderSide,
-  });
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -59,7 +60,7 @@ class SuraRaisedButton extends StatelessWidget {
           return ElevatedButton(
             onPressed: loading ? () {} : onPressed,
             style: ElevatedButton.styleFrom(
-              shape: shape ?? StadiumBorder(),
+              shape: shape ?? const StadiumBorder(),
               primary: color,
               onPrimary: textColor,
               padding: padding,
@@ -74,8 +75,8 @@ class SuraRaisedButton extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   if (icon != null) ...[
-                    icon ?? SizedBox(),
-                    SpaceX(8),
+                    icon ?? const SizedBox(),
+                    const SpaceX(8),
                   ],
                   child,
                 ],
