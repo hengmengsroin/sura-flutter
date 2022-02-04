@@ -1,3 +1,7 @@
+## [1.0.1] - 4 February 2022
+
+- Export KeyboardDismiss
+
 ## [1.0.0] - 3 February 2022
 
 - Stable 1.0.0 Release

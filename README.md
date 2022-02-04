@@ -1,6 +1,6 @@
 # sura_flutter
 
-[![pub package](https://img.shields.io/badge/pub-1.0.0-blueviolet.svg)](https://pub.dev/packages/sura_flutter) ![Latest commit](https://badgen.net/github/last-commit/asurraa/sura_flutter)
+[![pub package](https://img.shields.io/badge/pub-1.0.1-blueviolet.svg)](https://pub.dev/packages/sura_flutter) ![Latest commit](https://badgen.net/github/last-commit/asurraa/sura_flutter)
 
 A flutter package from AsurRaa for custom widgets and utility functions.
 
@@ -13,7 +13,7 @@ A flutter package from AsurRaa for custom widgets and utility functions.
 
   ```dart
   dependencies:
-    sura_manager: 0.2.1
+    sura_manager: ^1.0.0
   ```
 
 # Installation
@@ -22,7 +22,7 @@ Add this to pubspec.yaml
 
 ```dart
 dependencies:
-  sura_flutter: ^1.0.0
+  sura_flutter: ^1.0.1
 ```
 
 # Widgets
