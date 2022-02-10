@@ -27,7 +27,8 @@ extension DateUtils on DateTime {
       localeCode = locale.languageCode;
     }
     var formatter = DateFormat(format, localeCode);
-    return formatter.format(toLocal());
+    final date = toLocal();
+    return formatter.format(date);
   }
 }
 
@@ -264,6 +265,7 @@ extension ContextExtension on BuildContext {
   Color get accentColor => Theme.of(this).colorScheme.secondary;
   TextTheme get textTheme => Theme.of(this).textTheme;
   ThemeData get theme => Theme.of(this);
+  MediaQueryData get mediaQuery => MediaQuery.of(this);
 }
 
 extension DurationExtension on Duration {

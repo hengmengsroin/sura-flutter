@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'spacing.dart';
+
 ///build a widget depend on provided [condition]
 class ConditionalWidget extends StatelessWidget {
   ///If a [condition] is true, show [onTrue] widget lese show [OnFalse] widget
@@ -31,7 +33,7 @@ class ConditionalWidget extends StatelessWidget {
     return Container(
       padding: padding ?? EdgeInsets.zero,
       margin: margin ?? EdgeInsets.zero,
-      child: condition ? onTrue() : onFalse?.call() ?? const SizedBox(),
+      child: condition ? onTrue() : onFalse?.call() ?? emptySizedBox,
     );
   }
 }

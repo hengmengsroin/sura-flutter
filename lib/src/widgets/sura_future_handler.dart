@@ -51,7 +51,7 @@ class _SuraFutureHandlerState<T> extends State<SuraFutureHandler<T>> {
 
   @override
   Widget build(BuildContext context) {
-    final SuraProvider? suraTheme = SuraProvider.of(context);
+    final SuraProvider? suraProvider = SuraProvider.of(context);
     //
     return FutureBuilder<T>(
       future: future,
@@ -63,7 +63,7 @@ class _SuraFutureHandlerState<T> extends State<SuraFutureHandler<T>> {
           if (widget.error != null) {
             return widget.error!(snapshot.error);
           }
-          return suraTheme?.errorWidget?.call(snapshot.error, null) ??
+          return suraProvider?.errorWidget?.call(snapshot.error, null) ??
               Center(
                 child: Text(
                   snapshot.error.toString(),
@@ -74,7 +74,7 @@ class _SuraFutureHandlerState<T> extends State<SuraFutureHandler<T>> {
           if (widget.loading != null) {
             return widget.loading!;
           }
-          return suraTheme?.loadingWidget ??
+          return suraProvider?.loadingWidget ??
               const Center(child: CircularProgressIndicator());
         }
       },

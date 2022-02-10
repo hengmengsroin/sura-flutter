@@ -75,7 +75,7 @@ class SuraRaisedButton extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   if (icon != null) ...[
-                    icon ?? const SizedBox(),
+                    icon ?? emptySizedBox,
                     const SpaceX(8),
                   ],
                   child,

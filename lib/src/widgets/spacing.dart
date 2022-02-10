@@ -28,3 +28,5 @@ class SpaceY extends StatelessWidget {
     );
   }
 }
+
+const emptySizedBox = SizedBox.shrink();

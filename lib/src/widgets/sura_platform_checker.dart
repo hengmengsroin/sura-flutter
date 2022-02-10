@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sura_flutter/src/widgets/spacing.dart';
 import 'package:universal_platform/universal_platform.dart';
 
 ///Provide a widget child depend on the Platform, Currently support [iOS] and [Android]
@@ -20,9 +21,9 @@ class SuraPlatformChecker extends StatelessWidget {
 
   Widget buildPlatformChecker() {
     if (UniversalPlatform.isIOS && iosWidget != null) {
-      return iosWidget ?? const SizedBox();
+      return iosWidget ?? emptySizedBox;
     } else if (UniversalPlatform.isWeb && webWidget != null) {
-      return webWidget ?? const SizedBox();
+      return webWidget ?? emptySizedBox;
     }
     return androidWidget;
   }

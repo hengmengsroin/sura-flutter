@@ -1,3 +1,9 @@
+## [1.0.2] - 10 February 2022
+
+- add [name] param to SuraPageNavigator
+- add **emptySizedBox** widget
+- code improvement
+
 ## [1.0.1] - 4 February 2022
 
 - Export KeyboardDismiss

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'spacing.dart';
+
 ///A badge that often us in fpr notification
 class SuraBadge extends StatelessWidget {
   final double radius;
@@ -17,7 +19,7 @@ class SuraBadge extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    if (!enable) return const SizedBox();
+    if (!enable) return emptySizedBox;
     return Container(
       width: radius * 2,
       height: radius * 2,

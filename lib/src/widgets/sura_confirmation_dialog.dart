@@ -41,15 +41,15 @@ class SuraConfirmationDialog extends StatelessWidget {
         child: Text(cancelText),
         isDestructiveAction: true,
         onPressed: () {
-          Navigator.of(context).pop(false);
           onCancel?.call();
+          Navigator.of(context).pop(false);
         },
       ),
       CupertinoDialogAction(
         child: Text(confirmText),
         onPressed: () {
-          Navigator.of(context).pop(true);
           onConfirm?.call();
+          Navigator.of(context).pop(true);
         },
       ),
     ];
@@ -75,15 +75,15 @@ class SuraConfirmationDialog extends StatelessWidget {
         ),
         child: Text(cancelText),
         onPressed: () {
-          Navigator.of(context).pop(false);
           onCancel?.call();
+          Navigator.of(context).pop(false);
         },
       ),
       TextButton(
         child: Text(confirmText),
         onPressed: () {
-          Navigator.of(context).pop(true);
           onConfirm?.call();
+          Navigator.of(context).pop(true);
         },
       ),
     ];

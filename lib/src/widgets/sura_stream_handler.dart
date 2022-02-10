@@ -50,11 +50,6 @@ class _SuraStreamHandlerState<T> extends State<SuraStreamHandler<T>> {
   }
 
   @override
-  void dispose() {
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     suraProvider = SuraProvider.of(context);
     //

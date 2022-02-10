@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'spacing.dart';
+
 class SuraPaginatedList extends StatefulWidget {
   ///Normal Listview itemCount
   final int itemCount;
@@ -13,11 +15,15 @@ class SuraPaginatedList extends StatefulWidget {
   ///Normal Listview shrinkWrap
   final bool shrinkWrap;
 
+  ///Normal Listview itemBuilder
+  final IndexedWidgetBuilder itemBuilder;
+
   ///[SuraPaginatedList] use ListView.separated, so you can provide divider widget
+  ///This can be use to replace separatorBuilder
   final Widget? separator;
 
-  ///Normal Listview itemBuilder
-  final Widget Function(BuildContext, int) itemBuilder;
+  ///[SuraPaginatedList] use ListView.separated, so you can provide divider widget
+  final IndexedWidgetBuilder? separatorBuilder;
 
   ///Normal Listview padding
   final EdgeInsets padding;
@@ -39,8 +45,11 @@ class SuraPaginatedList extends StatefulWidget {
   ///widget to show when we're fetching more data
   final Widget? loadingWidget;
 
-  ///Add provided scrollController to our paginated Listview
-  ///Sometime we provided a scroll controller, but that scroll controller isn't attach to any Listview yet
+  ///Add provided scrollController to our PaginatedListview
+  ///Use case: Provided scroll controller usually happen when this ListView is inside another Listview,
+  ///So we use provided scrollController to check for paginated trigger only but not attach to PaginatedList
+  ///But sometime, provided ScrollController isn't attach to any parent Listview yet. So in that case it must be attach
+  ///to our PaginatedList
   final bool attachProvidedScrollControllerToListview;
 
   ///Indicate if there is an error when getting more data
@@ -61,6 +70,7 @@ class SuraPaginatedList extends StatefulWidget {
     this.padding = const EdgeInsets.symmetric(vertical: 16, horizontal: 12),
     this.scrollDirection = Axis.vertical,
     this.separator,
+    this.separatorBuilder,
     this.onEmpty,
     this.scrollController,
     this.attachProvidedScrollControllerToListview = false,
@@ -125,8 +135,8 @@ class _SuraPaginatedListState extends State<SuraPaginatedList> {
       return widget.onEmpty!;
     }
     return ListView.separated(
-      separatorBuilder: (context, index) =>
-          widget.separator ?? const SizedBox(),
+      separatorBuilder: widget.separatorBuilder ??
+          (context, index) => widget.separator ?? emptySizedBox,
       itemCount: widget.itemCount + 1,
       controller: _isPrimaryScrollView
           ? scrollController
@@ -161,6 +171,6 @@ class _SuraPaginatedListState extends State<SuraPaginatedList> {
             padding: const EdgeInsets.all(8.0),
             child: Center(child: widget.loadingWidget),
           )
-        : const SizedBox();
+        : emptySizedBox;
   }
 }

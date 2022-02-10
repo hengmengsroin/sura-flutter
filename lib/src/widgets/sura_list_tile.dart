@@ -33,7 +33,7 @@ class SuraListTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final titleWidget = DefaultTextStyle(
       style: Theme.of(context).textTheme.subtitle1!,
-      child: title ?? const SizedBox(),
+      child: title ?? emptySizedBox,
     );
 
     final subTitleWidget = DefaultTextStyle(
@@ -41,12 +41,12 @@ class SuraListTile extends StatelessWidget {
           .textTheme
           .bodyText2!
           .copyWith(color: Theme.of(context).textTheme.caption?.color),
-      child: subtitle ?? const SizedBox(),
+      child: subtitle ?? emptySizedBox,
     );
 
     final trailingWidget = DefaultTextStyle(
       style: Theme.of(context).textTheme.bodyText2!,
-      child: trailing ?? const SizedBox(),
+      child: trailing ?? emptySizedBox,
     );
 
     return Container(

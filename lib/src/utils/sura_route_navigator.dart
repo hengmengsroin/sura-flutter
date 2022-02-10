@@ -3,15 +3,19 @@ import 'package:flutter/material.dart';
 ///Less boilerplate MaterialPageRoute builder
 class SuraPageNavigator {
   ///short handed push navigator
+  ///[name] parameter can be use instead of [settings] if you only need to provider name
   static Future push<T>(
     BuildContext context,
     Widget page, {
+    bool fullscreenDialog = false,
     RouteSettings? settings,
+    String? name,
   }) async {
     return await Navigator.of(context).push<T>(
       MaterialPageRoute(
         builder: (context) => page,
-        settings: settings,
+        fullscreenDialog: fullscreenDialog,
+        settings: name != null ? RouteSettings(name: name) : settings,
       ),
     );
   }
@@ -20,12 +24,15 @@ class SuraPageNavigator {
   static Future pushReplacement(
     BuildContext context,
     Widget page, {
+    bool fullscreenDialog = false,
     RouteSettings? settings,
+    String? name,
   }) async {
     return await Navigator.of(context).pushReplacement(
       MaterialPageRoute(
         builder: (context) => page,
-        settings: settings,
+        settings: name != null ? RouteSettings(name: name) : settings,
+        fullscreenDialog: fullscreenDialog,
       ),
     );
   }
@@ -34,13 +41,16 @@ class SuraPageNavigator {
   static Future pushAndRemove(
     BuildContext context,
     Widget page, {
+    bool fullscreenDialog = false,
     RouteSettings? settings,
+    String? name,
     bool condition = false,
   }) async {
     return await Navigator.of(context).pushAndRemoveUntil(
       MaterialPageRoute(
         builder: (context) => page,
-        settings: settings,
+        fullscreenDialog: fullscreenDialog,
+        settings: name != null ? RouteSettings(name: name) : settings,
       ),
       (dynamic) => condition,
     );

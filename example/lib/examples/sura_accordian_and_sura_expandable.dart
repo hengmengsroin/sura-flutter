@@ -43,6 +43,9 @@ class _SuraAccordianAndExpandableState
                 leading: SuraPlatformChecker(androidWidget: CircleAvatar()),
               ),
             ),
+            TextFormField(
+              validator: (value) {},
+            )
           ],
         ),
       ),

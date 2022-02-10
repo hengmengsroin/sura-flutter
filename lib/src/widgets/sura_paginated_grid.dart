@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'spacing.dart';
+
 class SuraPaginatedGridBuilder extends StatefulWidget {
   ///Simple Grid deledate
   final SliverGridDelegate gridDelegate;
@@ -18,8 +20,11 @@ class SuraPaginatedGridBuilder extends StatefulWidget {
   final Widget? loadingWidget;
   final Widget? onEmpty;
 
-  ///Add provided scrollController to our paginated Listview
-  ///Sometime we provided a scroll controller, but that scroll controller isn't attach to any Listview yet
+  ///Add provided scrollController to our PaginatedListview
+  ///Use case: Provided scroll controller usually happen when this ListView is inside another Listview,
+  ///So we use provided scrollController to check for paginated trigger only but not attach to PaginatedList
+  ///But sometime, provided ScrollController isn't attach to any parent Listview yet. So in that case it must be attach
+  ///to our PaginatedList
   final bool attachProvidedScrollControllerToListview;
 
   ///Indicate if there is an error when getting more data
@@ -137,6 +142,6 @@ class _SuraPaginatedGridBuilderState extends State<SuraPaginatedGridBuilder> {
             padding: const EdgeInsets.all(8.0),
             child: Center(child: widget.loadingWidget),
           )
-        : const SizedBox();
+        : emptySizedBox;
   }
 }
