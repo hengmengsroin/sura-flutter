@@ -1,3 +1,7 @@
+## [1.0.3] - 13 February 2022
+
+- add SuraResponsive
+
 ## [1.0.2] - 10 February 2022
 
 - add [name] param to SuraPageNavigator

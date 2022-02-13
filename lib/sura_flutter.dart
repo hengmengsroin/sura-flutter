@@ -10,6 +10,7 @@ export 'src/style/shadow_input_border.dart';
 export 'src/style/small_underline_tab_indicator.dart';
 export 'src/style/sura_color.dart';
 export 'src/style/sura_decoration.dart';
+export 'src/style/sura_responsive_size.dart';
 //utils
 export 'src/utils/sura_extension.dart';
 export 'src/utils/sura_form_validator.dart';
