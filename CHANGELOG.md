@@ -1,3 +1,8 @@
+## [1.0.4] - 14 February 2022
+
+- fix a bug in SuraJwtDecoder where exp can be null
+- Rename extension name and add more extension method
+
 ## [1.0.3] - 13 February 2022
 
 - add SuraResponsive

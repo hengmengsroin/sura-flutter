@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:sura_flutter/src/utils/sura_utils.dart';
 
-extension DateUtils on DateTime {
+extension SuraDateUtilsExtension on DateTime {
   String formatDate({String format = "dd MMM yyyy", Locale? locale}) {
     String? localeCode;
     if (locale != null) {
@@ -38,7 +38,7 @@ extension StringExtension on String {
   }
 }
 
-extension ListenableExtension on Listenable {
+extension SuraListenableExtension on Listenable {
   Widget build({required Widget Function() child}) {
     return AnimatedBuilder(
       animation: this,
@@ -57,7 +57,7 @@ extension ListenableExtension on Listenable {
   }
 }
 
-extension WidgetExtension on Widget {
+extension SuraWidgetExtension on Widget {
   Widget padding([EdgeInsets padding = const EdgeInsets.all(8)]) {
     return Padding(
       padding: padding,
@@ -242,7 +242,7 @@ extension WidgetExtension on Widget {
   Widget get ovalClip => ClipOval(child: this);
 }
 
-extension TextStyleExtension on TextStyle {
+extension SuraTextStyleExtension on TextStyle {
   //method
   TextStyle get bold => copyWith(fontWeight: FontWeight.bold);
 
@@ -250,25 +250,40 @@ extension TextStyleExtension on TextStyle {
 
   TextStyle get normal => copyWith(fontWeight: FontWeight.normal);
 
-  TextStyle applyColor(Color color) {
+  TextStyle get white => copyWith(color: Colors.white);
+
+  TextStyle get black => copyWith(color: Colors.black);
+
+  TextStyle get red => copyWith(color: Colors.red);
+
+  TextStyle get green => copyWith(color: Colors.green);
+
+  TextStyle setColor(Color color) {
     return copyWith(color: color);
   }
 
-  TextStyle applyFontSize(double size) {
+  TextStyle setFontSize(double size) {
     return copyWith(fontSize: size);
   }
 }
 
-extension ContextExtension on BuildContext {
+extension SuraContextExtension on BuildContext {
   Size get screenSize => MediaQuery.of(this).size;
+
   Color get primaryColor => Theme.of(this).primaryColor;
+
   Color get accentColor => Theme.of(this).colorScheme.secondary;
+
   TextTheme get textTheme => Theme.of(this).textTheme;
+
   ThemeData get theme => Theme.of(this);
+
   MediaQueryData get mediaQuery => MediaQuery.of(this);
+
+  void hideKeyboard() => FocusScope.of(this).unfocus();
 }
 
-extension DurationExtension on Duration {
+extension SuraDurationExtension on Duration {
   String formatDuration({
     bool hasHour = true,
     bool hasMillisecond = false,

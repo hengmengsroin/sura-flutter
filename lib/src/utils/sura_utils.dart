@@ -11,6 +11,11 @@ class SuraUtils {
     return degree * (-pi / 180);
   }
 
+  ///Short for [Future.delayed]
+  static Future<void> wait([int millisecond = 1500]) async {
+    await Future.delayed(Duration(milliseconds: millisecond));
+  }
+
   ///A Function to check network connection
   static Future<bool> checkConnection() async {
     try {
@@ -37,12 +42,12 @@ class SuraUtils {
         .asUint8List();
   }
 
-  ///get A random Image from Picsum with given dimension
+  ///Get A random Image from Picsum with given dimension
   static String picsumImage([int width = 200, int height = 200]) {
     return "https://picsum.photos/$width/$height";
   }
 
-  ///Get a random Image from Unsplash in category filter
+  ///Get a random Image from Unsplash with dimension and category filter
   static String unsplashImage({
     int width = 200,
     int height = 200,

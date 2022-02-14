@@ -4,10 +4,12 @@ import 'package:sura_flutter/sura_flutter.dart';
 class SuraAccordianAndExpandable extends StatefulWidget {
   SuraAccordianAndExpandable({Key? key}) : super(key: key);
   @override
-  _SuraAccordianAndExpandableState createState() => _SuraAccordianAndExpandableState();
+  _SuraAccordianAndExpandableState createState() =>
+      _SuraAccordianAndExpandableState();
 }
 
-class _SuraAccordianAndExpandableState extends State<SuraAccordianAndExpandable> {
+class _SuraAccordianAndExpandableState
+    extends State<SuraAccordianAndExpandable> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
