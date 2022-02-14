@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sura_flutter/sura_flutter.dart';
 
@@ -124,14 +125,35 @@ class _OtherButtonExampleState extends State<OtherButtonExample> {
                 ),
               ],
             ),
+            buildButtonCategory(
+              name: "Action sheet",
+              buttons: [
+                SuraRaisedButton(
+                  onPressed: () async {
+                    showCupertinoModalPopup(
+                      context: context,
+                      builder: (context) {
+                        return SuraActionSheet(
+                          builder: (value, index) {
+                            return Text("$value");
+                          },
+                          title: "title",
+                          options: ["options"],
+                        );
+                      },
+                    );
+                  },
+                  child: Text("Show action sheet"),
+                )
+              ],
+            ),
           ],
         ),
       ),
     );
   }
 
-  Widget buildButtonCategory(
-      {required String name, required List<Widget> buttons}) {
+  Widget buildButtonCategory({required String name, required List<Widget> buttons}) {
     return Column(
       children: [
         Text(name, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),

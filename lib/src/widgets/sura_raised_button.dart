@@ -33,18 +33,18 @@ class SuraRaisedButton extends StatelessWidget {
     Key? key,
     required this.onPressed,
     required this.child,
+    this.loadingColor = Colors.white,
+    this.margin = const EdgeInsets.symmetric(vertical: 16),
+    this.padding = const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+    this.fullWidth = false,
+    this.shape = const StadiumBorder(),
+    this.elevation = 2.0,
     this.loadingNotifier,
     this.loadingWidget,
     this.color,
     this.textColor,
     this.icon,
-    this.loadingColor = Colors.white,
-    this.margin = const EdgeInsets.symmetric(vertical: 16),
-    this.padding = const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-    this.fullWidth = false,
-    this.shape,
     this.onLongPressed,
-    this.elevation = 2.0,
     this.alignment,
     this.borderSide,
   }) : super(key: key);
@@ -60,7 +60,7 @@ class SuraRaisedButton extends StatelessWidget {
           return ElevatedButton(
             onPressed: loading ? () {} : onPressed,
             style: ElevatedButton.styleFrom(
-              shape: shape ?? const StadiumBorder(),
+              shape: shape,
               primary: color,
               onPrimary: textColor,
               padding: padding,
@@ -81,10 +81,7 @@ class SuraRaisedButton extends StatelessWidget {
                   child,
                 ],
               ),
-              onTrue: () =>
-                  loadingWidget ??
-                  SuraProvider.of(context)?.buttonLoadingWidget ??
-                  _buildLoadingWidget(),
+              onTrue: () => loadingWidget ?? SuraProvider.of(context)?.buttonLoadingWidget ?? _buildLoadingWidget(),
             ),
           );
         },
