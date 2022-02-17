@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:sura_flutter/src/utils/sura_utils.dart';
+
+import '../../sura_flutter.dart';
 
 extension SuraDateUtilsExtension on DateTime {
   String formatDate({String format = "dd MMM yyyy", Locale? locale}) {
@@ -246,6 +247,8 @@ extension SuraTextStyleExtension on TextStyle {
   //method
   TextStyle get bold => copyWith(fontWeight: FontWeight.bold);
 
+  TextStyle get semibold => copyWith(fontWeight: FontWeight.w600);
+
   TextStyle get medium => copyWith(fontWeight: FontWeight.w500);
 
   TextStyle get normal => copyWith(fontWeight: FontWeight.normal);
@@ -258,6 +261,10 @@ extension SuraTextStyleExtension on TextStyle {
 
   TextStyle get green => copyWith(color: Colors.green);
 
+  TextStyle get grey => copyWith(color: Colors.grey);
+
+  TextStyle get underline => copyWith(decoration: TextDecoration.underline);
+
   TextStyle setColor(Color color) {
     return copyWith(color: color);
   }
@@ -265,6 +272,13 @@ extension SuraTextStyleExtension on TextStyle {
   TextStyle setFontSize(double size) {
     return copyWith(fontSize: size);
   }
+
+  TextStyle get responsiveFontSize =>
+      copyWith(fontSize: _responsiveFontSize(fontSize ?? 14));
+}
+
+double _responsiveFontSize(double size) {
+  return SuraResponsive.value(size, size + 4, size + 6, size - 2);
 }
 
 extension SuraContextExtension on BuildContext {

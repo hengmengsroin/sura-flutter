@@ -20,6 +20,10 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       home: MyHomePage(),
+      builder: (context, child) {
+        debugPrint(context.mediaQuery.toString());
+        return SuraResponsiveBuilder(child: child!);
+      },
     );
   }
 }

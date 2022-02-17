@@ -120,6 +120,7 @@ class _OtherButtonExampleState extends State<OtherButtonExample> {
                       child: Text("Click me"),
                       fullWidth: true,
                       loadingType: LoadingType.progress,
+                      height: SuraResponsive.value(50, 60, 70),
                     ),
                   ],
                 ),

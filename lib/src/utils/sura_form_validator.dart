@@ -8,6 +8,7 @@ class SuraFormValidator {
           ? "Please input your $field"
           : "Please input required field";
     }
+    return null;
   }
 
   static String? isNumber(String? value, {String? field}) {
@@ -22,6 +23,7 @@ class SuraFormValidator {
           ? "$field must be a number"
           : "This field must be a number";
     }
+    return null;
   }
 
   static String? validateEmail(String? value, {String field = "email"}) {
@@ -31,5 +33,6 @@ class SuraFormValidator {
     if (!_emailRegex.hasMatch(value)) {
       return "Invalid $field";
     }
+    return null;
   }
 }

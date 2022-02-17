@@ -1,36 +1,79 @@
 import 'package:flutter/material.dart';
 
+class SuraResponsiveBreakpoint {
+  final double smallPhone;
+  final double phone;
+  final double tablet;
+  final double desktop;
+
+  SuraResponsiveBreakpoint({
+    required this.smallPhone,
+    required this.phone,
+    required this.tablet,
+    required this.desktop,
+  });
+
+  SuraResponsiveBreakpoint.defaultValue()
+      : smallPhone = 320,
+        phone = 480,
+        tablet = 768,
+        desktop = 1024;
+}
+
 class SuraResponsive {
   static Size? _size;
   static BuildContext? context;
 
+  static SuraResponsiveBreakpoint _breakPoint =
+      SuraResponsiveBreakpoint.defaultValue();
+
+  @protected
   static void init(BuildContext ctx) {
     context = ctx;
     _size = MediaQuery.of(ctx).size;
   }
 
-  static double value(double phone,
-      [double? laptop, double? tablet, double? smallPhone]) {
-    double width = _size?.width ?? 480;
-    if (width >= 1024) {
-      return laptop ?? phone;
-    } else if (width >= 768) {
-      return tablet ?? phone;
-    } else if (width <= 350) {
-      return smallPhone ?? phone;
+  @protected
+  static void changeBreakpoint(SuraResponsiveBreakpoint breakPoint) {
+    _breakPoint = breakPoint;
+  }
+
+  ///Define a value depend on Screen width
+  ///Will use [phone] value if other value is null
+  static double value(
+    double phone, [
+    double? tablet,
+    double? desktop,
+    double? smallPhone,
+  ]) {
+    double screenWidth = _size?.width ?? _breakPoint.phone;
+    double? value;
+    if (screenWidth >= _breakPoint.desktop) {
+      value = desktop;
+    } else if (screenWidth >= _breakPoint.tablet) {
+      value = tablet;
+    } else if (screenWidth <= _breakPoint.smallPhone) {
+      value = smallPhone;
     }
-    return phone;
+    return value ?? phone;
   }
 }
 
 class SuraResponsiveBuilder extends StatelessWidget {
   final Widget child;
-  const SuraResponsiveBuilder({Key? key, required this.child})
-      : super(key: key);
+  final SuraResponsiveBreakpoint? breakPoint;
+  const SuraResponsiveBuilder({
+    Key? key,
+    required this.child,
+    this.breakPoint,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     SuraResponsive.init(context);
+    if (breakPoint != null) {
+      SuraResponsive.changeBreakpoint(breakPoint!);
+    }
     return child;
   }
 }
