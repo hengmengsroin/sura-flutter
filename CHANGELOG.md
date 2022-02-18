@@ -1,3 +1,7 @@
+## [1.0.5] - 18 February 2022
+
+- Adjust SuraResponsiveBuilder
+
 ## [1.0.4] - 17 February 2022
 
 - fix a bug in SuraJwtDecoder where exp can be null

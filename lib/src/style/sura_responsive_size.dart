@@ -60,11 +60,11 @@ class SuraResponsive {
 }
 
 class SuraResponsiveBuilder extends StatelessWidget {
-  final Widget child;
+  final Widget Function(BuildContext) builder;
   final SuraResponsiveBreakpoint? breakPoint;
   const SuraResponsiveBuilder({
     Key? key,
-    required this.child,
+    required this.builder,
     this.breakPoint,
   }) : super(key: key);
 
@@ -74,6 +74,6 @@ class SuraResponsiveBuilder extends StatelessWidget {
     if (breakPoint != null) {
       SuraResponsive.changeBreakpoint(breakPoint!);
     }
-    return child;
+    return builder(context);
   }
 }
