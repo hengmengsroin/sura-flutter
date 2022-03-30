@@ -45,21 +45,16 @@ class TokenPayload {
 
   factory TokenPayload.fromMap(Map<String, dynamic> payloadMap) {
     return TokenPayload(
-      createdDate: payloadMap["iat"] == null
-          ? null
-          : DateTime.fromMillisecondsSinceEpoch(payloadMap["iat"] * 1000),
-      expiredDate: payloadMap["exp"] == null
-          ? null
-          : DateTime.fromMillisecondsSinceEpoch(payloadMap["exp"] * 1000),
+      createdDate: payloadMap["iat"] == null ? null : DateTime.fromMillisecondsSinceEpoch(payloadMap["iat"] * 1000),
+      expiredDate: payloadMap["exp"] == null ? null : DateTime.fromMillisecondsSinceEpoch(payloadMap["exp"] * 1000),
       data: payloadMap,
     );
   }
 
-  bool get isExpired =>
-      expiredDate != null ? DateTime.now().isAfter(expiredDate!) : false;
+  bool get isExpired => expiredDate != null ? DateTime.now().isAfter(expiredDate!) : false;
 
   @override
   String toString() {
-    return "Token payload: ${data.toString()}, Created date: $createdDate, Expired date: $expiredDate, ";
+    return "Token payload: ${data.toString()}, Created date: $createdDate, Expired date: $expiredDate";
   }
 }

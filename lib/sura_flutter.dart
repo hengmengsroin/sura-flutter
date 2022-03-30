@@ -12,7 +12,7 @@ export 'src/style/sura_color.dart';
 export 'src/style/sura_decoration.dart';
 export 'src/style/sura_responsive_size.dart';
 //utils
-export 'src/utils/sura_extension.dart';
+export 'src/utils/sura_extension/index.dart';
 export 'src/utils/sura_form_validator.dart';
 export 'src/utils/sura_jwt_decoder.dart';
 export 'src/utils/sura_route_navigator.dart';

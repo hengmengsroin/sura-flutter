@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       home: MyHomePage(),
       builder: (context, child) {
         debugPrint(context.mediaQuery.toString());
-        return SuraResponsiveBuilder(child: child!);
+        return SuraResponsiveBuilder(builder: (context) => child!);
       },
     );
   }

@@ -9,6 +9,9 @@ class SuraUtilExamples extends StatefulWidget {
 
 class _SuraUtilExamplesState extends State<SuraUtilExamples> {
   TokenPayload? tokenPayload;
+
+  final ages = [1, 2, 3, 4, 5];
+  Map data = {};
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,17 +19,18 @@ class _SuraUtilExamplesState extends State<SuraUtilExamples> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text("${tokenPayload?.toString()}"),
-            Text("Is expired: ${tokenPayload?.isExpired}")
-          ],
+          children: [Text("${tokenPayload?.toString()}"), Text("Is expired: ${tokenPayload?.isExpired}")],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          setState(() {
-            tokenPayload = SuraJwtDecoder.decode(token);
-          });
+          // setState(() {
+          //   tokenPayload = SuraJwtDecoder.decode(token);
+          // });
+
+          var newData = ages.filter<int>((element) => element == 2);
+          int hehe = data.getIfExist("key");
+          print(hehe);
         },
         child: Icon(Icons.connected_tv),
       ),
