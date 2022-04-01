@@ -63,7 +63,9 @@ class _OtherButtonExampleState extends State<OtherButtonExample> {
                 SuraIconButton(
                   icon: Icon(Icons.add_alarm_rounded),
                   margin: EdgeInsets.symmetric(vertical: 4, horizontal: 12),
-                  onTap: () {},
+                  onTap: () {
+                    LoadingOverlayProvider.toggle();
+                  },
                   badge: SuraBadge(text: "2"),
                 ),
               ],

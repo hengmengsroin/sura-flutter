@@ -19,7 +19,10 @@ class _SuraUtilExamplesState extends State<SuraUtilExamples> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [Text("${tokenPayload?.toString()}"), Text("Is expired: ${tokenPayload?.isExpired}")],
+          children: [
+            Text("${tokenPayload?.toString()}"),
+            Text("Is expired: ${tokenPayload?.isExpired}")
+          ],
         ),
       ),
       floatingActionButton: FloatingActionButton(

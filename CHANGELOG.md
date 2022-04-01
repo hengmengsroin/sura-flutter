@@ -1,3 +1,8 @@
+## [1.1.0] - 1 April 2022
+
+- Add LoadingOverlay
+- Add more extension methods
+
 ## [1.0.5] - 18 February 2022
 
 - Adjust SuraResponsiveBuilder

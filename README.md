@@ -1,6 +1,6 @@
 # sura_flutter
 
-[![pub package](https://img.shields.io/badge/pub-1.0.5-blueviolet.svg)](https://pub.dev/packages/sura_flutter) ![Latest commit](https://badgen.net/github/last-commit/asurraa/sura_flutter)
+[![pub package](https://img.shields.io/badge/pub-1.1.0-blueviolet.svg)](https://pub.dev/packages/sura_flutter) ![Latest commit](https://badgen.net/github/last-commit/asurraa/sura_flutter)
 
 A flutter package from AsurRaa for custom widgets and utility functions.
 
@@ -22,7 +22,7 @@ Add this to pubspec.yaml
 
 ```dart
 dependencies:
-  sura_flutter: ^1.0.5
+  sura_flutter: ^1.1.0
 ```
 
 # Widgets
@@ -34,6 +34,7 @@ dependencies:
 | [SuraActionSheet][other] | Custom CupertinoActionSheet for option selector |
 | [ConditionalWidget][other] | Build a widget base on a boolean condition |
 | [KeyboardDismiss][other] | Dismiss keyboard on tap |
+| [LoadingOverlay][other] | Create an overlay loading that cover entire screen and disable input |
 | [SuraToolbar][other] | Custom ToolBar or AppBar |
 | [SuraFutureHandler][builder_example] | FutureBuilder with less boilerplate code |
 | [SuraAccordian][accordion_expandable] | Custom ExpansionTile |
@@ -127,51 +128,7 @@ class _HomePageState extends State<NewPage> with BoolNotifierMixin {
 }
 ```
 
-# Widget's Extension
-
-### padding, margin
-
-```dart
-Text("Hello Flutter").padding(EdgeInsets.all(16.0)) // defaulat value is EdgeInsets.all(8.0)
-Text("Hello Flutter").margin(EdgeInsets.all(16.0)) // defaulat value is EdgeInsets.all(8.0)
-///As a value
-Text("Hello Flutter").marginValue(all: 12)
-Text("Hello Flutter").paddingValue(horizontal: 12, vertical: 8)
-```
-
-### cssSpacing
-
-```dart
-Text("Hello Flutter").cssSpacing(margin: [10,10], padding:[16])
-//css margin and padding rule
-```
-
-### rotate (in degree)
-
-```dart
-Text("Hello Flutter").rotate(45)
-```
-
-### flexible, expanded, clipOval, opacity
-
-```dart
-Text("Hello Flutter").flexible
-Text("Hello Flutter").expanded
-Text("Hello Flutter").clipOval
-Text("Hello Flutter").opacity(0.5)
-```
-
-# TextStyle Extention
-
-```dart
-Text("Hello Flutter", style: TextStyle().normal)
-Text("Hello Flutter", style: TextStyle().medium)
-Text("Hello Flutter", style: TextStyle().bold)
-Text("Hello Flutter", style: TextStyle().applyColor(Colors.white))
-Text("Hello Flutter", style: TextStyle().applFontSize(24))
-```
-
-# Other Extension
+# Extension
 
 ### BuildContext extension
 
@@ -184,12 +141,49 @@ Text("Hello Flutter", style: TextStyle().applFontSize(24))
 
 ```
 
+### TextStyle Extention
+
+```dart
+Text("Hello Flutter", style: TextStyle().normal)
+Text("Hello Flutter", style: TextStyle().medium)
+Text("Hello Flutter", style: TextStyle().bold)
+Text("Hello Flutter", style: TextStyle().applyColor(Colors.white))
+Text("Hello Flutter", style: TextStyle().applFontSize(24))
+```
+
 ### DateTime extension
 
 ```dart
 DateTime.now().format(format: "dd mmm yyyy", locale: context.locale)
 DateTime.now().isTheSameDay(DateTime.now())
 DateTime.now().formatToLocalDate(format: "dd mmm yyyy", locale: context.locale)
+```
+
+### Widget's Extension
+
+```dart
+Text("Hello Flutter").padding(EdgeInsets.all(16.0)) // defaulat value is EdgeInsets.all(8.0)
+Text("Hello Flutter").margin(EdgeInsets.all(16.0)) // defaulat value is EdgeInsets.all(8.0)
+///As a value
+Text("Hello Flutter").marginValue(all: 12)
+Text("Hello Flutter").paddingValue(horizontal: 12, vertical: 8)
+```
+
+```dart
+Text("Hello Flutter").cssSpacing(margin: [10,10], padding:[16])
+//css margin and padding rule
+```
+
+```dart
+Text("Hello Flutter").rotate(45)
+///Rotate 45 degree
+```
+
+```dart
+Text("Hello Flutter").flexible
+Text("Hello Flutter").expanded
+Text("Hello Flutter").clipOval
+Text("Hello Flutter").opacity(0.5)
 ```
 
 ### String extension
@@ -200,7 +194,7 @@ String name = "chunlee".capitalize() // => Chunlee
 
 # Utility and Style
 
-## DotTabIndicator
+### DotTabIndicator
 
 ![alt text](screenshots/tab-indicator-2.png "DotTabIndicator")
 
@@ -215,7 +209,7 @@ String name = "chunlee".capitalize() // => Chunlee
   )
 ```
 
-## SmallUnderlineTabIndicator
+### SmallUnderlineTabIndicator
 
 ![alt text](screenshots/tab-indicator-1.png "SmallUnderlineIndicator")
 
@@ -232,7 +226,7 @@ String name = "chunlee".capitalize() // => Chunlee
   )
 ```
 
-## ShadowInputBorder
+### ShadowInputBorder
 
 This input border solve a problem thath TextField doesn't have a default elevation.
 
@@ -282,7 +276,7 @@ String carUrlImage =  SuraUtils.unsplashImage(width: 200, height: 200, category:
 String randomUrlImage = SuraUtils.picsumImage(200,300);
 ```
 
-### SuraFormValidator
+## SuraFormValidator
 
 Provide some field validation
 
@@ -292,7 +286,7 @@ validator: (value) => SuraFormValidator.validateField(value, field:"username"),
 )
 ```
 
-### SuraPageNavigator and SuraNavigator
+## SuraPageNavigator and SuraNavigator
 
 PageNavigator support push, pushReplacement and pushAndRemove method
 
@@ -331,3 +325,7 @@ var result = await SuraNavigator.dialog(MyDialog());
 RoundedRectangleBorder roundRectangle = SuraDecoration.roundRect(12);//default value is 8
 BorderRadius radius = SuraDecoration.radius(12); //default value is 8
 ```
+
+### SuraResponsiveSize
+
+A responsive tool to help define a value base on screen size

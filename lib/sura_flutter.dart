@@ -20,6 +20,7 @@ export 'src/utils/sura_utils.dart';
 //widget
 export 'src/widgets/conditional_widget.dart';
 export 'src/widgets/keyboard_dismiss.dart';
+export 'src/widgets/loading_overlay.dart';
 export 'src/widgets/spacing.dart';
 export 'src/widgets/sura_accordion.dart';
 export 'src/widgets/sura_action_sheet.dart';

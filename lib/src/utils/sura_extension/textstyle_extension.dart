@@ -32,7 +32,8 @@ extension SuraTextStyleExtension on TextStyle {
     return copyWith(fontSize: size);
   }
 
-  TextStyle get responsiveFontSize => copyWith(fontSize: _responsiveFontSize(fontSize ?? 14));
+  TextStyle get responsiveFontSize =>
+      copyWith(fontSize: _responsiveFontSize(fontSize ?? 14));
 }
 
 double _responsiveFontSize(double size) {
