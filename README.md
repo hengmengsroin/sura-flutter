@@ -2,7 +2,7 @@
 
 [![pub package](https://img.shields.io/badge/pub-1.1.0-blueviolet.svg)](https://pub.dev/packages/sura_flutter) ![Latest commit](https://badgen.net/github/last-commit/asurraa/sura_flutter)
 
-A flutter package from AsurRaa for custom widgets and utility functions.
+A flutter package for custom widgets and utility function.
 
 # Migrate from 0.2.x to 0.3.x
 
@@ -29,30 +29,32 @@ dependencies:
 
 | Widget | Description |
 | --- | --- |
-| [SuraRaisedButton][buttons] | Custom ElevatedButton with loading notifier |
-| [SuraBadge][buttons] | Small badge like notification |
-| [SuraActionSheet][other] | Custom CupertinoActionSheet for option selector |
 | [ConditionalWidget][other] | Build a widget base on a boolean condition |
 | [KeyboardDismiss][other] | Dismiss keyboard on tap |
 | [LoadingOverlay][other] | Create an overlay loading that cover entire screen and disable input |
-| [SuraToolbar][other] | Custom ToolBar or AppBar |
-| [SuraFutureHandler][builder_example] | FutureBuilder with less boilerplate code |
-| [SuraAccordian][accordion_expandable] | Custom ExpansionTile |
-| [SuraExpandable][accordion_expandable] | Similar to SuraAccordion but with different use case |
-| [SuraConfirmationDialog][other] | Platform adaptive AlertDialog with cancel and confirm action |
-| [SuraAsyncButton][buttons] | Fully customize Material ElevatedButton for asynchronus onPressed callback |
-| [SuraLoadingDialog][other] | Create and manage Loading Dialog |
-| [SuraPlatformChecker][other] | Platform adaptive widget |
-| [SuraSimpleDialog][other] | Simple platform adaptive AlertDialog |
-| [SuraListTile][other] | Custom ListTile |
-| [SuraPaginatedList][other] | ListView with pagination support |
-| [SuraPaginatedGridBuilder][other] | Gridview with pagination support |
-| [SuraIconButton][buttons] | Custom IconButton |
-| [SuraFlatButton][buttons] | Cusztom TextButton or FlatButton |
 | [SpaceX][other] | SizedBox with only width |
 | [SpaceY][other] | SizedBox with only height |
+| [SuraAccordian][accordion_expandable] | Custom ExpansionTile |
+| [SuraActionSheet][other] | Custom CupertinoActionSheet for option selector |
+| [SuraAsyncButton][buttons] | Fully customize Material ElevatedButton for asynchronus onPressed callback |
+| [SuraAsyncIconButton][buttons] | SuraIconButton with asynchronus onPressed callback |
+| [SuraBadge][buttons] | Small badge like notification |
+| [SuraConfirmationDialog][other] | Platform adaptive AlertDialog with cancel and confirm action |
+| [SuraExpandable][accordion_expandable] | Similar to SuraAccordion but with different use case |
+| [SuraFlatButton][buttons] | Custom TextButton or FlatButton |
+| [SuraFutureHandler][builder_example] | FutureBuilder with less boilerplate code |
+| [SuraIconButton][buttons] | Custom IconButton |
+| [SuraListTile][other] | Custom ListTile |
+| [SuraLoadingDialog][other] | Create and manage Loading Dialog, Deprecated and shouldn't be use. Consider using LoadingOverlay instead |
+| [SuraNotifier][buttons] | Custom ValueListenableBuilder |
+| [SuraPaginatedGrid][other] | Gridview with pagination support |
+| [SuraPaginatedList][other] | ListView with pagination support |
+| [SuraPlatformChecker][other] | Platform adaptive widget |
+| [SuraProvider][other] | A provider for SuraFlutter global setting |
+| [SuraRaisedButton][buttons] | Custom ElevatedButton with loading notifier |
+| [SuraSimpleDialog][other] | Simple platform adaptive AlertDialog |
 | [SuraStreamHandler][builder_example] | A Streambuilder with less boilerplate code |
-| [SuraNotifier][builder_example] | A ValueListenableBuilder with less boilerplate code |
+| [SuraToolbar][other] | Custom ToolBar or AppBar |
 
 [buttons]: https://github.com/asurraa/sura-flutter/tree/master/example/lib/examples/other_buttons_example.dart
 [builder_example]: https://github.com/asurraa/sura-flutter/tree/master/example/lib/examples/builder_example.dart
@@ -136,8 +138,11 @@ class _HomePageState extends State<NewPage> with BoolNotifierMixin {
   Size screenSize = context.screenSize;
   Color primaryColor = context.primaryColor;
   Color accentColor = context.accentColor;
-  TextTheme textTheme = context.textTheme;
+  TextThemeData textTheme = context.textTheme;
   Theme theme = context.theme;
+  MediaQueryData data = context.mediaQuery;
+  //
+  context.hideKeyboard();
 
 ```
 
@@ -147,8 +152,21 @@ class _HomePageState extends State<NewPage> with BoolNotifierMixin {
 Text("Hello Flutter", style: TextStyle().normal)
 Text("Hello Flutter", style: TextStyle().medium)
 Text("Hello Flutter", style: TextStyle().bold)
-Text("Hello Flutter", style: TextStyle().applyColor(Colors.white))
-Text("Hello Flutter", style: TextStyle().applFontSize(24))
+Text("Hello Flutter", style: TextStyle().semiBold)
+Text("Hello Flutter", style: TextStyle().white)
+Text("Hello Flutter", style: TextStyle().black)
+Text("Hello Flutter", style: TextStyle().red)
+Text("Hello Flutter", style: TextStyle().green)
+Text("Hello Flutter", style: TextStyle().grey)
+Text("Hello Flutter", style: TextStyle().underline)
+Text("Hello Flutter", style: TextStyle().setColor(Colors.white))
+Text("Hello Flutter", style: TextStyle().setFontSize(24))
+
+///This responsive font size is configre as follwing using SuraResponsive value:
+/// tablet: value + 4
+/// desktop: value + 6
+/// small mobile: value - 2
+Text("Hello Flutter", style: TextStyle().responsiveFontSize(24))
 ```
 
 ### DateTime extension
@@ -157,6 +175,21 @@ Text("Hello Flutter", style: TextStyle().applFontSize(24))
 DateTime.now().format(format: "dd mmm yyyy", locale: context.locale)
 DateTime.now().isTheSameDay(DateTime.now())
 DateTime.now().formatToLocalDate(format: "dd mmm yyyy", locale: context.locale)
+```
+
+### List and map extension
+
+```dart
+///Filter list
+List<int> adult = [2,24,12,18].filter((age)=> age >= 18);
+
+///Add age to Map if age isn't null
+Map<String, int> data = {};
+int? age = 20;
+data.addIfNotNull("age",age);
+
+///Return null if age doesn't exist
+data.getIfExist("age");
 ```
 
 ### Widget's Extension
@@ -266,6 +299,18 @@ MaterilColor newMaterialColor = SuraColor.toMaterial(0xFF869CF4)
 
 ```dart
 
+//Ping to google for internet connection
+bool isConnected = await SuraUtils.checkConnection();
+
+//Future.delayed base on second value
+double radian = SuraUtils.degreeToRadian(90);
+
+//Future.delayed base on second value
+await SuraUtils.wait(2);
+
+//Get random image from unsplash
+String carUrlImage =  SuraUtils.unsplashImage(width: 200, height: 200, category: "car");
+
 //Get byte from asset bundle
 Future<Uint8List> imageByte = await SuraUtils.getBytesFromAsset("image asset path", 200); //200 is imagewidth
 
@@ -281,8 +326,17 @@ String randomUrlImage = SuraUtils.picsumImage(200,300);
 Provide some field validation
 
 ```dart
+///Validate
 TextFormField(
-validator: (value) => SuraFormValidator.validateField(value, field:"username"),
+  validator: (value) => SuraFormValidator.validateField(value, field: "username"),
+),
+
+TextFormField(
+  validator: (value) => SuraFormValidator.isNumber(value, field: "age"),
+),
+
+TextFormField(
+  validator: (value) => SuraFormValidator.validateEmail(value, field: "email"),
 )
 ```
 
@@ -291,8 +345,13 @@ validator: (value) => SuraFormValidator.validateField(value, field:"username"),
 PageNavigator support push, pushReplacement and pushAndRemove method
 
 ```dart
-SuraPageNavigator.push(context, DetailPage());
-SuraPageNavigator.pushReplacement(context, HomePage());
+///use name param to provide RouteSetting's routeName
+SuraPageNavigator.push(context, DetailPage(), name: "detail-page");
+
+///Also support RouteSetting
+SuraPageNavigator.pushReplacement(context, HomePage(), settings: RouteSetting());
+
+///Remove all
 SuraPageNavigator.pushAndRemove(context, RootPage());
 ```
 
@@ -329,3 +388,16 @@ BorderRadius radius = SuraDecoration.radius(12); //default value is 8
 ### SuraResponsiveSize
 
 A responsive tool to help define a value base on screen size
+
+- Wrap your Home widget in MaterialApp with **SuraResponsiveBuilder**
+
+Example:
+
+```dart
+double width = SuraResponsive.value(20,24,28,16);
+// Only required first parameter
+//set value 20 for mobile size
+//set value 24 for tablet size
+//set value 28 for desktop size
+//set value 16 for small mobile size
+```

@@ -12,7 +12,7 @@ class _OtherButtonExampleState extends State<OtherButtonExample> {
 
   SuraLoadingDialog? loadingDialog;
 
-  Future onButtonClick() async {
+  Future asyncCallbackOnPressed() async {
     await Future.delayed(Duration(seconds: 2));
   }
 
@@ -46,7 +46,7 @@ class _OtherButtonExampleState extends State<OtherButtonExample> {
                   icon: Icon(Icons.add_a_photo_rounded, color: Colors.white),
                   margin: EdgeInsets.symmetric(vertical: 4, horizontal: 12),
                   onTap: () {},
-                  badge: SuraBadge(text: "2"),
+                  badge: SuraBadge(text: "2", radius: 8),
                   backgroundColor: Colors.orangeAccent,
                 ),
                 SuraIconButton(
@@ -71,19 +71,29 @@ class _OtherButtonExampleState extends State<OtherButtonExample> {
               ],
             ),
             buildButtonCategory(
+              name: "SuraAsyncIconButton",
+              buttons: [
+                SuraAsyncIconButton(
+                  icon: Icon(Icons.add),
+                  margin: EdgeInsets.symmetric(vertical: 4, horizontal: 12),
+                  onTap: asyncCallbackOnPressed,
+                )
+              ],
+            ),
+            buildButtonCategory(
               name: "SuraFlatButton",
               buttons: [
                 SuraFlatButton(
                   icon: Icon(Icons.add_a_photo_rounded, color: Colors.white),
                   child: Text("Click me").textColor(),
                   margin: EdgeInsets.symmetric(vertical: 4, horizontal: 12),
-                  onPressed: onButtonClick,
+                  onPressed: asyncCallbackOnPressed,
                   backgroundColor: Colors.lightGreen,
                 ),
                 SuraFlatButton(
                   child: Text("No Icon"),
                   margin: EdgeInsets.symmetric(vertical: 4),
-                  onPressed: onButtonClick,
+                  onPressed: asyncCallbackOnPressed,
                 ),
               ],
             ),
@@ -109,7 +119,7 @@ class _OtherButtonExampleState extends State<OtherButtonExample> {
                     Text("Loading type: Disable"),
                     SuraAsyncButton(
                       margin: EdgeInsets.symmetric(vertical: 0, horizontal: 64),
-                      onPressed: onButtonClick,
+                      onPressed: asyncCallbackOnPressed,
                       child: Text("Click me"),
                       fullWidth: false,
                       loadingType: LoadingType.disable,
@@ -118,7 +128,7 @@ class _OtherButtonExampleState extends State<OtherButtonExample> {
                     Text("Loading type: Progress"),
                     SuraAsyncButton(
                       margin: EdgeInsets.symmetric(horizontal: 64),
-                      onPressed: onButtonClick,
+                      onPressed: asyncCallbackOnPressed,
                       child: Text("Click me"),
                       fullWidth: true,
                       loadingType: LoadingType.progress,

@@ -1,10 +1,7 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:sura_flutter/src/widgets/sura_provider.dart';
 
-import 'conditional_widget.dart';
-import 'spacing.dart';
+import '../../sura_flutter.dart';
+import '../utils/type.dart';
 
 enum LoadingType { progress, disable }
 
@@ -15,7 +12,7 @@ class SuraAsyncButton extends StatefulWidget {
   final Widget child;
 
   ///onPressed callback
-  final FutureOr<void> Function()? onPressed;
+  final AsyncCallback? onPressed;
 
   ///Button's margin, default value is [vertical: 16]
   final EdgeInsets margin;
@@ -93,10 +90,10 @@ class SuraAsyncButton extends StatefulWidget {
 }
 
 class _SuraAsyncButtonState extends State<SuraAsyncButton> {
-  bool isLoading = false;
+  bool _isLoading = false;
 
   void onButtonPressed() async {
-    if (isLoading) return;
+    if (_isLoading) return;
     try {
       toggleLoading();
       await widget.onPressed?.call();
@@ -108,7 +105,7 @@ class _SuraAsyncButtonState extends State<SuraAsyncButton> {
   }
 
   void toggleLoading() {
-    if (mounted) setState(() => isLoading = !isLoading);
+    if (mounted) setState(() => _isLoading = !_isLoading);
   }
 
   @override
@@ -140,7 +137,7 @@ class _SuraAsyncButtonState extends State<SuraAsyncButton> {
       width: widget.fullWidth ? double.infinity : widget.width,
       margin: widget.margin,
       child: ElevatedButton(
-        onPressed: isLoading
+        onPressed: _isLoading
             ? widget.loadingType == LoadingType.disable
                 ? null
                 : () {}
@@ -148,7 +145,7 @@ class _SuraAsyncButtonState extends State<SuraAsyncButton> {
                 ? onButtonPressed
                 : null,
         child: ConditionalWidget(
-          condition: isLoading,
+          condition: _isLoading,
           onTrue: () => widget.loadingType == LoadingType.disable
               ? buttonContent
               : loadingWidget,

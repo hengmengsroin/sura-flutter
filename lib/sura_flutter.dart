@@ -25,6 +25,7 @@ export 'src/widgets/spacing.dart';
 export 'src/widgets/sura_accordion.dart';
 export 'src/widgets/sura_action_sheet.dart';
 export 'src/widgets/sura_async_button.dart';
+export 'src/widgets/sura_async_icon_button.dart';
 export 'src/widgets/sura_badge.dart';
 export 'src/widgets/sura_confirmation_dialog.dart';
 export 'src/widgets/sura_expandable.dart';

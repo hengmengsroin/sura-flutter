@@ -1,7 +1,9 @@
-## [1.1.0] - 1 April 2022
+## [1.1.0] - 3 April 2022
 
 - Add LoadingOverlay
+- Add SuraAsyncIconButton
 - Add more extension methods
+- Improve documentation
 
 ## [1.0.5] - 18 February 2022
 
