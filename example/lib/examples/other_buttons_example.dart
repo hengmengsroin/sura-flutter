@@ -11,8 +11,10 @@ class _OtherButtonExampleState extends State<OtherButtonExample> {
   final isLoading = ValueNotifier<bool>(false);
 
   SuraLoadingDialog? loadingDialog;
+  var d = Debouncer();
 
   Future asyncCallbackOnPressed() async {
+    infoLog();
     await Future.delayed(Duration(seconds: 2));
   }
 
@@ -95,6 +97,7 @@ class _OtherButtonExampleState extends State<OtherButtonExample> {
                   margin: EdgeInsets.symmetric(vertical: 4),
                   onPressed: asyncCallbackOnPressed,
                 ),
+                EllipsisText(null),
               ],
             ),
             buildButtonCategory(

@@ -1,4 +1,4 @@
-## [1.1.1] - 3 April 2022
+## [1.1.1] - 4 April 2022
 
 - Add SuraLogger
 - Add Divider0
