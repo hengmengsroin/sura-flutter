@@ -1,3 +1,11 @@
+## [1.1.1] - 3 April 2022
+
+- Add SuraLogger
+- Add Divider0
+- Add EllipsisText
+- Add Debouncer
+- Add showSuraSimpleDialog
+
 ## [1.1.0] - 3 April 2022
 
 - Add LoadingOverlay

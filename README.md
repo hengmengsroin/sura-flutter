@@ -1,6 +1,6 @@
 # sura_flutter
 
-[![pub package](https://img.shields.io/badge/pub-1.1.0-blueviolet.svg)](https://pub.dev/packages/sura_flutter) ![Latest commit](https://badgen.net/github/last-commit/asurraa/sura_flutter)
+[![pub package](https://img.shields.io/badge/pub-1.1.1-blueviolet.svg)](https://pub.dev/packages/sura_flutter) ![Latest commit](https://badgen.net/github/last-commit/asurraa/sura_flutter)
 
 A flutter package for custom widgets and utility function.
 
@@ -22,7 +22,7 @@ Add this to pubspec.yaml
 
 ```dart
 dependencies:
-  sura_flutter: ^1.1.0
+  sura_flutter: ^1.1.1
 ```
 
 # Widgets
@@ -30,6 +30,8 @@ dependencies:
 | Widget | Description |
 | --- | --- |
 | [ConditionalWidget][other] | Build a widget base on a boolean condition |
+| [Divider0][other] | Divider with 0 height |
+| [EllipsisText][other] | Nullable Text with Ellipsis as default overflow |
 | [KeyboardDismiss][other] | Dismiss keyboard on tap |
 | [LoadingOverlay][other] | Create an overlay loading that cover entire screen and disable input |
 | [SpaceX][other] | SizedBox with only width |

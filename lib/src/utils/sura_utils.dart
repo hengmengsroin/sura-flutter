@@ -3,7 +3,9 @@ import 'dart:math';
 import 'dart:typed_data';
 import 'dart:ui';
 
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:sura_flutter/sura_flutter.dart';
 
 class SuraUtils {
   ///Convert degree to radian because most of Flutter's Widget depends on Radian
@@ -55,4 +57,14 @@ class SuraUtils {
   }) {
     return "https://source.unsplash.com/${width}x$height/?$category";
   }
+}
+
+///Shorthand method to show SuraSimpleDialog
+Future showSuraSimpleDialog(BuildContext context, String content) async {
+  return await showDialog(
+    context: context,
+    builder: (context) {
+      return SuraSimpleDialog(content: content);
+    },
+  );
 }
