@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:sura_flutter/sura_flutter.dart';
 
 class SuraAccordianAndExpandable extends StatefulWidget {
-  SuraAccordianAndExpandable({Key? key}) : super(key: key);
+  const SuraAccordianAndExpandable({Key? key}) : super(key: key);
+
   @override
   _SuraAccordianAndExpandableState createState() =>
       _SuraAccordianAndExpandableState();
@@ -13,25 +14,25 @@ class _SuraAccordianAndExpandableState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('SuraAccordion and Expandable')),
+      appBar: AppBar(title: const Text('SuraAccordion and SuraExpandable')),
       body: SingleChildScrollView(
         child: Column(
           children: [
             SuraAccordion(
-              title: Text("SuraAccordion"),
+              title: const Text("SuraAccordion"),
               childrenPadding: EdgeInsets.zero,
-              titleDecoration: BoxDecoration(),
+              titleDecoration: const BoxDecoration(),
               children: List.generate(
                 5,
                 (index) => SuraListTile(
-                  title: Text("Flutter"),
+                  title: const Text("Flutter"),
                   onTap: () {},
-                  leading: CircleAvatar(child: Icon(Icons.sd_card)),
+                  leading: const CircleAvatar(child: Icon(Icons.sd_card)),
                 ),
               ),
             ),
-            SpaceY(16),
-            SuraExpandable(
+            const SpaceY(16),
+            const SuraExpandable(
               padding: EdgeInsets.zero,
               topChild: SuraListTile(
                 title: Text("SuraExpandable"),

@@ -73,7 +73,7 @@ class _SuraAsyncIconButtonState extends State<SuraAsyncIconButton> {
 
     final Widget loadingWidget = widget.loadingWidget ??
         SuraProvider.of(context)?.buttonLoadingWidget ??
-        _buildLoadingWidget();
+        const CircularProgressIndicator();
 
     final Widget buttonContent = Stack(
       children: [
@@ -90,6 +90,8 @@ class _SuraAsyncIconButtonState extends State<SuraAsyncIconButton> {
       ],
     );
 
+    const double defaultIconSize = 24;
+
     return Card(
       shape: shape,
       color: widget.backgroundColor,
@@ -100,21 +102,16 @@ class _SuraAsyncIconButtonState extends State<SuraAsyncIconButton> {
         customBorder: shape,
         child: ConditionalWidget(
           condition: _isLoading,
-          onTrue: () => loadingWidget,
+          onTrue: () => Padding(
+            padding: widget.padding,
+            child: SizedBox(
+              child: loadingWidget,
+              width: defaultIconSize,
+              height: defaultIconSize,
+            ),
+          ),
           onFalse: () => buttonContent,
         ),
-      ),
-    );
-  }
-
-  Widget _buildLoadingWidget() {
-    const double defaultIconSize = 24;
-    return Padding(
-      padding: widget.padding,
-      child: const SizedBox(
-        width: defaultIconSize,
-        height: defaultIconSize,
-        child: CircularProgressIndicator(),
       ),
     );
   }

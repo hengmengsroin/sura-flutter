@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:sura_flutter/sura_flutter.dart';
 
 class TabIndicatorAndDecorationExample extends StatefulWidget {
+  const TabIndicatorAndDecorationExample({Key? key}) : super(key: key);
+
   @override
   _TabIndicatorAndDecorationExampleState createState() =>
       _TabIndicatorAndDecorationExampleState();
@@ -21,16 +23,16 @@ class _TabIndicatorAndDecorationExampleState
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Tab Indicator and Decoration"),
+        title: const Text("Tab Indicator and Decoration"),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           buildUnderLineTabIndicatorTabBar(),
-          SpaceY(24),
+          const SpaceY(24),
           buildDotTabIndicatorTabBar(),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
+          const Padding(
+            padding: EdgeInsets.symmetric(vertical: 24, horizontal: 16),
             child: TextField(
               decoration: InputDecoration(
                 hintText: "Username",
@@ -53,11 +55,11 @@ class _TabIndicatorAndDecorationExampleState
       labelColor: Colors.blue,
       isScrollable: true,
       unselectedLabelColor: Colors.grey,
-      indicator: SmallUnderLineTabIndicator(
+      indicator: const SmallUnderLineTabIndicator(
         color: Colors.blue,
         paddingLeft: 16,
       ),
-      tabs: [
+      tabs: const [
         Tab(text: "Car"),
         Tab(text: "Bike"),
         Tab(text: "Boat"),
@@ -71,10 +73,10 @@ class _TabIndicatorAndDecorationExampleState
       labelColor: Colors.blue,
       //isScrollable: true,
       unselectedLabelColor: Colors.grey,
-      indicator: DotTabIndicator(
+      indicator: const DotTabIndicator(
         color: Colors.blue,
       ),
-      tabs: [
+      tabs: const [
         Tab(text: "Car"),
         Tab(text: "Bike"),
         Tab(text: "Boat"),

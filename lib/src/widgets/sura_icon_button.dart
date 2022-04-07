@@ -24,6 +24,19 @@ class SuraIconButton extends StatelessWidget {
     this.borderSide,
     this.badge,
   }) : super(key: key);
+
+  const SuraIconButton.action({
+    Key? key,
+    required this.onTap,
+    required this.icon,
+    this.margin = const EdgeInsets.all(8),
+    this.padding = const EdgeInsets.all(8),
+    this.borderRadius = 32,
+    this.backgroundColor = Colors.transparent,
+    this.elevation = 0.0,
+    this.borderSide,
+    this.badge,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final shape = RoundedRectangleBorder(

@@ -1,13 +1,14 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sura_flutter/sura_flutter.dart';
 
-class OtherButtonExample extends StatefulWidget {
+class ButtonsExample extends StatefulWidget {
+  const ButtonsExample({Key? key}) : super(key: key);
+
   @override
-  _OtherButtonExampleState createState() => _OtherButtonExampleState();
+  _ButtonsExampleState createState() => _ButtonsExampleState();
 }
 
-class _OtherButtonExampleState extends State<OtherButtonExample> {
+class _ButtonsExampleState extends State<ButtonsExample> {
   final isLoading = ValueNotifier<bool>(false);
 
   SuraLoadingDialog? loadingDialog;
@@ -15,12 +16,12 @@ class _OtherButtonExampleState extends State<OtherButtonExample> {
 
   Future asyncCallbackOnPressed() async {
     infoLog();
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
   }
 
   Future onActionButtonClick() async {
     isLoading.value = true;
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
     isLoading.value = false;
   }
 
@@ -35,40 +36,45 @@ class _OtherButtonExampleState extends State<OtherButtonExample> {
     loadingDialog = SuraLoadingDialog(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text("Sura Buttons Example"),
+        title: const Text("Sura Buttons Example"),
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SpaceY(24),
+            const SpaceY(24),
             buildButtonCategory(
               name: "SuraIconButton",
               buttons: [
                 SuraIconButton(
-                  icon: Icon(Icons.add_a_photo_rounded, color: Colors.white),
-                  margin: EdgeInsets.symmetric(vertical: 4, horizontal: 12),
+                  icon: const Icon(Icons.add_a_photo_rounded,
+                      color: Colors.white),
+                  margin:
+                      const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
                   onTap: () {},
-                  badge: SuraBadge(text: "2", radius: 8),
+                  badge: const SuraBadge(text: "2", radius: 8),
                   backgroundColor: Colors.orangeAccent,
                 ),
                 SuraIconButton(
-                  icon: Icon(Icons.add_alarm_rounded),
-                  margin: EdgeInsets.symmetric(vertical: 4, horizontal: 12),
+                  icon: const Icon(Icons.add_alarm_rounded),
+                  margin:
+                      const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
                   onTap: () {},
                 ),
                 SuraIconButton(
-                  icon: Icon(Icons.add_alarm_rounded),
-                  borderSide: BorderSide(),
-                  margin: EdgeInsets.symmetric(vertical: 4, horizontal: 12),
+                  icon: const Icon(Icons.add_alarm_rounded),
+                  borderSide: const BorderSide(),
+                  margin:
+                      const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
                   onTap: () {},
                 ),
                 SuraIconButton(
-                  icon: Icon(Icons.add_alarm_rounded),
-                  margin: EdgeInsets.symmetric(vertical: 4, horizontal: 12),
+                  icon: const Icon(Icons.add_alarm_rounded),
+                  margin:
+                      const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
                   onTap: () {
                     LoadingOverlayProvider.toggle();
                   },
-                  badge: SuraBadge(text: "2"),
+                  badge: const SuraBadge(text: "2"),
                 ),
               ],
             ),
@@ -76,8 +82,9 @@ class _OtherButtonExampleState extends State<OtherButtonExample> {
               name: "SuraAsyncIconButton",
               buttons: [
                 SuraAsyncIconButton(
-                  icon: Icon(Icons.add),
-                  margin: EdgeInsets.symmetric(vertical: 4, horizontal: 12),
+                  icon: const Icon(Icons.add),
+                  margin:
+                      const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
                   onTap: asyncCallbackOnPressed,
                 )
               ],
@@ -86,18 +93,20 @@ class _OtherButtonExampleState extends State<OtherButtonExample> {
               name: "SuraFlatButton",
               buttons: [
                 SuraFlatButton(
-                  icon: Icon(Icons.add_a_photo_rounded, color: Colors.white),
-                  child: Text("Click me").textColor(),
-                  margin: EdgeInsets.symmetric(vertical: 4, horizontal: 12),
+                  icon: const Icon(Icons.add_a_photo_rounded,
+                      color: Colors.white),
+                  child: const Text("Click me").textColor(),
+                  margin:
+                      const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
                   onPressed: asyncCallbackOnPressed,
                   backgroundColor: Colors.lightGreen,
                 ),
                 SuraFlatButton(
-                  child: Text("No Icon"),
-                  margin: EdgeInsets.symmetric(vertical: 4),
+                  child: const Text("No Icon"),
+                  margin: const EdgeInsets.symmetric(vertical: 4),
                   onPressed: asyncCallbackOnPressed,
                 ),
-                EllipsisText(null),
+                const EllipsisText(null),
               ],
             ),
             buildButtonCategory(
@@ -105,10 +114,10 @@ class _OtherButtonExampleState extends State<OtherButtonExample> {
               buttons: [
                 SuraRaisedButton(
                   loadingNotifier: isLoading,
-                  icon: Icon(Icons.notifications, color: Colors.white),
-                  margin: EdgeInsets.symmetric(vertical: 4),
+                  icon: const Icon(Icons.notifications, color: Colors.white),
+                  margin: const EdgeInsets.symmetric(vertical: 4),
                   onPressed: onActionButtonClick,
-                  child: Text("Click me"),
+                  child: const Text("Click me"),
                   color: Colors.red,
                   fullWidth: false,
                 )
@@ -119,48 +128,25 @@ class _OtherButtonExampleState extends State<OtherButtonExample> {
               buttons: [
                 Column(
                   children: [
-                    Text("Loading type: Disable"),
+                    const Text("Loading type: Disable"),
                     SuraAsyncButton(
-                      margin: EdgeInsets.symmetric(vertical: 0, horizontal: 64),
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 0, horizontal: 64),
                       onPressed: asyncCallbackOnPressed,
-                      child: Text("Click me"),
+                      child: const Text("Click me"),
                       fullWidth: false,
                       loadingType: LoadingType.disable,
                     ),
-                    SpaceY(24),
-                    Text("Loading type: Progress"),
+                    const SpaceY(24),
+                    const Text("Loading type: Progress"),
                     SuraAsyncButton(
-                      margin: EdgeInsets.symmetric(horizontal: 64),
                       onPressed: asyncCallbackOnPressed,
-                      child: Text("Click me"),
-                      fullWidth: true,
+                      child: const Text("Click me"),
                       loadingType: LoadingType.progress,
                       height: SuraResponsive.value(50, 60, 70),
                     ),
                   ],
                 ),
-              ],
-            ),
-            buildButtonCategory(
-              name: "Action sheet",
-              buttons: [
-                SuraRaisedButton(
-                  onPressed: () async {
-                    showCupertinoModalPopup(
-                      context: context,
-                      builder: (context) {
-                        return SuraActionSheet(
-                          builder: (value, index) {
-                            return Text("$value");
-                          },
-                          title: "title",
-                          options: ["options"],
-                        );
-                      },
-                    );
-                  },
-                  child: Text("Show action sheet"),
-                )
               ],
             ),
           ],
@@ -169,17 +155,20 @@ class _OtherButtonExampleState extends State<OtherButtonExample> {
     );
   }
 
-  Widget buildButtonCategory(
-      {required String name, required List<Widget> buttons}) {
+  Widget buildButtonCategory({
+    required String name,
+    required List<Widget> buttons,
+  }) {
     return Column(
       children: [
-        Text(name, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
-        SpaceY(),
+        Text(name,
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+        const SpaceY(),
         Row(
           children: buttons.map((button) => Flexible(child: button)).toList(),
           mainAxisAlignment: MainAxisAlignment.center,
         ),
-        Divider(),
+        const Divider(),
       ],
     );
   }

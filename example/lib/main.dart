@@ -1,27 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:sura_flutter/sura_flutter.dart';
-import 'package:sura_flutter_example/examples/other_buttons_example.dart';
-import 'package:sura_flutter_example/examples/sura_accordian_and_sura_expandable.dart';
-import 'package:sura_flutter_example/examples/tab_indicator_decoration.dart';
+import 'package:sura_flutter_example/examples/other_widget_example.dart';
+import 'package:sura_flutter_example/examples/stream_future_example.dart';
 
+import 'examples/buttons_example.dart';
+import 'examples/dialog_popup_example.dart';
+import 'examples/mixin_example.dart';
+import 'examples/sura_accordian_and_sura_expandable.dart';
+import 'examples/tab_indicator_decoration.dart';
 import 'examples/util_example.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Sura Flutter Example',
+      title: 'SuraFlutter Example',
       navigatorKey: SuraNavigator.navigatorKey,
       theme: ThemeData(
         primarySwatch: Colors.blue,
         typography: Typography.material2018(),
       ),
       debugShowCheckedModeBanner: false,
-      home: MyHomePage(),
+      home: const MyHomePage(),
       builder: (context, child) {
-        debugPrint(context.mediaQuery.toString());
         return SuraResponsiveBuilder(builder: (context) => child!);
       },
     );
@@ -29,6 +34,8 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key}) : super(key: key);
+
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -38,50 +45,55 @@ class _MyHomePageState extends State<MyHomePage> with SuraFormMixin {
     SuraPageNavigator.push(context, page);
   }
 
-  final List<ExampleButton> examples = [
-    ExampleButton(
-      name: "Sura Buttons example",
-      child: OtherButtonExample(),
-    ),
-    ExampleButton(
-      name: "Sura Accordion and Expandable",
-      child: SuraAccordianAndExpandable(),
-    ),
-    ExampleButton(
-      name: "Sura Utils",
-      child: SuraUtilExamples(),
-    ),
-    ExampleButton(
-      name: "Tab Indicator and Decoration",
-      child: TabIndicatorAndDecorationExample(),
-    ),
-  ];
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
+    final List<ExampleButton> examples = [
+      ExampleButton(
+        name: "Sura Buttons example",
+        child: const ButtonsExample(),
+      ),
+      ExampleButton(
+        name: "Sura Accordion and Expandable",
+        child: const SuraAccordianAndExpandable(),
+      ),
+      ExampleButton(
+        name: "Sura Utils",
+        child: const SuraUtilExamples(),
+      ),
+      ExampleButton(
+        name: "Tab Indicator and Decoration",
+        child: const TabIndicatorAndDecorationExample(),
+      ),
+      ExampleButton(
+        name: "Other widgets example",
+        child: const OtherWidgetsExample(),
+      ),
+      ExampleButton(
+        name: "Dialog and Popup",
+        child: const DialogPopupExample(),
+      ),
+      ExampleButton(
+        name: "Mixin example",
+        child: const MixinExample(),
+      ),
+      ExampleButton(
+        name: "Future and Stream Handler example",
+        child: const StreamAndFutureExample(),
+      ),
+    ];
     return Scaffold(
       appBar: AppBar(
-        title: Text("Sura Flutter Example"),
+        title: const Text("Sura Flutter Example"),
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: 32),
+        padding: const EdgeInsets.symmetric(horizontal: 32),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: examples.map((example) {
             return SuraAsyncButton(
               child: Text(example.name),
-              fullWidth: true,
-              margin: EdgeInsets.only(top: 16),
+              height: 50,
+              margin: const EdgeInsets.only(top: 16),
               onPressed: () => onViewPage(example.child),
             );
           }).toList(),
@@ -92,8 +104,8 @@ class _MyHomePageState extends State<MyHomePage> with SuraFormMixin {
 }
 
 class ExampleButton {
-  String name;
-  Widget child;
+  final String name;
+  final Widget child;
 
   ExampleButton({required this.name, required this.child});
 }
