@@ -27,39 +27,39 @@ dependencies:
 
 # Widgets
 
-| Widget | Description |
-| --- | --- |
-| [ConditionalWidget][other] | Build a widget base on a boolean condition |
-| [Divider0][other] | Divider with 0 height |
-| [EllipsisText][other] | Nullable Text with Ellipsis as default overflow |
-| [KeyboardDismiss][other] | Dismiss keyboard on tap |
-| [LoadingOverlay][other] | Create an overlay loading that cover entire screen and disable input |
-| [SpaceX][other] | SizedBox with only width |
-| [SpaceY][other] | SizedBox with only height |
-| [SuraAccordian][accordion_expandable] | Custom ExpansionTile |
-| [SuraActionSheet][other] | Custom CupertinoActionSheet for option selector |
-| [SuraAsyncButton][buttons] | Fully customize Material ElevatedButton for asynchronus onPressed callback |
-| [SuraAsyncIconButton][buttons] | SuraIconButton with asynchronus onPressed callback |
-| [SuraBadge][buttons] | Small badge like notification |
-| [SuraConfirmationDialog][other] | Platform adaptive AlertDialog with cancel and confirm action |
-| [SuraExpandable][accordion_expandable] | Similar to SuraAccordion but with different use case |
-| [SuraFlatButton][buttons] | Custom TextButton or FlatButton |
-| [SuraFutureHandler][builder_example] | FutureBuilder with less boilerplate code |
-| [SuraIconButton][buttons] | Custom IconButton |
-| [SuraListTile][other] | Custom ListTile |
-| [SuraLoadingDialog][other] | Create and manage Loading Dialog, Deprecated and shouldn't be use. Consider using LoadingOverlay instead |
-| [SuraNotifier][buttons] | Custom ValueListenableBuilder |
-| [SuraPaginatedGrid][other] | Gridview with pagination support |
-| [SuraPaginatedList][other] | ListView with pagination support |
-| [SuraPlatformChecker][other] | Platform adaptive widget |
-| [SuraProvider][other] | A provider for SuraFlutter global setting |
-| [SuraRaisedButton][buttons] | Custom ElevatedButton with loading notifier |
-| [SuraSimpleDialog][other] | Simple platform adaptive AlertDialog |
-| [SuraStreamHandler][builder_example] | A Streambuilder with less boilerplate code |
-| [SuraToolbar][other] | Custom ToolBar or AppBar |
+| Widget                                 | Description                                                                                              |
+| -------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| [ConditionalWidget][other]             | Build a widget base on a boolean condition                                                               |
+| [Divider0][other]                      | Divider with 0 height                                                                                    |
+| [EllipsisText][other]                  | Nullable Text with Ellipsis as default overflow                                                          |
+| [KeyboardDismiss][other]               | Dismiss keyboard on tap                                                                                  |
+| [LoadingOverlay][other]                | Create an overlay loading that cover entire screen and disable input                                     |
+| [SpaceX][other]                        | SizedBox with only width                                                                                 |
+| [SpaceY][other]                        | SizedBox with only height                                                                                |
+| [SuraAccordian][accordion_expandable]  | Custom ExpansionTile                                                                                     |
+| [SuraActionSheet][dialog_popup]        | Custom CupertinoActionSheet for option selector                                                          |
+| [SuraAsyncButton][buttons]             | Fully customize Material ElevatedButton for asynchronus onPressed callback                               |
+| [SuraAsyncIconButton][buttons]         | SuraIconButton with asynchronus onPressed callback                                                       |
+| [SuraBadge][buttons]                   | Small badge like notification                                                                            |
+| [SuraConfirmationDialog][dialog_popup] | Platform adaptive AlertDialog with cancel and confirm action                                             |
+| [SuraExpandable][accordion_expandable] | Similar to SuraAccordion but with different use case                                                     |
+| [SuraFlatButton][buttons]              | Custom TextButton or FlatButton                                                                          |
+| [SuraFutureHandler][other]             | FutureBuilder with less boilerplate code                                                                 |
+| [SuraIconButton][buttons]              | Custom IconButton                                                                                        |
+| [SuraListTile][other]                  | Custom ListTile                                                                                          |
+| [SuraLoadingDialog][dialog_popup]      | Create and manage Loading Dialog, Deprecated and shouldn't be use. Consider using LoadingOverlay instead |
+| [SuraNotifier][buttons]                | Custom ValueListenableBuilder                                                                            |
+| [SuraPaginatedGrid][other]             | Gridview with pagination support                                                                         |
+| [SuraPaginatedList][other]             | ListView with pagination support                                                                         |
+| [SuraPlatformChecker][other]           | Platform adaptive widget                                                                                 |
+| [SuraProvider][other]                  | A provider for SuraFlutter global setting                                                                |
+| [SuraRaisedButton][buttons]            | Custom ElevatedButton with loading notifier                                                              |
+| [SuraSimpleDialog][dialog_popup]       | Simple platform adaptive AlertDialog                                                                     |
+| [SuraStreamHandler][other]             | A Streambuilder with less boilerplate code                                                               |
+| [SuraToolbar][other]                   | Custom ToolBar or AppBar                                                                                 |
 
-[buttons]: https://github.com/asurraa/sura-flutter/tree/master/example/lib/examples/other_buttons_example.dart
-[builder_example]: https://github.com/asurraa/sura-flutter/tree/master/example/lib/examples/builder_example.dart
+[buttons]: https://github.com/asurraa/sura-flutter/tree/master/example/lib/examples/buttons_example.dart
+[dialog_popup]: https://github.com/asurraa/sura-flutter/tree/master/example/lib/examples/dialog_popup_example.dart
 [accordion_expandable]: https://github.com/asurraa/sura-flutter/tree/master/example/lib/examples/sura_accordion_and_sura_expandable.dart
 [other]: https://github.com/asurraa/sura_flutter/tree/master/example
 
