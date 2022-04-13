@@ -1,3 +1,8 @@
+## [1.1.2] - 13 April 2022
+
+- fix Divider0 is not export
+- Add popAll to SuraPageNavigator
+
 ## [1.1.1] - 4 April 2022
 
 - Add SuraLogger

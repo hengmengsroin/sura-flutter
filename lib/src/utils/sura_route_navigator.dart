@@ -56,6 +56,11 @@ class SuraPageNavigator {
     );
   }
 
+  ///Pop everything until the first route
+  static Future popAll(BuildContext context) async {
+    Navigator.of(context).popUntil((route) => route.isFirst);
+  }
+
   static void pop<T>(BuildContext context, [T? result]) {
     Navigator.of(context).pop(result);
   }
