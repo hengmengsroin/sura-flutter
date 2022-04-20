@@ -1,3 +1,9 @@
+## [1.1.3] - 21 April 2022
+
+- SuraResponsive.value now calculate desktop value if value is null
+- add **auto** method to SuraResponsive
+- add SuraColor.fromHexCode
+
 ## [1.1.2] - 13 April 2022
 
 - fix Divider0 is not export

@@ -21,6 +21,18 @@ class SuraColor {
     }
   }
 
+  ///Get color from 6 int hex code
+  ///use defaultColor if there's an error
+  static Color fromHexCode(int code, {Color defaultColor = Colors.white}) {
+    try {
+      String colorCode = '0xFF$code';
+      return Color(int.parse(colorCode));
+    } catch (e) {
+      debugPrint("SuraColor: => Invalid color format");
+      return defaultColor;
+    }
+  }
+
   ///Get Color from RGB
   static Color fromRGB(int r, int g, int b, [double opacity = 1]) {
     try {

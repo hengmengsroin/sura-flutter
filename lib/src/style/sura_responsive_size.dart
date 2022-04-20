@@ -36,7 +36,8 @@ class SuraResponsive {
   static Size? _size;
   static BuildContext? context;
 
-  static SuraResponsiveBreakpoint _breakPoint = SuraResponsiveBreakpoint.defaultValue();
+  static SuraResponsiveBreakpoint _breakPoint =
+      SuraResponsiveBreakpoint.defaultValue();
 
   @protected
   static void init(BuildContext ctx) {
@@ -97,7 +98,8 @@ class SuraResponsive {
 
   ///Define a responsive value base on defined rule
   ///Best use case for spacing and container
-  static double auto(double mobile, [SuraResponsiveRule rule = SuraResponsiveRule.multiply]) {
+  static double auto(double mobile,
+      [SuraResponsiveRule rule = SuraResponsiveRule.add]) {
     double value = mobile;
     SuraResponsiveBreakpointName breakpointName = _getBreakpointName();
     bool isMultiply = rule == SuraResponsiveRule.multiply;
