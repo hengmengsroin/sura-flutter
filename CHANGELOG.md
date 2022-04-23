@@ -1,3 +1,7 @@
+## [1.1.4] - 23 April 2022
+
+- add builder, isMobile and isTablet to SuraResponsive
+
 ## [1.1.3] - 21 April 2022
 
 - SuraResponsive.value now calculate desktop value if value is null

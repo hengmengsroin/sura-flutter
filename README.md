@@ -1,6 +1,6 @@
 # sura_flutter
 
-[![pub package](https://img.shields.io/badge/pub-1.1.3-blueviolet.svg)](https://pub.dev/packages/sura_flutter) ![Latest commit](https://badgen.net/github/last-commit/asurraa/sura_flutter)
+[![pub package](https://img.shields.io/badge/pub-1.1.4-blueviolet.svg)](https://pub.dev/packages/sura_flutter) ![Latest commit](https://badgen.net/github/last-commit/asurraa/sura_flutter)
 
 A flutter package for custom widgets and utility function.
 
@@ -22,7 +22,7 @@ Add this to pubspec.yaml
 
 ```dart
 dependencies:
-  sura_flutter: ^1.1.3
+  sura_flutter: ^1.1.4
 ```
 
 # Widgets
@@ -396,10 +396,25 @@ A responsive tool to help define a value base on screen size
 Example:
 
 ```dart
-double width = SuraResponsive.value(20,24,28,16);
 // Only required first parameter
 //set value 20 for mobile size
 //set value 24 for tablet size
 //set value 28 for desktop size
 //set value 16 for small mobile size
+double width = SuraResponsive.value(20,24,28,16,);
+
+
+///Auto value base on provided rule
+///-4 for small phone, +8 for tablet and +16 for Desktop if using add rule
+///-25% for small phone, x2 for tablet and x3 for Desktop if using multiply rule
+double width = SuraResponsive.auto(20,SuraResponsiveRule.add);
+
+
+Widget child = SuraResponsive.builder(
+  mobile: ()=> MobileWidget(), ///required
+  tablet: ()=> TabletWidget(), ///required
+  desktop: ()=> DesktopWidget(), ///Optional, using tablet widget if value is null
+  mobileSmall: ()=> MobileSmallWidget(), ///Optional, using mobile widget if value is null
+);
+
 ```

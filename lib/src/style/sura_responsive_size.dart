@@ -39,8 +39,10 @@ class SuraResponsive {
   static SuraResponsiveBreakpoint _breakPoint =
       SuraResponsiveBreakpoint.defaultValue();
 
+  static double get screenWidth => _size?.width ?? _breakPoint.mobile;
+
   @protected
-  static void init(BuildContext ctx) {
+  static void _init(BuildContext ctx) {
     context = ctx;
     _size = MediaQuery.of(ctx).size;
   }
@@ -51,7 +53,6 @@ class SuraResponsive {
   }
 
   static SuraResponsiveBreakpointName _getBreakpointName() {
-    double screenWidth = _size?.width ?? _breakPoint.mobile;
     if (screenWidth >= _breakPoint.desktop) {
       return SuraResponsiveBreakpointName.desktop;
     } else if (screenWidth >= _breakPoint.tablet) {
@@ -60,6 +61,30 @@ class SuraResponsive {
       return SuraResponsiveBreakpointName.mobileSmall;
     }
     return SuraResponsiveBreakpointName.mobile;
+  }
+
+  static bool get isDesktop => screenWidth >= _breakPoint.desktop;
+  static bool get isTablet => !isDesktop && screenWidth >= _breakPoint.tablet;
+
+  ///Build a widget base on device screen size
+  static Widget builder({
+    required Widget Function() mobile,
+    required Widget Function() tablet,
+    required Widget Function()? desktop,
+    required Widget Function()? mobileSmall,
+  }) {
+    SuraResponsiveBreakpointName breakpointName = _getBreakpointName();
+    Widget mobileWidget = mobile();
+    switch (breakpointName) {
+      case SuraResponsiveBreakpointName.mobileSmall:
+        return mobileSmall?.call() ?? mobileWidget;
+      case SuraResponsiveBreakpointName.mobile:
+        return mobile();
+      case SuraResponsiveBreakpointName.tablet:
+        return tablet();
+      case SuraResponsiveBreakpointName.desktop:
+        return desktop?.call() ?? tablet();
+    }
   }
 
   ///Define a value depend on Screen width
@@ -98,8 +123,10 @@ class SuraResponsive {
 
   ///Define a responsive value base on defined rule
   ///Best use case for spacing and container
-  static double auto(double mobile,
-      [SuraResponsiveRule rule = SuraResponsiveRule.add]) {
+  static double auto(
+    double mobile, [
+    SuraResponsiveRule rule = SuraResponsiveRule.add,
+  ]) {
     double value = mobile;
     SuraResponsiveBreakpointName breakpointName = _getBreakpointName();
     bool isMultiply = rule == SuraResponsiveRule.multiply;
@@ -132,7 +159,7 @@ class SuraResponsiveBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SuraResponsive.init(context);
+    SuraResponsive._init(context);
     if (breakPoint != null) {
       SuraResponsive.changeBreakpoint(breakPoint!);
     }
