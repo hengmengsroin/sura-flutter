@@ -17,18 +17,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'SuraFlutter Example',
-      navigatorKey: SuraNavigator.navigatorKey,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        typography: Typography.material2018(),
+    return SuraProvider(
+      child: MaterialApp(
+        title: 'SuraFlutter Example',
+        navigatorKey: SuraNavigator.navigatorKey,
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          typography: Typography.material2018(),
+        ),
+        debugShowCheckedModeBanner: false,
+        home: const MyHomePage(),
+        builder: (context, child) {
+          return SuraResponsiveBuilder(builder: (context) => child!);
+        },
       ),
-      debugShowCheckedModeBanner: false,
-      home: const MyHomePage(),
-      builder: (context, child) {
-        return SuraResponsiveBuilder(builder: (context) => child!);
-      },
     );
   }
 }

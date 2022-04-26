@@ -63,7 +63,7 @@ class _SuraFutureHandlerState<T> extends State<SuraFutureHandler<T>> {
           if (widget.error != null) {
             return widget.error!(snapshot.error);
           }
-          return suraProvider?.errorWidget?.call(snapshot.error, null) ??
+          return suraProvider?.errorWidget?.call(snapshot.error, context) ??
               Center(
                 child: Text(
                   snapshot.error.toString(),

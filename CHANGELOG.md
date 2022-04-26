@@ -1,3 +1,9 @@
+## [1.2.0] - 26 April 2022
+
+Breaking change
+
+- remove onFutureManagerError from SuraProvider. Using SuraManagerProvider instead
+
 ## [1.1.4] - 23 April 2022
 
 - add builder, isMobile and isTablet to SuraResponsive

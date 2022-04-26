@@ -12,7 +12,7 @@ class SuraAsyncButton extends StatefulWidget {
   final Widget child;
 
   ///onPressed callback
-  final AsyncCallback? onPressed;
+  final FutureOrCallBack? onPressed;
 
   ///Button's margin, default value is [vertical: 16]
   final EdgeInsets margin;

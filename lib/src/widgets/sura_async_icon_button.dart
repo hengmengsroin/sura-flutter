@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../../sura_flutter.dart';
 import '../utils/type.dart';
+import 'conditional_widget.dart';
+import 'sura_provider.dart';
 
 class SuraAsyncIconButton extends StatefulWidget {
-  final AsyncCallback? onTap;
+  final FutureOrCallBack? onTap;
   final Widget icon;
   final EdgeInsets margin;
   final EdgeInsets padding;

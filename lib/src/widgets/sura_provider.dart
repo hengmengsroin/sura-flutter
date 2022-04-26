@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../utils/type.dart';
 
-typedef OnManagerError = Function(dynamic, BuildContext);
-
 class SuraProvider extends InheritedWidget {
   const SuraProvider({
     Key? key,
@@ -11,20 +9,16 @@ class SuraProvider extends InheritedWidget {
     this.loadingWidget,
     this.errorWidget,
     this.buttonLoadingWidget,
-    this.onFutureManagerError,
   }) : super(child: child, key: key);
 
-  ///Loading widget use in [SuraAsyncButton]
+  ///Loading widget use in [SuraAsyncButton,SuraAsyncIconButton and SuraRaisedButton]
   final Widget? buttonLoadingWidget;
 
-  ///Loading widget use in [Manager] class
+  ///Loading widget use in [SuraFutureHandler,SuraStreamHandler] class
   final Widget? loadingWidget;
 
-  ///Error widget use in [Manager] class
+  ///Error widget use in [SuraFutureHandler,SuraStreamHandler] class
   final CustomErrorWidget? errorWidget;
-
-  //A callback function that run if FutureManagerBuilder has an error
-  final OnManagerError? onFutureManagerError;
 
   static SuraProvider? of(BuildContext context) {
     return context.dependOnInheritedWidgetOfExactType<SuraProvider>();
