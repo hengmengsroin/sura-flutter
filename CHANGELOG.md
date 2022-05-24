@@ -1,67 +1,69 @@
+## [1.2.1] - 24 May 2022
+- update `SuraResponsive.builder`
 ## [1.2.0] - 26 April 2022
 
 Breaking change
 
-- remove onFutureManagerError from SuraProvider. Using SuraManagerProvider instead
+- remove `onFutureManagerError` from `SuraProvider`. Using `SuraManagerProvider` instead
 
 ## [1.1.4] - 23 April 2022
 
-- add builder, isMobile and isTablet to SuraResponsive
+- add `builder`, `isMobile` and `isTablet` to SuraResponsive
 
 ## [1.1.3] - 21 April 2022
 
-- SuraResponsive.value now calculate desktop value if value is null
-- add **auto** method to SuraResponsive
-- add SuraColor.fromHexCode
+- `SuraResponsive.value` now calculate desktop value if value is null
+- add **auto** method to `SuraResponsive`
+- add `SuraColor.fromHexCode`
 
 ## [1.1.2] - 13 April 2022
 
-- fix Divider0 is not export
-- Add popAll to SuraPageNavigator
+- fix `Divider0` is not export
+- Add `popAll` to SuraPageNavigator
 
 ## [1.1.1] - 4 April 2022
 
-- Add SuraLogger
-- Add Divider0
-- Add EllipsisText
-- Add Debouncer
-- Add showSuraSimpleDialog
+- Add `SuraLogger`
+- Add `Divider0`
+- Add `EllipsisText`
+- Add `Debouncer`
+- Add `showSuraSimpleDialog`
 
 ## [1.1.0] - 3 April 2022
 
-- Add LoadingOverlay
-- Add SuraAsyncIconButton
+- Add `LoadingOverlay`
+- Add `SuraAsyncIconButton`
 - Add more extension methods
 - Improve documentation
 
 ## [1.0.5] - 18 February 2022
 
-- Adjust SuraResponsiveBuilder
+- Adjust `SuraResponsiveBuilder`
 
 ## [1.0.4] - 17 February 2022
 
-- fix a bug in SuraJwtDecoder where exp can be null
+- fix a bug in `SuraJwtDecoder` where exp can be null
 - rework some value in SuraResponsive
 - Rename extension name and add more extension method
 
 ## [1.0.3] - 13 February 2022
 
-- add SuraResponsive
+- add `SuraResponsive`
 
 ## [1.0.2] - 10 February 2022
 
-- add [name] param to SuraPageNavigator
+- add [name] param to `SuraPageNavigator`
 - add **emptySizedBox** widget
 - code improvement
 
 ## [1.0.1] - 4 February 2022
 
-- Export KeyboardDismiss
+- Export `KeyboardDismiss`
 
 ## [1.0.0] - 3 February 2022
 
 - Stable 1.0.0 Release
-- Fix SuraAsyncButton fullWidth is not wokring
+- Fix `SuraAsyncButton` fullWidth is not wokring
 - Add Flutter lints
 
 ## [0.5.1] - 1 December 2021

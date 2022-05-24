@@ -52,12 +52,19 @@ class SuraResponsive {
     _breakPoint = breakPoint;
   }
 
-  static SuraResponsiveBreakpointName _getBreakpointName() {
-    if (screenWidth >= _breakPoint.desktop) {
+  static SuraResponsiveBreakpointName _getBreakpointName(
+      [BuildContext? _context]) {
+    double _screenWidth = 0.0;
+    if (_context != null) {
+      _screenWidth = MediaQuery.of(_context).size.width;
+    } else {
+      _screenWidth = screenWidth;
+    }
+    if (_screenWidth >= _breakPoint.desktop) {
       return SuraResponsiveBreakpointName.desktop;
-    } else if (screenWidth >= _breakPoint.tablet) {
+    } else if (_screenWidth >= _breakPoint.tablet) {
       return SuraResponsiveBreakpointName.tablet;
-    } else if (screenWidth <= _breakPoint.mobileSmall) {
+    } else if (_screenWidth <= _breakPoint.mobileSmall) {
       return SuraResponsiveBreakpointName.mobileSmall;
     }
     return SuraResponsiveBreakpointName.mobile;
@@ -65,15 +72,22 @@ class SuraResponsive {
 
   static bool get isDesktop => screenWidth >= _breakPoint.desktop;
   static bool get isTablet => !isDesktop && screenWidth >= _breakPoint.tablet;
+  static bool get isMobile =>
+      !isMobileSmall && screenWidth < _breakPoint.tablet;
+  static bool get isMobileSmall => screenWidth <= _breakPoint.mobile;
 
   ///Build a widget base on device screen size
+  ///[desktop] builder is nullable and will use [tablet]'s value if null
+  ///[mobileSmall] builder is nullable and will use [mobile]'s value if null
+  ///React immediately to MediaQuery change if [context] is provided
   static Widget builder({
     required Widget Function() mobile,
     required Widget Function() tablet,
-    required Widget Function()? desktop,
-    required Widget Function()? mobileSmall,
+    Widget Function()? desktop,
+    Widget Function()? mobileSmall,
+    BuildContext? context,
   }) {
-    SuraResponsiveBreakpointName breakpointName = _getBreakpointName();
+    SuraResponsiveBreakpointName breakpointName = _getBreakpointName(context);
     Widget mobileWidget = mobile();
     switch (breakpointName) {
       case SuraResponsiveBreakpointName.mobileSmall:
