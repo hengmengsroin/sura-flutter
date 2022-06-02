@@ -83,15 +83,12 @@ extension SuraWidgetExtension on Widget {
           defineMargin = EdgeInsets.all(margin.elementAt(0));
           break;
         case 2:
-          defineMargin = EdgeInsets.symmetric(
-              vertical: margin.elementAt(0), horizontal: margin.elementAt(1));
+          defineMargin = EdgeInsets.symmetric(vertical: margin.elementAt(0), horizontal: margin.elementAt(1));
           break;
 
         case 3:
-          defineMargin = EdgeInsets.only(
-              top: margin.elementAt(0),
-              right: margin.elementAt(1),
-              bottom: margin.elementAt(2));
+          defineMargin =
+              EdgeInsets.only(top: margin.elementAt(0), right: margin.elementAt(1), bottom: margin.elementAt(2));
           break;
 
         default:
@@ -110,15 +107,12 @@ extension SuraWidgetExtension on Widget {
           definePadding = EdgeInsets.all(padding.elementAt(0));
           break;
         case 2:
-          definePadding = EdgeInsets.symmetric(
-              vertical: padding.elementAt(0), horizontal: padding.elementAt(1));
+          definePadding = EdgeInsets.symmetric(vertical: padding.elementAt(0), horizontal: padding.elementAt(1));
           break;
 
         case 3:
-          definePadding = EdgeInsets.only(
-              top: padding.elementAt(0),
-              right: padding.elementAt(1),
-              bottom: padding.elementAt(2));
+          definePadding =
+              EdgeInsets.only(top: padding.elementAt(0), right: padding.elementAt(1), bottom: padding.elementAt(2));
           break;
 
         default:
@@ -138,6 +132,7 @@ extension SuraWidgetExtension on Widget {
     );
   }
 
+  ///Rotate a widget in Degreee
   Widget rotate([double degree = 0]) {
     return Transform.rotate(
       angle: SuraUtils.degreeToRadian(degree),

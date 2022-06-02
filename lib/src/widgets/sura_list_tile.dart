@@ -37,10 +37,7 @@ class SuraListTile extends StatelessWidget {
     );
 
     final subTitleWidget = DefaultTextStyle(
-      style: Theme.of(context)
-          .textTheme
-          .bodyText2!
-          .copyWith(color: Theme.of(context).textTheme.caption?.color),
+      style: Theme.of(context).textTheme.bodyText2!.copyWith(color: Theme.of(context).textTheme.caption?.color),
       child: subtitle ?? emptySizedBox,
     );
 
@@ -56,6 +53,7 @@ class SuraListTile extends StatelessWidget {
         children: [
           InkWell(
             onTap: onTap,
+            mouseCursor: MouseCursor.defer,
             customBorder: RoundedRectangleBorder(
               borderRadius: decoration?.borderRadius ?? BorderRadius.zero,
             ),

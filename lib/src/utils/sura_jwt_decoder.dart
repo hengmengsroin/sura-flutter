@@ -5,13 +5,13 @@ class SuraJwtDecoder {
   static TokenPayload decode(String jwtToken) {
     final parts = jwtToken.split('.');
     if (parts.length != 3) {
-      throw Exception('invalid token');
+      throw Exception('Invalid token');
     }
 
     final payload = _decodeBase64(parts[1]);
     final payloadMap = json.decode(payload);
     if (payloadMap is! Map<String, dynamic>) {
-      throw Exception('invalid payload');
+      throw Exception("Invalid payload. Payload isn't a Map");
     }
 
     return TokenPayload.fromMap(payloadMap);
@@ -45,18 +45,13 @@ class TokenPayload {
 
   factory TokenPayload.fromMap(Map<String, dynamic> payloadMap) {
     return TokenPayload(
-      createdDate: payloadMap["iat"] == null
-          ? null
-          : DateTime.fromMillisecondsSinceEpoch(payloadMap["iat"] * 1000),
-      expiredDate: payloadMap["exp"] == null
-          ? null
-          : DateTime.fromMillisecondsSinceEpoch(payloadMap["exp"] * 1000),
+      createdDate: payloadMap["iat"] == null ? null : DateTime.fromMillisecondsSinceEpoch(payloadMap["iat"] * 1000),
+      expiredDate: payloadMap["exp"] == null ? null : DateTime.fromMillisecondsSinceEpoch(payloadMap["exp"] * 1000),
       data: payloadMap,
     );
   }
 
-  bool get isExpired =>
-      expiredDate != null ? DateTime.now().isAfter(expiredDate!) : false;
+  bool get isExpired => expiredDate != null ? DateTime.now().isAfter(expiredDate!) : false;
 
   @override
   String toString() {

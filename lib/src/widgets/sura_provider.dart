@@ -9,6 +9,7 @@ class SuraProvider extends InheritedWidget {
     this.loadingWidget,
     this.errorWidget,
     this.buttonLoadingWidget,
+    this.ellipsisText = "",
   }) : super(child: child, key: key);
 
   ///Loading widget use in [SuraAsyncButton,SuraAsyncIconButton and SuraRaisedButton]
@@ -19,6 +20,9 @@ class SuraProvider extends InheritedWidget {
 
   ///Error widget use in [SuraFutureHandler,SuraStreamHandler] class
   final CustomErrorWidget? errorWidget;
+
+  ///A text to replace when EllipsisText's string is null
+  final String ellipsisText;
 
   static SuraProvider? of(BuildContext context) {
     return context.dependOnInheritedWidgetOfExactType<SuraProvider>();

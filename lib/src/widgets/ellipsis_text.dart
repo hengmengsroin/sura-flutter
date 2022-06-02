@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sura_flutter/sura_flutter.dart';
 
 class EllipsisText extends StatelessWidget {
   final dynamic text;
@@ -29,8 +30,10 @@ class EllipsisText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SuraProvider? suraProvider = SuraProvider.of(context);
+    String txt = emptyText ?? suraProvider?.ellipsisText ?? "";
     return Text(
-      text == null ? emptyText ?? "" : text.toString(),
+      text == null ? txt : text.toString(),
       style: style.copyWith(height: 1.2),
       maxLines: maxLines,
       strutStyle: strutStyle,

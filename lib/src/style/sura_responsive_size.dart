@@ -36,8 +36,7 @@ class SuraResponsive {
   static Size? _size;
   static BuildContext? context;
 
-  static SuraResponsiveBreakpoint _breakPoint =
-      SuraResponsiveBreakpoint.defaultValue();
+  static SuraResponsiveBreakpoint _breakPoint = SuraResponsiveBreakpoint.defaultValue();
 
   static double get screenWidth => _size?.width ?? _breakPoint.mobile;
 
@@ -52,8 +51,7 @@ class SuraResponsive {
     _breakPoint = breakPoint;
   }
 
-  static SuraResponsiveBreakpointName _getBreakpointName(
-      [BuildContext? _context]) {
+  static SuraResponsiveBreakpointName _getBreakpointName([BuildContext? _context]) {
     double _screenWidth = 0.0;
     if (_context != null) {
       _screenWidth = MediaQuery.of(_context).size.width;
@@ -72,8 +70,7 @@ class SuraResponsive {
 
   static bool get isDesktop => screenWidth >= _breakPoint.desktop;
   static bool get isTablet => !isDesktop && screenWidth >= _breakPoint.tablet;
-  static bool get isMobile =>
-      !isMobileSmall && screenWidth < _breakPoint.tablet;
+  static bool get isMobile => !isMobileSmall && screenWidth < _breakPoint.tablet;
   static bool get isMobileSmall => screenWidth <= _breakPoint.mobile;
 
   ///Build a widget base on device screen size
@@ -104,14 +101,16 @@ class SuraResponsive {
   ///Define a value depend on Screen width
   ///Will use [mobile] value if other value is null
   ///Auto calculate for desktop if tablet isn't null
+  ///React immediately to MediaQuery change if [context] is provided
   static double value(
     double mobile, [
     double? tablet,
     double? desktop,
     double? mobileSmall,
+    BuildContext? context,
   ]) {
     double? value;
-    SuraResponsiveBreakpointName breakpointName = _getBreakpointName();
+    SuraResponsiveBreakpointName breakpointName = _getBreakpointName(context);
     switch (breakpointName) {
       case SuraResponsiveBreakpointName.mobileSmall:
         value = mobileSmall;
@@ -137,12 +136,14 @@ class SuraResponsive {
 
   ///Define a responsive value base on defined rule
   ///Best use case for spacing and container
+  ///React immediately to MediaQuery change if [context] is provided
   static double auto(
     double mobile, [
     SuraResponsiveRule rule = SuraResponsiveRule.add,
+    BuildContext? context,
   ]) {
     double value = mobile;
-    SuraResponsiveBreakpointName breakpointName = _getBreakpointName();
+    SuraResponsiveBreakpointName breakpointName = _getBreakpointName(context);
     bool isMultiply = rule == SuraResponsiveRule.multiply;
     switch (breakpointName) {
       case SuraResponsiveBreakpointName.mobileSmall:

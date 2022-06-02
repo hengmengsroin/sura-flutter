@@ -39,12 +39,10 @@ class SuraUtils {
       targetWidth: width,
     );
     FrameInfo fi = await codec.getNextFrame();
-    return (await fi.image.toByteData(format: ImageByteFormat.png))!
-        .buffer
-        .asUint8List();
+    return (await fi.image.toByteData(format: ImageByteFormat.png))!.buffer.asUint8List();
   }
 
-  ///Get A random Image from Picsum with given dimension
+  ///Get a random image from Picsum with given dimension
   static String picsumImage([int width = 200, int height = 200]) {
     return "https://picsum.photos/$width/$height";
   }
