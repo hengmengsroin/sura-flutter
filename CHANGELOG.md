@@ -1,3 +1,6 @@
+## [1.3.0] - 3 June 2022
+- Major update to many Widgets
+
 ## [1.2.1] - 24 May 2022
 - update `SuraResponsive.builder`
 ## [1.2.0] - 26 April 2022

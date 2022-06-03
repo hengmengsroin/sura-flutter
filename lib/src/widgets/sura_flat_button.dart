@@ -42,7 +42,7 @@ class SuraFlatButton extends StatelessWidget {
       child: InkWell(
         onTap: onPressed,
         customBorder: shape,
-        mouseCursor: MouseCursor.defer,
+        mouseCursor: SystemMouseCursors.click,
         child: Padding(
           padding: padding,
           child: Row(

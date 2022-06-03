@@ -5,12 +5,14 @@ class SuraAccordianAndExpandable extends StatefulWidget {
   const SuraAccordianAndExpandable({Key? key}) : super(key: key);
 
   @override
-  _SuraAccordianAndExpandableState createState() =>
-      _SuraAccordianAndExpandableState();
+  _SuraAccordianAndExpandableState createState() => _SuraAccordianAndExpandableState();
 }
 
-class _SuraAccordianAndExpandableState
-    extends State<SuraAccordianAndExpandable> {
+class _SuraAccordianAndExpandableState extends State<SuraAccordianAndExpandable> {
+  int selectedAccordionIndex = 0;
+
+  bool toggled = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,6 +22,13 @@ class _SuraAccordianAndExpandableState
           children: [
             SuraAccordion(
               title: const Text("SuraAccordion"),
+              value: toggled,
+              onToggle: (value) {
+                infoLog(value);
+                setState(() {
+                  toggled = value;
+                });
+              },
               childrenPadding: EdgeInsets.zero,
               titleDecoration: const BoxDecoration(),
               children: List.generate(
@@ -44,6 +53,28 @@ class _SuraAccordianAndExpandableState
                 leading: SuraPlatformChecker(androidWidget: CircleAvatar()),
               ),
             ),
+            const Text("Accordion group"),
+            const SpaceY(),
+            for (var i in [1, 2, 3])
+              SuraAccordion(
+                title: Text("Number $i"),
+                value: selectedAccordionIndex == i,
+                onToggle: (value) {
+                  setState(() {
+                    selectedAccordionIndex = value ? i : 0;
+                  });
+                },
+                childrenPadding: EdgeInsets.zero,
+                titleDecoration: const BoxDecoration(),
+                children: List.generate(
+                  5,
+                  (index) => SuraListTile(
+                    title: const Text("Flutter"),
+                    onTap: () {},
+                    leading: const CircleAvatar(child: Icon(Icons.sd_card)),
+                  ),
+                ),
+              ),
           ],
         ),
       ),

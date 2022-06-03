@@ -20,14 +20,14 @@ class SuraListTile extends StatelessWidget {
     this.leading,
     this.title,
     this.subtitle,
+    this.padding = const EdgeInsets.all(16.0),
+    this.margin = const EdgeInsets.all(0.0),
+    this.titleSpace = 32,
     this.decoration,
     this.onTap,
     this.trailing,
-    this.padding = const EdgeInsets.all(16.0),
-    this.margin = const EdgeInsets.all(0.0),
     this.alignment,
     this.separator,
-    this.titleSpace = 32,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -53,7 +53,7 @@ class SuraListTile extends StatelessWidget {
         children: [
           InkWell(
             onTap: onTap,
-            mouseCursor: MouseCursor.defer,
+            mouseCursor: SystemMouseCursors.click,
             customBorder: RoundedRectangleBorder(
               borderRadius: decoration?.borderRadius ?? BorderRadius.zero,
             ),

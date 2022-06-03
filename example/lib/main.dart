@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SuraProvider(
+      ellipsisText: "No data",
       child: MaterialApp(
         title: 'SuraFlutter Example',
         navigatorKey: SuraNavigator.navigatorKey,

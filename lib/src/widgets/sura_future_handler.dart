@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'sura_provider.dart';
 
-class SuraFutureHandler<T> extends StatefulWidget {
+class SuraFutureHandler<T extends Object> extends StatefulWidget {
   ///Future to check on
   final Future<T>? future;
   final Future<T> Function()? futureFunction;
@@ -40,7 +40,7 @@ class SuraFutureHandler<T> extends StatefulWidget {
   _SuraFutureHandlerState<T> createState() => _SuraFutureHandlerState<T>();
 }
 
-class _SuraFutureHandlerState<T> extends State<SuraFutureHandler<T>> {
+class _SuraFutureHandlerState<T extends Object> extends State<SuraFutureHandler<T>> {
   Future<T>? future;
 
   @override
@@ -74,8 +74,7 @@ class _SuraFutureHandlerState<T> extends State<SuraFutureHandler<T>> {
           if (widget.loading != null) {
             return widget.loading!;
           }
-          return suraProvider?.loadingWidget ??
-              const Center(child: CircularProgressIndicator());
+          return suraProvider?.loadingWidget ?? const Center(child: CircularProgressIndicator());
         }
       },
     );

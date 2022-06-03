@@ -52,7 +52,7 @@ class SuraIconButton extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         customBorder: shape,
-        mouseCursor: MouseCursor.defer,
+        mouseCursor: SystemMouseCursors.click,
         child: Stack(
           children: [
             Padding(

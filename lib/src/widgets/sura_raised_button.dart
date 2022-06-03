@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sura_flutter/src/utils/sura_logger.dart';
 
 import 'conditional_widget.dart';
 import 'spacing.dart';
@@ -27,9 +28,10 @@ class SuraRaisedButton extends StatelessWidget {
   ///if [fullWidth] is `true`, Button will take all remaining horizontal space
   final bool fullWidth;
   final BorderSide? borderSide;
+  final GlobalKey _globalKey = GlobalKey();
 
   ///Create a button with loading notifier
-  const SuraRaisedButton({
+  SuraRaisedButton({
     Key? key,
     required this.onPressed,
     required this.child,
@@ -48,6 +50,19 @@ class SuraRaisedButton extends StatelessWidget {
     this.alignment,
     this.borderSide,
   }) : super(key: key);
+
+  void maintainWidthOnLoading() {
+    if (fullWidth == false && width == null) {
+      WidgetsBinding.instance?.addPostFrameCallback((d) {
+        RenderBox box = _globalKey.currentContext!.findRenderObject() as RenderBox;
+        width = box.size.width;
+        infoLog(width);
+      });
+    }
+  }
+
+  double? width;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -57,6 +72,7 @@ class SuraRaisedButton extends StatelessWidget {
       child: ValueListenableBuilder<bool>(
         valueListenable: loadingNotifier ?? ValueNotifier(false),
         builder: (context, loading, _) {
+          maintainWidthOnLoading();
           return ElevatedButton(
             onPressed: loading ? () {} : onPressed,
             style: ElevatedButton.styleFrom(
@@ -71,6 +87,7 @@ class SuraRaisedButton extends StatelessWidget {
             child: ConditionalWidget(
               condition: loading,
               onFalse: () => Row(
+                key: _globalKey,
                 mainAxisAlignment: alignment ?? MainAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
@@ -81,10 +98,7 @@ class SuraRaisedButton extends StatelessWidget {
                   child,
                 ],
               ),
-              onTrue: () =>
-                  loadingWidget ??
-                  SuraProvider.of(context)?.buttonLoadingWidget ??
-                  _buildLoadingWidget(),
+              onTrue: () => loadingWidget ?? SuraProvider.of(context)?.buttonLoadingWidget ?? _buildLoadingWidget(),
             ),
           );
         },
@@ -94,10 +108,15 @@ class SuraRaisedButton extends StatelessWidget {
 
   Widget _buildLoadingWidget() {
     return SizedBox(
-      width: icon != null ? 24 : 20,
-      height: icon != null ? 24 : 20,
-      child: CircularProgressIndicator(
-        valueColor: AlwaysStoppedAnimation<Color>(loadingColor),
+      width: width,
+      child: Center(
+        child: SizedBox(
+          width: icon != null ? 24 : 20,
+          height: icon != null ? 24 : 20,
+          child: CircularProgressIndicator(
+            valueColor: AlwaysStoppedAnimation<Color>(loadingColor),
+          ),
+        ),
       ),
     );
   }

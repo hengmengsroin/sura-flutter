@@ -14,11 +14,15 @@ class _OtherWidgetsExampleState extends State<OtherWidgetsExample> {
     return Scaffold(
       body: Column(
         children: [
-          const SuraToolbar(),
+          const SuraToolbar(
+            title: "Toolbar",
+          ),
           Expanded(
             child: SingleChildScrollView(
               child: Column(
-                children: const [],
+                children: const [
+                  EllipsisText(null),
+                ],
               ),
             ),
           ),

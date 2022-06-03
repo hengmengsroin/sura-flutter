@@ -8,8 +8,7 @@ class MixinExample extends StatefulWidget {
   State<MixinExample> createState() => _MixinExampleState();
 }
 
-class _MixinExampleState extends State<MixinExample>
-    with BoolNotifierMixin, SuraFormMixin, AfterBuildMixin {
+class _MixinExampleState extends State<MixinExample> with BoolNotifierMixin, SuraFormMixin, AfterBuildMixin {
   @override
   void afterBuild(BuildContext context) {
     infoLog("This method called after build");
@@ -28,8 +27,7 @@ class _MixinExampleState extends State<MixinExample>
               children: [
                 TextFormField(
                   validator: ((value) {
-                    return SuraFormValidator.validateField(value,
-                        field: "username");
+                    return SuraFormValidator.validateField(value, field: "username");
                   }),
                   decoration: const InputDecoration(hintText: "Username"),
                 ),
@@ -43,28 +41,30 @@ class _MixinExampleState extends State<MixinExample>
                 const SpaceY(16),
                 TextFormField(
                   validator: ((value) {
-                    return SuraFormValidator.validateEmail(value,
-                        field: "email");
+                    return SuraFormValidator.validateEmail(value, field: "email");
                   }),
                   decoration: const InputDecoration(hintText: "Email"),
                 ),
                 const SpaceY(16),
-                PasswordTextFieldBuilder(builder: (obscure) {
-                  return TextFormField(
-                    obscureText: obscure,
-                    initialValue: "mypassword",
-                    decoration: InputDecoration(
-                      suffixIcon: IconButton(
-                        icon: Icon(
-                            obscure ? Icons.visibility : Icons.visibility_off),
-                        onPressed: togglePasswordObscure,
+                PasswordTextFieldBuilder(
+                  builder: (obscure) {
+                    return TextFormField(
+                      obscureText: obscure,
+                      initialValue: "mypassword",
+                      decoration: InputDecoration(
+                        suffixIcon: IconButton(
+                          icon: Icon(obscure ? Icons.visibility : Icons.visibility_off),
+                          onPressed: togglePasswordObscure,
+                        ),
                       ),
-                    ),
-                  );
-                }),
+                    );
+                  },
+                ),
                 SuraRaisedButton(
+                  padding: const EdgeInsets.all(24),
+                  shape: const RoundedRectangleBorder(),
                   onPressed: () async {
-                    if (isFormValidated) {
+                    if (true) {
                       toggleValue();
                       await SuraUtils.wait(2000);
                       toggleValue(false);
