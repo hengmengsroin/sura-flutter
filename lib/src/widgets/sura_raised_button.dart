@@ -1,7 +1,6 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:sura_flutter/src/utils/sura_logger.dart';
 
 import 'conditional_widget.dart';
 import 'spacing.dart';
@@ -84,9 +83,9 @@ class SuraRaisedButton extends StatelessWidget {
   void maintainWidthOnLoading() {
     if (fullWidth == false && width == null) {
       WidgetsBinding.instance?.addPostFrameCallback((d) {
-        RenderBox box = _globalKey.currentContext!.findRenderObject() as RenderBox;
+        RenderBox box =
+            _globalKey.currentContext!.findRenderObject() as RenderBox;
         width = box.size.width;
-        infoLog(width);
       });
     }
   }
@@ -128,7 +127,10 @@ class SuraRaisedButton extends StatelessWidget {
                   child,
                 ],
               ),
-              onTrue: () => loadingWidget ?? SuraProvider.of(context)?.buttonLoadingWidget ?? _buildLoadingWidget(),
+              onTrue: () =>
+                  loadingWidget ??
+                  SuraProvider.of(context)?.buttonLoadingWidget ??
+                  _buildLoadingWidget(),
             ),
           );
         },

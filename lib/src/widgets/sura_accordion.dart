@@ -20,7 +20,7 @@ class SuraAccordion extends StatefulWidget {
   final List<Widget> children;
 
   ///A callback function that call on every toggle
-  final Function(bool) onToggle;
+  final ValueChanged<bool> onToggle;
 
   ///a condition if to expand to Accordion on initial
   final bool value;
@@ -78,7 +78,8 @@ class SuraAccordion extends StatefulWidget {
   _SuraAccordionState createState() => _SuraAccordionState();
 }
 
-class _SuraAccordionState extends State<SuraAccordion> with SingleTickerProviderStateMixin {
+class _SuraAccordionState extends State<SuraAccordion>
+    with SingleTickerProviderStateMixin {
   late AnimationController controller;
   late Animation<double> size;
   late Animation<double> rotation;
@@ -136,7 +137,8 @@ class _SuraAccordionState extends State<SuraAccordion> with SingleTickerProvider
           InkWell(
             onTap: () => widget.onToggle(!widget.value),
             customBorder: RoundedRectangleBorder(
-              borderRadius: widget.titleDecoration?.borderRadius ?? SuraDecoration.radius(0),
+              borderRadius: widget.titleDecoration?.borderRadius ??
+                  SuraDecoration.radius(0),
             ),
             child: Ink(
               decoration: widget.titleDecoration,
@@ -146,7 +148,8 @@ class _SuraAccordionState extends State<SuraAccordion> with SingleTickerProvider
                     ? MainAxisAlignment.start
                     : MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  if (widget.iconPosition == IconPosition.start && widget.showIcon) ...[
+                  if (widget.iconPosition == IconPosition.start &&
+                      widget.showIcon) ...[
                     icon,
                     const SpaceX(),
                   ],
@@ -156,7 +159,8 @@ class _SuraAccordionState extends State<SuraAccordion> with SingleTickerProvider
                       style: Theme.of(context).textTheme.subtitle1,
                     ),
                   ),
-                  if (widget.iconPosition == IconPosition.end && widget.showIcon) ...[icon],
+                  if (widget.iconPosition == IconPosition.end &&
+                      widget.showIcon) ...[icon],
                 ],
               ),
             ),

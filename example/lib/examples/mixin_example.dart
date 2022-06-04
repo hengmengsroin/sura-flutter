@@ -8,7 +8,8 @@ class MixinExample extends StatefulWidget {
   State<MixinExample> createState() => _MixinExampleState();
 }
 
-class _MixinExampleState extends State<MixinExample> with BoolNotifierMixin, SuraFormMixin, AfterBuildMixin {
+class _MixinExampleState extends State<MixinExample>
+    with BoolNotifierMixin, SuraFormMixin, AfterBuildMixin {
   @override
   void afterBuild(BuildContext context) {
     infoLog("This method called after build");
@@ -27,7 +28,8 @@ class _MixinExampleState extends State<MixinExample> with BoolNotifierMixin, Sur
               children: [
                 TextFormField(
                   validator: ((value) {
-                    return SuraFormValidator.validateField(value, field: "username");
+                    return SuraFormValidator.validateField(value,
+                        field: "username");
                   }),
                   decoration: const InputDecoration(hintText: "Username"),
                 ),
@@ -41,7 +43,8 @@ class _MixinExampleState extends State<MixinExample> with BoolNotifierMixin, Sur
                 const SpaceY(16),
                 TextFormField(
                   validator: ((value) {
-                    return SuraFormValidator.validateEmail(value, field: "email");
+                    return SuraFormValidator.validateEmail(value,
+                        field: "email");
                   }),
                   decoration: const InputDecoration(hintText: "Email"),
                 ),
@@ -53,7 +56,9 @@ class _MixinExampleState extends State<MixinExample> with BoolNotifierMixin, Sur
                       initialValue: "mypassword",
                       decoration: InputDecoration(
                         suffixIcon: IconButton(
-                          icon: Icon(obscure ? Icons.visibility : Icons.visibility_off),
+                          icon: Icon(obscure
+                              ? Icons.visibility
+                              : Icons.visibility_off),
                           onPressed: togglePasswordObscure,
                         ),
                       ),

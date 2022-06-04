@@ -72,8 +72,9 @@ class _SuraAsyncIconButtonState extends State<SuraAsyncIconButton> {
       side: widget.borderSide ?? BorderSide.none,
     );
 
-    final Widget loadingWidget =
-        widget.loadingWidget ?? SuraProvider.of(context)?.buttonLoadingWidget ?? const CircularProgressIndicator();
+    final Widget loadingWidget = widget.loadingWidget ??
+        SuraProvider.of(context)?.buttonLoadingWidget ??
+        const CircularProgressIndicator();
 
     final Widget buttonContent = Stack(
       children: [

@@ -1,5 +1,15 @@
+## [1.3.1] - 4 June 2022
+- Minor bug fixes and improvement
+
 ## [1.3.0] - 4 June 2022
-- Major update to many Widgets and documentation
+- `SuraResponsive.value` and `SuraResponsive.auto` now support `context` as a new parameter
+- `SuraUtils.getByteFromAsset` doesn't run image codec if width isn't provided
+- `EllipsisText` replacement text can now inherit from `SuraProvider`
+- `SuraRaisedButton` width now unchanged when loading
+- Update mouse cursor on all Buttons
+- Improve documentation and some error message
+- #### Breaking change:
+  - `SuraAccordion` and `SuraExpandable` state now working as `Slider` or `CheckBox` that you have to manage it's state by yourself.  new param will be required.
 
 ## [1.2.1] - 24 May 2022
 - update `SuraResponsive.builder`

@@ -75,10 +75,14 @@ class SuraToolbar extends StatelessWidget {
                 Align(
                   alignment: titleAlignment,
                   child: Container(
-                    margin: EdgeInsets.only(left: titleAlignment == Alignment.centerLeft ? titleMargin + 16 : 0),
+                    margin: EdgeInsets.only(
+                        left: titleAlignment == Alignment.centerLeft
+                            ? titleMargin + 16
+                            : 0),
                     child: Text(
                       title!,
-                      style: titleStyle ?? Theme.of(context).textTheme.headline6,
+                      style:
+                          titleStyle ?? Theme.of(context).textTheme.headline6,
                     ),
                   ),
                 ),

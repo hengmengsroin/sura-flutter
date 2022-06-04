@@ -5,13 +5,17 @@ class SuraAccordianAndExpandable extends StatefulWidget {
   const SuraAccordianAndExpandable({Key? key}) : super(key: key);
 
   @override
-  _SuraAccordianAndExpandableState createState() => _SuraAccordianAndExpandableState();
+  _SuraAccordianAndExpandableState createState() =>
+      _SuraAccordianAndExpandableState();
 }
 
-class _SuraAccordianAndExpandableState extends State<SuraAccordianAndExpandable> {
+class _SuraAccordianAndExpandableState
+    extends State<SuraAccordianAndExpandable> {
   int selectedAccordionIndex = 0;
 
   bool toggled = false;
+
+  bool expanded = false;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +28,6 @@ class _SuraAccordianAndExpandableState extends State<SuraAccordianAndExpandable>
               title: const Text("SuraAccordion"),
               value: toggled,
               onToggle: (value) {
-                infoLog(value);
                 setState(() {
                   toggled = value;
                 });
@@ -41,14 +44,20 @@ class _SuraAccordianAndExpandableState extends State<SuraAccordianAndExpandable>
               ),
             ),
             const SpaceY(16),
-            const SuraExpandable(
+            SuraExpandable(
+              value: expanded,
+              onToggle: (value) {
+                setState(() {
+                  expanded = value;
+                });
+              },
               padding: EdgeInsets.zero,
-              topChild: SuraListTile(
+              topChild: const SuraListTile(
                 title: Text("SuraExpandable"),
                 subtitle: Text("Click this to show more content"),
                 trailing: Icon(Icons.arrow_circle_down),
               ),
-              bottomChild: SuraListTile(
+              bottomChild: const SuraListTile(
                 title: Text("To show this"),
                 leading: SuraPlatformChecker(androidWidget: CircleAvatar()),
               ),

@@ -40,7 +40,8 @@ class SuraFutureHandler<T extends Object> extends StatefulWidget {
   _SuraFutureHandlerState<T> createState() => _SuraFutureHandlerState<T>();
 }
 
-class _SuraFutureHandlerState<T extends Object> extends State<SuraFutureHandler<T>> {
+class _SuraFutureHandlerState<T extends Object>
+    extends State<SuraFutureHandler<T>> {
   Future<T>? future;
 
   @override
@@ -74,7 +75,8 @@ class _SuraFutureHandlerState<T extends Object> extends State<SuraFutureHandler<
           if (widget.loading != null) {
             return widget.loading!;
           }
-          return suraProvider?.loadingWidget ?? const Center(child: CircularProgressIndicator());
+          return suraProvider?.loadingWidget ??
+              const Center(child: CircularProgressIndicator());
         }
       },
     );

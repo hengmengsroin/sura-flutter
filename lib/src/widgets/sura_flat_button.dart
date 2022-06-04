@@ -51,7 +51,10 @@ class SuraFlatButton extends StatelessWidget {
             children: <Widget>[
               if (icon != null) ...[icon!, const SpaceX(8)],
               DefaultTextStyle.merge(
-                style: Theme.of(context).textTheme.button?.copyWith(color: textColor),
+                style: Theme.of(context)
+                    .textTheme
+                    .button
+                    ?.copyWith(color: textColor),
                 child: child,
               ),
             ],
