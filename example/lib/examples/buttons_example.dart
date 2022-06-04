@@ -46,31 +46,26 @@ class _ButtonsExampleState extends State<ButtonsExample> {
               name: "SuraIconButton",
               buttons: [
                 SuraIconButton(
-                  icon: const Icon(Icons.add_a_photo_rounded,
-                      color: Colors.white),
-                  margin:
-                      const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
+                  icon: const Icon(Icons.add_a_photo_rounded, color: Colors.white),
+                  margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
                   onTap: () {},
                   badge: const SuraBadge(text: "2", radius: 8),
                   backgroundColor: Colors.orangeAccent,
                 ),
                 SuraIconButton(
                   icon: const Icon(Icons.add_alarm_rounded),
-                  margin:
-                      const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
+                  margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
                   onTap: () {},
                 ),
                 SuraIconButton(
                   icon: const Icon(Icons.add_alarm_rounded),
                   borderSide: const BorderSide(),
-                  margin:
-                      const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
+                  margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
                   onTap: () {},
                 ),
                 SuraIconButton(
                   icon: const Icon(Icons.add_alarm_rounded),
-                  margin:
-                      const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
+                  margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
                   onTap: () {
                     LoadingOverlayProvider.toggle();
                   },
@@ -83,8 +78,7 @@ class _ButtonsExampleState extends State<ButtonsExample> {
               buttons: [
                 SuraAsyncIconButton(
                   icon: const Icon(Icons.add),
-                  margin:
-                      const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
+                  margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
                   onTap: asyncCallbackOnPressed,
                 )
               ],
@@ -93,11 +87,9 @@ class _ButtonsExampleState extends State<ButtonsExample> {
               name: "SuraFlatButton",
               buttons: [
                 SuraFlatButton(
-                  icon: const Icon(Icons.add_a_photo_rounded,
-                      color: Colors.white),
+                  icon: const Icon(Icons.add_a_photo_rounded, color: Colors.white),
                   child: const Text("Click me").textColor(),
-                  margin:
-                      const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
+                  margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
                   onPressed: asyncCallbackOnPressed,
                   backgroundColor: Colors.lightGreen,
                 ),
@@ -106,7 +98,6 @@ class _ButtonsExampleState extends State<ButtonsExample> {
                   margin: const EdgeInsets.symmetric(vertical: 4),
                   onPressed: asyncCallbackOnPressed,
                 ),
-                const EllipsisText(null),
               ],
             ),
             buildButtonCategory(
@@ -130,8 +121,7 @@ class _ButtonsExampleState extends State<ButtonsExample> {
                   children: [
                     const Text("Loading type: Disable"),
                     SuraAsyncButton(
-                      margin: const EdgeInsets.symmetric(
-                          vertical: 0, horizontal: 64),
+                      margin: const EdgeInsets.symmetric(vertical: 0, horizontal: 64),
                       onPressed: asyncCallbackOnPressed,
                       child: const Text("Click me"),
                       fullWidth: false,
@@ -161,8 +151,7 @@ class _ButtonsExampleState extends State<ButtonsExample> {
   }) {
     return Column(
       children: [
-        Text(name,
-            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+        Text(name, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
         const SpaceY(),
         Row(
           children: buttons.map((button) => Flexible(child: button)).toList(),

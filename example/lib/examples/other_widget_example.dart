@@ -11,11 +11,25 @@ class OtherWidgetsExample extends StatefulWidget {
 class _OtherWidgetsExampleState extends State<OtherWidgetsExample> {
   @override
   Widget build(BuildContext context) {
+    var setting = SuraIconButton(
+      onTap: () {},
+      icon: const Icon(Icons.settings),
+    );
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text("Toolbar"),
+        actions: [setting],
+      ),
       body: Column(
         children: [
-          const SuraToolbar(
+          SuraToolbar(
+            backgroundColor: Colors.red,
             title: "Toolbar",
+            actions: [
+              setting,
+              setting,
+            ],
           ),
           Expanded(
             child: SingleChildScrollView(

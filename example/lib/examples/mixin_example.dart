@@ -61,7 +61,6 @@ class _MixinExampleState extends State<MixinExample> with BoolNotifierMixin, Sur
                   },
                 ),
                 SuraRaisedButton(
-                  padding: const EdgeInsets.all(24),
                   shape: const RoundedRectangleBorder(),
                   onPressed: () async {
                     if (true) {

@@ -5,12 +5,10 @@ class TabIndicatorAndDecorationExample extends StatefulWidget {
   const TabIndicatorAndDecorationExample({Key? key}) : super(key: key);
 
   @override
-  _TabIndicatorAndDecorationExampleState createState() =>
-      _TabIndicatorAndDecorationExampleState();
+  _TabIndicatorAndDecorationExampleState createState() => _TabIndicatorAndDecorationExampleState();
 }
 
-class _TabIndicatorAndDecorationExampleState
-    extends State<TabIndicatorAndDecorationExample>
+class _TabIndicatorAndDecorationExampleState extends State<TabIndicatorAndDecorationExample>
     with SingleTickerProviderStateMixin {
   late TabController tabController;
   @override

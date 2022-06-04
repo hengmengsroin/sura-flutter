@@ -1,14 +1,31 @@
 import 'package:flutter/material.dart';
 
 class SuraIconButton extends StatelessWidget {
+  ///
   final VoidCallback? onTap;
+
+  ///
   final Widget icon;
+
+  ///
   final EdgeInsets margin;
+
+  ///
   final EdgeInsets padding;
+
+  ///
   final Color backgroundColor;
+
+  ///
   final double borderRadius;
+
+  ///
   final double elevation;
+
+  ///
   final BorderSide? borderSide;
+
+  ///
   final Widget? badge;
 
   ///An IconButton with respectively small margin and shape

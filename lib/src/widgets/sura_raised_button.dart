@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:sura_flutter/src/utils/sura_logger.dart';
 
@@ -5,29 +7,57 @@ import 'conditional_widget.dart';
 import 'spacing.dart';
 import 'sura_provider.dart';
 
-/// SuraRaisedButton can be use sometime to replace RaisedButton or ElevatedButton because we provide more flexibility and wrap around
 class SuraRaisedButton extends StatelessWidget {
   ///receive a ValueNotifier to indicate a loading widget
   final ValueNotifier<bool>? loadingNotifier;
+
+  ///
   final Widget child;
+
+  ///An icon to show at before [child]
   final Widget? icon;
+
+  ///
   final VoidCallback? onPressed;
+
+  ///
   final Function? onLongPressed;
+
+  //
   final double? elevation;
-  //Button's background Color
+
+  ///Button's background Color
   final Color? color;
+
+  ///Text's color for a child that usually a Text
   final Color? textColor;
-  //Loading indicator's color
+
+  ///Loading indicator's color, default is [white]
   final Color loadingColor;
+
+  ///A widget to show when loading, if the value is null,
+  ///it will use a loading widget from SuraProvider or CircularProgressIndicator
   final Widget? loadingWidget;
+
+  ///Button's margin
   final EdgeInsets margin;
+
+  ///Button's padding
   final EdgeInsets padding;
+
+  ///Button's shape, default is [StadiumBorder]
   final OutlinedBorder? shape;
+
+  ///child's alignment
   final MainAxisAlignment? alignment;
 
   ///if [fullWidth] is `true`, Button will take all remaining horizontal space
   final bool fullWidth;
+
+  ///
   final BorderSide? borderSide;
+
+  ///
   final GlobalKey _globalKey = GlobalKey();
 
   ///Create a button with loading notifier

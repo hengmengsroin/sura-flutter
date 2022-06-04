@@ -21,6 +21,11 @@ class _StreamAndFutureExampleState extends State<StreamAndFutureExample> {
     return 10;
   }
 
+  Future<int> getError() async {
+    await SuraUtils.wait(2400);
+    throw Exception("Error while getting data!");
+  }
+
   @override
   void dispose() {
     numberCtl.close();
@@ -52,6 +57,23 @@ class _StreamAndFutureExampleState extends State<StreamAndFutureExample> {
             const SpaceY(24),
             SuraStreamHandler<int>(
               stream: numberCtl.stream,
+              ready: (data) {
+                return Text("Data: $data");
+              },
+            ),
+            const SpaceY(24),
+            SuraFutureHandler<int>.function(
+              futureFunction: getError,
+              error: (error) {
+                infoLog(error.runtimeType);
+                return Column(
+                  children: [
+                    const Icon(Icons.error, color: Colors.red),
+                    const SpaceX(),
+                    EllipsisText(error),
+                  ],
+                );
+              },
               ready: (data) {
                 return Text("Data: $data");
               },
