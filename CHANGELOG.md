@@ -76,7 +76,7 @@ Breaking change
 ## [1.0.0] - 3 February 2022
 
 - Stable 1.0.0 Release
-- Fix `SuraAsyncButton` fullWidth is not wokring
+- Fix `SuraAsyncButton` fullWidth is not working
 - Add Flutter lints
 
 ## [0.5.1] - 1 December 2021
@@ -95,7 +95,7 @@ Breaking change
 
 ## [0.4.2] - 19 September 2021
 
-- Add new feature on paginated widget to be abble to attach scroll controller to listview
+- Add new feature on paginated widget to be able to attach scroll controller to ListView
 
 ## [0.4.1] - 21 August 2021
 
@@ -146,7 +146,7 @@ Breaking change
 ## [0.2.1] - 25 May 2021
 
 - update type to FutureOr<T> of successCallBack in Manager
-- Improve example and Documentaion
+- Improve example and Documentation
 
 ## [0.2.0] - 22 May 2021
 
@@ -193,7 +193,7 @@ Breaking change
 
 ## [0.0.5] - 3 March 2021
 
-- Code improvment
+- Code improvement
 - add buttonColor to SuraSimpleDialog
 - update SuraFlatButton
 
@@ -209,7 +209,7 @@ Breaking change
 ## [0.0.2] - 28 February 2021
 
 - code improvement
-- imporve README
+- improve README
 - add **SuraFormValidator**
 - add **SuraActionSheet**
 - rework **SuraColor**

@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:sura_flutter/sura_flutter.dart';
 
-class SuraAccordianAndExpandable extends StatefulWidget {
-  const SuraAccordianAndExpandable({Key? key}) : super(key: key);
+class SuraAccordionAndExpandable extends StatefulWidget {
+  const SuraAccordionAndExpandable({Key? key}) : super(key: key);
 
   @override
-  _SuraAccordianAndExpandableState createState() =>
-      _SuraAccordianAndExpandableState();
+  _SuraAccordionAndExpandableState createState() => _SuraAccordionAndExpandableState();
 }
 
-class _SuraAccordianAndExpandableState
-    extends State<SuraAccordianAndExpandable> {
+class _SuraAccordionAndExpandableState extends State<SuraAccordionAndExpandable> {
   int selectedAccordionIndex = 0;
 
   bool toggled = false;

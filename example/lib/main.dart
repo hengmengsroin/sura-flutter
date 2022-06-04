@@ -57,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> with SuraFormMixin {
       ),
       ExampleButton(
         name: "Sura Accordion and Expandable",
-        child: const SuraAccordianAndExpandable(),
+        child: const SuraAccordionAndExpandable(),
       ),
       ExampleButton(
         name: "Sura Utils",
