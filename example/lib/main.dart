@@ -6,7 +6,7 @@ import 'package:sura_flutter_example/examples/stream_future_example.dart';
 import 'examples/buttons_example.dart';
 import 'examples/dialog_popup_example.dart';
 import 'examples/mixin_example.dart';
-import 'examples/sura_accordian_and_sura_expandable.dart';
+import 'examples/sura_accordion_and_sura_expandable.dart';
 import 'examples/tab_indicator_decoration.dart';
 import 'examples/util_example.dart';
 
