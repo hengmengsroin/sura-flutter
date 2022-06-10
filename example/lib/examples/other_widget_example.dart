@@ -18,12 +18,38 @@ class _OtherWidgetsExampleState extends State<OtherWidgetsExample> {
           Expanded(
             child: SingleChildScrollView(
               child: Column(
-                children: const [],
+                children: const [
+                  NotifierWrapper(),
+                ],
               ),
             ),
           ),
         ],
       ),
+    );
+  }
+}
+
+class NotifierWrapper extends StatelessWidget {
+  const NotifierWrapper({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ValueNotifierWrapper<bool>(
+      initialValue: true,
+      builder: (notifier, value, child) {
+        return Column(
+          children: [
+            Text("Value is: $value"),
+            TextButton(
+              onPressed: () {
+                notifier.value = !notifier.value;
+              },
+              child: const Text("Change"),
+            ),
+          ],
+        );
+      },
     );
   }
 }

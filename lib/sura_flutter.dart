@@ -47,3 +47,4 @@ export 'src/widgets/sura_raised_button.dart';
 export 'src/widgets/sura_simple_dialog.dart';
 export 'src/widgets/sura_stream_handler.dart';
 export 'src/widgets/sura_toolbar.dart';
+export 'src/widgets/value_notifier_wrapper.dart';
