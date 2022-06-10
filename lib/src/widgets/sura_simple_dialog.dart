@@ -4,11 +4,22 @@ import 'package:sura_flutter/src/style/sura_decoration.dart';
 import 'package:sura_flutter/src/widgets/sura_platform_checker.dart';
 
 class SuraSimpleDialog extends StatelessWidget {
+  ///Dialog title
   final String title;
+
+  ///Action button text, default is "OK"
   final String confirmText;
-  final Function? onConfirm;
+
+  ///A function that run before you pressed on confirm button
+  final VoidCallback? onConfirm;
+
+  ///If child is provided, [content] will be ignore
   final Widget? child;
+
+  ///Confirm button color
   final Color? buttonColor;
+
+  ///A string to show in Dialog
   final String content;
 
   ///An alert dialog with title and content

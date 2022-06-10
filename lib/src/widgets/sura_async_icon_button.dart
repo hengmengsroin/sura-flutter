@@ -100,6 +100,7 @@ class _SuraAsyncIconButtonState extends State<SuraAsyncIconButton> {
       margin: widget.margin,
       child: InkWell(
         onTap: onButtonPressed,
+        mouseCursor: SystemMouseCursors.click,
         customBorder: shape,
         child: ConditionalWidget(
           condition: _isLoading,

@@ -1,6 +1,6 @@
 # sura_flutter
 
-[![pub package](https://img.shields.io/badge/pub-1.2.1-blueviolet.svg)](https://pub.dev/packages/sura_flutter) ![Latest commit](https://badgen.net/github/last-commit/asurraa/sura_flutter)
+[![pub package](https://img.shields.io/badge/pub-1.3.1-blueviolet.svg)](https://pub.dev/packages/sura_flutter) ![Latest commit](https://badgen.net/github/last-commit/asurraa/sura_flutter)
 
 A flutter package for custom widgets and utility function.
 
@@ -13,7 +13,7 @@ A flutter package for custom widgets and utility function.
 
   ```dart
   dependencies:
-    sura_manager: ^1.2.1
+    sura_manager: ^1.3.1
   ```
 
 # Installation
@@ -22,7 +22,7 @@ Add this to pubspec.yaml
 
 ```dart
 dependencies:
-  sura_flutter: ^1.2.1
+  sura_flutter: ^1.3.0
 ```
 
 # Widgets
@@ -36,10 +36,10 @@ dependencies:
 | [LoadingOverlay][other] | Create an overlay loading that cover entire screen and disable input |
 | [SpaceX][other] | SizedBox with only width |
 | [SpaceY][other] | SizedBox with only height |
-| [SuraAccordian][accordion_expandable] | Custom ExpansionTile |
+| [SuraAccordion][accordion_expandable] | Custom ExpansionTile |
 | [SuraActionSheet][dialog_popup] | Custom CupertinoActionSheet for option selector |
-| [SuraAsyncButton][buttons] | Fully customize Material ElevatedButton for asynchronus onPressed callback |
-| [SuraAsyncIconButton][buttons] | SuraIconButton with asynchronus onPressed callback |
+| [SuraAsyncButton][buttons] | Fully customize Material ElevatedButton for asynchronous onPressed callback |
+| [SuraAsyncIconButton][buttons] | SuraIconButton with asynchronous onPressed callback |
 | [SuraBadge][buttons] | Small badge like notification |
 | [SuraConfirmationDialog][dialog_popup] | Platform adaptive AlertDialog with cancel and confirm action |
 | [SuraExpandable][accordion_expandable] | Similar to SuraAccordion but with different use case |
@@ -49,13 +49,13 @@ dependencies:
 | [SuraListTile][other] | Custom ListTile |
 | [SuraLoadingDialog][dialog_popup] | Create and manage Loading Dialog, Deprecated and shouldn't be use. Consider using LoadingOverlay instead |
 | [SuraNotifier][buttons] | Custom ValueListenableBuilder |
-| [SuraPaginatedGrid][other] | Gridview with pagination support |
+| [SuraPaginatedGrid][other] | GridView with pagination support |
 | [SuraPaginatedList][other] | ListView with pagination support |
 | [SuraPlatformChecker][other] | Platform adaptive widget |
 | [SuraProvider][other] | A provider for SuraFlutter global setting |
 | [SuraRaisedButton][buttons] | Custom ElevatedButton with loading notifier |
 | [SuraSimpleDialog][dialog_popup] | Simple platform adaptive AlertDialog |
-| [SuraStreamHandler][other] | A Streambuilder with less boilerplate code |
+| [SuraStreamHandler][other] | A StreamBuilder with less boilerplate code |
 | [SuraToolbar][other] | Custom ToolBar or AppBar |
 
 [buttons]: https://github.com/asurraa/sura-flutter/tree/master/example/lib/examples/buttons_example.dart
@@ -94,13 +94,13 @@ Provide some property and method when working with **Form**
 
 - **formKey**: a key for form
 - **loadingNotifier**: a bool ValueNotifier
-- **passwordObsecureNotifier**: a bool ValueNotitifer for toggling password obsecure field
+- **passwordObscureNotifier**: a bool ValueNotifier for toggling password obscure field
 - **isFormValidated**: a bool return by validate **formKey**
 
 #### method
 
 - **toggleLoading**: toggle _loadingNotifier_
-- **togglePasswordObsecure**: toggle _passwordObsecureNotifier_
+- **togglePasswordObscure**: toggle _passwordObscureNotifier_
 
 ```dart
 class _HomePageState extends State<NewPage> with SuraFormMixin {
@@ -148,7 +148,7 @@ class _HomePageState extends State<NewPage> with BoolNotifierMixin {
 
 ```
 
-### TextStyle Extention
+### TextStyle Extension
 
 ```dart
 Text("Hello Flutter", style: TextStyle().normal)
@@ -164,7 +164,7 @@ Text("Hello Flutter", style: TextStyle().underline)
 Text("Hello Flutter", style: TextStyle().setColor(Colors.white))
 Text("Hello Flutter", style: TextStyle().setFontSize(24))
 
-///This responsive font size is configre as follwing using SuraResponsive value:
+///This responsive font size is configure as following using SuraResponsive value:
 /// tablet: value + 4
 /// desktop: value + 6
 /// small mobile: value - 2
@@ -197,8 +197,8 @@ data.getIfExist("age");
 ### Widget's Extension
 
 ```dart
-Text("Hello Flutter").padding(EdgeInsets.all(16.0)) // defaulat value is EdgeInsets.all(8.0)
-Text("Hello Flutter").margin(EdgeInsets.all(16.0)) // defaulat value is EdgeInsets.all(8.0)
+Text("Hello Flutter").padding(EdgeInsets.all(16.0)) // default value is EdgeInsets.all(8.0)
+Text("Hello Flutter").margin(EdgeInsets.all(16.0)) // default value is EdgeInsets.all(8.0)
 ///As a value
 Text("Hello Flutter").marginValue(all: 12)
 Text("Hello Flutter").paddingValue(horizontal: 12, vertical: 8)
@@ -263,7 +263,7 @@ String name = "chunlee".capitalize() // => Chunlee
 
 ### ShadowInputBorder
 
-This input border solve a problem thath TextField doesn't have a default elevation.
+This input border solve a problem that TextField doesn't have a default elevation.
 
 ![alt text](screenshots/shadow-input-border.png "SmallUnderlineIndicator")
 
@@ -274,7 +274,7 @@ This input border solve a problem thath TextField doesn't have a default elevati
         border: ShadowInputBorder(
           elevation: 2.0, //required
           fillColor: Colors.white, //required
-          borderRadius: SrauStyle.radius(),
+          borderRadius: SuraDecoration.radius(),
           shadowColor: Colors.black87,
         ),
 
@@ -294,7 +294,7 @@ Color green = SuraColor.fromCode("42f545")
 Color newColor = SuraColor.fromRGB(8, 182, 155)
 
 //Convert color to MaterialColor
-MaterilColor newMaterialColor = SuraColor.toMaterial(0xFF869CF4)
+MaterialColor newMaterialColor = SuraColor.toMaterial(0xFF869CF4)
 ```
 
 ### SuraUtils
@@ -314,7 +314,7 @@ await SuraUtils.wait(2);
 String carUrlImage =  SuraUtils.unsplashImage(width: 200, height: 200, category: "car");
 
 //Get byte from asset bundle
-Future<Uint8List> imageByte = await SuraUtils.getBytesFromAsset("image asset path", 200); //200 is imagewidth
+Future<Uint8List> imageByte = await SuraUtils.getBytesFromAsset("image asset path", 200); //200 is an image width
 
 //Get random image from unsplash
 String carUrlImage =  SuraUtils.unsplashImage(width: 200, height: 200, category: "car");

@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 import 'sura_provider.dart';
 
-///This Widget isn't well tested and shouldn't be use
 class SuraLoadingDialog {
   final bool dismissible;
   final BuildContext context;
   BuildContext? _dialogContext;
 
+  ///This Widget isn't well tested and shouldn't be use
   SuraLoadingDialog(
     this.context, {
     this.dismissible = false,

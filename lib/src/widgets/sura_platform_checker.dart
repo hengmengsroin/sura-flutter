@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:sura_flutter/src/widgets/spacing.dart';
 import 'package:universal_platform/universal_platform.dart';
 
-///Provide a widget child depend on the Platform, Currently support [iOS] and [Android]
 class SuraPlatformChecker extends StatelessWidget {
   final Widget androidWidget;
   final Widget? iosWidget;
   final Widget? webWidget;
+
+  ///Provide a widget child depend on the Platform, Currently support [iOS] and [Android]
   const SuraPlatformChecker({
     Key? key,
     required this.androidWidget,

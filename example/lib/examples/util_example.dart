@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sura_flutter/sura_flutter.dart';
 
 class SuraUtilExamples extends StatefulWidget {
   const SuraUtilExamples({Key? key}) : super(key: key);
@@ -9,10 +8,6 @@ class SuraUtilExamples extends StatefulWidget {
 }
 
 class _SuraUtilExamplesState extends State<SuraUtilExamples> {
-  TokenPayload? tokenPayload;
-
-  final ages = [1, 2, 3, 4, 5];
-  Map data = {};
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,10 +17,6 @@ class _SuraUtilExamplesState extends State<SuraUtilExamples> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: const [],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: const Icon(Icons.connected_tv),
       ),
     );
   }

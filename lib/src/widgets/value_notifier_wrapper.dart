@@ -12,7 +12,7 @@ class ValueNotifierWrapper<T> extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<ValueNotifierWrapper> createState() => _ValueNotifierWrapperState();
+  State<ValueNotifierWrapper<T>> createState() => _ValueNotifierWrapperState<T>();
 }
 
 class _ValueNotifierWrapperState<T> extends State<ValueNotifierWrapper<T>> {

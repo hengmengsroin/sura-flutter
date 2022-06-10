@@ -21,6 +21,7 @@ class SpaceY extends StatelessWidget {
 
   ///Create a vertical blank space
   const SpaceY([this.height = 8, Key? key]) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(

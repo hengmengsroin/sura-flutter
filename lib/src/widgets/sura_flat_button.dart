@@ -19,7 +19,7 @@ class SuraFlatButton extends StatelessWidget {
     Key? key,
     required this.onPressed,
     required this.child,
-    this.margin = const EdgeInsets.all(0),
+    this.margin = EdgeInsets.zero,
     this.padding = const EdgeInsets.all(8),
     this.backgroundColor = Colors.transparent,
     this.elevation = 0.0,
@@ -42,7 +42,7 @@ class SuraFlatButton extends StatelessWidget {
       child: InkWell(
         onTap: onPressed,
         customBorder: shape,
-        mouseCursor: MouseCursor.defer,
+        mouseCursor: SystemMouseCursors.click,
         child: Padding(
           padding: padding,
           child: Row(
@@ -51,7 +51,10 @@ class SuraFlatButton extends StatelessWidget {
             children: <Widget>[
               if (icon != null) ...[icon!, const SpaceX(8)],
               DefaultTextStyle.merge(
-                style: Theme.of(context).textTheme.button?.copyWith(color: textColor),
+                style: Theme.of(context)
+                    .textTheme
+                    .button
+                    ?.copyWith(color: textColor),
                 child: child,
               ),
             ],

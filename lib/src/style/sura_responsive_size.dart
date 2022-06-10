@@ -36,7 +36,8 @@ class SuraResponsive {
   static Size? _size;
   static BuildContext? context;
 
-  static SuraResponsiveBreakpoint _breakPoint = SuraResponsiveBreakpoint.defaultValue();
+  static SuraResponsiveBreakpoint _breakPoint =
+      SuraResponsiveBreakpoint.defaultValue();
 
   static double get screenWidth => _size?.width ?? _breakPoint.mobile;
 
@@ -51,7 +52,8 @@ class SuraResponsive {
     _breakPoint = breakPoint;
   }
 
-  static SuraResponsiveBreakpointName _getBreakpointName([BuildContext? _context]) {
+  static SuraResponsiveBreakpointName _getBreakpointName(
+      [BuildContext? _context]) {
     double _screenWidth = 0.0;
     if (_context != null) {
       _screenWidth = MediaQuery.of(_context).size.width;
@@ -70,7 +72,8 @@ class SuraResponsive {
 
   static bool get isDesktop => screenWidth >= _breakPoint.desktop;
   static bool get isTablet => !isDesktop && screenWidth >= _breakPoint.tablet;
-  static bool get isMobile => !isMobileSmall && screenWidth < _breakPoint.tablet;
+  static bool get isMobile =>
+      !isMobileSmall && screenWidth < _breakPoint.tablet;
   static bool get isMobileSmall => screenWidth <= _breakPoint.mobile;
 
   ///Build a widget base on device screen size

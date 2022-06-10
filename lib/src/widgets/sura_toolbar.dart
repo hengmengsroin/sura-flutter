@@ -3,38 +3,46 @@ import 'package:flutter/material.dart';
 ///Custom AppBar or ToolBar that often use if you're only need a [BackButton] for pop navigator or
 ///define a custom toolbar
 class SuraToolbar extends StatelessWidget {
-  final Icon? icon;
+  ///Leading icon for IconButton
+  final Widget? icon;
+
+  ///BackButton iconColor if user doesn't use custom [icon]
   final Color? iconColor;
 
   ///A String similar to AppBar's title
   final String? title;
+
+  ///A style for title
   final TextStyle? titleStyle;
 
-  ///A callback when BackButton is Pressed, Default action is to Pop the context
-  final void Function()? onTap;
+  ///A callback when BackButton is Pressed, Default action is to Pop the Navigator
+  final VoidCallback? onTap;
+
+  ///Toolbar background color
   final Color? backgroundColor;
 
-  ///Alignment of the header
+  ///Alignment of the header. Default to [center]
   final Alignment titleAlignment;
 
-  //elevation of the header
+  ///elevation of the Toolbar
   final double elevation;
 
+  ///Margin left of the [icon] if Alignment is to the Left
   final double titleMargin = 56.0;
+
+  final List<Widget>? actions;
 
   ///Create a Custom App Bar like Back Button with Header support
   const SuraToolbar({
     Key? key,
-    this.onTap,
     this.title,
-    this.titleStyle = const TextStyle(
-      fontSize: 20,
-      fontWeight: FontWeight.w500,
-    ),
+    this.titleStyle,
+    this.onTap,
+    this.actions,
     this.icon,
+    this.iconColor,
     this.titleAlignment = Alignment.center,
     this.backgroundColor = Colors.transparent,
-    this.iconColor,
     this.elevation = 0.0,
   }) : super(key: key);
   @override
@@ -76,6 +84,14 @@ class SuraToolbar extends StatelessWidget {
                       style:
                           titleStyle ?? Theme.of(context).textTheme.headline6,
                     ),
+                  ),
+                ),
+              if (actions != null)
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: actions!,
                   ),
                 )
             ],

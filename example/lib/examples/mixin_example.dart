@@ -49,22 +49,26 @@ class _MixinExampleState extends State<MixinExample>
                   decoration: const InputDecoration(hintText: "Email"),
                 ),
                 const SpaceY(16),
-                PasswordTextFieldBuilder(builder: (obscure) {
-                  return TextFormField(
-                    obscureText: obscure,
-                    initialValue: "mypassword",
-                    decoration: InputDecoration(
-                      suffixIcon: IconButton(
-                        icon: Icon(
-                            obscure ? Icons.visibility : Icons.visibility_off),
-                        onPressed: togglePasswordObscure,
+                PasswordTextFieldBuilder(
+                  builder: (obscure) {
+                    return TextFormField(
+                      obscureText: obscure,
+                      initialValue: "mypassword",
+                      decoration: InputDecoration(
+                        suffixIcon: IconButton(
+                          icon: Icon(obscure
+                              ? Icons.visibility
+                              : Icons.visibility_off),
+                          onPressed: togglePasswordObscure,
+                        ),
                       ),
-                    ),
-                  );
-                }),
+                    );
+                  },
+                ),
                 SuraRaisedButton(
+                  shape: const RoundedRectangleBorder(),
                   onPressed: () async {
-                    if (isFormValidated) {
+                    if (true) {
                       toggleValue();
                       await SuraUtils.wait(2000);
                       toggleValue(false);

@@ -31,9 +31,9 @@ class EllipsisText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SuraProvider? suraProvider = SuraProvider.of(context);
-    String txt = emptyText ?? suraProvider?.ellipsisText ?? "";
+    String replacement = emptyText ?? suraProvider?.ellipsisText ?? "";
     return Text(
-      text == null ? txt : text.toString(),
+      text == null ? replacement : text.toString(),
       style: style.copyWith(height: 1.2),
       maxLines: maxLines,
       strutStyle: strutStyle,

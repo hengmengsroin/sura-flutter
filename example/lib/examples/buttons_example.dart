@@ -106,7 +106,6 @@ class _ButtonsExampleState extends State<ButtonsExample> {
                   margin: const EdgeInsets.symmetric(vertical: 4),
                   onPressed: asyncCallbackOnPressed,
                 ),
-                const EllipsisText(null),
               ],
             ),
             buildButtonCategory(

@@ -1,3 +1,16 @@
+## [1.3.1] - 4 June 2022
+- Minor bug fixes and improvement
+
+## [1.3.0] - 4 June 2022
+- `SuraResponsive.value` and `SuraResponsive.auto` now support `context` as a new parameter
+- `SuraUtils.getByteFromAsset` doesn't run image codec if width isn't provided
+- `EllipsisText` replacement text can now inherit from `SuraProvider`
+- `SuraRaisedButton` width now unchanged when loading
+- Update mouse cursor on all Buttons
+- Improve documentation and some error message
+- #### Breaking change:
+  - `SuraAccordion` and `SuraExpandable` state now working as `Slider` or `CheckBox` that you have to manage it's state by yourself.  new param will be required.
+
 ## [1.2.1] - 24 May 2022
 - update `SuraResponsive.builder`
 ## [1.2.0] - 26 April 2022
@@ -63,7 +76,7 @@ Breaking change
 ## [1.0.0] - 3 February 2022
 
 - Stable 1.0.0 Release
-- Fix `SuraAsyncButton` fullWidth is not wokring
+- Fix `SuraAsyncButton` fullWidth is not working
 - Add Flutter lints
 
 ## [0.5.1] - 1 December 2021
@@ -82,7 +95,7 @@ Breaking change
 
 ## [0.4.2] - 19 September 2021
 
-- Add new feature on paginated widget to be abble to attach scroll controller to listview
+- Add new feature on paginated widget to be able to attach scroll controller to ListView
 
 ## [0.4.1] - 21 August 2021
 
@@ -133,7 +146,7 @@ Breaking change
 ## [0.2.1] - 25 May 2021
 
 - update type to FutureOr<T> of successCallBack in Manager
-- Improve example and Documentaion
+- Improve example and Documentation
 
 ## [0.2.0] - 22 May 2021
 
@@ -180,7 +193,7 @@ Breaking change
 
 ## [0.0.5] - 3 March 2021
 
-- Code improvment
+- Code improvement
 - add buttonColor to SuraSimpleDialog
 - update SuraFlatButton
 
@@ -196,7 +209,7 @@ Breaking change
 ## [0.0.2] - 28 February 2021
 
 - code improvement
-- imporve README
+- improve README
 - add **SuraFormValidator**
 - add **SuraActionSheet**
 - rework **SuraColor**
