@@ -5,10 +5,12 @@ class SuraAccordionAndExpandable extends StatefulWidget {
   const SuraAccordionAndExpandable({Key? key}) : super(key: key);
 
   @override
-  _SuraAccordionAndExpandableState createState() => _SuraAccordionAndExpandableState();
+  _SuraAccordionAndExpandableState createState() =>
+      _SuraAccordionAndExpandableState();
 }
 
-class _SuraAccordionAndExpandableState extends State<SuraAccordionAndExpandable> {
+class _SuraAccordionAndExpandableState
+    extends State<SuraAccordionAndExpandable> {
   int selectedAccordionIndex = 0;
 
   bool toggled = false;

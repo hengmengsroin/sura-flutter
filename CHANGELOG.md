@@ -1,3 +1,7 @@
+## [1.4.0] - 13 June 2022
+- add `ValueNotifierWrapper`
+- Bump dependency to Dart 17.0 and Flutter 3.0
+
 ## [1.3.1] - 4 June 2022
 - Minor bug fixes and improvement
 

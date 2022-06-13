@@ -1,6 +1,6 @@
 # sura_flutter
 
-[![pub package](https://img.shields.io/badge/pub-1.3.1-blueviolet.svg)](https://pub.dev/packages/sura_flutter) ![Latest commit](https://badgen.net/github/last-commit/asurraa/sura_flutter)
+[![pub package](https://img.shields.io/badge/pub-1.4.0-blueviolet.svg)](https://pub.dev/packages/sura_flutter) ![Latest commit](https://badgen.net/github/last-commit/asurraa/sura_flutter)
 
 A flutter package for custom widgets and utility function.
 
@@ -13,7 +13,7 @@ A flutter package for custom widgets and utility function.
 
   ```dart
   dependencies:
-    sura_manager: ^1.3.1
+    sura_manager: ^1.4.0
   ```
 
 # Installation
@@ -22,7 +22,7 @@ Add this to pubspec.yaml
 
 ```dart
 dependencies:
-  sura_flutter: ^1.3.0
+  sura_flutter: ^1.4.0
 ```
 
 # Widgets
@@ -57,6 +57,7 @@ dependencies:
 | [SuraSimpleDialog][dialog_popup] | Simple platform adaptive AlertDialog |
 | [SuraStreamHandler][other] | A StreamBuilder with less boilerplate code |
 | [SuraToolbar][other] | Custom ToolBar or AppBar |
+| [ValueNotifierWrapper][other] | Wrapper for ValueNotifier |
 
 [buttons]: https://github.com/asurraa/sura-flutter/tree/master/example/lib/examples/buttons_example.dart
 [dialog_popup]: https://github.com/asurraa/sura-flutter/tree/master/example/lib/examples/dialog_popup_example.dart
@@ -301,14 +302,14 @@ MaterialColor newMaterialColor = SuraColor.toMaterial(0xFF869CF4)
 
 ```dart
 
-//Ping to google for internet connection
+//Ping to google to check for internet connection
 bool isConnected = await SuraUtils.checkConnection();
 
-//Future.delayed base on second value
+//Convert degree to radian value
 double radian = SuraUtils.degreeToRadian(90);
 
-//Future.delayed base on second value
-await SuraUtils.wait(2);
+//Future.delayed base on millisecond value
+await SuraUtils.wait(200);
 
 //Get random image from unsplash
 String carUrlImage =  SuraUtils.unsplashImage(width: 200, height: 200, category: "car");
@@ -383,7 +384,7 @@ var result = await SuraNavigator.dialog(MyDialog());
 ### SuraDecoration
 
 ```dart
-RoundedRectangleBorder roundRectangle = SuraDecoration.roundRect(12);//default value is 8
+RoundedRectangleBorder roundRectangle = SuraDecoration.roundRect(12); //default value is 8
 BorderRadius radius = SuraDecoration.radius(12); //default value is 8
 ```
 
@@ -401,7 +402,8 @@ Example:
 //set value 24 for tablet size
 //set value 28 for desktop size
 //set value 16 for small mobile size
-double width = SuraResponsive.value(20,24,28,16,);
+//If context isn't null, it will react to MediaQuery change
+double width = SuraResponsive.value(20,24,28,16,context);
 
 
 ///Auto value base on provided rule

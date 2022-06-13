@@ -82,7 +82,7 @@ class SuraRaisedButton extends StatelessWidget {
 
   void maintainWidthOnLoading() {
     if (fullWidth == false && width == null) {
-      WidgetsBinding.instance?.addPostFrameCallback((d) {
+      WidgetsBinding.instance.addPostFrameCallback((d) {
         RenderBox box =
             _globalKey.currentContext!.findRenderObject() as RenderBox;
         width = box.size.width;
