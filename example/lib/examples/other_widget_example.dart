@@ -15,33 +15,36 @@ class _OtherWidgetsExampleState extends State<OtherWidgetsExample> {
       onTap: () {},
       icon: const Icon(Icons.settings),
     );
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text("Toolbar"),
-        actions: [setting],
-      ),
-      body: Column(
-        children: [
-          SuraToolbar(
-            backgroundColor: Colors.red,
-            title: "Toolbar",
-            actions: [
-              setting,
-              setting,
-            ],
-          ),
-          Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                children: const [
-                  EllipsisText(null),
-                  NotifierWrapper(),
-                ],
+    return LoadingOverlayPopScope(
+      allowPop: true,
+      child: Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          title: const Text("Toolbar"),
+          actions: [setting],
+        ),
+        body: Column(
+          children: [
+            SuraToolbar(
+              backgroundColor: Colors.red,
+              title: "Toolbar",
+              actions: [
+                setting,
+                setting,
+              ],
+            ),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: const [
+                    EllipsisText(null),
+                    NotifierWrapper(),
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -59,8 +62,14 @@ class NotifierWrapper extends StatelessWidget {
           children: [
             Text("Value is: $value"),
             TextButton(
-              onPressed: () {
-                notifier.value = !notifier.value;
+              onPressed: () async {
+                try {
+                  LoadingOverlayProvider.toggle();
+                  await SuraUtils.wait(2000);
+                  notifier.value = !notifier.value;
+                } finally {
+                  LoadingOverlayProvider.toggle(false);
+                }
               },
               child: const Text("Change"),
             ),

@@ -29,7 +29,11 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         home: const MyHomePage(),
         builder: (context, child) {
-          return SuraResponsiveBuilder(builder: (context) => child!);
+          return SuraResponsiveBuilder(
+            builder: (context) => LoadingOverlayBuilder(
+              child: child!,
+            ),
+          );
         },
       ),
     );
