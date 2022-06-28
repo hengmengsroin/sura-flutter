@@ -71,7 +71,11 @@ class LoadingOverlayBuilder extends StatelessWidget {
                 valueListenable: overlayProvider._loadingNotifier,
                 child: loadingWidget ??
                     Container(
-                      child: const Center(child: CircularProgressIndicator()),
+                      child: const Center(
+                        child: CircularProgressIndicator(
+                          backgroundColor: Colors.white,
+                        ),
+                      ),
                       color: color,
                     ),
                 builder: (context, isLoading, child) {
@@ -92,7 +96,7 @@ class LoadingOverlayBuilder extends StatelessWidget {
 class LoadingOverlayPopScope extends StatefulWidget {
   final Widget child;
 
-  ///If [allowPop] is true, if user pressed back button
+  ///If [allowPop] is true, when user pressed back button
   ///LoadingOverlay will be dismiss and screen will be pop like normal
   final bool allowPop;
 
