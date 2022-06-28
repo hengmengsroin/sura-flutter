@@ -1,47 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:sura_flutter/sura_flutter.dart';
 
-class LoadingOverlayProvider extends InheritedWidget {
+class LoadingOverlayProvider {
   final ValueNotifier<bool> _loadingNotifier = ValueNotifier(false);
-  //
-  static BuildContext? _context;
-  LoadingOverlayProvider({Key? key, required Widget child}) : super(key: key, child: child);
+  LoadingOverlayProvider._();
+  static LoadingOverlayProvider instance = LoadingOverlayProvider._();
 
-  ///Loading provider need a stable context, so it's best to initialize with
-  ///the context that always active. eg. Builder context of MaterialApp
-  ///If you're trying to use a custom context, sometime it will throw an error
-  ///if our widget has been remove from a widget tree.
-  static void init(BuildContext childContext) {
-    if (_context != null) return;
-    _context = childContext;
+  static Widget builder(
+      {Key? key, required Widget child, Widget? loadingWidget}) {
+    return LoadingOverlayBuilder(
+      child: child,
+      loadingWidget: loadingWidget,
+    );
   }
 
   bool get isLoading => _loadingNotifier.value;
 
-  static LoadingOverlayProvider? of(BuildContext context) {
-    if (_context == null) {
-      throw FlutterError("Please wrap your MaterialApp or MaterialApp builder with LoadingOverlayBuilder");
-    }
-    return context.dependOnInheritedWidgetOfExactType<LoadingOverlayProvider>();
-  }
-
   static void toggle([bool? value]) {
-    if (_context == null) {
-      throw FlutterError("Please wrap your MaterialApp or MaterialApp builder with LoadingOverlayBuilder");
-    }
-    LoadingOverlayProvider.of(_context!)!._toggleLoading(value);
+    LoadingOverlayProvider.instance._toggleLoading(value);
   }
 
   void _toggleLoading([bool? value]) {
-    _loadingNotifier.value = value ?? !_loadingNotifier.value;
-  }
-
-  @override
-  bool updateShouldNotify(covariant InheritedWidget oldWidget) {
-    return false;
+    final bool isLoading = value ?? !_loadingNotifier.value;
+    _loadingNotifier.value = isLoading;
   }
 }
 
+@Deprecated("This class will be remove from public API soon. "
+    "use LoadingOverlayProvider.builder instead")
 class LoadingOverlayBuilder extends StatelessWidget {
   final Widget child;
 
@@ -58,37 +44,31 @@ class LoadingOverlayBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = Theme.of(context).brightness == Brightness.dark ? Colors.grey.withOpacity(0.2) : Colors.black26;
-    return LoadingOverlayProvider(
-      child: Builder(
-        builder: (context) {
-          LoadingOverlayProvider.init(context);
-          LoadingOverlayProvider overlayProvider = LoadingOverlayProvider.of(context)!;
-          return Stack(
-            children: [
-              child,
-              ValueListenableBuilder<bool>(
-                valueListenable: overlayProvider._loadingNotifier,
-                child: loadingWidget ??
-                    Container(
-                      child: const Center(
-                        child: CircularProgressIndicator(
-                          backgroundColor: Colors.white,
-                        ),
-                      ),
-                      color: color,
-                    ),
-                builder: (context, isLoading, child) {
-                  if (isLoading) {
-                    return child!;
-                  }
-                  return emptySizedBox;
-                },
+    final color = Theme.of(context).brightness == Brightness.dark
+        ? Colors.grey.withOpacity(0.2)
+        : Colors.black26;
+    return Stack(
+      children: [
+        child,
+        ValueListenableBuilder<bool>(
+          valueListenable: LoadingOverlayProvider.instance._loadingNotifier,
+          child: loadingWidget ??
+              Container(
+                child: const Center(
+                  child: CircularProgressIndicator(
+                    backgroundColor: Colors.white,
+                  ),
+                ),
+                color: color,
               ),
-            ],
-          );
-        },
-      ),
+          builder: (context, isLoading, child) {
+            if (isLoading) {
+              return child!;
+            }
+            return emptySizedBox;
+          },
+        ),
+      ],
     );
   }
 }
@@ -130,7 +110,7 @@ class _LoadingOverlayPopScopeState extends State<LoadingOverlayPopScope> {
     return WillPopScope(
       child: widget.child,
       onWillPop: () async {
-        final bool isLoading = LoadingOverlayProvider.of(context)!.isLoading;
+        final bool isLoading = LoadingOverlayProvider.instance.isLoading;
         if (!isLoading) return true;
         return widget.allowPop ? true : !isLoading;
       },

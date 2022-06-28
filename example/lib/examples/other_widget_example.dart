@@ -16,7 +16,7 @@ class _OtherWidgetsExampleState extends State<OtherWidgetsExample> {
       icon: const Icon(Icons.settings),
     );
     return LoadingOverlayPopScope(
-      allowPop: true,
+      allowPop: false,
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
@@ -64,7 +64,7 @@ class NotifierWrapper extends StatelessWidget {
             TextButton(
               onPressed: () async {
                 try {
-                  LoadingOverlayProvider.toggle();
+                  LoadingOverlayProvider.toggle(true);
                   await SuraUtils.wait(2000);
                   notifier.value = !notifier.value;
                 } finally {

@@ -1,6 +1,6 @@
 # sura_flutter
 
-[![pub package](https://img.shields.io/badge/pub-1.4.0-blueviolet.svg)](https://pub.dev/packages/sura_flutter) ![Latest commit](https://badgen.net/github/last-commit/asurraa/sura_flutter)
+[![pub package](https://img.shields.io/badge/pub-1.4.1-blueviolet.svg)](https://pub.dev/packages/sura_flutter) ![Latest commit](https://badgen.net/github/last-commit/asurraa/sura_flutter)
 
 A flutter package for custom widgets and utility function.
 
@@ -22,7 +22,7 @@ Add this to pubspec.yaml
 
 ```dart
 dependencies:
-  sura_flutter: ^1.4.0
+  sura_flutter: ^1.4.1
 ```
 
 # Widgets
@@ -34,6 +34,7 @@ dependencies:
 | [EllipsisText][other] | Nullable Text with Ellipsis as default overflow |
 | [KeyboardDismiss][other] | Dismiss keyboard on tap |
 | [LoadingOverlay][other] | Create an overlay loading that cover entire screen and disable input |
+| [LoadingOverlayPopScope][other] | prevent or allow user from pop the screen when LoadingOverlay is displaying|
 | [SpaceX][other] | SizedBox with only width |
 | [SpaceY][other] | SizedBox with only height |
 | [SuraAccordion][accordion_expandable] | Custom ExpansionTile |
@@ -57,7 +58,8 @@ dependencies:
 | [SuraSimpleDialog][dialog_popup] | Simple platform adaptive AlertDialog |
 | [SuraStreamHandler][other] | A StreamBuilder with less boilerplate code |
 | [SuraToolbar][other] | Custom ToolBar or AppBar |
-| [ValueNotifierWrapper][other] | Wrapper for ValueNotifier |
+| [ValueNotifierWrapper][other] | Wrapper with ValueNotifier when using StatelessWidget |
+| [WidgetDisposer][other] | Provide a dispose callback when using StatelessWidget |
 
 [buttons]: https://github.com/asurraa/sura-flutter/tree/master/example/lib/examples/buttons_example.dart
 [dialog_popup]: https://github.com/asurraa/sura-flutter/tree/master/example/lib/examples/dialog_popup_example.dart

@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
         home: const MyHomePage(),
         builder: (context, child) {
           return SuraResponsiveBuilder(
-            builder: (context) => LoadingOverlayBuilder(
+            builder: (context) => LoadingOverlayProvider.builder(
               child: child!,
             ),
           );

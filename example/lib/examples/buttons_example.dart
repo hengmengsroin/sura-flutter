@@ -23,6 +23,7 @@ class _ButtonsExampleState extends State<ButtonsExample> {
     isLoading.value = true;
     await Future.delayed(const Duration(seconds: 2));
     isLoading.value = false;
+    setState(() {});
   }
 
   @override

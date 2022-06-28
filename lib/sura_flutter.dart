@@ -48,3 +48,4 @@ export 'src/widgets/sura_simple_dialog.dart';
 export 'src/widgets/sura_stream_handler.dart';
 export 'src/widgets/sura_toolbar.dart';
 export 'src/widgets/value_notifier_wrapper.dart';
+export 'src/widgets/widget_disposer.dart';

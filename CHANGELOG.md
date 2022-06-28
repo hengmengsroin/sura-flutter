@@ -1,3 +1,10 @@
+## [1.4.1] - 28 June 2022
+- Add `LoadingOverlayPopScope`
+- Add `WidgetDisposer`
+- fix `Divider0` and add background to default LoadingOverlay widget
+- Deprecated `LoadingOverlayBuilder`
+
+
 ## [1.4.0] - 13 June 2022
 - add `ValueNotifierWrapper`
 - Bump dependency to Dart 17.0 and Flutter 3.0
