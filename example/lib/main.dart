@@ -88,6 +88,7 @@ class _MyHomePageState extends State<MyHomePage> with SuraFormMixin {
         child: const StreamAndFutureExample(),
       ),
     ];
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Sura Flutter Example"),

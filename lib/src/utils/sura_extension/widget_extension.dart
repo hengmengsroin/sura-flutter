@@ -84,22 +84,26 @@ extension SuraWidgetExtension on Widget {
           break;
         case 2:
           defineMargin = EdgeInsets.symmetric(
-              vertical: margin.elementAt(0), horizontal: margin.elementAt(1));
+            vertical: margin.elementAt(0),
+            horizontal: margin.elementAt(1),
+          );
           break;
 
         case 3:
           defineMargin = EdgeInsets.only(
-              top: margin.elementAt(0),
-              right: margin.elementAt(1),
-              bottom: margin.elementAt(2));
+            top: margin.elementAt(0),
+            right: margin.elementAt(1),
+            bottom: margin.elementAt(2),
+          );
           break;
 
         default:
           defineMargin = EdgeInsets.only(
-              top: margin.elementAt(0),
-              right: margin.elementAt(1),
-              bottom: margin.elementAt(2),
-              left: margin.elementAt(3));
+            top: margin.elementAt(0),
+            right: margin.elementAt(1),
+            bottom: margin.elementAt(2),
+            left: margin.elementAt(3),
+          );
           break;
       }
     }
@@ -111,22 +115,26 @@ extension SuraWidgetExtension on Widget {
           break;
         case 2:
           definePadding = EdgeInsets.symmetric(
-              vertical: padding.elementAt(0), horizontal: padding.elementAt(1));
+            vertical: padding.elementAt(0),
+            horizontal: padding.elementAt(1),
+          );
           break;
 
         case 3:
           definePadding = EdgeInsets.only(
-              top: padding.elementAt(0),
-              right: padding.elementAt(1),
-              bottom: padding.elementAt(2));
+            top: padding.elementAt(0),
+            right: padding.elementAt(1),
+            bottom: padding.elementAt(2),
+          );
           break;
 
         default:
           definePadding = EdgeInsets.only(
-              top: padding.elementAt(0),
-              right: padding.elementAt(1),
-              bottom: padding.elementAt(2),
-              left: padding.elementAt(3));
+            top: padding.elementAt(0),
+            right: padding.elementAt(1),
+            bottom: padding.elementAt(2),
+            left: padding.elementAt(3),
+          );
           break;
       }
     }
