@@ -1,3 +1,7 @@
+## [1.4.2] - 18 July 2022
+- Improve generic extension type
+- add `length` param to `SuraFormValidator.validateField`
+
 ## [1.4.1] - 28 June 2022
 - Add `LoadingOverlayPopScope`
 - Add `WidgetDisposer`
