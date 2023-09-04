@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'dot_tab_indicator.dart';
+import 'dot_tab_indicator.dart' as SuraDotTabIndicator;
 
 ///An Underline tab indicator but customizable and work best if [isScrollable] is true
 class SmallUnderLineTabIndicator extends Decoration {
@@ -20,7 +20,7 @@ class SmallUnderLineTabIndicator extends Decoration {
   final Color color;
 
   ///[DotAlignment] whether it's bottom or top of tab's label
-  final TabAlignment tabAlignment;
+  final SuraDotTabIndicator.TabAlignment tabAlignment;
 
   const SmallUnderLineTabIndicator({
     required this.color,
@@ -28,7 +28,7 @@ class SmallUnderLineTabIndicator extends Decoration {
     this.height = 8,
     this.radius = 8,
     this.paddingLeft = 0,
-    this.tabAlignment = TabAlignment.bottom,
+    this.tabAlignment = SuraDotTabIndicator.TabAlignment.bottom,
   });
 
   @override
@@ -51,7 +51,7 @@ class _SmallUnderLineTabIndicatorPainter extends BoxPainter {
   final double height;
   final double radius;
   final double paddingLeft;
-  final TabAlignment tabAlignment;
+  final SuraDotTabIndicator.TabAlignment tabAlignment;
   _SmallUnderLineTabIndicatorPainter(
     VoidCallback onChanged,
     this.color,
@@ -63,9 +63,10 @@ class _SmallUnderLineTabIndicatorPainter extends BoxPainter {
   ) : super(onChanged);
   @override
   void paint(Canvas canvas, Offset offset, ImageConfiguration configuration) {
-    final double yOffset = tabAlignment == TabAlignment.bottom
-        ? configuration.size!.height - 8
-        : 0;
+    final double yOffset =
+        tabAlignment == SuraDotTabIndicator.TabAlignment.bottom
+            ? configuration.size!.height - 8
+            : 0;
     final Offset indicatorOffset = offset + Offset(paddingLeft, yOffset);
 
     final paint = Paint()
