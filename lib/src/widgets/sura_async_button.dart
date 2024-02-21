@@ -154,8 +154,11 @@ class _SuraAsyncButtonState extends State<SuraAsyncButton> {
         style: ElevatedButton.styleFrom(
           shape: widget.shape,
           padding: widget.padding,
-          primary: widget.color,
-          onPrimary: widget.textColor,
+          // primary: widget.color,
+          // onPrimary: widget.textColor,
+          backgroundColor: widget.color,
+          foregroundColor: widget.textColor,
+          // disabledForegroundColor: widget.textColor,
           side: widget.borderSide,
           elevation: widget.elevation,
         ),

@@ -71,8 +71,8 @@ class SuraConfirmationDialog extends StatelessWidget {
     final List<Widget> actions = <Widget>[
       TextButton(
         style: TextButton.styleFrom(
-          primary: Colors.red,
-        ),
+            // primary: Colors.red,
+            foregroundColor: Colors.red),
         child: Text(cancelText),
         onPressed: () {
           onCancel?.call();

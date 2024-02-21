@@ -108,8 +108,10 @@ class SuraRaisedButton extends StatelessWidget {
             onPressed: loading ? () {} : onPressed,
             style: ElevatedButton.styleFrom(
               shape: shape,
-              primary: color,
-              onPrimary: textColor,
+              // primary: color,
+              // onPrimary: textColor,
+              backgroundColor: color,
+              foregroundColor: textColor,
               padding: padding,
               elevation: elevation,
               side: borderSide,
